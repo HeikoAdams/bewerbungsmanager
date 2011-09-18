@@ -1,0 +1,424 @@
+<?xml version="1.0"?>
+<CONFIG>
+  <ProjectOptions>
+    <Version Value="9"/>
+    <General>
+      <MainUnit Value="0"/>
+      <Title Value="bewerbungen"/>
+      <ResourceType Value="res"/>
+      <UseXPManifest Value="True"/>
+      <Icon Value="0"/>
+      <ActiveWindowIndexAtStart Value="0"/>
+    </General>
+    <i18n>
+      <EnableI18N Value="True"/>
+      <OutDir Value="po"/>
+    </i18n>
+    <VersionInfo>
+      <UseVersionInfo Value="True"/>
+      <AutoIncrementBuild Value="True"/>
+      <MinorVersionNr Value="3"/>
+      <BuildNr Value="30"/>
+      <Language Value="0407"/>
+      <StringTable CompanyName="Heiko Adams" FileDescription="Verwaltung für Bewerbungen" InternalName="bewerbungen" LegalCopyright="2011 Heiko Adams" OriginalFilename="bewerbungen" ProductName="Bewerbungsverwaltung" ProductVersion="0.3"/>
+    </VersionInfo>
+    <BuildModes Count="1" Active="Default">
+      <Item1 Name="Default" Default="True"/>
+    </BuildModes>
+    <PublishOptions>
+      <Version Value="2"/>
+      <IncludeFileFilter Value="*.(pas|pp|inc|lfm|lpr|lrs|lpi|lpk|sh|xml)"/>
+      <ExcludeFileFilter Value="*.(bak|ppu|o|so);*~;backup"/>
+    </PublishOptions>
+    <RunParams>
+      <local>
+        <FormatVersion Value="1"/>
+        <CommandLineParams Value="--resetlog"/>
+      </local>
+    </RunParams>
+    <RequiredPackages Count="3">
+      <Item1>
+        <PackageName Value="SQLDBLaz"/>
+        <MinVersion Major="1" Release="1" Valid="True"/>
+      </Item1>
+      <Item2>
+        <PackageName Value="FCL"/>
+        <MinVersion Major="1" Valid="True"/>
+      </Item2>
+      <Item3>
+        <PackageName Value="LCL"/>
+      </Item3>
+    </RequiredPackages>
+    <Units Count="23">
+      <Unit0>
+        <Filename Value="bewerbungen.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="bewerbungen"/>
+        <UsageCount Value="47"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="mainwin.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmMain"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="mainwin"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="0"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="233"/>
+        <CursorPos X="80" Y="244"/>
+        <UsageCount Value="47"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="/usr/lib/lazarus/lcl/forms.pp"/>
+        <UnitName Value="Forms"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1309"/>
+        <CursorPos X="14" Y="1321"/>
+        <UsageCount Value="10"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="/usr/lib/lazarus/lcl/include/control.inc"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="2276"/>
+        <CursorPos X="1" Y="2288"/>
+        <UsageCount Value="10"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="/usr/lib/lazarus/lcl/include/customform.inc"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="866"/>
+        <CursorPos X="1" Y="878"/>
+        <UsageCount Value="10"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="/usr/lib/lazarus/components/tdbf/registerdbf.pas"/>
+        <UnitName Value="RegisterDBF"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="51"/>
+        <CursorPos X="1" Y="74"/>
+        <UsageCount Value="10"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="/usr/lib/lazarus/lcl/lresources.pp"/>
+        <UnitName Value="LResources"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="3060"/>
+        <CursorPos X="1" Y="3072"/>
+        <UsageCount Value="10"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="/usr/lib/lazarus/components/tdbf/dbflaz.pas"/>
+        <UnitName Value="DBFLaz"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="21"/>
+        <UsageCount Value="10"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="/usr/lib/lazarus/components/sqldb/sqlstringspropertyeditordlg.pas"/>
+        <ComponentName Value="SQLStringsPropertyEditorDlg"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="SQLStringsPropertyEditorDlg"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="267"/>
+        <CursorPos X="1" Y="290"/>
+        <UsageCount Value="10"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="/usr/share/fpcsrc/packages/fcl-db/src/base/db.pas"/>
+        <UnitName Value="db"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1933"/>
+        <CursorPos X="3" Y="1945"/>
+        <UsageCount Value="10"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="/usr/share/fpcsrc/rtl/objpas/sysutils/sysstrh.inc"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="206"/>
+        <CursorPos X="10" Y="218"/>
+        <UsageCount Value="10"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="/usr/lib/lazarus/lcl/graphics.pp"/>
+        <UnitName Value="Graphics"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="237"/>
+        <CursorPos X="10" Y="243"/>
+        <UsageCount Value="10"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="/usr/share/fpcsrc/rtl/objpas/sysutils/datih.inc"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="112"/>
+        <CursorPos X="10" Y="124"/>
+        <UsageCount Value="10"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="/usr/lib/lazarus/lcl/include/containedaction.inc"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="92"/>
+        <CursorPos X="1" Y="104"/>
+        <UsageCount Value="10"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="/usr/lib/lazarus/lcl/include/dbcustomnavigator.inc"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="374"/>
+        <CursorPos X="1" Y="386"/>
+        <UsageCount Value="10"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="/usr/lib/lazarus/components/codetools/codetoolsstrconsts.pas"/>
+        <UnitName Value="CodeToolsStrConsts"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="273"/>
+        <CursorPos X="1" Y="296"/>
+        <UsageCount Value="10"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="/usr/lib/lazarus/lcl/dbctrls.pp"/>
+        <UnitName Value="DbCtrls"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1094"/>
+        <CursorPos X="23" Y="1104"/>
+        <UsageCount Value="10"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="/usr/share/fpcsrc/packages/fcl-db/src/sqldb/sqldb.pp"/>
+        <UnitName Value="sqldb"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="716"/>
+        <CursorPos X="33" Y="712"/>
+        <UsageCount Value="10"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="/usr/share/fpcsrc/packages/fcl-db/src/base/bufdataset.pas"/>
+        <UnitName Value="BufDataset"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1927"/>
+        <CursorPos X="41" Y="1907"/>
+        <UsageCount Value="10"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="data.pas"/>
+        <ComponentName Value="dmBewerbungen"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <UnitName Value="data"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="24" Y="5"/>
+        <UsageCount Value="22"/>
+      </Unit19>
+      <Unit20>
+        <Filename Value="mainwin.lfm"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="107"/>
+        <CursorPos X="24" Y="127"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit20>
+      <Unit21>
+        <Filename Value="/usr/lib/lazarus/components/sqldb/sqldblaz.pas"/>
+        <UnitName Value="SQLDBLaz"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="21"/>
+        <UsageCount Value="10"/>
+      </Unit21>
+      <Unit22>
+        <Filename Value="/usr/lib/lazarus/lcl/grids.pas"/>
+        <UnitName Value="Grids"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="3036"/>
+        <CursorPos X="1" Y="3048"/>
+        <UsageCount Value="10"/>
+      </Unit22>
+    </Units>
+    <JumpHistory Count="30" HistoryIndex="29">
+      <Position1>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="145" Column="3" TopLine="133"/>
+      </Position1>
+      <Position2>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="246" Column="3" TopLine="244"/>
+      </Position2>
+      <Position3>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="144" Column="31" TopLine="132"/>
+      </Position3>
+      <Position4>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="251" Column="7" TopLine="243"/>
+      </Position4>
+      <Position5>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="252" Column="1" TopLine="244"/>
+      </Position5>
+      <Position6>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="251" Column="38" TopLine="244"/>
+      </Position6>
+      <Position7>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="255" Column="31" TopLine="244"/>
+      </Position7>
+      <Position8>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="247" Column="30" TopLine="255"/>
+      </Position8>
+      <Position9>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="224" Column="36" TopLine="222"/>
+      </Position9>
+      <Position10>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="274" Column="36" TopLine="272"/>
+      </Position10>
+      <Position11>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="309" Column="36" TopLine="307"/>
+      </Position11>
+      <Position12>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="287" Column="36" TopLine="285"/>
+      </Position12>
+      <Position13>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="237" Column="36" TopLine="235"/>
+      </Position13>
+      <Position14>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="265" Column="36" TopLine="263"/>
+      </Position14>
+      <Position15>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="304" Column="36" TopLine="302"/>
+      </Position15>
+      <Position16>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="335" Column="3" TopLine="344"/>
+      </Position16>
+      <Position17>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="291" Column="3" TopLine="289"/>
+      </Position17>
+      <Position18>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="453" Column="36" TopLine="452"/>
+      </Position18>
+      <Position19>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="454" Column="36" TopLine="453"/>
+      </Position19>
+      <Position20>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="229" Column="22" TopLine="223"/>
+      </Position20>
+      <Position21>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="137" Column="26" TopLine="125"/>
+      </Position21>
+      <Position22>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="138" Column="26" TopLine="126"/>
+      </Position22>
+      <Position23>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="253" Column="1" TopLine="250"/>
+      </Position23>
+      <Position24>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="226" Column="1" TopLine="224"/>
+      </Position24>
+      <Position25>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="286" Column="36" TopLine="279"/>
+      </Position25>
+      <Position26>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="326" Column="36" TopLine="319"/>
+      </Position26>
+      <Position27>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="240" Column="1" TopLine="238"/>
+      </Position27>
+      <Position28>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="274" Column="36" TopLine="267"/>
+      </Position28>
+      <Position29>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="137" Column="37" TopLine="129"/>
+      </Position29>
+      <Position30>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="245" Column="81" TopLine="233"/>
+      </Position30>
+    </JumpHistory>
+  </ProjectOptions>
+  <CompilerOptions>
+    <Version Value="9"/>
+    <Target>
+      <Filename Value="bewerbungen"/>
+    </Target>
+    <SearchPaths>
+      <IncludeFiles Value="$(ProjOutDir)"/>
+      <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+    </SearchPaths>
+    <CodeGeneration>
+      <SmartLinkUnit Value="True"/>
+      <Checks>
+        <IOChecks Value="True"/>
+        <RangeChecks Value="True"/>
+        <OverflowChecks Value="True"/>
+        <StackChecks Value="True"/>
+      </Checks>
+      <VerifyObjMethodCallValidity Value="True"/>
+      <Optimizations>
+        <VariablesInRegisters Value="True"/>
+        <UncertainOptimizations Value="True"/>
+        <OptimizationLevel Value="2"/>
+      </Optimizations>
+    </CodeGeneration>
+    <Linking>
+      <Debugging>
+        <StripSymbols Value="True"/>
+        <UseExternalDbgSyms Value="True"/>
+      </Debugging>
+      <LinkSmart Value="True"/>
+    </Linking>
+    <Other>
+      <CompilerMessages>
+        <UseMsgFile Value="True"/>
+        <MsgFileName Value="/usr/lib/fpc/2.4.2/msg/errord.msg"/>
+        <ErrorNames Hint="Hinweis" Note="Anmerkung" Warning="Warnung" Error="Fehler" Fatal="Fataler Fehler"/>
+      </CompilerMessages>
+      <CompilerPath Value="$(CompPath)"/>
+    </Other>
+  </CompilerOptions>
+  <Debugging>
+    <BreakPoints Count="1">
+      <Item1>
+        <Source Value="mainwin.pas"/>
+        <Line Value="566"/>
+      </Item1>
+    </BreakPoints>
+    <Exceptions Count="3">
+      <Item1>
+        <Name Value="EAbort"/>
+      </Item1>
+      <Item2>
+        <Name Value="ECodetoolError"/>
+      </Item2>
+      <Item3>
+        <Name Value="EFOpenError"/>
+      </Item3>
+    </Exceptions>
+  </Debugging>
+</CONFIG>
