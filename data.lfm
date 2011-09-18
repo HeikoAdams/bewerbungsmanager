@@ -1,7 +1,188 @@
 object dmBewerbungen: TdmBewerbungen
   OldCreateOrder = False
   Height = 247
-  HorizontalOffset = 465
-  VerticalOffset = 237
+  HorizontalOffset = 464
+  VerticalOffset = 263
   Width = 427
+  object qryFilterTyp: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    Database = conData
+    Transaction = traData
+    ReadOnly = True
+    SQL.Strings = (
+      'SELECT *'
+      'FROM BEWERBUNGEN'
+      'WHERE (TYP = :WERT)'
+      'ORDER BY DATUM DESC, NAME'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'WERT'
+        ParamType = ptUnknown
+      end>
+    left = 316
+    top = 16
+  end
+  object qryFilterVermittler: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    Database = conData
+    Transaction = traData
+    ReadOnly = True
+    SQL.Strings = (
+      'SELECT *'
+      'FROM BEWERBUNGEN'
+      'WHERE (VERMITTLER = -1)'
+      'ORDER BY DATUM DESC, NAME'
+    )
+    Params = <>
+    left = 257
+    top = 16
+  end
+  object qryFilterResult: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    Database = conData
+    Transaction = traData
+    ReadOnly = True
+    SQL.Strings = (
+      'SELECT *'
+      'FROM BEWERBUNGEN'
+      'WHERE (Result = :WERT)'
+      'ORDER BY DATUM DESC, NAME'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'WERT'
+        ParamType = ptUnknown
+      end>
+    left = 161
+    top = 16
+  end
+  object qryFilterFeedback: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    Database = conData
+    Transaction = traData
+    ReadOnly = True
+    SQL.Strings = (
+      'SELECT *'
+      'FROM BEWERBUNGEN'
+      'WHERE (Feedback = :WERT)'
+      'ORDER BY DATUM DESC, NAME'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'WERT'
+        ParamType = ptUnknown
+      end>
+    left = 89
+    top = 16
+  end
+  object qryFilter: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    Database = conData
+    Transaction = traData
+    ReadOnly = True
+    SQL.Strings = (
+      'SELECT *'
+      'FROM BEWERBUNGEN'
+      'WHERE (WVL <= :DATUM)'
+      'AND (Feedback = 0)'
+      'AND (Result = 0)'
+      'ORDER BY DATUM DESC, NAME'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'DATUM'
+        ParamType = ptUnknown
+      end>
+    left = 16
+    top = 16
+  end
+  object dsData: TDatasource
+    DataSet = qryBewerbungen
+    OnStateChange = dsDataStateChange
+    left = 16
+    top = 80
+  end
+  object dsLog: TDatasource
+    DataSet = qryLog
+    OnStateChange = dsLogStateChange
+    left = 104
+    top = 80
+  end
+  object traData: TSQLTransaction
+    Active = False
+    Action = caNone
+    Database = conData
+    left = 152
+    top = 80
+  end
+  object conData: TSQLite3Connection
+    Connected = False
+    LoginPrompt = False
+    AfterConnect = conDataAfterConnect
+    BeforeDisconnect = conDataBeforeDisconnect
+    DatabaseName = '/home/heiko/.config/bewerbungen/bewerbungen.db'
+    KeepConnection = False
+    Transaction = traData
+    Options = [sloTransactions]
+    left = 216
+    top = 80
+  end
+  object qryBewerbungen: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    AfterDelete = qryBewerbungenAfterDelete
+    AfterInsert = qryBewerbungenAfterInsert
+    AfterOpen = qryBewerbungenAfterOpen
+    AfterPost = qryBewerbungenAfterDelete
+    AfterScroll = qryBewerbungenAfterScroll
+    BeforePost = qryBewerbungenBeforePost
+    Database = conData
+    Transaction = traData
+    ReadOnly = False
+    SQL.Strings = (
+      'SELECT * FROM BEWERBUNGEN ORDER BY Datum DESC, NAME'
+    )
+    Params = <>
+    left = 16
+    top = 144
+  end
+  object qryLog: TSQLQuery
+    IndexFieldNames = 'ID'
+    AfterDelete = qryBewerbungenAfterDelete
+    AfterPost = qryBewerbungenAfterDelete
+    AfterScroll = qryLogAfterScroll
+    BeforePost = qryLogBeforePost
+    Database = conData
+    Transaction = traData
+    ReadOnly = False
+    SQL.Strings = (
+      'SELECT * FROM LOG WHERE (BEWERBUNG = :ID) ORDER BY Datum DESC'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ID'
+        ParamType = ptUnknown
+      end>
+    left = 96
+    top = 144
+  end
+  object qryCSVExport: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    Database = conData
+    Transaction = traData
+    ReadOnly = True
+    SQL.Strings = (
+      'SELECT DATUM, WVL, NAME, MAIL, JOBTITEL, REFNR'
+      'FROM BEWERBUNGEN'
+      'ORDER BY DATUM DESC, NAME'
+    )
+    Params = <>
+    left = 152
+    top = 144
+  end
 end

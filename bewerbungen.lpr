@@ -7,12 +7,13 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, mainwin;
+  Forms, mainwin, data;
 
 {$R *.res}
 
 begin
   Application.Initialize;
+  Application.CreateForm(TdmBewerbungen, dmBewerbungen);
   Application.CreateForm(TfrmMain, frmMain);
   Application.Run;
 end.

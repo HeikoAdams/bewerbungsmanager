@@ -14,10 +14,10 @@ object frmMain: TfrmMain
     Height = 498
     Top = 25
     Width = 654
-    ActivePage = tsBewerbungData
+    ActivePage = tsActions
     Align = alClient
     Images = ilIcons
-    TabIndex = 1
+    TabIndex = 2
     TabOrder = 1
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'
@@ -76,7 +76,7 @@ object frmMain: TfrmMain
             Width = 150
             FieldName = 'VERMITTLER'
           end>
-        DataSource = dsData
+        DataSource = dmBewerbungen.dsData
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
         PopupMenu = pmFilter
         ShowHint = True
@@ -145,7 +145,7 @@ object frmMain: TfrmMain
         Width = 185
         Caption = 'Bewerbungstyp'
         DataField = 'TYP'
-        DataSource = dsData
+        DataSource = dmBewerbungen.dsData
         Items.Strings = (
           'Initiativbewerbung'
           'Stellenangebot'
@@ -266,7 +266,7 @@ object frmMain: TfrmMain
         Top = 41
         Width = 201
         DataField = 'NAME'
-        DataSource = dsData
+        DataSource = dmBewerbungen.dsData
         CharCase = ecNormal
         MaxLength = 0
         TabOrder = 2
@@ -277,7 +277,7 @@ object frmMain: TfrmMain
         Top = 40
         Width = 200
         DataField = 'MAIL'
-        DataSource = dsData
+        DataSource = dmBewerbungen.dsData
         CharCase = ecNormal
         MaxLength = 0
         TabOrder = 3
@@ -288,7 +288,7 @@ object frmMain: TfrmMain
         Top = 75
         Width = 200
         DataField = 'JOBTITEL'
-        DataSource = dsData
+        DataSource = dmBewerbungen.dsData
         CharCase = ecNormal
         MaxLength = 0
         TabOrder = 4
@@ -299,7 +299,7 @@ object frmMain: TfrmMain
         Top = 75
         Width = 200
         DataField = 'REFNR'
-        DataSource = dsData
+        DataSource = dmBewerbungen.dsData
         CharCase = ecNormal
         MaxLength = 0
         TabOrder = 5
@@ -311,7 +311,7 @@ object frmMain: TfrmMain
         Width = 185
         Caption = 'Rückmeldung'
         DataField = 'FEEDBACK'
-        DataSource = dsData
+        DataSource = dmBewerbungen.dsData
         Items.Strings = (
           'keins'
           'Eingangsbetätigung'
@@ -331,7 +331,7 @@ object frmMain: TfrmMain
         Width = 185
         Caption = 'Ergebnis'
         DataField = 'RESULT'
-        DataSource = dsData
+        DataSource = dmBewerbungen.dsData
         Items.Strings = (
           'keins'
           'Zusage'
@@ -350,7 +350,7 @@ object frmMain: TfrmMain
         Top = 272
         Width = 516
         DataField = 'NOTES'
-        DataSource = dsData
+        DataSource = dmBewerbungen.dsData
         ScrollBars = ssAutoBoth
         TabOrder = 10
       end
@@ -369,7 +369,7 @@ object frmMain: TfrmMain
         Width = 171
         Caption = 'Personalvermittler'
         DataField = 'VERMITTLER'
-        DataSource = dsData
+        DataSource = dmBewerbungen.dsData
         TabOrder = 9
         ValueChecked = 'True'
         ValueUnchecked = 'False'
@@ -400,7 +400,6 @@ object frmMain: TfrmMain
             Width = 250
             FieldName = 'TYP'
           end>
-        DataSource = dsLog
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
         TabOrder = 0
         OnDblClick = grdLogDblClick
@@ -420,7 +419,7 @@ object frmMain: TfrmMain
         ChildSizing.ControlsPerLine = 100
         ClientHeight = 25
         ClientWidth = 648
-        DataSource = dsLog
+        DataSource = dmBewerbungen.dsLog
         Flat = True
         TabOrder = 1
       end
@@ -484,21 +483,6 @@ object frmMain: TfrmMain
           MaxLength = 10
           TabOrder = 0
         end
-        object edtLogTyp: TEdit
-          Left = 86
-          Height = 26
-          Top = 40
-          Width = 191
-          TabOrder = 1
-        end
-        object mmoText: TMemo
-          Left = 357
-          Height = 128
-          Top = 8
-          Width = 272
-          ScrollBars = ssAutoBoth
-          TabOrder = 2
-        end
         object lblLogDatum: TLabel
           Left = 13
           Height = 17
@@ -523,6 +507,27 @@ object frmMain: TfrmMain
           Caption = 'Text'
           ParentColor = False
         end
+        object edtLogTyp: TDBEdit
+          Left = 86
+          Height = 26
+          Top = 40
+          Width = 191
+          DataField = 'TYP'
+          DataSource = dmBewerbungen.dsLog
+          CharCase = ecNormal
+          MaxLength = 0
+          TabOrder = 1
+        end
+        object mmoText: TDBMemo
+          Left = 357
+          Height = 128
+          Top = 8
+          Width = 272
+          DataField = 'BESCHREIBUNG'
+          DataSource = dmBewerbungen.dsLog
+          ScrollBars = ssAutoBoth
+          TabOrder = 2
+        end
       end
     end
   end
@@ -541,7 +546,7 @@ object frmMain: TfrmMain
     ChildSizing.ControlsPerLine = 100
     ClientHeight = 25
     ClientWidth = 654
-    DataSource = dsData
+    DataSource = dmBewerbungen.dsData
     Flat = True
     TabOrder = 0
   end
@@ -783,76 +788,6 @@ object frmMain: TfrmMain
       35B1FFFFFF00FFFFFF00FFFFFF00
     }
   end
-  object dsLog: TDatasource
-    DataSet = qryLog
-    OnStateChange = dsLogStateChange
-    left = 104
-    top = 392
-  end
-  object dsData: TDatasource
-    DataSet = qryBewerbungen
-    OnStateChange = dsDataStateChange
-    left = 16
-    top = 392
-  end
-  object traData: TSQLTransaction
-    Active = False
-    Action = caNone
-    Database = conData
-    left = 152
-    top = 392
-  end
-  object conData: TSQLite3Connection
-    Connected = False
-    LoginPrompt = False
-    AfterConnect = conDataAfterConnect
-    BeforeDisconnect = conDataBeforeDisconnect
-    DatabaseName = '/home/heiko/.config/bewerbungen/bewerbungen.db'
-    KeepConnection = False
-    Transaction = traData
-    Options = [sloTransactions]
-    left = 216
-    top = 392
-  end
-  object qryLog: TSQLQuery
-    IndexFieldNames = 'ID'
-    AfterDelete = qryBewerbungenAfterPost
-    AfterPost = qryBewerbungenAfterPost
-    AfterScroll = dbLogAfterScroll
-    BeforePost = dbLogBeforePost
-    Database = conData
-    Transaction = traData
-    ReadOnly = False
-    SQL.Strings = (
-      'SELECT * FROM LOG WHERE (BEWERBUNG = :ID) ORDER BY Datum DESC'
-    )
-    Params = <    
-      item
-        DataType = ftUnknown
-        Name = 'ID'
-        ParamType = ptUnknown
-      end>
-    left = 96
-    top = 448
-  end
-  object qryBewerbungen: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
-    AfterDelete = qryBewerbungenAfterPost
-    AfterInsert = qryBewerbungenAfterInsert
-    AfterOpen = dbDataAfterOpen
-    AfterPost = qryBewerbungenAfterPost
-    AfterScroll = dbDataAfterScroll
-    BeforePost = dbDataBeforePost
-    Database = conData
-    Transaction = traData
-    ReadOnly = False
-    SQL.Strings = (
-      'SELECT * FROM BEWERBUNGEN ORDER BY Datum DESC, NAME'
-    )
-    Params = <>
-    left = 16
-    top = 448
-  end
   object alFilter: TActionList
     Images = ilIcons
     left = 288
@@ -1044,6 +979,42 @@ object frmMain: TfrmMain
     end
     object miTyp: TMenuItem
       Caption = 'Typ'
+      Bitmap.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000FFFFFF009461
+        3E9C94603DFF93603CFF153E54FF2A5F86FF4A87BBFF55819CFF836048FF8F5B
+        37FF8F5A36FF8E5A35FF8E5935B1FFFFFF00FFFFFF00FFFFFF00FFFFFF009562
+        3FE1CCAB85FFD1AF89FF2E6683FF94C7F9FF91C9F9FF4185C9FF2467A8FFB09A
+        86FFCB9F77FFC79971FF93613EFF4E3421A1FFFFFF00FFFFFF00FFFFFF009663
+        40E1CAA985FFA37854FF4389AAFFE0F2FFFF549AD8FF1A7ABEFF4998C5FF4283
+        B6FFA8886BFFC99D75FF93623FFF553C28E1FFFFFF00FFFFFF00FFFFFF009664
+        41E1CBAC88FFA67E57FF868A80FF7AB6D5FF90B7D1FF55C9E4FF5BDFF5FF78D0
+        EDFF4C93CFFFB79E85FF946240FF573E2AFFFFFFFF00FFFFFF00FFFFFF009765
+        43E1CEB08EFFAA855BFFCBA475FF909887FF75B7D3FFC2F6FDFF63DFF7FF5DE2
+        F8FF79D3F0FF4896D8FF886854FF573E2AFFFFFFFF00FFFFFF00FFFFFF009866
+        44E1D0B492FFAF8B60FFCEA97CFFCCA677FF8F998BFF77CBE7FFC7F7FDFF5EDC
+        F5FF5AE1F7FF7BD4F1FF4693D4FF504E4EFFFFFFFF00FFFFFF00FFFFFF009967
+        45E1D2B796FFB49265FFD1AE83FFCFAB7FFFCDA87AFF9AA893FF79D3EEFFC7F7
+        FDFF5FDCF5FF5BE2F7FF7AD6F2FF4291CFFF448DCD30FFFFFF00FFFFFF009968
+        46E1D5BB9BFFB89A69FFD4B38AFFD2AF87FFD0AD82FFCFAA7DFF9DAB96FF7DD4
+        EDFFC4F6FDFF6CDDF6FF6DCAEDFF63A3D7FF5D9BD2EC5192CA26FFFFFF009A69
+        47E1D7BF9FFFBD9F6FFFD4B590FFCBAD88FFC7A881FFC6A57DFFC4A17AFF8FA8
+        9AFF80D4EBFFB2E3F9FF8BC0E7FFAED3F6FFC4E0FCFF669FD3F7FFFFFF009B6A
+        48E1D9C2A4FFC1A472FFD2B894FFF5EDE4FFF4ECE2FFF4ECE1FFF4EBE0FFF3EA
+        DFFF8FAEA2FF77BEE7FFB4D2F0FFE5F3FFFFACD2EFFF488CC7E8FFFFFF009B6A
+        49E1DBC5A6FFC6A776FFD9BF9BFFD1B793FFCBB08EFFCAAE8AFFC8AB87FFCBAB
+        83FFD1B087FFA2B7B1FF58A5D8FF85B1DBFF469DD0FF2B95D15EFFFFFF009C6B
+        4AE1DDC8A9FFD4BD95FFE6D4B9FFE6D1B6FFE4D0B5FFE3CEB3FFE2CBB0FFE0C9
+        ADFFDFC7A9FFDABFA0FF9A6B4AFF573E2AFFFFFFFF00FFFFFF00FFFFFF009C6C
+        4BE0D9C2A5FFB59170FFAB805FFFA97E5EFFA97E5EFFA87D5CFFA87C5BFFA77B
+        5AFFA67959FF9C6B49FF966441FF573E2AFFFFFFFF00FFFFFF00FFFFFF009D6D
+        4BCFBA9778FFD8C5B9FFE8DED7FFE7DDD6FFE6DCD6FFE4DBD4FFE3DAD3FFE2D8
+        D1FFE1D7D0FFEBE7E5FFEFEFEFFF573E2AFFFFFFFF00FFFFFF00FFFFFF009D6D
+        4C919D6D4BFEBB9778FFAC8262FFAC8161FFAB8060FFAB7F5FFFAA7F5EFFA87E
+        5DFFA87C5CFF9D6D4CFF976643FF885C3CFFFFFFFF00FFFFFF00FFFFFF009E6E
+        4D2B9D6D4CD69D6D4BC59D6C4BFF9C6C4AFF9C6B49FF9B6A49FF9B6A48FF9A69
+        47FF996846FF986745FF936443FF845D3EDEFFFFFF00FFFFFF00
+      }
       ImageIndex = 6
       object MenuItem2: TMenuItem
         Tag = 9
@@ -1113,121 +1084,10 @@ object frmMain: TfrmMain
       Action = actAlle
     end
   end
-  object qryCSVExport: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
-    Database = conData
-    Transaction = traData
-    ReadOnly = True
-    SQL.Strings = (
-      'SELECT DATUM, WVL, NAME, MAIL, JOBTITEL, REFNR'
-      'FROM BEWERBUNGEN'
-      'ORDER BY DATUM DESC, NAME'
-    )
-    Params = <>
-    left = 152
-    top = 448
-  end
   object dlgExport: TSaveDialog
     DefaultExt = '.csv'
     Filter = 'CSV-Datei|*.csv'
     left = 94
     top = 167
-  end
-  object qryFilter: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
-    Database = conData
-    Transaction = traData
-    ReadOnly = True
-    SQL.Strings = (
-      'SELECT *'
-      'FROM BEWERBUNGEN'
-      'WHERE (WVL <= :DATUM)'
-      'AND (Feedback = 0)'
-      'AND (Result = 0)'
-      'ORDER BY DATUM DESC, NAME'
-    )
-    Params = <    
-      item
-        DataType = ftDateTime
-        Name = 'DATUM'
-        ParamType = ptInput
-      end>
-    left = 71
-    top = 249
-  end
-  object qryFilterFeedback: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
-    Database = conData
-    Transaction = traData
-    ReadOnly = True
-    SQL.Strings = (
-      'SELECT *'
-      'FROM BEWERBUNGEN'
-      'WHERE (Feedback = :WERT)'
-      'ORDER BY DATUM DESC, NAME'
-    )
-    Params = <    
-      item
-        DataType = ftUnknown
-        Name = 'WERT'
-        ParamType = ptUnknown
-      end>
-    left = 144
-    top = 249
-  end
-  object qryFilterResult: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
-    Database = conData
-    Transaction = traData
-    ReadOnly = True
-    SQL.Strings = (
-      'SELECT *'
-      'FROM BEWERBUNGEN'
-      'WHERE (Result = :WERT)'
-      'ORDER BY DATUM DESC, NAME'
-    )
-    Params = <    
-      item
-        DataType = ftUnknown
-        Name = 'WERT'
-        ParamType = ptUnknown
-      end>
-    left = 216
-    top = 249
-  end
-  object qryFilterVermittler: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
-    Database = conData
-    Transaction = traData
-    ReadOnly = True
-    SQL.Strings = (
-      'SELECT *'
-      'FROM BEWERBUNGEN'
-      'WHERE (VERMITTLER = -1)'
-      'ORDER BY DATUM DESC, NAME'
-    )
-    Params = <>
-    left = 312
-    top = 249
-  end
-  object qryFilterTyp: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
-    Database = conData
-    Transaction = traData
-    ReadOnly = True
-    SQL.Strings = (
-      'SELECT *'
-      'FROM BEWERBUNGEN'
-      'WHERE (TYP = :WERT)'
-      'ORDER BY DATUM DESC, NAME'
-    )
-    Params = <    
-      item
-        DataType = ftUnknown
-        Name = 'WERT'
-        ParamType = ptUnknown
-      end>
-    left = 416
-    top = 249
   end
 end

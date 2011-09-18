@@ -6,8 +6,8 @@ interface
 
 uses
   Classes, SysUtils, dbf, DB, sqlite3conn, sqldb, FileUtil, Forms, Controls,
-  Graphics, Dialogs, Grids, ComCtrls, ExtCtrls, StdCtrls, Calendar, EditBtn,
-  DBGrids, DBCtrls, Menus, ActnList, FileCtrl, types, IniFiles;
+  Graphics, Dialogs, Grids, ComCtrls, ExtCtrls, StdCtrls, EditBtn,
+  DBGrids, Menus, ActnList, IniFiles, DBCtrls;
 
 type
 
@@ -28,8 +28,8 @@ type
     actNoResult: TAction;
     actNoFeedback: TAction;
     alFilter: TActionList;
-    conData: TSQLite3Connection;
     chkVermittler: TDBCheckBox;
+    edtLogTyp: TDBEdit;
     grdBewerbungen: TDBGrid;
     grdLog: TDBGrid;
     lblNotes: TLabel;
@@ -42,15 +42,13 @@ type
     miExport: TMenuItem;
     mmoNotes: TDBMemo;
     DBNavigator1: TDBNavigator;
+    mmoText: TDBMemo;
     navActions: TDBNavigator;
-    dsData: TDatasource;
-    dsLog: TDatasource;
     edtDatum: TDateEdit;
     edtEmpfaenger: TDBEdit;
     edtEmpfMail: TDBEdit;
     edtJobTitel: TDBEdit;
     edtLogDatum: TDateEdit;
-    edtLogTyp: TEdit;
     edtRefNr: TDBEdit;
     edtWVL: TDateEdit;
     ilIcons: TImageList;
@@ -73,24 +71,14 @@ type
     miEingang: TMenuItem;
     miNoFeedback: TMenuItem;
     miFeedback: TMenuItem;
-    mmoText: TMemo;
     PageControl1: TPageControl;
     pnlBottom: TPanel;
     pmFilter: TPopupMenu;
-    qryBewerbungen: TSQLQuery;
-    qryFilterTyp: TSQLQuery;
-    qryFilterVermittler: TSQLQuery;
-    qryLog: TSQLQuery;
     rgErgebnis: TDBRadioGroup;
     rgFeedback: TDBRadioGroup;
     rgTyp: TRadioGroup;
     dlgExport: TSaveDialog;
     sbInfo: TStatusBar;
-    qryCSVExport: TSQLQuery;
-    qryFilter: TSQLQuery;
-    qryFilterFeedback: TSQLQuery;
-    qryFilterResult: TSQLQuery;
-    traData: TSQLTransaction;
     tsActions: TTabSheet;
     tsBewerbungData: TTabSheet;
     tsBewerbungen: TTabSheet;
@@ -107,39 +95,25 @@ type
     procedure actVorschlagExecute(Sender: TObject);
     procedure actWVLExecute(Sender: TObject);
     procedure actZusageExecute(Sender: TObject);
-    procedure conDataAfterConnect(Sender: TObject);
-    procedure conDataBeforeDisconnect(Sender: TObject);
-    procedure dbDataAfterOpen(DataSet: TDataSet);
-    procedure dbDataAfterScroll(DataSet: TDataSet);
-    procedure dbDataBeforePost(DataSet: TDataSet);
     procedure grdBewerbungenDblClick(Sender: TObject);
     procedure grdBewerbungenPrepareCanvas(Sender: TObject; DataCol: integer;
       Column: TColumn; AState: TGridDrawState);
-    procedure dbLogAfterScroll(DataSet: TDataSet);
-    procedure dbLogBeforePost(DataSet: TDataSet);
-    procedure dsDataStateChange(Sender: TObject);
-    procedure dsLogStateChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure grdLogDblClick(Sender: TObject);
     procedure pmFilterPopup(Sender: TObject);
-    procedure qryBewerbungenAfterInsert(DataSet: TDataSet);
-    procedure qryBewerbungenAfterPost(DataSet: TDataSet);
   private
     { private declarations }
     FConfigDir: string;
     FDataFile: string;
-    FLogFile: string;
     FErrorMsg: string;
     FConfigFile: TIniFile;
 
     FErrorCode: integer;
     FGridFilter: word;
-
-    FEditMode: boolean;
-    FInsertMode: boolean;
   public
     { public declarations }
+    property ConfigFile: TIniFile read FConfigFile;
     procedure HandleError;
   end;
 
@@ -157,7 +131,7 @@ resourcestring
 
 implementation
 
-uses LCLType, dateutils;
+uses LCLType, dateutils, Data;
 
 {$R *.lfm}
 
@@ -175,14 +149,14 @@ procedure TfrmMain.FormCreate(Sender: TObject);
 begin
   FConfigDir := GetAppConfigDir(False);
   FDataFile := IncludeTrailingPathDelimiter(FConfigDir) + 'bewerbungen.db';
-  FConfigFile := TIniFile.Create(GetAppConfigFile(False, true));
+  FConfigFile := TIniFile.Create(GetAppConfigFile(False, True));
 
   if FileExists(FConfigFile.FileName) then
   begin
     case FConfigFile.ReadInteger('UI', 'WINDOWSTATE', 0) of
-    0: WindowState := wsNormal;
-    1: WindowState := wsMaximized;
-    2: WindowState := wsMinimized;
+      0: WindowState := wsNormal;
+      1: WindowState := wsMaximized;
+      2: WindowState := wsMinimized;
     end;
 
     if (WindowState <> wsMaximized) then
@@ -210,7 +184,7 @@ begin
     end;
   end;
 
-  with conData do
+  with dmBewerbungen.conData do
   begin
     DatabaseName := FDataFile;
     Open;
@@ -220,37 +194,11 @@ begin
   PageControl1.ActivePageIndex := 0;
 end;
 
-procedure TfrmMain.dbDataAfterScroll(DataSet: TDataSet);
-var
-  nID: integer;
-begin
-  with qryBewerbungen do
-  begin
-    edtDatum.Date := FieldByName('DATUM').AsDateTime;
-    edtWVL.Date := FieldByName('WVL').AsDateTime;
-  end;
-
-  nID := qryBewerbungen.FieldByName('ID').AsInteger;
-
-  with qryLog do
-  begin
-    Close;
-    Params.ParamValues['ID'] := nID;
-    Open;
-  end;
-end;
-
-procedure TfrmMain.conDataAfterConnect(Sender: TObject);
-begin
-  qryBewerbungen.Open;
-  qryLog.Open;
-end;
-
 procedure TfrmMain.actNoFeedbackExecute(Sender: TObject);
 begin
-  dsData.DataSet := qryFilterFeedback;
+  dmBewerbungen.dsData.DataSet := dmBewerbungen.qryFilterFeedback;
 
-  with qryFilterFeedback do
+  with dmBewerbungen.qryFilterFeedback do
   begin
     Close;
     Params.ParamValues['WERT'] := 0;
@@ -264,9 +212,9 @@ end;
 
 procedure TfrmMain.actNoResultExecute(Sender: TObject);
 begin
-  dsData.DataSet := qryFilterResult;
+  dmBewerbungen.dsData.DataSet := dmBewerbungen.qryFilterResult;
 
-  with qryFilterResult do
+  with dmBewerbungen.qryFilterResult do
   begin
     Close;
     Params.ParamValues['WERT'] := 0;
@@ -278,9 +226,9 @@ end;
 
 procedure TfrmMain.actVermittlerExecute(Sender: TObject);
 begin
-  dsData.DataSet := qryFilterVermittler;
+  dmBewerbungen.dsData.DataSet := dmBewerbungen.qryFilterVermittler;
 
-  with qryFilterVermittler do
+  with dmBewerbungen.qryFilterVermittler do
     Open;
 
   FGridFilter := 8;
@@ -288,9 +236,9 @@ end;
 
 procedure TfrmMain.actVorschlagExecute(Sender: TObject);
 begin
-  dsData.DataSet := qryFilterTyp;
+  dmBewerbungen.dsData.DataSet := dmBewerbungen.qryFilterTyp;
 
-  with qryFilterTyp do
+  with dmBewerbungen.qryFilterTyp do
   begin
     Close;
     Params.ParamValues['WERT'] := 2;
@@ -302,9 +250,9 @@ end;
 
 procedure TfrmMain.actWVLExecute(Sender: TObject);
 begin
-  dsData.DataSet := qryFilter;
+  dmBewerbungen.dsData.DataSet := dmBewerbungen.qryFilter;
 
-  with qryFilter do
+  with dmBewerbungen.qryFilter do
   begin
     Close;
     Params.ParamValues['Datum'] := FormatDateTime('yyyy-mm-dd', Date);
@@ -316,9 +264,9 @@ end;
 
 procedure TfrmMain.actZusageExecute(Sender: TObject);
 begin
-  dsData.DataSet := qryFilterResult;
+  dmBewerbungen.dsData.DataSet := dmBewerbungen.qryFilterResult;
 
-  with qryFilterResult do
+  with dmBewerbungen.qryFilterResult do
   begin
     Close;
     Params.ParamValues['WERT'] := 1;
@@ -330,9 +278,9 @@ end;
 
 procedure TfrmMain.actEingangExecute(Sender: TObject);
 begin
-  dsData.DataSet := qryFilterFeedback;
+  dmBewerbungen.dsData.DataSet := dmBewerbungen.qryFilterFeedback;
 
-  with qryFilterFeedback do
+  with dmBewerbungen.qryFilterFeedback do
   begin
     Close;
     Params.ParamValues['WERT'] := 1;
@@ -345,9 +293,9 @@ end;
 
 procedure TfrmMain.actAlleExecute(Sender: TObject);
 begin
-  dsData.DataSet := qryBewerbungen;
+  dmBewerbungen.dsData.DataSet := dmBewerbungen.qryBewerbungen;
 
-  with qryBewerbungen do
+  with dmBewerbungen.qryBewerbungen do
   begin
     Filter := EmptyStr;
     Filtered := False;
@@ -358,9 +306,9 @@ end;
 
 procedure TfrmMain.actAngebotExecute(Sender: TObject);
 begin
-  dsData.DataSet := qryFilterTyp;
+  dmBewerbungen.dsData.DataSet := dmBewerbungen.qryFilterTyp;
 
-  with qryFilterTyp do
+  with dmBewerbungen.qryFilterTyp do
   begin
     Close;
     Params.ParamValues['WERT'] := 1;
@@ -372,9 +320,9 @@ end;
 
 procedure TfrmMain.actAbsageExecute(Sender: TObject);
 begin
-  dsData.DataSet := qryFilterResult;
+  dmBewerbungen.dsData.DataSet := dmBewerbungen.qryFilterResult;
 
-  with qryFilterResult do
+  with dmBewerbungen.qryFilterResult do
   begin
     Close;
     Params.ParamValues['WERT'] := 2;
@@ -386,9 +334,9 @@ end;
 
 procedure TfrmMain.actEinladungExecute(Sender: TObject);
 begin
-  dsData.DataSet := qryFilterFeedback;
+  dmBewerbungen.dsData.DataSet := dmBewerbungen.qryFilterFeedback;
 
-  with qryFilterFeedback do
+  with dmBewerbungen.qryFilterFeedback do
   begin
     Close;
     Params.ParamValues['WERT'] := 2;
@@ -417,7 +365,7 @@ begin
     else
       Rewrite(ExportFile);
 
-    with qryCSVExport do
+    with dmBewerbungen.qryCSVExport do
     begin
       Open;
 
@@ -450,9 +398,9 @@ end;
 
 procedure TfrmMain.actInitiativExecute(Sender: TObject);
 begin
-  dsData.DataSet := qryFilterTyp;
+  dmBewerbungen.dsData.DataSet := dmBewerbungen.qryFilterTyp;
 
-  with qryFilterTyp do
+  with dmBewerbungen.qryFilterTyp do
   begin
     Close;
     Params.ParamValues['WERT'] := 0;
@@ -462,37 +410,9 @@ begin
   FGridFilter := 9;
 end;
 
-procedure TfrmMain.conDataBeforeDisconnect(Sender: TObject);
-begin
-  conData.Transaction.Commit;
-end;
-
-procedure TfrmMain.dbDataAfterOpen(DataSet: TDataSet);
-begin
-  sbInfo.SimpleText := Format(rsDDatensTze, [DataSet.RecordCount]);
-end;
-
-procedure TfrmMain.dbDataBeforePost(DataSet: TDataSet);
-begin
-  with qryBewerbungen do
-  begin
-    FieldByName('DATUM').AsDateTime := edtDatum.Date;
-
-    if (State = dsInsert) then
-      FieldByName('WVL').AsDateTime := IncDay(edtDatum.Date, 14)
-    else
-    begin
-      if (edtWVL.Date <> 0) then
-        FieldByName('WVL').AsDateTime := edtWVL.Date
-      else
-        FieldByName('WVL').AsDateTime := IncDay(edtWVL.Date, 14);
-    end;
-  end;
-end;
-
 procedure TfrmMain.grdBewerbungenDblClick(Sender: TObject);
 begin
-  qryBewerbungen.Edit;
+  dmBewerbungen.qryBewerbungen.Edit;
 end;
 
 procedure TfrmMain.grdBewerbungenPrepareCanvas(Sender: TObject;
@@ -521,53 +441,6 @@ begin
   end;
 end;
 
-procedure TfrmMain.dbLogAfterScroll(DataSet: TDataSet);
-begin
-  edtLogDatum.Date := DataSet.FieldByName('DATUM').AsDateTime;
-  edtLogTyp.Text := DataSet.FieldByName('TYP').AsString;
-  mmoText.Lines.Text := DataSet.FieldByName('BESCHREIBUNG').AsString;
-end;
-
-procedure TfrmMain.dbLogBeforePost(DataSet: TDataSet);
-begin
-  DataSet.FieldByName('BEWERBUNG').AsInteger :=
-    qryBewerbungen.FieldByName('ID').AsInteger;
-  DataSet.FieldByName('DATUM').AsDateTime := edtLogDatum.Date;
-  DataSet.FieldByName('TYP').AsString := edtLogTyp.Text;
-  DataSet.FieldByName('BESCHREIBUNG').AsString := mmoText.Lines.Text;
-end;
-
-procedure TfrmMain.dsDataStateChange(Sender: TObject);
-begin
-  FEditMode := ((Sender as TDatasource).State in dsWriteModes);
-  FInsertMode := ((Sender as TDatasource).State = dsInsert);
-
-  tsBewerbungData.Enabled := FEditMode;
-
-  if FEditMode then
-  begin
-    if (PageControl1.ActivePageIndex <> 1) then
-      PageControl1.ActivePageIndex := 1;
-
-    navActions.VisibleButtons :=
-      [nbFirst, nbPrior, nbNext, nbLast, nbInsert, nbDelete, nbEdit,
-      nbPost, nbCancel, nbRefresh];
-  end
-  else
-    navActions.VisibleButtons := [nbFirst, nbPrior, nbNext, nbLast, nbRefresh];
-end;
-
-procedure TfrmMain.dsLogStateChange(Sender: TObject);
-var
-  bEditMode: boolean;
-begin
-  bEditMode := ((Sender as TDatasource).State in dsEditModes);
-
-  edtLogDatum.Enabled := bEditMode;
-  edtLogTyp.Enabled := bEditMode;
-  mmoText.Enabled := bEditMode;
-end;
-
 procedure TfrmMain.FormDestroy(Sender: TObject);
 begin
   with FConfigFile do
@@ -587,13 +460,13 @@ begin
     end;
   end;
 
-  conData.Close;
+  dmBewerbungen.conData.Close;
 end;
 
 procedure TfrmMain.grdLogDblClick(Sender: TObject);
 begin
-  if (qryBewerbungen.State = dsEdit) then
-    qryLog.Edit;
+  if (dmBewerbungen.qryBewerbungen.State = dsEdit) then
+    dmBewerbungen.qryLog.Edit;
 end;
 
 procedure TfrmMain.pmFilterPopup(Sender: TObject);
@@ -612,58 +485,6 @@ begin
     end
     else
       TempItem.Checked := (TempItem.Tag = FGridFilter);
-  end;
-end;
-
-procedure TfrmMain.qryBewerbungenAfterInsert(DataSet: TDataSet);
-var
-  nDefaults: array[0..2] of integer;
-  bVermittler: boolean;
-begin
-  if FileExists(FConfigFile.FileName) then
-  begin
-    nDefaults[0] := FConfigFile.ReadInteger('DEFAULTS', 'TYP', 1);
-    nDefaults[1] := FConfigFile.ReadInteger('DEFAULTS', 'FEEDBACK', 1);
-    nDefaults[2] := FConfigFile.ReadInteger('DEFAULTS', 'RESULT', 0);
-    bVermittler := FConfigFile.ReadBool('DEFAULTS', 'VERMITTLER', False);
-  end
-  else
-  begin
-    nDefaults[0] := 1;
-    nDefaults[1] := 0;
-    nDefaults[2] := 0;
-    bVermittler := False;
-  end;
-
-  with DataSet do
-  begin
-    FieldByName('TYP').AsInteger := nDefaults[0];
-    FieldByName('FEEDBACK').AsInteger := nDefaults[1];
-    FieldByName('RESULT').AsInteger := nDefaults[2];
-    FieldByName('VERMITTLER').AsBoolean := bVermittler;
-  end;
-end;
-
-procedure TfrmMain.qryBewerbungenAfterPost(DataSet: TDataSet);
-var
-  Bookmark: TBookmark;
-begin
-  try
-    Bookmark := DataSet.GetBookmark;
-    TSQLQuery(DataSet).ApplyUpdates;
-
-    if traData.Active then
-    begin
-      traData.CommitRetaining;
-      //DataSet.Refresh;
-
-      if DataSet.BookmarkValid(Bookmark) then
-        DataSet.GotoBookmark(Bookmark);
-
-      DataSet.FreeBookmark(Bookmark);
-    end;
-  except
-    traData.Rollback;
   end;
 end;
 
