@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, dbf, DB, sqlite3conn, sqldb, FileUtil, Forms, Controls,
   Graphics, Dialogs, Grids, ComCtrls, ExtCtrls, StdCtrls, Calendar, EditBtn,
-  DBGrids, DBCtrls, Menus, ActnList, FileCtrl, types;
+  DBGrids, DBCtrls, Menus, ActnList, FileCtrl, types, IniFiles;
 
 type
 
@@ -116,6 +116,7 @@ type
     FDataFile: string;
     FLogFile: string;
     FErrorMsg: string;
+    FConfigFile: TIniFile;
 
     FErrorCode: integer;
     FGridFilter: word;
@@ -159,6 +160,15 @@ procedure TfrmMain.FormCreate(Sender: TObject);
 begin
   FConfigDir := GetAppConfigDir(False);
   FDataFile := IncludeTrailingPathDelimiter(FConfigDir) + 'bewerbungen.db';
+  FConfigFile := TIniFile.Create(GetAppConfigFile(False, true));
+
+  if FileExists(FConfigFile.FileName) then
+  begin
+    Top := FConfigFile.ReadInteger('UI', 'TOP', 0);
+    Left := FConfigFile.ReadInteger('UI', 'LEFT', 0);
+    Height := FConfigFile.ReadInteger('UI', 'HEIGHT', 600);
+    Width := FConfigFile.ReadInteger('UI', 'WIDTH', 800);
+  end;
 
   if not DirectoryExists(FConfigDir) then
     if not CreateDir(FConfigDir) then
@@ -169,8 +179,8 @@ begin
     with Application do
     begin
       MessageBox(PChar(rsFehler),
-      PChar(Format(rsDatenbankSKo, [FDataFile])),
-      MB_ICONERROR + MB_OK);
+        PChar(Format(rsDatenbankSKo, [FDataFile])),
+        MB_ICONERROR + MB_OK);
       Terminate;
       Exit;
     end;
@@ -457,11 +467,11 @@ begin
   if FEditMode then
   begin
     if (PageControl1.ActivePageIndex <> 1) then
-        PageControl1.ActivePageIndex := 1;
+      PageControl1.ActivePageIndex := 1;
 
     navActions.VisibleButtons :=
-      [nbFirst, nbPrior, nbNext, nbLast, nbInsert, nbDelete, nbEdit, nbPost,
-      nbCancel, nbRefresh];
+      [nbFirst, nbPrior, nbNext, nbLast, nbInsert, nbDelete, nbEdit,
+      nbPost, nbCancel, nbRefresh];
   end
   else
     navActions.VisibleButtons := [nbFirst, nbPrior, nbNext, nbLast, nbRefresh];
@@ -480,13 +490,21 @@ end;
 
 procedure TfrmMain.FormDestroy(Sender: TObject);
 begin
+  with FConfigFile do
+  begin
+    FConfigFile.WriteInteger('UI', 'TOP', Top);
+    FConfigFile.WriteInteger('UI', 'LEFT', Left);
+    FConfigFile.WriteInteger('UI', 'HEIGHT', Height);
+    FConfigFile.WriteInteger('UI', 'WIDTH', Width);
+  end;
+
   conData.Close;
 end;
 
 procedure TfrmMain.grdLogDblClick(Sender: TObject);
 begin
   if (qryBewerbungen.State = dsEdit) then
-     qryLog.Edit;
+    qryLog.Edit;
 end;
 
 procedure TfrmMain.pmFilterPopup(Sender: TObject);
@@ -509,13 +527,31 @@ begin
 end;
 
 procedure TfrmMain.qryBewerbungenAfterInsert(DataSet: TDataSet);
+var
+  nDefaults: array[0..2] of integer;
+  bVermittler: boolean;
 begin
+  if FileExists(FConfigFile.FileName) then
+  begin
+    nDefaults[0] := FConfigFile.ReadInteger('DEFAULTS', 'TYP', 1);
+    nDefaults[1] := FConfigFile.ReadInteger('DEFAULTS', 'FEEDBACK', 1);
+    nDefaults[2] := FConfigFile.ReadInteger('DEFAULTS', 'RESULT', 0);
+    bVermittler := FConfigFile.ReadBool('DEFAULTS', 'VERMITTLER', False);
+  end
+  else
+  begin
+    nDefaults[0] := 1;
+    nDefaults[1] := 0;
+    nDefaults[2] := 0;
+    bVermittler := False;
+  end;
+
   with DataSet do
   begin
-    FieldByName('TYP').AsInteger := 1;
-    FieldByName('FEEDBACK').AsInteger := 0;
-    FieldByName('RESULT').AsInteger := 0;
-    FieldByName('VERMITTLER').AsBoolean := False;
+    FieldByName('TYP').AsInteger := nDefaults[0];
+    FieldByName('FEEDBACK').AsInteger := nDefaults[1];
+    FieldByName('RESULT').AsInteger := nDefaults[2];
+    FieldByName('VERMITTLER').AsBoolean := bVermittler;
   end;
 end;
 
