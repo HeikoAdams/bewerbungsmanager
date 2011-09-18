@@ -48,7 +48,7 @@ var
 
 implementation
 
-uses mainwin;
+uses mainwin, bewerbung_strings;
 
 {$R *.lfm}
 

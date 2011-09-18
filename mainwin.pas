@@ -120,18 +120,9 @@ type
 var
   frmMain: TfrmMain;
 
-resourcestring
-  rsCSVExport = 'CSV-Export';
-  rsDatenbankSKo = 'Datenbank (%s) konnte nicht gefunden werden!';
-  rsDDatensTze = '%d Datensätze';
-  rsExportBeende = 'Export beendet';
-  rsFehler = 'Fehler';
-  rsDateFormat = 'dd.mm.yyyy';
-
-
 implementation
 
-uses LCLType, dateutils, Data;
+uses LCLType, dateutils, Data, bewerbung_strings;
 
 {$R *.lfm}
 

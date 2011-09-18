@@ -1,6 +1,36 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8"
 
+#: bewerbung_strings.rscsvexport
+msgctxt "bewerbung_strings.rscsvexport"
+msgid "CSV-Export"
+msgstr ""
+
+#: bewerbung_strings.rsdateformat
+msgctxt "bewerbung_strings.rsdateformat"
+msgid "dd.mm.yyyy"
+msgstr ""
+
+#: bewerbung_strings.rsdatenbanksko
+msgctxt "bewerbung_strings.rsdatenbanksko"
+msgid "Datenbank (%s) konnte nicht gefunden werden!"
+msgstr ""
+
+#: bewerbung_strings.rsddatenstze
+msgctxt "bewerbung_strings.rsddatenstze"
+msgid "%d Datensätze"
+msgstr ""
+
+#: bewerbung_strings.rsexportbeende
+msgctxt "bewerbung_strings.rsexportbeende"
+msgid "Export beendet"
+msgstr ""
+
+#: bewerbung_strings.rsfehler
+msgctxt "bewerbung_strings.rsfehler"
+msgid "Fehler"
+msgstr ""
+
 #: dunkelrot 
 msgid " Wiedervorlagedatum ohne Reaktion überschritten"
 msgstr ""
@@ -10,26 +40,32 @@ msgid " Zusage erhalten"
 msgstr ""
 
 #: mainwin.rscsvexport
+msgctxt "mainwin.rscsvexport"
 msgid "CSV-Export"
 msgstr ""
 
 #: mainwin.rsdateformat
+msgctxt "mainwin.rsdateformat"
 msgid "dd.mm.yyyy"
 msgstr ""
 
 #: mainwin.rsdatenbanksko
+msgctxt "mainwin.rsdatenbanksko"
 msgid "Datenbank (%s) konnte nicht gefunden werden!"
 msgstr ""
 
 #: mainwin.rsddatenstze
+msgctxt "mainwin.rsddatenstze"
 msgid "%d Datensätze"
 msgstr ""
 
 #: mainwin.rsexportbeende
+msgctxt "mainwin.rsexportbeende"
 msgid "Export beendet"
 msgstr ""
 
 #: mainwin.rsfehler
+msgctxt "mainwin.rsfehler"
 msgid "Fehler"
 msgstr ""
 
