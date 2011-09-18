@@ -283,6 +283,10 @@ msgstr ""
 msgid "Rückmeldung"
 msgstr ""
 
+#: TFRMMAIN.RGMEDIUM.CAPTION
+msgid "Medium"
+msgstr ""
+
 #: TFRMMAIN.RGTYP.CAPTION
 msgid "Bewerbungstyp"
 msgstr ""

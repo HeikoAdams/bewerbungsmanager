@@ -29,6 +29,7 @@ type
     actNoFeedback: TAction;
     alFilter: TActionList;
     chkVermittler: TDBCheckBox;
+    rgMedium: TDBRadioGroup;
     edtLogTyp: TDBEdit;
     grdBewerbungen: TDBGrid;
     grdLog: TDBGrid;

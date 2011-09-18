@@ -132,14 +132,12 @@ begin
     nDefaults[0] := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'TYP', 1);
     nDefaults[1] := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'FEEDBACK', 1);
     nDefaults[2] := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'RESULT', 0);
-    bVermittler := frmMain.ConfigFile.ReadBool('DEFAULTS', 'VERMITTLER', False);
   end
   else
   begin
     nDefaults[0] := 1;
     nDefaults[1] := 0;
     nDefaults[2] := 0;
-    bVermittler := False;
   end;
 
   with DataSet do
@@ -147,7 +145,6 @@ begin
     FieldByName('TYP').AsInteger := nDefaults[0];
     FieldByName('FEEDBACK').AsInteger := nDefaults[1];
     FieldByName('RESULT').AsInteger := nDefaults[2];
-    FieldByName('VERMITTLER').AsBoolean := bVermittler;
   end;
 end;
 

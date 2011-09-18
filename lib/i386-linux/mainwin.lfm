@@ -14,10 +14,10 @@ object frmMain: TfrmMain
     Height = 498
     Top = 25
     Width = 654
-    ActivePage = tsActions
+    ActivePage = tsBewerbungen
     Align = alClient
     Images = ilIcons
-    TabIndex = 2
+    TabIndex = 0
     TabOrder = 1
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'
@@ -305,10 +305,10 @@ object frmMain: TfrmMain
         TabOrder = 5
       end
       object rgFeedback: TDBRadioGroup
-        Left = 209
+        Left = 197
         Height = 105
         Top = 112
-        Width = 185
+        Width = 166
         Caption = 'Rückmeldung'
         DataField = 'FEEDBACK'
         DataSource = dmBewerbungen.dsData
@@ -325,10 +325,10 @@ object frmMain: TfrmMain
         )
       end
       object rgErgebnis: TDBRadioGroup
-        Left = 409
+        Left = 373
         Height = 105
         Top = 112
-        Width = 185
+        Width = 128
         Caption = 'Ergebnis'
         DataField = 'RESULT'
         DataSource = dmBewerbungen.dsData
@@ -352,7 +352,7 @@ object frmMain: TfrmMain
         DataField = 'NOTES'
         DataSource = dmBewerbungen.dsData
         ScrollBars = ssAutoBoth
-        TabOrder = 10
+        TabOrder = 11
       end
       object lblNotes: TLabel
         Left = 9
@@ -370,9 +370,31 @@ object frmMain: TfrmMain
         Caption = 'Personalvermittler'
         DataField = 'VERMITTLER'
         DataSource = dmBewerbungen.dsData
-        TabOrder = 9
+        TabOrder = 10
         ValueChecked = 'True'
         ValueUnchecked = 'False'
+      end
+      object rgMedium: TDBRadioGroup
+        Left = 509
+        Height = 105
+        Top = 112
+        Width = 137
+        Caption = 'Medium'
+        DataField = 'MEDIUM'
+        DataSource = dmBewerbungen.dsData
+        Items.Strings = (
+          'E-Mail'
+          'Post'
+          'Telefon'
+          'persönlich'
+        )
+        TabOrder = 9
+        Values.Strings = (
+          '0'
+          '1'
+          '2'
+          '3'
+        )
       end
     end
     object tsActions: TTabSheet
