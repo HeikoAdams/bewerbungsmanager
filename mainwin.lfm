@@ -14,10 +14,10 @@ object frmMain: TfrmMain
     Height = 498
     Top = 25
     Width = 654
-    ActivePage = tsBewerbungen
+    ActivePage = tsBewerbungData
     Align = alClient
     Images = ilIcons
-    TabIndex = 0
+    TabIndex = 1
     TabOrder = 1
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'
@@ -764,14 +764,14 @@ object frmMain: TfrmMain
     top = 392
   end
   object traData: TSQLTransaction
-    Active = True
+    Active = False
     Action = caNone
     Database = conData
     left = 152
     top = 392
   end
   object conData: TSQLite3Connection
-    Connected = True
+    Connected = False
     LoginPrompt = False
     AfterConnect = conDataAfterConnect
     BeforeDisconnect = conDataBeforeDisconnect
@@ -826,14 +826,17 @@ object frmMain: TfrmMain
     left = 288
     top = 448
     object actNoFeedback: TAction
+      Category = 'Feedback'
       Caption = '&kein Feedback'
       OnExecute = actNoFeedbackExecute
     end
     object actEingang: TAction
+      Category = 'Feedback'
       Caption = '&Eingang bestätigt'
       OnExecute = actEingangExecute
     end
     object actEinladung: TAction
+      Category = 'Feedback'
       Caption = '&Einladung'
       OnExecute = actEinladungExecute
     end
@@ -842,20 +845,24 @@ object frmMain: TfrmMain
       OnExecute = actAlleExecute
     end
     object actNoResult: TAction
+      Category = 'Result'
       Caption = '&kein Ergebnis'
       OnExecute = actNoResultExecute
     end
     object actZusage: TAction
+      Category = 'Result'
       Caption = '&Zusage'
       OnExecute = actZusageExecute
     end
     object actAbsage: TAction
+      Category = 'Result'
       Caption = '&Absage'
       OnExecute = actAbsageExecute
     end
     object actWVL: TAction
       Caption = '&Wiedervorlage'
       OnExecute = actWVLExecute
+      Visible = False
     end
     object actExport: TAction
       Caption = '&CSV-Export'
@@ -1051,17 +1058,12 @@ object frmMain: TfrmMain
     SQL.Strings = (
       'SELECT *'
       'FROM BEWERBUNGEN'
-      'WHERE (strftime(''%d.%m.%Y'',WVL) <= :Datum)'
+      'WHERE (strftime(''%d.%m.%Y'',WVL) <= date())'
       'AND (Feedback = 0)'
       'AND (Result = 0)'
       'ORDER BY DATUM DESC, NAME'
     )
-    Params = <    
-      item
-        DataType = ftUnknown
-        Name = 'Datum'
-        ParamType = ptUnknown
-      end>
+    Params = <>
     left = 71
     top = 249
   end

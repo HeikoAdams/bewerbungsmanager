@@ -239,6 +239,8 @@ begin
   begin
     Close;
     Params.ParamValues['WERT'] := 0;
+    Filter := 'RESULT = 0';
+    Filtered := True;
     Open;
   end;
 
@@ -266,7 +268,7 @@ begin
   with qryFilter do
   begin
     Close;
-    Params.ParamValues['Datum'] := FormatDateTime('dd.mm.yyyy', Date);
+    //Params.ParamValues['Datum'] := FormatDateTime('dd.mm.yyyy', Date);
     Open;
   end;
 
@@ -295,6 +297,7 @@ begin
   begin
     Close;
     Params.ParamValues['WERT'] := 1;
+    Filtered := False;
     Open;
   end;
 
@@ -336,6 +339,7 @@ begin
   begin
     Close;
     Params.ParamValues['WERT'] := 2;
+    Filtered := False;
     Open;
   end;
 
