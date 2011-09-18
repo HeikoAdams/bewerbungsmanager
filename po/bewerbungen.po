@@ -49,6 +49,10 @@ msgstr ""
 msgid "&alle anzeigen"
 msgstr ""
 
+#: TFRMMAIN.ACTANGEBOT.CAPTION
+msgid "&Stellenangebot"
+msgstr ""
+
 #: TFRMMAIN.ACTEINGANG.CAPTION
 msgid "&Eingang bestätigt"
 msgstr ""
@@ -61,6 +65,10 @@ msgstr ""
 msgid "&CSV-Export"
 msgstr ""
 
+#: TFRMMAIN.ACTINITIATIV.CAPTION
+msgid "&Initiativbewerbung"
+msgstr ""
+
 #: TFRMMAIN.ACTNOFEEDBACK.CAPTION
 msgid "&kein Feedback"
 msgstr ""
@@ -71,6 +79,10 @@ msgstr ""
 
 #: TFRMMAIN.ACTVERMITTLER.CAPTION
 msgid "&Vermittler"
+msgstr ""
+
+#: TFRMMAIN.ACTVORSCHLAG.CAPTION
+msgid "&Vermittlungsvorschlag"
 msgstr ""
 
 #: TFRMMAIN.ACTWVL.CAPTION
@@ -221,6 +233,10 @@ msgstr ""
 
 #: TFRMMAIN.MIRESULT.CAPTION
 msgid "&Ergebnis"
+msgstr ""
+
+#: TFRMMAIN.MITYP.CAPTION
+msgid "Typ"
 msgstr ""
 
 #: TFRMMAIN.RGERGEBNIS.CAPTION

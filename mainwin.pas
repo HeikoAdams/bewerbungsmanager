@@ -19,6 +19,9 @@ type
     actAlle: TAction;
     actAbsage: TAction;
     actExport: TAction;
+    actInitiativ: TAction;
+    actAngebot: TAction;
+    actVorschlag: TAction;
     actVermittler: TAction;
     actWVL: TAction;
     actZusage: TAction;
@@ -31,6 +34,10 @@ type
     grdLog: TDBGrid;
     lblNotes: TLabel;
     MenuItem1: TMenuItem;
+    MenuItem2: TMenuItem;
+    miVorschlag: TMenuItem;
+    miAngebot: TMenuItem;
+    miTyp: TMenuItem;
     miVermittler: TMenuItem;
     miExport: TMenuItem;
     mmoNotes: TDBMemo;
@@ -71,6 +78,7 @@ type
     pnlBottom: TPanel;
     pmFilter: TPopupMenu;
     qryBewerbungen: TSQLQuery;
+    qryFilterTyp: TSQLQuery;
     qryFilterVermittler: TSQLQuery;
     qryLog: TSQLQuery;
     rgErgebnis: TDBRadioGroup;
@@ -88,12 +96,15 @@ type
     tsBewerbungen: TTabSheet;
     procedure actAbsageExecute(Sender: TObject);
     procedure actAlleExecute(Sender: TObject);
+    procedure actAngebotExecute(Sender: TObject);
     procedure actEingangExecute(Sender: TObject);
     procedure actEinladungExecute(Sender: TObject);
     procedure actExportExecute(Sender: TObject);
+    procedure actInitiativExecute(Sender: TObject);
     procedure actNoFeedbackExecute(Sender: TObject);
     procedure actNoResultExecute(Sender: TObject);
     procedure actVermittlerExecute(Sender: TObject);
+    procedure actVorschlagExecute(Sender: TObject);
     procedure actWVLExecute(Sender: TObject);
     procedure actZusageExecute(Sender: TObject);
     procedure conDataAfterConnect(Sender: TObject);
@@ -275,6 +286,20 @@ begin
   FGridFilter := 8;
 end;
 
+procedure TfrmMain.actVorschlagExecute(Sender: TObject);
+begin
+  dsData.DataSet := qryFilterTyp;
+
+  with qryFilterTyp do
+  begin
+    Close;
+    Params.ParamValues['WERT'] := 2;
+    Open;
+  end;
+
+  FGridFilter := 11;
+end;
+
 procedure TfrmMain.actWVLExecute(Sender: TObject);
 begin
   dsData.DataSet := qryFilter;
@@ -282,7 +307,7 @@ begin
   with qryFilter do
   begin
     Close;
-    //Params.ParamValues['Datum'] := FormatDateTime('dd.mm.yyyy', Date);
+    Params.ParamValues['Datum'] := FormatDateTime('yyyy-mm-dd', Date);
     Open;
   end;
 
@@ -329,6 +354,20 @@ begin
   end;
 
   FGridFilter := 0;
+end;
+
+procedure TfrmMain.actAngebotExecute(Sender: TObject);
+begin
+  dsData.DataSet := qryFilterTyp;
+
+  with qryFilterTyp do
+  begin
+    Close;
+    Params.ParamValues['WERT'] := 1;
+    Open;
+  end;
+
+  FGridFilter := 10;
 end;
 
 procedure TfrmMain.actAbsageExecute(Sender: TObject);
@@ -407,6 +446,20 @@ begin
     Application.MessageBox(PChar(rsExportBeende), PChar(rsCSVExport),
       MB_ICONINFORMATION + MB_OK);
   end;
+end;
+
+procedure TfrmMain.actInitiativExecute(Sender: TObject);
+begin
+  dsData.DataSet := qryFilterTyp;
+
+  with qryFilterTyp do
+  begin
+    Close;
+    Params.ParamValues['WERT'] := 0;
+    Open;
+  end;
+
+  FGridFilter := 9;
 end;
 
 procedure TfrmMain.conDataBeforeDisconnect(Sender: TObject);
