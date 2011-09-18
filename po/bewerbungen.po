@@ -1,0 +1,245 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+#: dunkelrot 
+msgid " Wiedervorlagedatum ohne Reaktion überschritten"
+msgstr ""
+
+#: grün 
+msgid " Zusage erhalten"
+msgstr ""
+
+#: mainwin.rscsvexport
+msgid "CSV-Export"
+msgstr ""
+
+#: mainwin.rsdateformat
+msgid "dd.mm.yyyy"
+msgstr ""
+
+#: mainwin.rsdatenbanksko
+msgid "Datenbank (%s) konnte nicht gefunden werden!"
+msgstr ""
+
+#: mainwin.rsddatenstze
+msgid "%d Datensätze"
+msgstr ""
+
+#: mainwin.rsexportbeende
+msgid "Export beendet"
+msgstr ""
+
+#: mainwin.rsfehler
+msgid "Fehler"
+msgstr ""
+
+#: rot 
+msgid " Absage erhalten"
+msgstr ""
+
+#: schwarz 
+msgid " noch keine Reaktion"
+msgstr ""
+
+#: TFRMMAIN.ACTABSAGE.CAPTION
+msgid "&Absage"
+msgstr ""
+
+#: TFRMMAIN.ACTALLE.CAPTION
+msgid "&alle anzeigen"
+msgstr ""
+
+#: TFRMMAIN.ACTEINGANG.CAPTION
+msgid "&Eingang bestätigt"
+msgstr ""
+
+#: TFRMMAIN.ACTEINLADUNG.CAPTION
+msgid "&Einladung"
+msgstr ""
+
+#: TFRMMAIN.ACTEXPORT.CAPTION
+msgid "&CSV-Export"
+msgstr ""
+
+#: TFRMMAIN.ACTNOFEEDBACK.CAPTION
+msgid "&kein Feedback"
+msgstr ""
+
+#: TFRMMAIN.ACTNORESULT.CAPTION
+msgid "&kein Ergebnis"
+msgstr ""
+
+#: TFRMMAIN.ACTWVL.CAPTION
+msgid "&Wiedervorlage"
+msgstr ""
+
+#: TFRMMAIN.ACTZUSAGE.CAPTION
+msgid "&Zusage"
+msgstr ""
+
+#: TFRMMAIN.CHKVERMITTLER.CAPTION
+msgctxt "TFRMMAIN.CHKVERMITTLER.CAPTION"
+msgid "Personalvermittler"
+msgstr ""
+
+#: TFRMMAIN.EDTDATUM.CANCELCAPTION
+msgctxt "TFRMMAIN.EDTDATUM.CANCELCAPTION"
+msgid "Cancel"
+msgstr ""
+
+#: TFRMMAIN.EDTDATUM.OKCAPTION
+msgctxt "TFRMMAIN.EDTDATUM.OKCAPTION"
+msgid "OK"
+msgstr ""
+
+#: TFRMMAIN.EDTLOGDATUM.CANCELCAPTION
+msgctxt "TFRMMAIN.EDTLOGDATUM.CANCELCAPTION"
+msgid "Cancel"
+msgstr ""
+
+#: TFRMMAIN.EDTLOGDATUM.OKCAPTION
+msgctxt "TFRMMAIN.EDTLOGDATUM.OKCAPTION"
+msgid "OK"
+msgstr ""
+
+#: TFRMMAIN.EDTWVL.CANCELCAPTION
+msgctxt "TFRMMAIN.EDTWVL.CANCELCAPTION"
+msgid "Cancel"
+msgstr ""
+
+#: TFRMMAIN.EDTWVL.OKCAPTION
+msgctxt "TFRMMAIN.EDTWVL.OKCAPTION"
+msgid "OK"
+msgstr ""
+
+#: TFRMMAIN.FRMMAIN.CAPTION
+msgid "Bewerbungsmanager"
+msgstr ""
+
+#: TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[0].TCOLUMNTITLE.CAPTION
+msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[0].TCOLUMNTITLE.CAPTION"
+msgid "Datum"
+msgstr ""
+
+#: TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[1].TCOLUMNTITLE.CAPTION
+msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[1].TCOLUMNTITLE.CAPTION"
+msgid "Wiedervorlage"
+msgstr ""
+
+#: TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[2].TCOLUMNTITLE.CAPTION
+msgid "Name"
+msgstr ""
+
+#: TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[3].TCOLUMNTITLE.CAPTION
+msgid "Mail"
+msgstr ""
+
+#: TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[4].TCOLUMNTITLE.CAPTION
+msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[4].TCOLUMNTITLE.CAPTION"
+msgid "Job-Titel"
+msgstr ""
+
+#: TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[5].TCOLUMNTITLE.CAPTION
+msgid "Ref.Nr"
+msgstr ""
+
+#: TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[6].TCOLUMNTITLE.CAPTION
+msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[6].TCOLUMNTITLE.CAPTION"
+msgid "Personalvermittler"
+msgstr ""
+
+#: TFRMMAIN.GRDBEWERBUNGEN.HINT
+msgid "dunkelblau = Eingang bestätigt"
+msgstr ""
+
+#: TFRMMAIN.GRDLOG.COLUMNS[0].TCOLUMNTITLE.CAPTION
+msgctxt "TFRMMAIN.GRDLOG.COLUMNS[0].TCOLUMNTITLE.CAPTION"
+msgid "Datum"
+msgstr ""
+
+#: TFRMMAIN.GRDLOG.COLUMNS[1].TCOLUMNTITLE.CAPTION
+msgctxt "TFRMMAIN.GRDLOG.COLUMNS[1].TCOLUMNTITLE.CAPTION"
+msgid "Art"
+msgstr ""
+
+#: TFRMMAIN.LBLDATUM.CAPTION
+msgctxt "TFRMMAIN.LBLDATUM.CAPTION"
+msgid "Datum"
+msgstr ""
+
+#: TFRMMAIN.LBLEMPFMAIL.CAPTION
+msgid "Mail-Adresse"
+msgstr ""
+
+#: TFRMMAIN.LBLJOBTITEL.CAPTION
+msgctxt "TFRMMAIN.LBLJOBTITEL.CAPTION"
+msgid "Job-Titel"
+msgstr ""
+
+#: TFRMMAIN.LBLLOGDATUM.CAPTION
+msgctxt "TFRMMAIN.LBLLOGDATUM.CAPTION"
+msgid "Datum"
+msgstr ""
+
+#: TFRMMAIN.LBLLOGTEXT.CAPTION
+msgid "Text"
+msgstr ""
+
+#: TFRMMAIN.LBLLOGTYP.CAPTION
+msgctxt "TFRMMAIN.LBLLOGTYP.CAPTION"
+msgid "Art"
+msgstr ""
+
+#: TFRMMAIN.LBLNOTES.CAPTION
+msgid "Bemerkungen"
+msgstr ""
+
+#: TFRMMAIN.LBLREFNR.CAPTION
+msgid "Ref.-Nr"
+msgstr ""
+
+#: TFRMMAIN.LBLWO.CAPTION
+msgid "Empfänger"
+msgstr ""
+
+#: TFRMMAIN.LBLWVL.CAPTION
+msgctxt "TFRMMAIN.LBLWVL.CAPTION"
+msgid "Wiedervorlage"
+msgstr ""
+
+#: TFRMMAIN.MENUITEM1.CAPTION
+msgid "-"
+msgstr ""
+
+#: TFRMMAIN.MIFEEDBACK.CAPTION
+msgid "&Feedback"
+msgstr ""
+
+#: TFRMMAIN.MIRESULT.CAPTION
+msgid "&Ergebnis"
+msgstr ""
+
+#: TFRMMAIN.RGERGEBNIS.CAPTION
+msgid "Ergebnis"
+msgstr ""
+
+#: TFRMMAIN.RGFEEDBACK.CAPTION
+msgid "Rückmeldung"
+msgstr ""
+
+#: TFRMMAIN.RGTYP.CAPTION
+msgid "Bewerbungstyp"
+msgstr ""
+
+#: TFRMMAIN.TSACTIONS.CAPTION
+msgid "Aktivitäten"
+msgstr ""
+
+#: TFRMMAIN.TSBEWERBUNGDATA.CAPTION
+msgid "Daten"
+msgstr ""
+
+#: TFRMMAIN.TSBEWERBUNGEN.CAPTION
+msgid "Bewerbungen"
+msgstr ""
+
