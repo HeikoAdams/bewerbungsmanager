@@ -19,6 +19,7 @@ type
     actAlle: TAction;
     actAbsage: TAction;
     actExport: TAction;
+    actVermittler: TAction;
     actWVL: TAction;
     actZusage: TAction;
     actNoResult: TAction;
@@ -30,6 +31,7 @@ type
     grdLog: TDBGrid;
     lblNotes: TLabel;
     MenuItem1: TMenuItem;
+    miVermittler: TMenuItem;
     miExport: TMenuItem;
     mmoNotes: TDBMemo;
     DBNavigator1: TDBNavigator;
@@ -69,6 +71,7 @@ type
     pnlBottom: TPanel;
     pmFilter: TPopupMenu;
     qryBewerbungen: TSQLQuery;
+    qryFilterVermittler: TSQLQuery;
     qryLog: TSQLQuery;
     rgErgebnis: TDBRadioGroup;
     rgFeedback: TDBRadioGroup;
@@ -90,6 +93,7 @@ type
     procedure actExportExecute(Sender: TObject);
     procedure actNoFeedbackExecute(Sender: TObject);
     procedure actNoResultExecute(Sender: TObject);
+    procedure actVermittlerExecute(Sender: TObject);
     procedure actWVLExecute(Sender: TObject);
     procedure actZusageExecute(Sender: TObject);
     procedure conDataAfterConnect(Sender: TObject);
@@ -259,6 +263,16 @@ begin
   end;
 
   FGridFilter := 4;
+end;
+
+procedure TfrmMain.actVermittlerExecute(Sender: TObject);
+begin
+  dsData.DataSet := qryFilterVermittler;
+
+  with qryFilterVermittler do
+    Open;
+
+  FGridFilter := 8;
 end;
 
 procedure TfrmMain.actWVLExecute(Sender: TObject);

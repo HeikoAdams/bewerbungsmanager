@@ -69,6 +69,10 @@ msgstr ""
 msgid "&kein Ergebnis"
 msgstr ""
 
+#: TFRMMAIN.ACTVERMITTLER.CAPTION
+msgid "&Vermittler"
+msgstr ""
+
 #: TFRMMAIN.ACTWVL.CAPTION
 msgid "&Wiedervorlage"
 msgstr ""

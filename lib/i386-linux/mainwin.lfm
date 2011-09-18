@@ -826,16 +826,19 @@ object frmMain: TfrmMain
     left = 288
     top = 448
     object actNoFeedback: TAction
+      Tag = 1
       Category = 'Feedback'
       Caption = '&kein Feedback'
       OnExecute = actNoFeedbackExecute
     end
     object actEingang: TAction
+      Tag = 2
       Category = 'Feedback'
       Caption = '&Eingang bestätigt'
       OnExecute = actEingangExecute
     end
     object actEinladung: TAction
+      Tag = 3
       Category = 'Feedback'
       Caption = '&Einladung'
       OnExecute = actEinladungExecute
@@ -845,29 +848,39 @@ object frmMain: TfrmMain
       OnExecute = actAlleExecute
     end
     object actNoResult: TAction
+      Tag = 4
       Category = 'Result'
       Caption = '&kein Ergebnis'
       OnExecute = actNoResultExecute
     end
     object actZusage: TAction
+      Tag = 5
       Category = 'Result'
       Caption = '&Zusage'
       OnExecute = actZusageExecute
     end
     object actAbsage: TAction
+      Tag = 6
       Category = 'Result'
       Caption = '&Absage'
       OnExecute = actAbsageExecute
     end
     object actWVL: TAction
+      Tag = 7
       Caption = '&Wiedervorlage'
       OnExecute = actWVLExecute
       Visible = False
     end
     object actExport: TAction
+      Tag = 10
       Caption = '&CSV-Export'
       ImageIndex = 3
       OnExecute = actExportExecute
+    end
+    object actVermittler: TAction
+      Tag = 8
+      Caption = '&Vermittler'
+      OnExecute = actVermittlerExecute
     end
   end
   object pmFilter: TPopupMenu
@@ -982,6 +995,10 @@ object frmMain: TfrmMain
     object miWVL: TMenuItem
       Tag = 7
       Action = actWVL
+    end
+    object miVermittler: TMenuItem
+      Tag = 8
+      Action = actVermittler
     end
     object MenuItem1: TMenuItem
       Caption = '-'
@@ -1105,6 +1122,21 @@ object frmMain: TfrmMain
         ParamType = ptUnknown
       end>
     left = 216
+    top = 249
+  end
+  object qryFilterVermittler: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    Database = conData
+    Transaction = traData
+    ReadOnly = True
+    SQL.Strings = (
+      'SELECT *'
+      'FROM BEWERBUNGEN'
+      'WHERE (VERMITTLER = -1)'
+      'ORDER BY DATUM DESC, NAME'
+    )
+    Params = <>
+    left = 312
     top = 249
   end
 end
