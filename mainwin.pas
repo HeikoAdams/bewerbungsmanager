@@ -164,10 +164,19 @@ begin
 
   if FileExists(FConfigFile.FileName) then
   begin
-    Top := FConfigFile.ReadInteger('UI', 'TOP', 0);
-    Left := FConfigFile.ReadInteger('UI', 'LEFT', 0);
-    Height := FConfigFile.ReadInteger('UI', 'HEIGHT', 600);
-    Width := FConfigFile.ReadInteger('UI', 'WIDTH', 800);
+    case FConfigFile.ReadInteger('UI', 'WINDOWSTATE', 0) of
+    0: WindowState := wsNormal;
+    1: WindowState := wsMaximized;
+    2: WindowState := wsMinimized;
+    end;
+
+    if (WindowState <> wsMaximized) then
+    begin
+      Top := FConfigFile.ReadInteger('UI', 'TOP', 0);
+      Left := FConfigFile.ReadInteger('UI', 'LEFT', 0);
+      Height := FConfigFile.ReadInteger('UI', 'HEIGHT', 600);
+      Width := FConfigFile.ReadInteger('UI', 'WIDTH', 800);
+    end;
   end;
 
   if not DirectoryExists(FConfigDir) then
@@ -492,10 +501,19 @@ procedure TfrmMain.FormDestroy(Sender: TObject);
 begin
   with FConfigFile do
   begin
-    FConfigFile.WriteInteger('UI', 'TOP', Top);
-    FConfigFile.WriteInteger('UI', 'LEFT', Left);
-    FConfigFile.WriteInteger('UI', 'HEIGHT', Height);
-    FConfigFile.WriteInteger('UI', 'WIDTH', Width);
+    if (WindowState <> wsMaximized) then
+    begin
+      WriteInteger('UI', 'TOP', Top);
+      WriteInteger('UI', 'LEFT', Left);
+      WriteInteger('UI', 'HEIGHT', Height);
+      WriteInteger('UI', 'WIDTH', Width);
+    end;
+
+    case WindowState of
+      wsNormal: WriteInteger('UI', 'WINDOWSTATE', 0);
+      wsMaximized: WriteInteger('UI', 'WINDOWSTATE', 1);
+      wsMinimized: WriteInteger('UI', 'WINDOWSTATE', 2);
+    end;
   end;
 
   conData.Close;
