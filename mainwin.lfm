@@ -14,10 +14,10 @@ object frmMain: TfrmMain
     Height = 498
     Top = 25
     Width = 654
-    ActivePage = tsBewerbungData
+    ActivePage = tsDokumente
     Align = alClient
     Images = ilIcons
-    TabIndex = 1
+    TabIndex = 3
     TabOrder = 1
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'
@@ -374,8 +374,7 @@ object frmMain: TfrmMain
         Items.Strings = (
           'E-Mail'
           'Post'
-          'Telefon'
-          'persönlich'
+          'Online-Formular'
         )
         TabOrder = 8
         Values.Strings = (
@@ -391,6 +390,7 @@ object frmMain: TfrmMain
         Top = 75
         Width = 200
         DataField = 'JOBTITEL'
+        DataSource = dmBewerbungen.dsData
         CharCase = ecNormal
         MaxLength = 0
         TabOrder = 11
@@ -421,6 +421,7 @@ object frmMain: TfrmMain
             Width = 250
             FieldName = 'TYP'
           end>
+        DataSource = dmBewerbungen.dsLog
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
         TabOrder = 0
         OnDblClick = grdLogDblClick
@@ -531,7 +532,7 @@ object frmMain: TfrmMain
         object edtLogTyp: TDBEdit
           Left = 86
           Height = 26
-          Top = 40
+          Top = 41
           Width = 191
           DataField = 'TYP'
           DataSource = dmBewerbungen.dsLog
@@ -742,6 +743,7 @@ object frmMain: TfrmMain
             FieldName = 'FILENAME'
           end>
         DataSource = dmBewerbungen.dsDocs
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
         TabOrder = 1
       end
     end
@@ -776,7 +778,7 @@ object frmMain: TfrmMain
     left = 352
     top = 448
     Bitmap = {
-      4C69080000001000000010000000FFFFFF009E6E4D2B9D6D4CD69D6D4BC59D6C
+      4C69090000001000000010000000FFFFFF009E6E4D2B9D6D4CD69D6D4BC59D6C
       4BFF9C6C4AFF9C6B49FF9B6A49FF9B6A48FF9A6947FF996846FF986745FF9364
       43FF845D3EDEFFFFFF00FFFFFF00FFFFFF009D6D4C919D6D4BFEBB9778FFAC82
       62FFAC8161FFAB8060FFAB7F5FFFAA7F5EFFA87E5DFFA87C5CFF9D6D4CFF9766
@@ -1032,7 +1034,39 @@ object frmMain: TfrmMain
       A19D9F9F9FF0A1A1A1FFABABABFFA7A7A7FF959595FF8D8D8DE78989898A8686
       8616FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
       FF00FFFFFF009999990D959595319191912F8C8C8C07FFFFFF00FFFFFF00FFFF
-      FF00FFFFFF00FFFFFF00FFFFFF00
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00E2AC5F36E2AC5FC6EABC
+      81FFE8B777FFE6B26DFFE4B068FFE2AC5FF0E2AC5FE3E2AC5FCFE2AC5FCCE2AC
+      5FBBE2AC5FA8E2AC5F4BE2AC5F05FFFFFF00FFFFFF00DEA85D6DEAC08CFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFDF9F4FFFBF3EAFFF8EBD9FFF8E6D3FFF5DF
+      C6FFE9CBA6FFDEA85DEDDEA85D5DFFFFFF00FFFFFF00DAA45B84EBC69AFFFFFF
+      FFFFFCEFE2FFFDF0E7FFFDF1EBFFFDF5EEFFFDF8F1FFFDFAF7FFFFFCFAFFFFFF
+      FFFFFEFBF7FFF4DAC0FFDAA45BEAFFFFFF00FFFFFF00D59F5892EBCAA5FFFFFD
+      FBFFFDE9D5FFFDEBD8FFFDEADBFFFDEDDFFFFDF0E2FFFDF1E4FFFCF0E4FFFFFF
+      FFFFE0A070FFFFFBF9FFDFB887FFFFFFFF00FFFFFF00D09A55A4EDD0B2FFFFF6
+      F0FFFAE1CAFFFBE3CCFFFBE3D0FFFBE6D3FFFBE9D5FFFCE9D8FFFCEADBFFFFFF
+      FDFFD29D71FFEED9C1FFD09A55E5FFFFFF00FFFFFF00CA9452BBF0D9C1FFFBED
+      E1FFF9DAC0FFF9DCC2FFF9DEC5FFFAE0C7FFFAE2CAFFFAE2CDFFFAE5D0FFFFFE
+      FDFFCB8F5AFFCA9452F1CA945245FFFFFF00FFFFFF00C48E4EDAF5E7D8FFFAE5
+      D2FFF9DABCFFF9DBBCFFFADBBFFFFADDC1FFFADDC1FFF9DDC4FFFBE1C8FFFFFD
+      FBFFC89457FFC48E4E12FFFFFF00FFFFFF00FFFFFF00BD884BF9FCF6F0FFF9DF
+      C7FFF9DCBDFFFADCBFFFFADBC1FFFADDC3FFFADDC2FFF9DDC4FFFBE0C9FFFFFC
+      FAFFC18D53FFBD884B0FFFFFFF00FFFFFF00B7824709B9854BFFFEFBF7FFF9DC
+      C1FFF8DCBFFFF8DCBFFFF8DBC0FFF9DDC0FFF9DDC0FFF9DDC3FFFBE2CBFFFCF9
+      F5FFB78247FBB7824701FFFFFF00FFFFFF00B17B431EB98652FFFEFCF9FFF9DC
+      BFFFF8DBBFFFF8DCC0FFF9DBC2FFF9DCC1FFF9DDC2FFFADDC3FFFBE7D4FFF5ED
+      E2FFB17B43E4FFFFFF00FFFFFF00FFFFFF00AA754028B78656FFFEFEFDFFFADE
+      C2FFFADCBFFFF9DBC0FFF9DBC0FFF9DDC1FFFADBC0FFFADCC3FFFDEBDEFFECDC
+      CDFFAA7540CAFFFFFF00FFFFFF00A46F3C14A46F3CABD5AE8CFFFDF0E5FFF7C7
+      A2FFF7CFADFFF9D5B5FFF8DABDFFF8DEC2FFFAE1C6FFFAE4CCFFFDF5ECFFE2CE
+      BAFFA46F3CB3FFFFFF00FFFFFF009E6939579E6939F6B48559FFD9A57BFFD89E
+      6FFFD79B6AFFD89663FFD6925DFFD48F59FFD38E57FFE29D69FFFAE3D1FFD8BB
+      A2FF9E69399EFFFFFF00FFFFFF0099643689C7A485FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFEFCFFFEFBF7FFFEF7F1FFFEF6F1FFE4AE86FFFAE8DBFFCEAF
+      95FF9964368BFFFFFF00FFFFFF00945F3368B8906DFFD6BAA3FFDFC6B3FFE7D4
+      C3FFEEDFD3FFF5EAE2FFFBF4EFFFFDFAF6FFFFFEFDFFFBEBDFFFFBEFE6FFC19D
+      80FF945F336FFFFFFF00FFFFFF00905B3114905B3184905B31A3905B31B6905B
+      31C9905B31DA905B31EB905B31FA956139FF9A6941FFA3744FFFAD825FFF905B
+      31D9905B3134FFFFFF00FFFFFF00
     }
   end
   object alFilter: TActionList
@@ -1113,6 +1147,21 @@ object frmMain: TfrmMain
       Category = 'Typ'
       Caption = '&Vermittlungsvorschlag'
       OnExecute = actVorschlagExecute
+    end
+    object actMail: TAction
+      Category = 'Medium'
+      Caption = '&Mail'
+      OnExecute = actMailExecute
+    end
+    object actPost: TAction
+      Category = 'Medium'
+      Caption = '&Post'
+      OnExecute = actPostExecute
+    end
+    object actOnlineForm: TAction
+      Category = 'Medium'
+      Caption = '&Online-Formular'
+      OnExecute = actOnlineFormExecute
     end
   end
   object pmFilter: TPopupMenu
@@ -1225,7 +1274,7 @@ object frmMain: TfrmMain
       end
     end
     object miTyp: TMenuItem
-      Caption = 'Typ'
+      Caption = '&Typ'
       Bitmap.Data = {
         36040000424D3604000000000000360000002800000010000000100000000100
         2000000000000004000064000000640000000000000000000000FFFFFF009461
@@ -1276,6 +1325,22 @@ object frmMain: TfrmMain
         Action = actVorschlag
       end
     end
+    object miMedium: TMenuItem
+      Caption = '&Medium'
+      ImageIndex = 8
+      object miMail: TMenuItem
+        Tag = 12
+        Action = actMail
+      end
+      object miPost: TMenuItem
+        Tag = 13
+        Action = actPost
+      end
+      object miOnlineForm: TMenuItem
+        Tag = 14
+        Action = actOnlineForm
+      end
+    end
     object miWVL: TMenuItem
       Tag = 7
       Action = actWVL
@@ -1283,6 +1348,9 @@ object frmMain: TfrmMain
     object miVermittler: TMenuItem
       Tag = 8
       Action = actVermittler
+    end
+    object miAlle: TMenuItem
+      Action = actAlle
     end
     object MenuItem1: TMenuItem
       Caption = '-'
@@ -1326,9 +1394,6 @@ object frmMain: TfrmMain
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00CDCDCD9FC9C9
         C9FBC4C4C4FFC0C0C0FFBBBBBBFFB6B6B6FFB0B0B0FFABABABA7
       }
-    end
-    object miAlle: TMenuItem
-      Action = actAlle
     end
   end
   object dlgExport: TSaveDialog

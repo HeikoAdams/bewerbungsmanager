@@ -21,6 +21,9 @@ type
     actExport: TAction;
     actInitiativ: TAction;
     actAngebot: TAction;
+    actOnlineForm: TAction;
+    actPost: TAction;
+    actMail: TAction;
     actVorschlag: TAction;
     actVermittler: TAction;
     actWVL: TAction;
@@ -35,6 +38,10 @@ type
     edtFile: TDBEdit;
     DBGrid1: TDBGrid;
     edtJobTitel: TDBEdit;
+    miOnlineForm: TMenuItem;
+    miPost: TMenuItem;
+    miMail: TMenuItem;
+    miMedium: TMenuItem;
     navDocs: TDBNavigator;
     lblDokFilename: TLabel;
     lblDokDescr: TLabel;
@@ -101,8 +108,11 @@ type
     procedure actEinladungExecute(Sender: TObject);
     procedure actExportExecute(Sender: TObject);
     procedure actInitiativExecute(Sender: TObject);
+    procedure actMailExecute(Sender: TObject);
     procedure actNoFeedbackExecute(Sender: TObject);
     procedure actNoResultExecute(Sender: TObject);
+    procedure actOnlineFormExecute(Sender: TObject);
+    procedure actPostExecute(Sender: TObject);
     procedure actVermittlerExecute(Sender: TObject);
     procedure actVorschlagExecute(Sender: TObject);
     procedure actWVLExecute(Sender: TObject);
@@ -229,6 +239,34 @@ begin
   FGridFilter := 4;
 end;
 
+procedure TfrmMain.actOnlineFormExecute(Sender: TObject);
+begin
+  dmBewerbungen.dsData.DataSet := dmBewerbungen.qryFilterMedium;
+
+  with dmBewerbungen.qryFilterMedium do
+  begin
+    Close;
+    Params.ParamValues['WERT'] := 2;
+    Open;
+  end;
+
+  FGridFilter := 14;
+end;
+
+procedure TfrmMain.actPostExecute(Sender: TObject);
+begin
+  dmBewerbungen.dsData.DataSet := dmBewerbungen.qryFilterMedium;
+
+  with dmBewerbungen.qryFilterMedium do
+  begin
+    Close;
+    Params.ParamValues['WERT'] := 1;
+    Open;
+  end;
+
+  FGridFilter := 13;
+end;
+
 procedure TfrmMain.actVermittlerExecute(Sender: TObject);
 begin
   dmBewerbungen.dsData.DataSet := dmBewerbungen.qryFilterVermittler;
@@ -289,6 +327,7 @@ end;
 
 procedure TfrmMain.btnFileOpenClick(Sender: TObject);
 begin
+  { TODO 1 : Shell-Execute Code zum Öffnen der Dokumente unter Windows einfügen }
   {$IFDEF Unix}
   with TProcess.Create(nil) do
   begin
@@ -299,6 +338,7 @@ begin
   end;
   {$endif}
   {$IFDEF Windows}
+
   {$endif}
 end;
 
@@ -434,6 +474,20 @@ begin
   end;
 
   FGridFilter := 9;
+end;
+
+procedure TfrmMain.actMailExecute(Sender: TObject);
+begin
+  dmBewerbungen.dsData.DataSet := dmBewerbungen.qryFilterMedium;
+
+  with dmBewerbungen.qryFilterMedium do
+  begin
+    Close;
+    Params.ParamValues['WERT'] := 0;
+    Open;
+  end;
+
+  FGridFilter := 12;
 end;
 
 procedure TfrmMain.grdBewerbungenDblClick(Sender: TObject);

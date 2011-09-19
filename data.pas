@@ -22,6 +22,7 @@ type
     qryFilterFeedback: TSQLQuery;
     qryFilterResult: TSQLQuery;
     qryFilterTyp: TSQLQuery;
+    qryFilterMedium: TSQLQuery;
     qryFilterVermittler: TSQLQuery;
     qryLog: TSQLQuery;
     qryDocuments: TSQLQuery;

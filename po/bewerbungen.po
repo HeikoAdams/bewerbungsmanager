@@ -109,12 +109,24 @@ msgstr ""
 msgid "&Initiativbewerbung"
 msgstr ""
 
+#: TFRMMAIN.ACTMAIL.CAPTION
+msgid "&Mail"
+msgstr ""
+
 #: TFRMMAIN.ACTNOFEEDBACK.CAPTION
 msgid "&kein Feedback"
 msgstr ""
 
 #: TFRMMAIN.ACTNORESULT.CAPTION
 msgid "&kein Ergebnis"
+msgstr ""
+
+#: TFRMMAIN.ACTONLINEFORM.CAPTION
+msgid "&Online-Formular"
+msgstr ""
+
+#: TFRMMAIN.ACTPOST.CAPTION
+msgid "&Post"
 msgstr ""
 
 #: TFRMMAIN.ACTVERMITTLER.CAPTION
@@ -296,12 +308,16 @@ msgstr ""
 msgid "&Feedback"
 msgstr ""
 
+#: TFRMMAIN.MIMEDIUM.CAPTION
+msgid "&Medium"
+msgstr ""
+
 #: TFRMMAIN.MIRESULT.CAPTION
 msgid "&Ergebnis"
 msgstr ""
 
 #: TFRMMAIN.MITYP.CAPTION
-msgid "Typ"
+msgid "&Typ"
 msgstr ""
 
 #: TFRMMAIN.RGERGEBNIS.CAPTION

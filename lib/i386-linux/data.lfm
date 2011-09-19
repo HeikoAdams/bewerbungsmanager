@@ -21,7 +21,7 @@ object dmBewerbungen: TdmBewerbungen
         Name = 'WERT'
         ParamType = ptUnknown
       end>
-    left = 316
+    left = 320
     top = 16
   end
   object qryFilterVermittler: TSQLQuery
@@ -209,6 +209,26 @@ object dmBewerbungen: TdmBewerbungen
     DataSet = qryDocuments
     OnStateChange = dsDocsStateChange
     left = 112
+    top = 80
+  end
+  object qryFilterMedium: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    Database = conData
+    Transaction = traData
+    ReadOnly = True
+    SQL.Strings = (
+      'SELECT *'
+      'FROM BEWERBUNGEN'
+      'WHERE (MEDIUM = :WERT)'
+      'ORDER BY DATUM DESC, NAME'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'WERT'
+        ParamType = ptUnknown
+      end>
+    left = 320
     top = 80
   end
 end
