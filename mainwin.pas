@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, dbf, DB, sqlite3conn, sqldb, FileUtil, Forms, Controls,
   Graphics, Dialogs, Grids, ComCtrls, ExtCtrls, StdCtrls, EditBtn,
-  DBGrids, Menus, ActnList, IniFiles, DBCtrls;
+  DBGrids, Menus, ActnList, IniFiles, DBCtrls, Buttons;
 
 type
 
@@ -28,7 +28,17 @@ type
     actNoResult: TAction;
     actNoFeedback: TAction;
     alFilter: TActionList;
+    btnFileOpen: TBitBtn;
+    btnBrowse: TBitBtn;
     chkVermittler: TDBCheckBox;
+    cbFileType: TDBComboBox;
+    edtFile: TDBEdit;
+    DBGrid1: TDBGrid;
+    navDocs: TDBNavigator;
+    lblDokFilename: TLabel;
+    lblDokDescr: TLabel;
+    dlgDocuments: TOpenDialog;
+    pnlDokBottom: TPanel;
     rgMedium: TDBRadioGroup;
     edtLogTyp: TDBEdit;
     grdBewerbungen: TDBGrid;
@@ -80,6 +90,7 @@ type
     rgTyp: TRadioGroup;
     dlgExport: TSaveDialog;
     sbInfo: TStatusBar;
+    tsDokumente: TTabSheet;
     tsActions: TTabSheet;
     tsBewerbungData: TTabSheet;
     tsBewerbungen: TTabSheet;
@@ -96,6 +107,8 @@ type
     procedure actVorschlagExecute(Sender: TObject);
     procedure actWVLExecute(Sender: TObject);
     procedure actZusageExecute(Sender: TObject);
+    procedure btnBrowseClick(Sender: TObject);
+    procedure btnFileOpenClick(Sender: TObject);
     procedure grdBewerbungenDblClick(Sender: TObject);
     procedure grdBewerbungenPrepareCanvas(Sender: TObject; DataCol: integer;
       Column: TColumn; AState: TGridDrawState);
@@ -123,7 +136,7 @@ var
 
 implementation
 
-uses LCLType, dateutils, Data, bewerbung_strings;
+uses LCLType, dateutils, Data, bewerbung_strings, Process;
 
 {$R *.lfm}
 
@@ -266,6 +279,27 @@ begin
   end;
 
   FGridFilter := 5;
+end;
+
+procedure TfrmMain.btnBrowseClick(Sender: TObject);
+begin
+  if dlgDocuments.Execute then
+     dmBewerbungen.qryDocuments.FieldByName('FILENAME').AsString :=dlgDocuments.FileName;
+end;
+
+procedure TfrmMain.btnFileOpenClick(Sender: TObject);
+begin
+  {$IFDEF Unix}
+  with TProcess.Create(nil) do
+  begin
+    CommandLine := Format(rsUnixLauncher, [edtFile.Text]);
+    Options := Options + [poWaitOnExit];
+    Execute;
+    Free
+  end;
+  {$endif}
+  {$IFDEF Windows}
+  {$endif}
 end;
 
 procedure TfrmMain.actEingangExecute(Sender: TObject);

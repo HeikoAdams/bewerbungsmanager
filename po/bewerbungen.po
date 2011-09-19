@@ -31,6 +31,10 @@ msgctxt "bewerbung_strings.rsfehler"
 msgid "Fehler"
 msgstr ""
 
+#: bewerbung_strings.rsunixlauncher
+msgid "/usr/bin/xdg-open \"%s\""
+msgstr ""
+
 #: dunkelrot 
 msgid " Wiedervorlagedatum ohne Reaktion überschritten"
 msgstr ""
@@ -129,9 +133,26 @@ msgstr ""
 msgid "&Zusage"
 msgstr ""
 
+#: TFRMMAIN.BTNBROWSE.HINT
+msgid "Datei suchen"
+msgstr ""
+
+#: TFRMMAIN.BTNFILEOPEN.HINT
+msgid "Datei öffnen"
+msgstr ""
+
 #: TFRMMAIN.CHKVERMITTLER.CAPTION
 msgctxt "TFRMMAIN.CHKVERMITTLER.CAPTION"
 msgid "Personalvermittler"
+msgstr ""
+
+#: TFRMMAIN.DBGRID1.COLUMNS[0].TCOLUMNTITLE.CAPTION
+msgctxt "TFRMMAIN.DBGRID1.COLUMNS[0].TCOLUMNTITLE.CAPTION"
+msgid "Art"
+msgstr ""
+
+#: TFRMMAIN.DBGRID1.COLUMNS[1].TCOLUMNTITLE.CAPTION
+msgid "Datei"
 msgstr ""
 
 #: TFRMMAIN.EDTDATUM.CANCELCAPTION
@@ -219,6 +240,14 @@ msgctxt "TFRMMAIN.LBLDATUM.CAPTION"
 msgid "Datum"
 msgstr ""
 
+#: TFRMMAIN.LBLDOKDESCR.CAPTION
+msgid "Bezeichnung"
+msgstr ""
+
+#: TFRMMAIN.LBLDOKFILENAME.CAPTION
+msgid "Dateiname"
+msgstr ""
+
 #: TFRMMAIN.LBLEMPFMAIL.CAPTION
 msgid "Mail-Adresse"
 msgstr ""
@@ -301,5 +330,9 @@ msgstr ""
 
 #: TFRMMAIN.TSBEWERBUNGEN.CAPTION
 msgid "Bewerbungen"
+msgstr ""
+
+#: TFRMMAIN.TSDOKUMENTE.CAPTION
+msgid "Dokumente"
 msgstr ""
 

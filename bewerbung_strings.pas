@@ -14,6 +14,7 @@ resourcestring
   rsExportBeende = 'Export beendet';
   rsFehler = 'Fehler';
   rsDateFormat = 'dd.mm.yyyy';
+  rsUnixLauncher = '/usr/bin/xdg-open "%s"';
 
 implementation
 

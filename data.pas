@@ -15,6 +15,7 @@ type
     conData: TSQLite3Connection;
     dsData: TDatasource;
     dsLog: TDatasource;
+    dsDocs: TDatasource;
     qryBewerbungen: TSQLQuery;
     qryCSVExport: TSQLQuery;
     qryFilter: TSQLQuery;
@@ -23,16 +24,19 @@ type
     qryFilterTyp: TSQLQuery;
     qryFilterVermittler: TSQLQuery;
     qryLog: TSQLQuery;
+    qryDocuments: TSQLQuery;
     traData: TSQLTransaction;
     procedure conDataAfterConnect(Sender: TObject);
     procedure conDataBeforeDisconnect(Sender: TObject);
     procedure dsDataStateChange(Sender: TObject);
+    procedure dsDocsStateChange(Sender: TObject);
     procedure dsLogStateChange(Sender: TObject);
     procedure qryBewerbungenAfterDelete(DataSet: TDataSet);
     procedure qryBewerbungenAfterInsert(DataSet: TDataSet);
     procedure qryBewerbungenAfterOpen(DataSet: TDataSet);
     procedure qryBewerbungenAfterScroll(DataSet: TDataSet);
     procedure qryBewerbungenBeforePost(DataSet: TDataSet);
+    procedure qryDocumentsBeforePost(DataSet: TDataSet);
     procedure qryLogAfterScroll(DataSet: TDataSet);
     procedure qryLogBeforePost(DataSet: TDataSet);
   private
@@ -58,6 +62,7 @@ procedure TdmBewerbungen.conDataAfterConnect(Sender: TObject);
 begin
   qryBewerbungen.Open;
   qryLog.Open;
+  qryDocuments.Open;
 end;
 
 procedure TdmBewerbungen.conDataBeforeDisconnect(Sender: TObject);
@@ -66,9 +71,15 @@ begin
 end;
 
 procedure TdmBewerbungen.dsDataStateChange(Sender: TObject);
+var
+   ReadOnlyButtons: TDBNavButtonSet;
+   WriteModeButtons: TDBNavButtonSet;
 begin
   FEditMode := ((Sender as TDatasource).State in dsWriteModes);
   FInsertMode := ((Sender as TDatasource).State = dsInsert);
+  WriteModeButtons:= [nbFirst, nbPrior, nbNext, nbLast, nbInsert, nbDelete, nbEdit,
+      nbPost, nbCancel, nbRefresh];
+  ReadOnlyButtons := [nbFirst, nbPrior, nbNext, nbLast, nbRefresh];
 
   frmMain.tsBewerbungData.Enabled := FEditMode;
 
@@ -77,12 +88,28 @@ begin
     if (frmMain.PageControl1.ActivePageIndex <> 1) then
       frmMain.PageControl1.ActivePageIndex := 1;
 
-    frmMain.navActions.VisibleButtons :=
-      [nbFirst, nbPrior, nbNext, nbLast, nbInsert, nbDelete, nbEdit,
-      nbPost, nbCancel, nbRefresh];
+    frmMain.navActions.VisibleButtons := WriteModeButtons;
+    frmMain.navDocs.VisibleButtons:=WriteModeButtons;
   end
   else
-    frmMain.navActions.VisibleButtons := [nbFirst, nbPrior, nbNext, nbLast, nbRefresh];
+  begin
+    frmMain.navActions.VisibleButtons := ReadOnlyButtons;
+    frmMain.navDocs.VisibleButtons:=ReadOnlyButtons;
+  end;
+end;
+
+procedure TdmBewerbungen.dsDocsStateChange(Sender: TObject);
+var
+  bEditMode: boolean;
+begin
+  bEditMode := ((Sender as TDatasource).State in dsEditModes);
+
+  with frmMain do
+  begin
+    cbFileType.Enabled := bEditMode;
+    edtFile.Enabled := bEditMode;
+    btnBrowse.Enabled:= bEditMode;
+  end;
 end;
 
 procedure TdmBewerbungen.dsLogStateChange(Sender: TObject);
@@ -171,6 +198,13 @@ begin
     Params.ParamValues['ID'] := nID;
     Open;
   end;
+
+  with qryDocuments do
+  begin
+    Close;
+    Params.ParamValues['ID'] := nID;
+    Open;
+  end;
 end;
 
 procedure TdmBewerbungen.qryBewerbungenBeforePost(DataSet: TDataSet);
@@ -189,6 +223,12 @@ begin
         FieldByName('WVL').AsDateTime := IncDay(frmMain.edtWVL.Date, 14);
     end;
   end;
+end;
+
+procedure TdmBewerbungen.qryDocumentsBeforePost(DataSet: TDataSet);
+begin
+  DataSet.FieldByName('BEWERBUNG').AsInteger :=
+    qryBewerbungen.FieldByName('ID').AsInteger;
 end;
 
 procedure TdmBewerbungen.qryLogAfterScroll(DataSet: TDataSet);

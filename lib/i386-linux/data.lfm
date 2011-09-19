@@ -110,7 +110,7 @@ object dmBewerbungen: TdmBewerbungen
   object dsLog: TDatasource
     DataSet = qryLog
     OnStateChange = dsLogStateChange
-    left = 104
+    left = 64
     top = 80
   end
   object traData: TSQLTransaction
@@ -184,5 +184,31 @@ object dmBewerbungen: TdmBewerbungen
     Params = <>
     left = 152
     top = 144
+  end
+  object qryDocuments: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    AfterDelete = qryBewerbungenAfterDelete
+    AfterPost = qryBewerbungenAfterDelete
+    BeforePost = qryDocumentsBeforePost
+    Database = conData
+    Transaction = traData
+    ReadOnly = False
+    SQL.Strings = (
+      'SELECT * FROM DOCUMENTS WHERE BEWERBUNG = :ID;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ID'
+        ParamType = ptUnknown
+      end>
+    left = 240
+    top = 144
+  end
+  object dsDocs: TDatasource
+    DataSet = qryDocuments
+    OnStateChange = dsDocsStateChange
+    left = 112
+    top = 80
   end
 end
