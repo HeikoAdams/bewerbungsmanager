@@ -47,6 +47,10 @@ msgstr ""
 msgid "/usr/bin/xdg-open \"%s\""
 msgstr ""
 
+#: bewerbung_strings.rswert
+msgid "WERT"
+msgstr ""
+
 #: dunkelrot 
 msgid " Wiedervorlagedatum ohne Reaktion überschritten"
 msgstr ""

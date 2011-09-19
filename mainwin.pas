@@ -216,7 +216,7 @@ begin
   with dmBewerbungen.qryFilterFeedback do
   begin
     Close;
-    Params.ParamValues['WERT'] := 0;
+    Params.ParamValues[rsWERT] := 0;
     Filter := 'RESULT = 0';
     Filtered := True;
     Open;
@@ -232,7 +232,7 @@ begin
   with dmBewerbungen.qryFilterResult do
   begin
     Close;
-    Params.ParamValues['WERT'] := 0;
+    Params.ParamValues[rsWERT] := 0;
     Open;
   end;
 
@@ -246,7 +246,7 @@ begin
   with dmBewerbungen.qryFilterMedium do
   begin
     Close;
-    Params.ParamValues['WERT'] := 2;
+    Params.ParamValues[rsWERT] := 2;
     Open;
   end;
 
@@ -260,7 +260,7 @@ begin
   with dmBewerbungen.qryFilterMedium do
   begin
     Close;
-    Params.ParamValues['WERT'] := 1;
+    Params.ParamValues[rsWERT] := 1;
     Open;
   end;
 
@@ -284,7 +284,7 @@ begin
   with dmBewerbungen.qryFilterTyp do
   begin
     Close;
-    Params.ParamValues['WERT'] := 2;
+    Params.ParamValues[rsWERT] := 2;
     Open;
   end;
 
@@ -312,7 +312,7 @@ begin
   with dmBewerbungen.qryFilterResult do
   begin
     Close;
-    Params.ParamValues['WERT'] := 1;
+    Params.ParamValues[rsWERT] := 1;
     Open;
   end;
 
@@ -349,7 +349,7 @@ begin
   with dmBewerbungen.qryFilterFeedback do
   begin
     Close;
-    Params.ParamValues['WERT'] := 1;
+    Params.ParamValues[rsWERT] := 1;
     Filtered := False;
     Open;
   end;
@@ -377,7 +377,7 @@ begin
   with dmBewerbungen.qryFilterTyp do
   begin
     Close;
-    Params.ParamValues['WERT'] := 1;
+    Params.ParamValues[rsWERT] := 1;
     Open;
   end;
 
@@ -391,7 +391,7 @@ begin
   with dmBewerbungen.qryFilterResult do
   begin
     Close;
-    Params.ParamValues['WERT'] := 2;
+    Params.ParamValues[rsWERT] := 2;
     Open;
   end;
 
@@ -405,7 +405,7 @@ begin
   with dmBewerbungen.qryFilterFeedback do
   begin
     Close;
-    Params.ParamValues['WERT'] := 2;
+    Params.ParamValues[rsWERT] := 2;
     Filtered := False;
     Open;
   end;
@@ -469,7 +469,7 @@ begin
   with dmBewerbungen.qryFilterTyp do
   begin
     Close;
-    Params.ParamValues['WERT'] := 0;
+    Params.ParamValues[rsWERT] := 0;
     Open;
   end;
 
@@ -483,7 +483,7 @@ begin
   with dmBewerbungen.qryFilterMedium do
   begin
     Close;
-    Params.ParamValues['WERT'] := 0;
+    Params.ParamValues[rsWERT] := 0;
     Open;
   end;
 

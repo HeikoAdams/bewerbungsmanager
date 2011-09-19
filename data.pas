@@ -180,7 +180,6 @@ begin
     if traData.Active then
     begin
       traData.CommitRetaining;
-      //DataSet.Refresh;
 
       if DataSet.BookmarkValid(Bookmark) then
         DataSet.GotoBookmark(Bookmark);
@@ -286,8 +285,6 @@ begin
   with frmMain do
   begin
     edtLogDatum.Date := DataSet.FieldByName('DATUM').AsDateTime;
-    //edtLogTyp.Text := DataSet.FieldByName('TYP').AsString;
-    //mmoText.Lines.Text := DataSet.FieldByName('BESCHREIBUNG').AsString;
   end;
 end;
 
@@ -296,8 +293,6 @@ begin
   DataSet.FieldByName('BEWERBUNG').AsInteger :=
     qryBewerbungen.FieldByName('ID').AsInteger;
   DataSet.FieldByName('DATUM').AsDateTime := frmMain.edtLogDatum.Date;
-  //DataSet.FieldByName('TYP').AsString := frmMain.edtLogTyp.Text;
-  //DataSet.FieldByName('BESCHREIBUNG').AsString := frmMain.mmoText.Lines.Text;
 end;
 
 end.

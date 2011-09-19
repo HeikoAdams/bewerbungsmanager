@@ -14,10 +14,10 @@ object frmMain: TfrmMain
     Height = 498
     Top = 25
     Width = 654
-    ActivePage = tsBewerbungData
+    ActivePage = tsBewerbungen
     Align = alClient
     Images = ilIcons
-    TabIndex = 1
+    TabIndex = 0
     TabOrder = 1
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'
@@ -81,6 +81,7 @@ object frmMain: TfrmMain
         PopupMenu = pmFilter
         ShowHint = True
         TabOrder = 0
+        TitleStyle = tsNative
         OnDblClick = grdBewerbungenDblClick
         OnPrepareCanvas = grdBewerbungenPrepareCanvas
       end
@@ -430,6 +431,7 @@ object frmMain: TfrmMain
         DataSource = dmBewerbungen.dsLog
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
         TabOrder = 0
+        TitleStyle = tsNative
         OnDblClick = grdLogDblClick
       end
       object navActions: TDBNavigator
@@ -751,6 +753,7 @@ object frmMain: TfrmMain
         DataSource = dmBewerbungen.dsDocs
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
         TabOrder = 1
+        TitleStyle = tsNative
       end
     end
   end

@@ -1,6 +1,6 @@
 object dmBewerbungen: TdmBewerbungen
   OldCreateOrder = False
-  Height = 247
+  Height = 267
   HorizontalOffset = 464
   VerticalOffset = 263
   Width = 427

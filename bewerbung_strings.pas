@@ -18,6 +18,7 @@ resourcestring
   rsJOBS = 'JOBS';
   rsMAILS = 'MAILS';
   rsUnixLauncher = '/usr/bin/xdg-open "%s"';
+  rsWERT = 'WERT';
 
 implementation
 

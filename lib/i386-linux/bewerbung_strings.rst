@@ -39,3 +39,7 @@ bewerbung_strings.rsmails='MAILS'
 # hash value = 32630770
 bewerbung_strings.rsunixlauncher='/usr/bin/xdg-open "%s"'
 
+
+# hash value = 375412
+bewerbung_strings.rswert='WERT'
+
