@@ -34,6 +34,7 @@ type
     cbFileType: TDBComboBox;
     edtFile: TDBEdit;
     DBGrid1: TDBGrid;
+    edtJobTitel: TDBEdit;
     navDocs: TDBNavigator;
     lblDokFilename: TLabel;
     lblDokDescr: TLabel;
@@ -58,7 +59,6 @@ type
     edtDatum: TDateEdit;
     edtEmpfaenger: TDBEdit;
     edtEmpfMail: TDBEdit;
-    edtJobTitel: TDBEdit;
     edtLogDatum: TDateEdit;
     edtRefNr: TDBEdit;
     edtWVL: TDateEdit;

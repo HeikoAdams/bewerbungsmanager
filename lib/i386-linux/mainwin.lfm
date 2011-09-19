@@ -14,10 +14,10 @@ object frmMain: TfrmMain
     Height = 498
     Top = 25
     Width = 654
-    ActivePage = tsDokumente
+    ActivePage = tsBewerbungData
     Align = alClient
     Images = ilIcons
-    TabIndex = 3
+    TabIndex = 1
     TabOrder = 1
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'
@@ -151,7 +151,7 @@ object frmMain: TfrmMain
           'Stellenangebot'
           'Vermittlungsvorschlag'
         )
-        TabOrder = 6
+        TabOrder = 5
         Values.Strings = (
           '0'
           '1'
@@ -282,17 +282,6 @@ object frmMain: TfrmMain
         MaxLength = 0
         TabOrder = 3
       end
-      object edtJobTitel: TDBEdit
-        Left = 108
-        Height = 26
-        Top = 75
-        Width = 200
-        DataField = 'JOBTITEL'
-        DataSource = dmBewerbungen.dsData
-        CharCase = ecNormal
-        MaxLength = 0
-        TabOrder = 4
-      end
       object edtRefNr: TDBEdit
         Left = 424
         Height = 26
@@ -302,7 +291,7 @@ object frmMain: TfrmMain
         DataSource = dmBewerbungen.dsData
         CharCase = ecNormal
         MaxLength = 0
-        TabOrder = 5
+        TabOrder = 4
       end
       object rgFeedback: TDBRadioGroup
         Left = 197
@@ -317,7 +306,7 @@ object frmMain: TfrmMain
           'Eingangsbetätigung'
           'Einladung'
         )
-        TabOrder = 7
+        TabOrder = 6
         Values.Strings = (
           '0'
           '1'
@@ -337,7 +326,7 @@ object frmMain: TfrmMain
           'Zusage'
           'Absage'
         )
-        TabOrder = 8
+        TabOrder = 7
         Values.Strings = (
           '0'
           '1'
@@ -352,7 +341,7 @@ object frmMain: TfrmMain
         DataField = 'NOTES'
         DataSource = dmBewerbungen.dsData
         ScrollBars = ssAutoBoth
-        TabOrder = 11
+        TabOrder = 10
       end
       object lblNotes: TLabel
         Left = 9
@@ -370,7 +359,7 @@ object frmMain: TfrmMain
         Caption = 'Personalvermittler'
         DataField = 'VERMITTLER'
         DataSource = dmBewerbungen.dsData
-        TabOrder = 10
+        TabOrder = 9
         ValueChecked = 'True'
         ValueUnchecked = 'False'
       end
@@ -388,13 +377,23 @@ object frmMain: TfrmMain
           'Telefon'
           'persönlich'
         )
-        TabOrder = 9
+        TabOrder = 8
         Values.Strings = (
           '0'
           '1'
           '2'
           '3'
         )
+      end
+      object edtJobTitel: TDBEdit
+        Left = 108
+        Height = 26
+        Top = 75
+        Width = 200
+        DataField = 'JOBTITEL'
+        CharCase = ecNormal
+        MaxLength = 0
+        TabOrder = 11
       end
     end
     object tsActions: TTabSheet
@@ -605,7 +604,7 @@ object frmMain: TfrmMain
         end
         object cbFileType: TDBComboBox
           Left = 117
-          Height = 28
+          Height = 30
           Top = 8
           Width = 328
           DataField = 'TYPE'

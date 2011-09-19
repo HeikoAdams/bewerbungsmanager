@@ -177,7 +177,7 @@ object dmBewerbungen: TdmBewerbungen
     Transaction = traData
     ReadOnly = True
     SQL.Strings = (
-      'SELECT DATUM, WVL, NAME, MAIL, JOBTITEL, REFNR'
+      'SELECT DATUM, WVL, NAME, MAIL, JOBTITEL, REFNR, (RESULT = 1) AS ZUSAGE, (RESULT = 2) AS ABSAGE'
       'FROM BEWERBUNGEN'
       'ORDER BY DATUM DESC, NAME'
     )
