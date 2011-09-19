@@ -231,4 +231,13 @@ object dmBewerbungen: TdmBewerbungen
     left = 320
     top = 80
   end
+  object qryData: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    Database = conData
+    Transaction = traData
+    ReadOnly = True
+    Params = <>
+    left = 324
+    top = 144
+  end
 end

@@ -26,6 +26,7 @@ type
     qryFilterVermittler: TSQLQuery;
     qryLog: TSQLQuery;
     qryDocuments: TSQLQuery;
+    qryData: TSQLQuery;
     traData: TSQLTransaction;
     procedure conDataAfterConnect(Sender: TObject);
     procedure conDataBeforeDisconnect(Sender: TObject);
@@ -44,6 +45,8 @@ type
     { private declarations }
     FEditMode: boolean;
     FInsertMode: boolean;
+
+    procedure UpdateList(aType: string; aList: TStrings);
   public
     { public declarations }
   end;
@@ -69,6 +72,45 @@ end;
 procedure TdmBewerbungen.conDataBeforeDisconnect(Sender: TObject);
 begin
   conData.Transaction.Commit;
+end;
+
+procedure TdmBewerbungen.UpdateList(aType: string; aList: TStrings);
+var
+  sSQL: string;
+begin
+  if (UpperCase(aType) = rsCOMPANIES) then
+    sSQL := 'SELECT VALUE FROM V_COMPANIES'
+  else if (UpperCase(aType) = rsMAILS) then
+    sSQL := 'SELECT VALUE FROM V_MAILS'
+  else if (UpperCase(aType) = rsJOBS) then
+    sSQL := 'SELECT VALUE FROM V_JOBS'
+  else
+    sSQL := EmptyStr;
+
+  if (sSQL <> EmptyStr) then
+  begin
+    aList.Clear;
+
+    with qryData do
+    begin
+      with SQL do
+      begin
+        Clear;
+        Add(sSQL);
+      end;
+
+      Open;
+      First;
+
+      while not EOF do
+      begin
+        aList.Add(FieldByName('VALUE').AsString);
+        Next;
+      end;
+
+      Close;
+    end;
+  end;
 end;
 
 procedure TdmBewerbungen.dsDataStateChange(Sender: TObject);
@@ -148,12 +190,15 @@ begin
   except
     traData.Rollback;
   end;
+
+  UpdateList(rsCOMPANIES, frmMain.cbbEmpfName.Items);
+  UpdateList(rsMAILS, frmMain.cbbEmpfMail.Items);
+  UpdateList(rsJOBS, frmMain.cbbJobTitel.Items);
 end;
 
 procedure TdmBewerbungen.qryBewerbungenAfterInsert(DataSet: TDataSet);
 var
   nDefaults: array[0..2] of integer;
-  bVermittler: boolean;
 begin
   if FileExists(frmMain.ConfigFile.FileName) then
   begin
@@ -179,6 +224,10 @@ end;
 procedure TdmBewerbungen.qryBewerbungenAfterOpen(DataSet: TDataSet);
 begin
   frmMain.sbInfo.SimpleText := Format(rsDDatensTze, [DataSet.RecordCount]);
+
+  UpdateList(rsCOMPANIES, frmMain.cbbEmpfName.Items);
+  UpdateList(rsMAILS, frmMain.cbbEmpfMail.Items);
+  UpdateList(rsJOBS, frmMain.cbbJobTitel.Items);
 end;
 
 procedure TdmBewerbungen.qryBewerbungenAfterScroll(DataSet: TDataSet);

@@ -1,4 +1,8 @@
 
+# hash value = 38168035
+bewerbung_strings.rscompanies='COMPANIES'
+
+
 # hash value = 30146052
 bewerbung_strings.rscsvexport='CSV-Export'
 
@@ -22,6 +26,14 @@ bewerbung_strings.rsfehler='Fehler'
 
 # hash value = 67418201
 bewerbung_strings.rsdateformat='dd.mm.yyyy'
+
+
+# hash value = 324467
+bewerbung_strings.rsjobs='JOBS'
+
+
+# hash value = 5332499
+bewerbung_strings.rsmails='MAILS'
 
 
 # hash value = 32630770

@@ -35,9 +35,11 @@ type
     btnBrowse: TBitBtn;
     chkVermittler: TDBCheckBox;
     cbFileType: TDBComboBox;
+    cbbEmpfName: TDBComboBox;
+    cbbEmpfMail: TDBComboBox;
+    cbbJobTitel: TDBComboBox;
     edtFile: TDBEdit;
     DBGrid1: TDBGrid;
-    edtJobTitel: TDBEdit;
     miOnlineForm: TMenuItem;
     miPost: TMenuItem;
     miMail: TMenuItem;
@@ -64,8 +66,6 @@ type
     mmoText: TDBMemo;
     navActions: TDBNavigator;
     edtDatum: TDateEdit;
-    edtEmpfaenger: TDBEdit;
-    edtEmpfMail: TDBEdit;
     edtLogDatum: TDateEdit;
     edtRefNr: TDBEdit;
     edtWVL: TDateEdit;

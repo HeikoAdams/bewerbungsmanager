@@ -1,6 +1,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8"
 
+#: bewerbung_strings.rscompanies
+msgid "COMPANIES"
+msgstr ""
+
 #: bewerbung_strings.rscsvexport
 msgctxt "bewerbung_strings.rscsvexport"
 msgid "CSV-Export"
@@ -29,6 +33,14 @@ msgstr ""
 #: bewerbung_strings.rsfehler
 msgctxt "bewerbung_strings.rsfehler"
 msgid "Fehler"
+msgstr ""
+
+#: bewerbung_strings.rsjobs
+msgid "JOBS"
+msgstr ""
+
+#: bewerbung_strings.rsmails
+msgid "MAILS"
 msgstr ""
 
 #: bewerbung_strings.rsunixlauncher

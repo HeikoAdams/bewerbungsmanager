@@ -14,10 +14,10 @@ object frmMain: TfrmMain
     Height = 498
     Top = 25
     Width = 654
-    ActivePage = tsDokumente
+    ActivePage = tsBewerbungData
     Align = alClient
     Images = ilIcons
-    TabIndex = 3
+    TabIndex = 1
     TabOrder = 1
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'
@@ -151,7 +151,7 @@ object frmMain: TfrmMain
           'Stellenangebot'
           'Vermittlungsvorschlag'
         )
-        TabOrder = 5
+        TabOrder = 6
         Values.Strings = (
           '0'
           '1'
@@ -260,28 +260,6 @@ object frmMain: TfrmMain
         MaxLength = 10
         TabOrder = 1
       end
-      object edtEmpfaenger: TDBEdit
-        Left = 108
-        Height = 26
-        Top = 41
-        Width = 201
-        DataField = 'NAME'
-        DataSource = dmBewerbungen.dsData
-        CharCase = ecNormal
-        MaxLength = 0
-        TabOrder = 2
-      end
-      object edtEmpfMail: TDBEdit
-        Left = 424
-        Height = 26
-        Top = 40
-        Width = 200
-        DataField = 'MAIL'
-        DataSource = dmBewerbungen.dsData
-        CharCase = ecNormal
-        MaxLength = 0
-        TabOrder = 3
-      end
       object edtRefNr: TDBEdit
         Left = 424
         Height = 26
@@ -291,7 +269,7 @@ object frmMain: TfrmMain
         DataSource = dmBewerbungen.dsData
         CharCase = ecNormal
         MaxLength = 0
-        TabOrder = 4
+        TabOrder = 5
       end
       object rgFeedback: TDBRadioGroup
         Left = 197
@@ -306,7 +284,7 @@ object frmMain: TfrmMain
           'Eingangsbetätigung'
           'Einladung'
         )
-        TabOrder = 6
+        TabOrder = 7
         Values.Strings = (
           '0'
           '1'
@@ -326,7 +304,7 @@ object frmMain: TfrmMain
           'Zusage'
           'Absage'
         )
-        TabOrder = 7
+        TabOrder = 8
         Values.Strings = (
           '0'
           '1'
@@ -341,7 +319,7 @@ object frmMain: TfrmMain
         DataField = 'NOTES'
         DataSource = dmBewerbungen.dsData
         ScrollBars = ssAutoBoth
-        TabOrder = 10
+        TabOrder = 11
       end
       object lblNotes: TLabel
         Left = 9
@@ -359,7 +337,7 @@ object frmMain: TfrmMain
         Caption = 'Personalvermittler'
         DataField = 'VERMITTLER'
         DataSource = dmBewerbungen.dsData
-        TabOrder = 9
+        TabOrder = 10
         ValueChecked = 'True'
         ValueUnchecked = 'False'
       end
@@ -376,7 +354,7 @@ object frmMain: TfrmMain
           'Post'
           'Online-Formular'
         )
-        TabOrder = 8
+        TabOrder = 9
         Values.Strings = (
           '0'
           '1'
@@ -384,16 +362,44 @@ object frmMain: TfrmMain
           '3'
         )
       end
-      object edtJobTitel: TDBEdit
+      object cbbEmpfName: TDBComboBox
         Left = 108
-        Height = 26
-        Top = 75
+        Height = 28
+        Top = 38
         Width = 200
+        AutoDropDown = True
+        DataField = 'NAME'
+        DataSource = dmBewerbungen.dsData
+        ItemHeight = 0
+        MaxLength = 0
+        Sorted = True
+        TabOrder = 2
+      end
+      object cbbEmpfMail: TDBComboBox
+        Left = 424
+        Height = 28
+        Top = 40
+        Width = 200
+        AutoDropDown = True
+        DataField = 'MAIL'
+        DataSource = dmBewerbungen.dsData
+        ItemHeight = 0
+        MaxLength = 0
+        Sorted = True
+        TabOrder = 3
+      end
+      object cbbJobTitel: TDBComboBox
+        Left = 108
+        Height = 28
+        Top = 73
+        Width = 200
+        AutoDropDown = True
         DataField = 'JOBTITEL'
         DataSource = dmBewerbungen.dsData
-        CharCase = ecNormal
+        ItemHeight = 0
         MaxLength = 0
-        TabOrder = 11
+        Sorted = True
+        TabOrder = 4
       end
     end
     object tsActions: TTabSheet
@@ -1327,6 +1333,42 @@ object frmMain: TfrmMain
     end
     object miMedium: TMenuItem
       Caption = '&Medium'
+      Bitmap.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000905B3114905B
+        3184905B31A3905B31B6905B31C9905B31DA905B31EB905B31FA956139FF9A69
+        41FFA3744FFFAD825FFF905B31D9905B3134FFFFFF00FFFFFF00945F3368B890
+        6DFFD6BAA3FFDFC6B3FFE7D4C3FFEEDFD3FFF5EAE2FFFBF4EFFFFDFAF6FFFFFE
+        FDFFFBEBDFFFFBEFE6FFC19D80FF945F336FFFFFFF00FFFFFF0099643689C7A4
+        85FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFCFFFEFBF7FFFEF7F1FFFEF6
+        F1FFE4AE86FFFAE8DBFFCEAF95FF9964368BFFFFFF00FFFFFF009E6939579E69
+        39F6B48559FFD9A57BFFD89E6FFFD79B6AFFD89663FFD6925DFFD48F59FFD38E
+        57FFE29D69FFFAE3D1FFD8BBA2FF9E69399EFFFFFF00FFFFFF00A46F3C14A46F
+        3CABD5AE8CFFFDF0E5FFF7C7A2FFF7CFADFFF9D5B5FFF8DABDFFF8DEC2FFFAE1
+        C6FFFAE4CCFFFDF5ECFFE2CEBAFFA46F3CB3FFFFFF00FFFFFF00FFFFFF00AA75
+        4028B78656FFFEFEFDFFFADEC2FFFADCBFFFF9DBC0FFF9DBC0FFF9DDC1FFFADB
+        C0FFFADCC3FFFDEBDEFFECDCCDFFAA7540CAFFFFFF00FFFFFF00FFFFFF00B17B
+        431EB98652FFFEFCF9FFF9DCBFFFF8DBBFFFF8DCC0FFF9DBC2FFF9DCC1FFF9DD
+        C2FFFADDC3FFFBE7D4FFF5EDE2FFB17B43E4FFFFFF00FFFFFF00FFFFFF00B782
+        4709B9854BFFFEFBF7FFF9DCC1FFF8DCBFFFF8DCBFFFF8DBC0FFF9DDC0FFF9DD
+        C0FFF9DDC3FFFBE2CBFFFCF9F5FFB78247FBB7824701FFFFFF00FFFFFF00FFFF
+        FF00BD884BF9FCF6F0FFF9DFC7FFF9DCBDFFFADCBFFFFADBC1FFFADDC3FFFADD
+        C2FFF9DDC4FFFBE0C9FFFFFCFAFFC18D53FFBD884B0FFFFFFF00FFFFFF00FFFF
+        FF00C48E4EDAF5E7D8FFFAE5D2FFF9DABCFFF9DBBCFFFADBBFFFFADDC1FFFADD
+        C1FFF9DDC4FFFBE1C8FFFFFDFBFFC89457FFC48E4E12FFFFFF00FFFFFF00FFFF
+        FF00CA9452BBF0D9C1FFFBEDE1FFF9DAC0FFF9DCC2FFF9DEC5FFFAE0C7FFFAE2
+        CAFFFAE2CDFFFAE5D0FFFFFEFDFFCB8F5AFFCA9452F1CA945245FFFFFF00FFFF
+        FF00D09A55A4EDD0B2FFFFF6F0FFFAE1CAFFFBE3CCFFFBE3D0FFFBE6D3FFFBE9
+        D5FFFCE9D8FFFCEADBFFFFFFFDFFD29D71FFEED9C1FFD09A55E5FFFFFF00FFFF
+        FF00D59F5892EBCAA5FFFFFDFBFFFDE9D5FFFDEBD8FFFDEADBFFFDEDDFFFFDF0
+        E2FFFDF1E4FFFCF0E4FFFFFFFFFFE0A070FFFFFBF9FFDFB887FFFFFFFF00FFFF
+        FF00DAA45B84EBC69AFFFFFFFFFFFCEFE2FFFDF0E7FFFDF1EBFFFDF5EEFFFDF8
+        F1FFFDFAF7FFFFFCFAFFFFFFFFFFFEFBF7FFF4DAC0FFDAA45BEAFFFFFF00FFFF
+        FF00DEA85D6DEAC08CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDF9F4FFFBF3
+        EAFFF8EBD9FFF8E6D3FFF5DFC6FFE9CBA6FFDEA85DEDDEA85D5DFFFFFF00FFFF
+        FF00E2AC5F36E2AC5FC6EABC81FFE8B777FFE6B26DFFE4B068FFE2AC5FF0E2AC
+        5FE3E2AC5FCFE2AC5FCCE2AC5FBBE2AC5FA8E2AC5F4BE2AC5F05
+      }
       ImageIndex = 8
       object miMail: TMenuItem
         Tag = 12
