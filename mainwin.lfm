@@ -757,7 +757,7 @@ object frmMain: TfrmMain
       end
     end
   end
-  object DBNavigator1: TDBNavigator
+  object navData: TDBNavigator
     Left = 0
     Height = 25
     Top = 0
@@ -1444,12 +1444,12 @@ object frmMain: TfrmMain
   object dlgExport: TSaveDialog
     DefaultExt = '.csv'
     Filter = 'CSV-Datei|*.csv'
-    left = 94
-    top = 167
+    left = 144
+    top = 448
   end
   object dlgDocuments: TOpenDialog
     Filter = 'alle Dateien|*.odt; *.doc; *.docx; *.pdf|OpenDocument Text (*.odt)|*.odt|Microsoft Word (*.doc)|*.doc|Microsoft Word (*.docx)|*.docx|PDF|*.pdf'
-    left = 160
-    top = 168
+    left = 40
+    top = 448
   end
 end

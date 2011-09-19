@@ -757,7 +757,7 @@ object frmMain: TfrmMain
       end
     end
   end
-  object DBNavigator1: TDBNavigator
+  object navData: TDBNavigator
     Left = 0
     Height = 25
     Top = 0

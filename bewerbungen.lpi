@@ -67,8 +67,8 @@
         <UnitName Value="mainwin"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="550"/>
-        <CursorPos X="92" Y="556"/>
+        <TopLine Value="549"/>
+        <CursorPos X="91" Y="554"/>
         <UsageCount Value="58"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -125,10 +125,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SQLStringsPropertyEditorDlg"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
         <TopLine Value="268"/>
         <CursorPos X="1" Y="290"/>
         <UsageCount Value="10"/>
+        <Loaded Value="True"/>
       </Unit8>
       <Unit9>
         <Filename Value="/usr/share/fpcsrc/packages/fcl-db/src/base/db.pas"/>
@@ -212,13 +215,13 @@
         <ComponentName Value="dmBewerbungen"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="Data"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
         <TopLine Value="160"/>
         <CursorPos X="1" Y="182"/>
         <UsageCount Value="29"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit19>
       <Unit20>
         <Filename Value="mainwin.lfm"/>
@@ -263,7 +266,7 @@
         <Filename Value="bewerbung_strings.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="bewerbung_strings"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
         <TopLine Value="4"/>
         <CursorPos X="22" Y="21"/>
@@ -302,7 +305,7 @@
         <UsageCount Value="10"/>
       </Unit29>
     </Units>
-    <JumpHistory Count="4" HistoryIndex="3">
+    <JumpHistory Count="5" HistoryIndex="4">
       <Position1>
         <Filename Value="data.pas"/>
         <Caret Line="15" Column="20" TopLine="9"/>
@@ -319,6 +322,10 @@
         <Filename Value="mainwin.pas"/>
         <Caret Line="394" Column="24" TopLine="376"/>
       </Position4>
+      <Position5>
+        <Filename Value="/usr/lib/lazarus/components/sqldb/sqlstringspropertyeditordlg.pas"/>
+        <Caret Line="290" Column="1" TopLine="267"/>
+      </Position5>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
