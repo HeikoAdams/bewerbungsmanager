@@ -28,12 +28,17 @@ resourcestring
   rsCOMPANIES = 'COMPANIES';
   rsCSVExport = 'CSV-Export';
   rsDatenbankSKo = 'Datenbank (%s) konnte nicht gefunden werden!';
-  rsDDatensTze = '%d Datensätze';
+  rsDDatensTze = '%d Datensätze in der Datenbank';
   rsExportBeende = 'Export beendet';
+  rsFEEDBACKD = '(FEEDBACK = %d)';
   rsFehler = 'Fehler';
   rsDateFormat = 'dd.mm.yyyy';
   rsJOBS = 'JOBS';
+  rsMEDIUMD = '(MEDIUM = %d)';
   rsMAILS = 'MAILS';
+  rsRESULT2 = '(RESULT <> 2)';
+  rsRESULTD = '(RESULT = %d)';
+  rsTYPD = '(TYP = %d)';
   rsUnixLauncher = '/usr/bin/xdg-open "%s"';
   rsWERT = 'WERT';
 

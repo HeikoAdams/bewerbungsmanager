@@ -35,15 +35,8 @@ type
     dsDocs: TDatasource;
     qryBewerbungen: TSQLQuery;
     qryCSVExport: TSQLQuery;
-    qryFilter: TSQLQuery;
-    qryFilterFeedback: TSQLQuery;
-    qryFilterResult: TSQLQuery;
-    qryFilterTyp: TSQLQuery;
-    qryFilterMedium: TSQLQuery;
-    qryFilterVermittler: TSQLQuery;
     qryLog: TSQLQuery;
     qryDocuments: TSQLQuery;
-    qryData: TSQLQuery;
     traData: TSQLTransaction;
     procedure conDataAfterConnect(Sender: TObject);
     procedure conDataBeforeDisconnect(Sender: TObject);
@@ -64,8 +57,10 @@ type
     FInsertMode: boolean;
 
     procedure UpdateList(aType: string; aList: TStrings);
+    function GetRecordsCount(DataSet: TDataSet): Integer;
   public
     { public declarations }
+    procedure FetchData(aWhere: string);
   end;
 
 var
@@ -78,6 +73,54 @@ uses mainwin, bewerbung_strings;
 {$R *.lfm}
 
 { TdmBewerbungen }
+
+procedure TdmBewerbungen.FetchData(aWhere: string);
+begin
+  with qryBewerbungen do
+  begin
+    Close;
+
+    with SQL do
+    begin
+      Clear;
+
+      if (aWhere = EmptyStr) then
+         Add('SELECT * FROM BEWERBUNGEN ORDER BY Datum DESC, NAME')
+      else
+         Add(Format('SELECT * FROM BEWERBUNGEN WHERE %s ORDER BY Datum DESC, NAME', [aWhere]));
+    end;
+
+    Open;
+  end;
+end;
+
+function TdmBewerbungen.GetRecordsCount(DataSet: TDataSet): Integer;
+var
+  sWhere: string;
+  nWherePos: Integer;
+begin
+  with TSQLQuery.Create(nil) do
+  begin
+    DataBase := conData;
+    Transaction := traData;
+
+    SQL.Add('SELECT COUNT(*) ANZAHL FROM BEWERBUNGEN');
+    nWherePos := Pos('WHERE', qryBewerbungen.SQL.Text);
+
+    if (nWherePos > 0) then
+    begin
+      sWhere := Copy(qryBewerbungen.SQL.Text,
+              nWherePos,
+              Length(qryBewerbungen.SQL.Text) - nWherePos);
+      SQL.Add(sWhere);
+    end;
+
+    Open;
+    Result := FieldByName('ANZAHL').AsInteger;
+    Close;
+    Free;
+  end;
+end;
 
 procedure TdmBewerbungen.conDataAfterConnect(Sender: TObject);
 begin
@@ -108,8 +151,11 @@ begin
   begin
     aList.Clear;
 
-    with qryData do
+    with TSQLQuery.Create(nil) do
     begin
+      DataBase := conData;
+      Transaction := traData;
+
       with SQL do
       begin
         Clear;
@@ -126,6 +172,7 @@ begin
       end;
 
       Close;
+      Free;
     end;
   end;
 end;
@@ -243,7 +290,7 @@ end;
 
 procedure TdmBewerbungen.qryBewerbungenAfterOpen(DataSet: TDataSet);
 begin
-  frmMain.sbInfo.SimpleText := Format(rsDDatensTze, [DataSet.RecordCount]);
+  frmMain.sbInfo.SimpleText := Format(rsDDatensTze, [GetRecordsCount(DataSet)]);
 
   UpdateList(rsCOMPANIES, frmMain.cbbEmpfName.Items);
   UpdateList(rsMAILS, frmMain.cbbEmpfMail.Items);

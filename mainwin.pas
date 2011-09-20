@@ -38,6 +38,7 @@ type
     actExport: TAction;
     actInitiativ: TAction;
     actAngebot: TAction;
+    actAllNoAbsage: TAction;
     actOnlineForm: TAction;
     actPost: TAction;
     actMail: TAction;
@@ -57,6 +58,8 @@ type
     cbbJobTitel: TDBComboBox;
     edtFile: TDBEdit;
     DBGrid1: TDBGrid;
+    miAlleNoAbsagen: TMenuItem;
+    MenuItem4: TMenuItem;
     miOnlineForm: TMenuItem;
     miPost: TMenuItem;
     miMail: TMenuItem;
@@ -120,6 +123,7 @@ type
     tsBewerbungen: TTabSheet;
     procedure actAbsageExecute(Sender: TObject);
     procedure actAlleExecute(Sender: TObject);
+    procedure actAllNoAbsageExecute(Sender: TObject);
     procedure actAngebotExecute(Sender: TObject);
     procedure actEingangExecute(Sender: TObject);
     procedure actEinladungExecute(Sender: TObject);
@@ -222,116 +226,64 @@ begin
     Open;
   end;
 
-  FGridFilter := 0;
+  dmBewerbungen.FetchData(rsRESULT2);
+
+  FGridFilter := 15;
   PageControl1.ActivePageIndex := 0;
 end;
 
 procedure TfrmMain.actNoFeedbackExecute(Sender: TObject);
 begin
-  dmBewerbungen.dsData.DataSet := dmBewerbungen.qryFilterFeedback;
-
-  with dmBewerbungen.qryFilterFeedback do
-  begin
-    Close;
-    Params.ParamValues[rsWERT] := 0;
-    Filter := 'RESULT = 0';
-    Filtered := True;
-    Open;
-  end;
+  dmBewerbungen.FetchData(Format(rsFEEDBACKD + ' AND (RESULT = 0)', [0]));
 
   FGridFilter := 1;
 end;
 
 procedure TfrmMain.actNoResultExecute(Sender: TObject);
 begin
-  dmBewerbungen.dsData.DataSet := dmBewerbungen.qryFilterResult;
-
-  with dmBewerbungen.qryFilterResult do
-  begin
-    Close;
-    Params.ParamValues[rsWERT] := 0;
-    Open;
-  end;
+  dmBewerbungen.FetchData(Format(rsRESULTD, [0]));
 
   FGridFilter := 4;
 end;
 
 procedure TfrmMain.actOnlineFormExecute(Sender: TObject);
 begin
-  dmBewerbungen.dsData.DataSet := dmBewerbungen.qryFilterMedium;
-
-  with dmBewerbungen.qryFilterMedium do
-  begin
-    Close;
-    Params.ParamValues[rsWERT] := 2;
-    Open;
-  end;
+  dmBewerbungen.FetchData(Format(rsMEDIUMD, [2]));
 
   FGridFilter := 14;
 end;
 
 procedure TfrmMain.actPostExecute(Sender: TObject);
 begin
-  dmBewerbungen.dsData.DataSet := dmBewerbungen.qryFilterMedium;
-
-  with dmBewerbungen.qryFilterMedium do
-  begin
-    Close;
-    Params.ParamValues[rsWERT] := 1;
-    Open;
-  end;
+  dmBewerbungen.FetchData(Format(rsMEDIUMD, [1]));
 
   FGridFilter := 13;
 end;
 
 procedure TfrmMain.actVermittlerExecute(Sender: TObject);
 begin
-  dmBewerbungen.dsData.DataSet := dmBewerbungen.qryFilterVermittler;
-
-  with dmBewerbungen.qryFilterVermittler do
-    Open;
+  dmBewerbungen.FetchData('(CAST(VERMITTLER AS INTEGER) <> 0)');
 
   FGridFilter := 8;
 end;
 
 procedure TfrmMain.actVorschlagExecute(Sender: TObject);
 begin
-  dmBewerbungen.dsData.DataSet := dmBewerbungen.qryFilterTyp;
-
-  with dmBewerbungen.qryFilterTyp do
-  begin
-    Close;
-    Params.ParamValues[rsWERT] := 2;
-    Open;
-  end;
+  dmBewerbungen.FetchData(Format(rsTYPD, [2]));
 
   FGridFilter := 11;
 end;
 
 procedure TfrmMain.actWVLExecute(Sender: TObject);
 begin
-  dmBewerbungen.dsData.DataSet := dmBewerbungen.qryFilter;
-
-  with dmBewerbungen.qryFilter do
-  begin
-    Close;
-    Params.ParamValues['Datum'] := FormatDateTime('yyyy-mm-dd', Date);
-    Open;
-  end;
+  dmBewerbungen.FetchData(Format('(WVL <= %s)', [FloatToStr(date)]));
 
   FGridFilter := 7;
 end;
 
 procedure TfrmMain.actZusageExecute(Sender: TObject);
 begin
-  dmBewerbungen.dsData.DataSet := dmBewerbungen.qryFilterResult;
-
-  with dmBewerbungen.qryFilterResult do
-  begin
-    Close;
-    Params.ParamValues[rsWERT] := 1;
-    Open;
-  end;
+  dmBewerbungen.FetchData(Format(rsRESULTD, [1]));
 
   FGridFilter := 5;
 end;
@@ -361,71 +313,42 @@ end;
 
 procedure TfrmMain.actEingangExecute(Sender: TObject);
 begin
-  dmBewerbungen.dsData.DataSet := dmBewerbungen.qryFilterFeedback;
-
-  with dmBewerbungen.qryFilterFeedback do
-  begin
-    Close;
-    Params.ParamValues[rsWERT] := 1;
-    Filtered := False;
-    Open;
-  end;
+  dmBewerbungen.FetchData(Format(rsFEEDBACKD, [1]));
 
   FGridFilter := 2;
 end;
 
 procedure TfrmMain.actAlleExecute(Sender: TObject);
 begin
-  dmBewerbungen.dsData.DataSet := dmBewerbungen.qryBewerbungen;
-
-  with dmBewerbungen.qryBewerbungen do
-  begin
-    Filter := EmptyStr;
-    Filtered := False;
-  end;
+  dmBewerbungen.FetchData(EmptyStr);
 
   FGridFilter := 0;
 end;
 
+procedure TfrmMain.actAllNoAbsageExecute(Sender: TObject);
+begin
+  dmBewerbungen.FetchData(rsRESULT2);
+
+  FGridFilter := 15;
+end;
+
 procedure TfrmMain.actAngebotExecute(Sender: TObject);
 begin
-  dmBewerbungen.dsData.DataSet := dmBewerbungen.qryFilterTyp;
-
-  with dmBewerbungen.qryFilterTyp do
-  begin
-    Close;
-    Params.ParamValues[rsWERT] := 1;
-    Open;
-  end;
+  dmBewerbungen.FetchData(Format(rsTYPD, [1]));
 
   FGridFilter := 10;
 end;
 
 procedure TfrmMain.actAbsageExecute(Sender: TObject);
 begin
-  dmBewerbungen.dsData.DataSet := dmBewerbungen.qryFilterResult;
-
-  with dmBewerbungen.qryFilterResult do
-  begin
-    Close;
-    Params.ParamValues[rsWERT] := 2;
-    Open;
-  end;
+  dmBewerbungen.FetchData(Format(rsRESULTD, [2]));
 
   FGridFilter := 6;
 end;
 
 procedure TfrmMain.actEinladungExecute(Sender: TObject);
 begin
-  dmBewerbungen.dsData.DataSet := dmBewerbungen.qryFilterFeedback;
-
-  with dmBewerbungen.qryFilterFeedback do
-  begin
-    Close;
-    Params.ParamValues[rsWERT] := 2;
-    Filtered := False;
-    Open;
-  end;
+  dmBewerbungen.FetchData(Format(rsFEEDBACKD, [2]));
 
   FGridFilter := 3;
 end;
@@ -481,28 +404,14 @@ end;
 
 procedure TfrmMain.actInitiativExecute(Sender: TObject);
 begin
-  dmBewerbungen.dsData.DataSet := dmBewerbungen.qryFilterTyp;
-
-  with dmBewerbungen.qryFilterTyp do
-  begin
-    Close;
-    Params.ParamValues[rsWERT] := 0;
-    Open;
-  end;
+  dmBewerbungen.FetchData(Format(rsTYPD, [0]));
 
   FGridFilter := 9;
 end;
 
 procedure TfrmMain.actMailExecute(Sender: TObject);
 begin
-  dmBewerbungen.dsData.DataSet := dmBewerbungen.qryFilterMedium;
-
-  with dmBewerbungen.qryFilterMedium do
-  begin
-    Close;
-    Params.ParamValues[rsWERT] := 0;
-    Open;
-  end;
+  dmBewerbungen.FetchData(Format(rsMEDIUMD, [0]));
 
   FGridFilter := 12;
 end;

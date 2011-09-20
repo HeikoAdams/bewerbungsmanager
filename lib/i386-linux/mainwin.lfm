@@ -1124,7 +1124,6 @@ object frmMain: TfrmMain
       Tag = 7
       Caption = '&Wiedervorlage'
       OnExecute = actWVLExecute
-      Visible = False
     end
     object actExport: TAction
       Tag = 100
@@ -1169,6 +1168,11 @@ object frmMain: TfrmMain
       Category = 'Medium'
       Caption = '&Online-Formular'
       OnExecute = actOnlineFormExecute
+    end
+    object actAllNoAbsage: TAction
+      Tag = 15
+      Caption = '&alle ohne Absagen'
+      OnExecute = actAllNoAbsageExecute
     end
   end
   object pmFilter: TPopupMenu
@@ -1391,6 +1395,13 @@ object frmMain: TfrmMain
     object miVermittler: TMenuItem
       Tag = 8
       Action = actVermittler
+    end
+    object MenuItem4: TMenuItem
+      Caption = '-'
+    end
+    object miAlleNoAbsagen: TMenuItem
+      Tag = 15
+      Action = actAllNoAbsage
     end
     object miAlle: TMenuItem
       Action = actAlle

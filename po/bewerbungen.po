@@ -22,12 +22,16 @@ msgstr ""
 
 #: bewerbung_strings.rsddatenstze
 msgctxt "bewerbung_strings.rsddatenstze"
-msgid "%d Datensätze"
+msgid "%d Datensätze in der Datenbank"
 msgstr ""
 
 #: bewerbung_strings.rsexportbeende
 msgctxt "bewerbung_strings.rsexportbeende"
 msgid "Export beendet"
+msgstr ""
+
+#: bewerbung_strings.rsfeedbackd
+msgid "(FEEDBACK = %d)"
 msgstr ""
 
 #: bewerbung_strings.rsfehler
@@ -41,6 +45,22 @@ msgstr ""
 
 #: bewerbung_strings.rsmails
 msgid "MAILS"
+msgstr ""
+
+#: bewerbung_strings.rsmediumd
+msgid "(MEDIUM = %d)"
+msgstr ""
+
+#: bewerbung_strings.rsresult2
+msgid "(RESULT <> 2)"
+msgstr ""
+
+#: bewerbung_strings.rsresultd
+msgid "(RESULT = %d)"
+msgstr ""
+
+#: bewerbung_strings.rstypd
+msgid "(TYP = %d)"
 msgstr ""
 
 #: bewerbung_strings.rsunixlauncher
@@ -103,6 +123,10 @@ msgstr ""
 
 #: TFRMMAIN.ACTALLE.CAPTION
 msgid "&alle anzeigen"
+msgstr ""
+
+#: TFRMMAIN.ACTALLNOABSAGE.CAPTION
+msgid "&alle ohne Absagen"
 msgstr ""
 
 #: TFRMMAIN.ACTANGEBOT.CAPTION
@@ -317,6 +341,12 @@ msgid "Wiedervorlage"
 msgstr ""
 
 #: TFRMMAIN.MENUITEM1.CAPTION
+msgctxt "TFRMMAIN.MENUITEM1.CAPTION"
+msgid "-"
+msgstr ""
+
+#: TFRMMAIN.MENUITEM4.CAPTION
+msgctxt "TFRMMAIN.MENUITEM4.CAPTION"
 msgid "-"
 msgstr ""
 

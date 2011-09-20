@@ -12,12 +12,16 @@ bewerbung_strings.rsdatenbanksko='Datenbank (%s) konnte nicht gefunden we'+
 'rden!'
 
 
-# hash value = 62338069
-bewerbung_strings.rsddatenstze='%d Datens'#195#164'tze'
+# hash value = 21848043
+bewerbung_strings.rsddatenstze='%d Datens'#195#164'tze in der Datenbank'
 
 
 # hash value = 130996324
 bewerbung_strings.rsexportbeende='Export beendet'
+
+
+# hash value = 78078649
+bewerbung_strings.rsfeedbackd='(FEEDBACK = %d)'
 
 
 # hash value = 80474818
@@ -32,8 +36,24 @@ bewerbung_strings.rsdateformat='dd.mm.yyyy'
 bewerbung_strings.rsjobs='JOBS'
 
 
+# hash value = 36087257
+bewerbung_strings.rsmediumd='(MEDIUM = %d)'
+
+
 # hash value = 5332499
 bewerbung_strings.rsmails='MAILS'
+
+
+# hash value = 190220665
+bewerbung_strings.rsresult2='(RESULT <> 2)'
+
+
+# hash value = 190161241
+bewerbung_strings.rsresultd='(RESULT = %d)'
+
+
+# hash value = 37614217
+bewerbung_strings.rstypd='(TYP = %d)'
 
 
 # hash value = 32630770
