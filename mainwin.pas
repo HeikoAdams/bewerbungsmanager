@@ -276,7 +276,8 @@ end;
 
 procedure TfrmMain.actWVLExecute(Sender: TObject);
 begin
-  dmBewerbungen.FetchData(Format('(WVL <= %s)', [FloatToStr(date)]));
+  dmBewerbungen.FetchData(Format('(WVL <= %s) AND (FEEDBACK = 0) AND (RESULT = 0)',
+    [FloatToStr(date)]));
 
   FGridFilter := 7;
 end;
@@ -291,7 +292,7 @@ end;
 procedure TfrmMain.btnBrowseClick(Sender: TObject);
 begin
   if dlgDocuments.Execute then
-     dmBewerbungen.qryDocuments.FieldByName('FILENAME').AsString :=dlgDocuments.FileName;
+    dmBewerbungen.qryDocuments.FieldByName('FILENAME').AsString := dlgDocuments.FileName;
 end;
 
 procedure TfrmMain.btnFileOpenClick(Sender: TObject);
@@ -303,7 +304,7 @@ begin
     CommandLine := Format(rsUnixLauncher, [edtFile.Text]);
     Options := Options + [poWaitOnExit];
     Execute;
-    Free
+    Free;
   end;
   {$endif}
   {$IFDEF Windows}
