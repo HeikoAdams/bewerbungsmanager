@@ -18,7 +18,7 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="5"/>
-      <BuildNr Value="42"/>
+      <BuildNr Value="46"/>
       <Language Value="0407"/>
       <StringTable CompanyName="Heiko Adams" FileDescription="Verwaltung für Bewerbungen" InternalName="bewerbungen" LegalCopyright="2011 Heiko Adams" OriginalFilename="bewerbungen" ProductName="Bewerbungsverwaltung" ProductVersion="0.5"/>
     </VersionInfo>
@@ -57,7 +57,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="38" Y="13"/>
-        <UsageCount Value="58"/>
+        <UsageCount Value="60"/>
       </Unit0>
       <Unit1>
         <Filename Value="mainwin.pas"/>
@@ -67,9 +67,9 @@
         <UnitName Value="mainwin"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="549"/>
-        <CursorPos X="91" Y="554"/>
-        <UsageCount Value="58"/>
+        <TopLine Value="1"/>
+        <CursorPos X="94" Y="1"/>
+        <UsageCount Value="60"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -125,13 +125,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SQLStringsPropertyEditorDlg"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
         <TopLine Value="268"/>
         <CursorPos X="1" Y="290"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit8>
       <Unit9>
         <Filename Value="/usr/share/fpcsrc/packages/fcl-db/src/base/db.pas"/>
@@ -215,11 +212,12 @@
         <ComponentName Value="dmBewerbungen"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="Data"/>
-        <EditorIndex Value="3"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="160"/>
-        <CursorPos X="1" Y="182"/>
-        <UsageCount Value="29"/>
+        <TopLine Value="191"/>
+        <CursorPos X="38" Y="205"/>
+        <UsageCount Value="31"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit19>
@@ -266,11 +264,11 @@
         <Filename Value="bewerbung_strings.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="bewerbung_strings"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="4"/>
-        <CursorPos X="22" Y="21"/>
-        <UsageCount Value="26"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="17"/>
+        <UsageCount Value="28"/>
         <Loaded Value="True"/>
       </Unit25>
       <Unit26>
@@ -305,7 +303,7 @@
         <UsageCount Value="10"/>
       </Unit29>
     </Units>
-    <JumpHistory Count="5" HistoryIndex="4">
+    <JumpHistory Count="14" HistoryIndex="13">
       <Position1>
         <Filename Value="data.pas"/>
         <Caret Line="15" Column="20" TopLine="9"/>
@@ -323,9 +321,45 @@
         <Caret Line="394" Column="24" TopLine="376"/>
       </Position4>
       <Position5>
-        <Filename Value="/usr/lib/lazarus/components/sqldb/sqlstringspropertyeditordlg.pas"/>
-        <Caret Line="290" Column="1" TopLine="267"/>
+        <Filename Value="data.pas"/>
+        <Caret Line="17" Column="1" TopLine="1"/>
       </Position5>
+      <Position6>
+        <Filename Value="data.pas"/>
+        <Caret Line="210" Column="1" TopLine="197"/>
+      </Position6>
+      <Position7>
+        <Filename Value="data.pas"/>
+        <Caret Line="247" Column="8" TopLine="239"/>
+      </Position7>
+      <Position8>
+        <Filename Value="data.pas"/>
+        <Caret Line="217" Column="24" TopLine="213"/>
+      </Position8>
+      <Position9>
+        <Filename Value="data.pas"/>
+        <Caret Line="210" Column="1" TopLine="199"/>
+      </Position9>
+      <Position10>
+        <Filename Value="data.pas"/>
+        <Caret Line="211" Column="1" TopLine="199"/>
+      </Position10>
+      <Position11>
+        <Filename Value="data.pas"/>
+        <Caret Line="212" Column="1" TopLine="199"/>
+      </Position11>
+      <Position12>
+        <Filename Value="data.pas"/>
+        <Caret Line="213" Column="1" TopLine="199"/>
+      </Position12>
+      <Position13>
+        <Filename Value="bewerbung_strings.pas"/>
+        <Caret Line="17" Column="1" TopLine="1"/>
+      </Position13>
+      <Position14>
+        <Filename Value="data.pas"/>
+        <Caret Line="205" Column="38" TopLine="191"/>
+      </Position14>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
@@ -372,7 +406,7 @@
     <BreakPoints Count="1">
       <Item1>
         <Source Value="mainwin.pas"/>
-        <Line Value="592"/>
+        <Line Value="609"/>
       </Item1>
     </BreakPoints>
     <Exceptions Count="3">

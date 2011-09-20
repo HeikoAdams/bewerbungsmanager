@@ -167,6 +167,7 @@ object frmMain: TfrmMain
         CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
         OKCaption = 'OK'
         CancelCaption = 'Cancel'
+        DefaultToday = True
         DateOrder = doDMY
         ButtonWidth = 23
         CharCase = ecNormal
@@ -368,7 +369,6 @@ object frmMain: TfrmMain
         Height = 28
         Top = 38
         Width = 200
-        AutoDropDown = True
         DataField = 'NAME'
         DataSource = dmBewerbungen.dsData
         ItemHeight = 0
@@ -381,7 +381,6 @@ object frmMain: TfrmMain
         Height = 28
         Top = 40
         Width = 200
-        AutoDropDown = True
         DataField = 'MAIL'
         DataSource = dmBewerbungen.dsData
         ItemHeight = 0
@@ -394,7 +393,6 @@ object frmMain: TfrmMain
         Height = 28
         Top = 73
         Width = 200
-        AutoDropDown = True
         DataField = 'JOBTITEL'
         DataSource = dmBewerbungen.dsData
         ItemHeight = 0
@@ -1444,12 +1442,12 @@ object frmMain: TfrmMain
   object dlgExport: TSaveDialog
     DefaultExt = '.csv'
     Filter = 'CSV-Datei|*.csv'
-    left = 94
-    top = 167
+    left = 144
+    top = 448
   end
   object dlgDocuments: TOpenDialog
     Filter = 'alle Dateien|*.odt; *.doc; *.docx; *.pdf|OpenDocument Text (*.odt)|*.odt|Microsoft Word (*.doc)|*.doc|Microsoft Word (*.docx)|*.docx|PDF|*.pdf'
-    left = 160
-    top = 168
+    left = 40
+    top = 448
   end
 end

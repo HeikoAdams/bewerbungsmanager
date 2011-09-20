@@ -197,6 +197,7 @@ begin
     if traData.Active then
     begin
       traData.CommitRetaining;
+      DataSet.Refresh;
 
       if DataSet.BookmarkValid(Bookmark) then
         DataSet.GotoBookmark(Bookmark);
@@ -214,19 +215,21 @@ end;
 
 procedure TdmBewerbungen.qryBewerbungenAfterInsert(DataSet: TDataSet);
 var
-  nDefaults: array[0..2] of integer;
+  nDefaults: array[0..3] of integer;
 begin
   if FileExists(frmMain.ConfigFile.FileName) then
   begin
     nDefaults[0] := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'TYP', 1);
-    nDefaults[1] := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'FEEDBACK', 1);
+    nDefaults[1] := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'FEEDBACK', 0);
     nDefaults[2] := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'RESULT', 0);
+    nDefaults[3] := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'MEDIUM', 0);
   end
   else
   begin
     nDefaults[0] := 1;
     nDefaults[1] := 0;
     nDefaults[2] := 0;
+    nDefaults[3] := 0;
   end;
 
   with DataSet do
@@ -234,6 +237,7 @@ begin
     FieldByName('TYP').AsInteger := nDefaults[0];
     FieldByName('FEEDBACK').AsInteger := nDefaults[1];
     FieldByName('RESULT').AsInteger := nDefaults[2];
+    FieldByName('MEDIUM').AsInteger := nDefaults[3];
   end;
 end;
 
