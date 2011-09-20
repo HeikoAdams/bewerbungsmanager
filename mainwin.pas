@@ -156,6 +156,8 @@ type
 
     FErrorCode: integer;
     FGridFilter: word;
+
+    procedure NotifyWVL;
   public
     { public declarations }
     property ConfigFile: TIniFile read FConfigFile;
@@ -179,6 +181,37 @@ begin
   FErrorMsg := SysErrorMessage(FErrorCode);
 
   Application.MessageBox(PChar(rsFehler), PChar(FErrorMsg), MB_ICONWARNING + MB_OK);
+end;
+
+procedure TfrmMain.NotifyWVL;
+var
+  nCount: Integer;
+  sMessage: string;
+begin
+  with TSQLQuery.Create(nil) do
+  begin
+     DataBase := dmBewerbungen.conData;
+     Transaction := dmBewerbungen.traData;
+
+     with SQL do
+     begin
+        Add('SELECT COUNT(*) ANZAHL');
+        Add('FROM BEWERBUNGEN');
+        Add(Format('WHERE (WVL <= %s) AND (FEEDBACK = 0) AND (RESULT = 0)',
+            [FloatToStr(date)]));
+     end;
+
+     Open;
+     nCount := FieldByName('ANZAHL').AsInteger;
+     Close;
+     Free;
+  end;
+
+  if (nCount > 0) then
+  begin
+    sMessage := Format(rsEsBefindenSi, [nCount]);
+    Application.MessageBox(PChar(sMessage), 'Wiedervorlage', MB_ICONWARNING + MB_OK);
+  end;
 end;
 
 procedure TfrmMain.FormCreate(Sender: TObject);
@@ -225,6 +258,9 @@ begin
     DatabaseName := FDataFile;
     Open;
   end;
+
+  if FConfigFile.ReadBool('GENERAL', 'NOTIFY-WVL', TRUE) then
+     NotifyWVL;
 
   dmBewerbungen.FetchData(rsRESULT2);
 

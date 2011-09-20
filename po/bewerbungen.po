@@ -25,6 +25,10 @@ msgctxt "bewerbung_strings.rsddatenstze"
 msgid "%d Datensätze in der Datenbank"
 msgstr ""
 
+#: bewerbung_strings.rsesbefindensi
+msgid "Es befinden sich aktuell %d Bewerbungen in der Wiedervorlage!"
+msgstr ""
+
 #: bewerbung_strings.rsexportbeende
 msgctxt "bewerbung_strings.rsexportbeende"
 msgid "Export beendet"

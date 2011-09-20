@@ -29,6 +29,8 @@ resourcestring
   rsCSVExport = 'CSV-Export';
   rsDatenbankSKo = 'Datenbank (%s) konnte nicht gefunden werden!';
   rsDDatensTze = '%d Datensätze in der Datenbank';
+  rsEsBefindenSi = 'Es befinden sich aktuell %d Bewerbungen in der '
+    +'Wiedervorlage!';
   rsExportBeende = 'Export beendet';
   rsFEEDBACKD = '(FEEDBACK = %d)';
   rsFehler = 'Fehler';

@@ -16,6 +16,11 @@ bewerbung_strings.rsdatenbanksko='Datenbank (%s) konnte nicht gefunden we'+
 bewerbung_strings.rsddatenstze='%d Datens'#195#164'tze in der Datenbank'
 
 
+# hash value = 38019713
+bewerbung_strings.rsesbefindensi='Es befinden sich aktuell %d Bewerbungen'+
+' in der Wiedervorlage!'
+
+
 # hash value = 130996324
 bewerbung_strings.rsexportbeende='Export beendet'
 
