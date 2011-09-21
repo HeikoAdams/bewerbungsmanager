@@ -1,0 +1,3 @@
+ToDo:
+- implement filter for date range for applications list
+- implement filter for date range for csv-export

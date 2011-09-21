@@ -258,6 +258,7 @@ begin
   UpdateList(rsCOMPANIES, frmMain.cbbEmpfName.Items);
   UpdateList(rsMAILS, frmMain.cbbEmpfMail.Items);
   UpdateList(rsJOBS, frmMain.cbbJobTitel.Items);
+  frmMain.sbInfo.SimpleText := Format(rsDDatensTze, [GetRecordsCount(DataSet)]);
 end;
 
 procedure TdmBewerbungen.qryBewerbungenAfterInsert(DataSet: TDataSet);
