@@ -47,6 +47,10 @@ msgstr ""
 msgid "JOBS"
 msgstr ""
 
+#: bewerbung_strings.rskeinebereins
+msgid "keine Übereinstimmung gefunden"
+msgstr ""
+
 #: bewerbung_strings.rsmails
 msgid "MAILS"
 msgstr ""
@@ -61,6 +65,10 @@ msgstr ""
 
 #: bewerbung_strings.rsresultd
 msgid "(RESULT = %d)"
+msgstr ""
+
+#: bewerbung_strings.rssuche
+msgid "Suche"
 msgstr ""
 
 #: bewerbung_strings.rstypd
@@ -149,6 +157,10 @@ msgstr ""
 msgid "&CSV-Export"
 msgstr ""
 
+#: TFRMMAIN.ACTFIND.CAPTION
+msgid "&Suche"
+msgstr ""
+
 #: TFRMMAIN.ACTINITIATIV.CAPTION
 msgid "&Initiativbewerbung"
 msgstr ""
@@ -211,6 +223,10 @@ msgstr ""
 msgid "Datei"
 msgstr ""
 
+#: TFRMMAIN.DLGFINDCOMPANY.TITLE
+msgid "Empfänger suchen"
+msgstr ""
+
 #: TFRMMAIN.EDTDATUM.CANCELCAPTION
 msgctxt "TFRMMAIN.EDTDATUM.CANCELCAPTION"
 msgid "Cancel"
@@ -256,7 +272,7 @@ msgid "Wiedervorlage"
 msgstr ""
 
 #: TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[2].TCOLUMNTITLE.CAPTION
-msgid "Name"
+msgid "Empfänger"
 msgstr ""
 
 #: TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[3].TCOLUMNTITLE.CAPTION

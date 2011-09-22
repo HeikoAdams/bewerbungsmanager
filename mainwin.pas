@@ -39,6 +39,7 @@ type
     actInitiativ: TAction;
     actAngebot: TAction;
     actAllNoAbsage: TAction;
+    actFind: TAction;
     actOnlineForm: TAction;
     actPost: TAction;
     actMail: TAction;
@@ -58,6 +59,8 @@ type
     cbbJobTitel: TDBComboBox;
     edtFile: TDBEdit;
     DBGrid1: TDBGrid;
+    dlgFindCompany: TFindDialog;
+    miSuche: TMenuItem;
     miAlleNoAbsagen: TMenuItem;
     MenuItem4: TMenuItem;
     miOnlineForm: TMenuItem;
@@ -128,6 +131,7 @@ type
     procedure actEingangExecute(Sender: TObject);
     procedure actEinladungExecute(Sender: TObject);
     procedure actExportExecute(Sender: TObject);
+    procedure actFindExecute(Sender: TObject);
     procedure actInitiativExecute(Sender: TObject);
     procedure actMailExecute(Sender: TObject);
     procedure actNoFeedbackExecute(Sender: TObject);
@@ -140,6 +144,7 @@ type
     procedure actZusageExecute(Sender: TObject);
     procedure btnBrowseClick(Sender: TObject);
     procedure btnFileOpenClick(Sender: TObject);
+    procedure dlgFindCompanyFind(Sender: TObject);
     procedure grdBewerbungenDblClick(Sender: TObject);
     procedure grdBewerbungenPrepareCanvas(Sender: TObject; DataCol: integer;
       Column: TColumn; AState: TGridDrawState);
@@ -169,7 +174,7 @@ var
 
 implementation
 
-uses LCLType, dateutils, Data, bewerbung_strings, Process;
+uses LCLType, dateutils, Data, bewerbung_strings, Process, variants;
 
 {$R *.lfm}
 
@@ -348,6 +353,17 @@ begin
   {$endif}
 end;
 
+procedure TfrmMain.dlgFindCompanyFind(Sender: TObject);
+begin
+  if not dmBewerbungen.qryBewerbungen.Locate('NAME',
+     VarArrayOf([dlgFindCompany.FindText]),
+     [loCaseInsensitive, loPartialKey]) then
+     Application.MessageBox(PChar(rsKeineBereins), PChar(rsSuche),
+     MB_OK + MB_ICONWARNING)
+  else
+    dlgFindCompany.CloseDialog;
+end;
+
 procedure TfrmMain.actEingangExecute(Sender: TObject);
 begin
   dmBewerbungen.FetchData(Format(rsFEEDBACKD, [1]));
@@ -437,6 +453,12 @@ begin
     Application.MessageBox(PChar(rsExportBeende), PChar(rsCSVExport),
       MB_ICONINFORMATION + MB_OK);
   end;
+end;
+
+procedure TfrmMain.actFindExecute(Sender: TObject);
+begin
+  actAlle.Execute;
+  dlgFindCompany.Execute;
 end;
 
 procedure TfrmMain.actInitiativExecute(Sender: TObject);

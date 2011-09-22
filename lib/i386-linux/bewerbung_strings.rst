@@ -41,6 +41,10 @@ bewerbung_strings.rsdateformat='dd.mm.yyyy'
 bewerbung_strings.rsjobs='JOBS'
 
 
+# hash value = 231669038
+bewerbung_strings.rskeinebereins='keine '#195#156'bereinstimmung gefunden'+
+
+
 # hash value = 36087257
 bewerbung_strings.rsmediumd='(MEDIUM = %d)'
 
@@ -55,6 +59,10 @@ bewerbung_strings.rsresult2='(RESULT <> 2)'
 
 # hash value = 190161241
 bewerbung_strings.rsresultd='(RESULT = %d)'
+
+
+# hash value = 5945829
+bewerbung_strings.rssuche='Suche'
 
 
 # hash value = 37614217

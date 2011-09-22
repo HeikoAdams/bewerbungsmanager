@@ -36,10 +36,12 @@ resourcestring
   rsFehler = 'Fehler';
   rsDateFormat = 'dd.mm.yyyy';
   rsJOBS = 'JOBS';
+  rsKeineBereins = 'keine Übereinstimmung gefunden';
   rsMEDIUMD = '(MEDIUM = %d)';
   rsMAILS = 'MAILS';
   rsRESULT2 = '(RESULT <> 2)';
   rsRESULTD = '(RESULT = %d)';
+  rsSuche = 'Suche';
   rsTYPD = '(TYP = %d)';
   rsUnixLauncher = '/usr/bin/xdg-open "%s"';
   rsWERT = 'WERT';
