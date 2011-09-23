@@ -61,6 +61,7 @@ type
   public
     { public declarations }
     procedure FetchData(aWhere: string);
+    procedure FetchExportData(aWhere: string);
   end;
 
 var
@@ -88,6 +89,29 @@ begin
          Add('SELECT * FROM BEWERBUNGEN ORDER BY Datum DESC, NAME')
       else
          Add(Format('SELECT * FROM BEWERBUNGEN WHERE %s ORDER BY Datum DESC, NAME', [aWhere]));
+    end;
+
+    Open;
+  end;
+end;
+
+procedure TdmBewerbungen.FetchExportData(aWhere: string);
+begin
+  with qryCSVExport do
+  begin
+    Close;
+
+    with SQL do
+    begin
+      Clear;
+
+      Add('SELECT DATUM, WVL, NAME, MAIL, JOBTITEL, REFNR, (RESULT = 1) AS ZUSAGE, (RESULT = 2) AS ABSAGE');
+      Add('FROM BEWERBUNGEN');
+
+      if not (aWhere = EmptyStr) then
+        Add(Format('%s', [aWhere]));
+
+      Add('ORDER BY DATUM DESC, NAME ');
     end;
 
     Open;

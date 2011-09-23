@@ -174,7 +174,8 @@ var
 
 implementation
 
-uses LCLType, dateutils, Data, bewerbung_strings, Process, variants;
+uses LCLType, dateutils, Data, bewerbung_strings, Process, variants,
+  exportdate;
 
 {$R *.lfm}
 
@@ -412,22 +413,35 @@ var
   sFileName: string;
   sLine: string;
   nCount: integer;
+  dtDateFrom, dtDateDue: TDate;
 begin
+  Application.CreateForm(TfrmExportDate, frmExportDate);
+
+  if (frmExportDate.ShowModal = mrAbort) then
+  begin
+    FreeAndNil(frmExportDate);
+    Exit;
+  end;
+
+  dlgExport.InitialDir:=GetUserDir;
+
   if dlgExport.Execute then
   begin
     sFileName := dlgExport.FileName;
 
+    frmExportDate.GetDateRange(dtDateFrom, dtDateDue);
+    FreeAndNil(frmExportDate);
     AssignFile(ExportFile, sFileName);
+    dmBewerbungen.FetchExportData(Format('WHERE (DATUM >= %d) AND (DATUM <= %d)',
+    [trunc(dtDateFrom), trunc(dtDateDue)]));
 
     if FileExists(sFileName) then
-      Append(ExportFile)
-    else
-      Rewrite(ExportFile);
+       DeleteFile(sFileName);
+
+    Rewrite(ExportFile);
 
     with dmBewerbungen.qryCSVExport do
     begin
-      Open;
-
       sLine := EmptyStr;
       for nCount := 0 to Fields.Count - 1 do
         sLine := sLine + Fields[nCount].FieldName + ';';

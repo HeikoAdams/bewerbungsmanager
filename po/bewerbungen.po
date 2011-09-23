@@ -129,6 +129,46 @@ msgstr ""
 msgid " noch keine Reaktion"
 msgstr ""
 
+#: TFRMEXPORTDATE.BUTTON1.CAPTION
+msgid "&OK"
+msgstr ""
+
+#: TFRMEXPORTDATE.BUTTON2.CAPTION
+msgid "&Abbruch"
+msgstr ""
+
+#: TFRMEXPORTDATE.EDTDATEDUE.CANCELCAPTION
+msgctxt "TFRMEXPORTDATE.EDTDATEDUE.CANCELCAPTION"
+msgid "Cancel"
+msgstr ""
+
+#: TFRMEXPORTDATE.EDTDATEDUE.OKCAPTION
+msgctxt "TFRMEXPORTDATE.EDTDATEDUE.OKCAPTION"
+msgid "OK"
+msgstr ""
+
+#: TFRMEXPORTDATE.EDTDATEFROM.CANCELCAPTION
+msgctxt "TFRMEXPORTDATE.EDTDATEFROM.CANCELCAPTION"
+msgid "Cancel"
+msgstr ""
+
+#: TFRMEXPORTDATE.EDTDATEFROM.OKCAPTION
+msgctxt "TFRMEXPORTDATE.EDTDATEFROM.OKCAPTION"
+msgid "OK"
+msgstr ""
+
+#: TFRMEXPORTDATE.FRMEXPORTDATE.CAPTION
+msgid "Export"
+msgstr ""
+
+#: TFRMEXPORTDATE.LABEL1.CAPTION
+msgid "Datum von"
+msgstr ""
+
+#: TFRMEXPORTDATE.LABEL2.CAPTION
+msgid "Datum bis"
+msgstr ""
+
 #: TFRMMAIN.ACTABSAGE.CAPTION
 msgid "&Absage"
 msgstr ""
@@ -272,6 +312,7 @@ msgid "Wiedervorlage"
 msgstr ""
 
 #: TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[2].TCOLUMNTITLE.CAPTION
+msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[2].TCOLUMNTITLE.CAPTION"
 msgid "Empfänger"
 msgstr ""
 
@@ -352,6 +393,7 @@ msgid "Ref.-Nr"
 msgstr ""
 
 #: TFRMMAIN.LBLWO.CAPTION
+msgctxt "TFRMMAIN.LBLWO.CAPTION"
 msgid "Empfänger"
 msgstr ""
 
