@@ -309,13 +309,18 @@ begin
       DataSet.Refresh;
 
       if DataSet.BookmarkValid(Bookmark) then
-        DataSet.GotoBookmark(Bookmark);
+        DataSet.GotoBookmark(Bookmark)
+      else
+        DataSet.First;
 
       DataSet.FreeBookmark(Bookmark);
     end;
   except
     traData.Rollback;
   end;
+
+  if not conData.Connected then
+     conData.Open;
 
   UpdateList(rsCOMPANIES, frmMain.cbbEmpfName.Items);
   UpdateList(rsMAILS, frmMain.cbbEmpfMail.Items);
