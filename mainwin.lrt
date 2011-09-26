@@ -1,6 +1,7 @@
 TFRMMAIN.FRMMAIN.CAPTION=Bewerbungsmanager
 TFRMMAIN.TSBEWERBUNGEN.CAPTION=Bewerbungen
-TFRMMAIN.GRDBEWERBUNGEN.HINT=dunkelblau = Eingang bestätigt
+TFRMMAIN.GRDBEWERBUNGEN.HINT=blau = Einladung liegt vor
+dunkelblau = Eingang bestätigt
 dunkelrot = Wiedervorlagedatum ohne Reaktion überschritten
 grün = Zusage erhalten
 rot = Absage erhalten

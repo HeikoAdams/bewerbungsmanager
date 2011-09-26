@@ -203,8 +203,7 @@ begin
      begin
         Add('SELECT COUNT(*) ANZAHL');
         Add('FROM BEWERBUNGEN');
-        Add(Format('WHERE (WVL <= %s) AND (FEEDBACK = 0) AND (RESULT = 0)',
-            [FloatToStr(date)]));
+        Add(Format('WHERE ' + rsWHEREWVLSAND, [FloatToStr(date)]));
      end;
 
      Open;
@@ -318,8 +317,7 @@ end;
 
 procedure TfrmMain.actWVLExecute(Sender: TObject);
 begin
-  dmBewerbungen.FetchData(Format('(WVL <= %s) AND (FEEDBACK = 0) AND (RESULT = 0)',
-    [FloatToStr(date)]));
+  dmBewerbungen.FetchData(Format(rsWHEREWVLSAND, [FloatToStr(date)]));
 
   FGridFilter := 7;
 end;
@@ -509,6 +507,11 @@ begin
     if (DataSource.DataSet.FieldByName('FEEDBACK').AsInteger = 1) and
       (DataSource.DataSet.FieldByName('RESULT').AsInteger = 0) then
       Canvas.Font.Color := clNavy;
+
+    // Einladung liegt vor
+    if (DataSource.DataSet.FieldByName('FEEDBACK').AsInteger = 2) and
+      (DataSource.DataSet.FieldByName('RESULT').AsInteger = 0) then
+      Canvas.Font.Color := clBlue;
 
     // Zusage erhalten
     if (DataSource.DataSet.FieldByName('RESULT').AsInteger = 1) then

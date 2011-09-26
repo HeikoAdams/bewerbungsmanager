@@ -29,7 +29,7 @@ object dmBewerbungen: TdmBewerbungen
     AfterConnect = conDataAfterConnect
     BeforeDisconnect = conDataBeforeDisconnect
     DatabaseName = '/home/heiko/.config/bewerbungen/bewerbungen.db'
-    KeepConnection = False
+    KeepConnection = True
     Transaction = traData
     Options = [sloTransactions]
     left = 216

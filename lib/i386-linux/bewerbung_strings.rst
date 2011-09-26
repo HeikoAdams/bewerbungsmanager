@@ -76,3 +76,8 @@ bewerbung_strings.rsunixlauncher='/usr/bin/xdg-open "%s"'
 # hash value = 375412
 bewerbung_strings.rswert='WERT'
 
+
+# hash value = 5054057
+bewerbung_strings.rswherewvlsand='(WVL <= %s) AND (FEEDBACK = 0) AND (RES'+
+'ULT = 0)'
+

@@ -27,7 +27,7 @@ object frmMain: TfrmMain
       object grdBewerbungen: TDBGrid
         Left = 0
         Height = 464
-        Hint = 'dunkelblau = Eingang bestätigt'#10'dunkelrot = Wiedervorlagedatum ohne Reaktion überschritten'#10'grün = Zusage erhalten'#10'rot = Absage erhalten'#10'schwarz = noch keine Reaktion'
+        Hint = 'blau = Einladung liegt vor'#10'dunkelblau = Eingang bestätigt'#10'dunkelrot = Wiedervorlagedatum ohne Reaktion überschritten'#10'grün = Zusage erhalten'#10'rot = Absage erhalten'#10'schwarz = noch keine Reaktion'
         Top = 0
         Width = 648
         Align = alClient

@@ -83,6 +83,14 @@ msgstr ""
 msgid "WERT"
 msgstr ""
 
+#: bewerbung_strings.rswherewvlsand
+msgid "(WVL <= %s) AND (FEEDBACK = 0) AND (RESULT = 0)"
+msgstr ""
+
+#: dunkelblau 
+msgid " Eingang bestätigt"
+msgstr ""
+
 #: dunkelrot 
 msgid " Wiedervorlagedatum ohne Reaktion überschritten"
 msgstr ""
@@ -335,7 +343,7 @@ msgid "Personalvermittler"
 msgstr ""
 
 #: TFRMMAIN.GRDBEWERBUNGEN.HINT
-msgid "dunkelblau = Eingang bestätigt"
+msgid "blau = Einladung liegt vor"
 msgstr ""
 
 #: TFRMMAIN.GRDLOG.COLUMNS[0].TCOLUMNTITLE.CAPTION
