@@ -43,9 +43,9 @@ type
     procedure dsDataStateChange(Sender: TObject);
     procedure dsDocsStateChange(Sender: TObject);
     procedure dsLogStateChange(Sender: TObject);
-    procedure qryBewerbungenAfterDelete(DataSet: TDataSet);
     procedure qryBewerbungenAfterInsert(DataSet: TDataSet);
     procedure qryBewerbungenAfterOpen(DataSet: TDataSet);
+    procedure qryBewerbungenAfterPost(DataSet: TDataSet);
     procedure qryBewerbungenAfterScroll(DataSet: TDataSet);
     procedure qryBewerbungenBeforePost(DataSet: TDataSet);
     procedure qryDocumentsBeforePost(DataSet: TDataSet);
@@ -257,34 +257,6 @@ begin
   end;
 end;
 
-procedure TdmBewerbungen.qryBewerbungenAfterDelete(DataSet: TDataSet);
-var
-  Bookmark: TBookmark;
-begin
-  try
-    Bookmark := DataSet.GetBookmark;
-    TSQLQuery(DataSet).ApplyUpdates;
-
-    if traData.Active then
-    begin
-      traData.CommitRetaining;
-      DataSet.Refresh;
-
-      if DataSet.BookmarkValid(Bookmark) then
-        DataSet.GotoBookmark(Bookmark);
-
-      DataSet.FreeBookmark(Bookmark);
-    end;
-  except
-    traData.Rollback;
-  end;
-
-  UpdateList(rsCOMPANIES, frmMain.cbbEmpfName.Items);
-  UpdateList(rsMAILS, frmMain.cbbEmpfMail.Items);
-  UpdateList(rsJOBS, frmMain.cbbJobTitel.Items);
-  frmMain.sbInfo.SimpleText := Format(rsDDatensTze, [GetRecordsCount(DataSet)]);
-end;
-
 procedure TdmBewerbungen.qryBewerbungenAfterInsert(DataSet: TDataSet);
 var
   nDefaults: array[0..3] of integer;
@@ -315,11 +287,40 @@ end;
 
 procedure TdmBewerbungen.qryBewerbungenAfterOpen(DataSet: TDataSet);
 begin
+  DataSet.First;
   frmMain.sbInfo.SimpleText := Format(rsDDatensTze, [GetRecordsCount(DataSet)]);
 
   UpdateList(rsCOMPANIES, frmMain.cbbEmpfName.Items);
   UpdateList(rsMAILS, frmMain.cbbEmpfMail.Items);
   UpdateList(rsJOBS, frmMain.cbbJobTitel.Items);
+end;
+
+procedure TdmBewerbungen.qryBewerbungenAfterPost(DataSet: TDataSet);
+var
+  Bookmark: TBookmark;
+begin
+  try
+    Bookmark := DataSet.GetBookmark;
+    TSQLQuery(DataSet).ApplyUpdates;
+
+    if traData.Active then
+    begin
+      traData.CommitRetaining;
+      DataSet.Refresh;
+
+      if DataSet.BookmarkValid(Bookmark) then
+        DataSet.GotoBookmark(Bookmark);
+
+      DataSet.FreeBookmark(Bookmark);
+    end;
+  except
+    traData.Rollback;
+  end;
+
+  UpdateList(rsCOMPANIES, frmMain.cbbEmpfName.Items);
+  UpdateList(rsMAILS, frmMain.cbbEmpfMail.Items);
+  UpdateList(rsJOBS, frmMain.cbbJobTitel.Items);
+  frmMain.sbInfo.SimpleText := Format(rsDDatensTze, [GetRecordsCount(DataSet)]);
 end;
 
 procedure TdmBewerbungen.qryBewerbungenAfterScroll(DataSet: TDataSet);

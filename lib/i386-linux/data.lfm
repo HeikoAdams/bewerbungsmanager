@@ -37,10 +37,10 @@ object dmBewerbungen: TdmBewerbungen
   end
   object qryBewerbungen: TSQLQuery
     IndexName = 'DEFAULT_ORDER'
-    AfterDelete = qryBewerbungenAfterDelete
+    AfterDelete = qryBewerbungenAfterPost
     AfterInsert = qryBewerbungenAfterInsert
     AfterOpen = qryBewerbungenAfterOpen
-    AfterPost = qryBewerbungenAfterDelete
+    AfterPost = qryBewerbungenAfterPost
     AfterScroll = qryBewerbungenAfterScroll
     BeforePost = qryBewerbungenBeforePost
     Database = conData
@@ -55,8 +55,8 @@ object dmBewerbungen: TdmBewerbungen
   end
   object qryLog: TSQLQuery
     IndexFieldNames = 'ID'
-    AfterDelete = qryBewerbungenAfterDelete
-    AfterPost = qryBewerbungenAfterDelete
+    AfterDelete = qryBewerbungenBeforePost
+    AfterPost = qryBewerbungenAfterPost
     AfterScroll = qryLogAfterScroll
     BeforePost = qryLogBeforePost
     Database = conData
@@ -90,8 +90,8 @@ object dmBewerbungen: TdmBewerbungen
   end
   object qryDocuments: TSQLQuery
     IndexName = 'DEFAULT_ORDER'
-    AfterDelete = qryBewerbungenAfterDelete
-    AfterPost = qryBewerbungenAfterDelete
+    AfterDelete = qryBewerbungenAfterPost
+    AfterPost = qryBewerbungenAfterPost
     BeforePost = qryDocumentsBeforePost
     Database = conData
     Transaction = traData
