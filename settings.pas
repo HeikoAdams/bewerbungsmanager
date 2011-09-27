@@ -23,7 +23,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  DbCtrls, ExtCtrls, Buttons;
+  DbCtrls, ExtCtrls, Buttons, EditBtn;
 
 type
 
@@ -34,8 +34,6 @@ type
     BitBtn2: TBitBtn;
     chkNotifyWVL: TCheckBox;
     GroupBox1: TGroupBox;
-    rgErgebnis: TDBRadioGroup;
-    rgFeedback: TRadioGroup;
     rgMedium: TDBRadioGroup;
     rgTyp: TRadioGroup;
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -53,14 +51,14 @@ implementation
 
 uses mainwin, LCLType, bewerbung_strings;
 
+{$R *.lfm}
+
 { TfrmSettings }
 
 procedure TfrmSettings.FormCreate(Sender: TObject);
 begin
   chkNotifyWVL.Checked := frmMain.ConfigFile.ReadBool('GENERAL', 'NOTIFY-WVL', TRUE);
   rgTyp.ItemIndex := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'TYP', 1);
-  rgFeedback.ItemIndex := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'FEEDBACK', 0);
-  rgErgebnis.ItemIndex := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'RESULT', 0);
   rgMedium.ItemIndex := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'MEDIUM', 0);
 end;
 
@@ -71,16 +69,12 @@ begin
   begin
     frmMain.ConfigFile.WriteBool('GENERAL', 'NOTIFY-WVL', chkNotifyWVL.Checked);
     frmMain.ConfigFile.WriteInteger('DEFAULTS', 'TYP', rgTyp.ItemIndex);
-    frmMain.ConfigFile.WriteInteger('DEFAULTS', 'FEEDBACK', rgFeedback.ItemIndex);
-    frmMain.ConfigFile.WriteInteger('DEFAULTS', 'RESULT', rgErgebnis.ItemIndex);
     frmMain.ConfigFile.WriteInteger('DEFAULTS', 'MEDIUM', rgMedium.ItemIndex);
 
     Application.MessageBox(PChar(rsDieNderungen), PChar(rsEinstellunge),
       MB_ICONWARNING + MB_OK);
   end;
 end;
-
-{$R *.lfm}
 
 end.
 

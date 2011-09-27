@@ -510,16 +510,6 @@ msgstr ""
 msgid "Standardwerte"
 msgstr ""
 
-#: TFRMSETTINGS.RGERGEBNIS.CAPTION
-msgctxt "TFRMSETTINGS.RGERGEBNIS.CAPTION"
-msgid "Ergebnis"
-msgstr ""
-
-#: TFRMSETTINGS.RGFEEDBACK.CAPTION
-msgctxt "TFRMSETTINGS.RGFEEDBACK.CAPTION"
-msgid "Rückmeldung"
-msgstr ""
-
 #: TFRMSETTINGS.RGMEDIUM.CAPTION
 msgctxt "TFRMSETTINGS.RGMEDIUM.CAPTION"
 msgid "Medium"

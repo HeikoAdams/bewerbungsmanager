@@ -1,11 +1,11 @@
 object frmSettings: TfrmSettings
   Left = 454
-  Height = 358
+  Height = 240
   Top = 251
   Width = 426
   BorderStyle = bsDialog
   Caption = 'Einstellungen'
-  ClientHeight = 358
+  ClientHeight = 240
   ClientWidth = 426
   OnClose = FormClose
   OnCreate = FormCreate
@@ -25,11 +25,11 @@ object frmSettings: TfrmSettings
   end
   object GroupBox1: TGroupBox
     Left = 8
-    Height = 256
+    Height = 144
     Top = 48
     Width = 409
     Caption = 'Standardwerte'
-    ClientHeight = 238
+    ClientHeight = 126
     ClientWidth = 405
     TabOrder = 1
     object rgTyp: TRadioGroup
@@ -56,34 +56,10 @@ object frmSettings: TfrmSettings
       )
       TabOrder = 0
     end
-    object rgFeedback: TRadioGroup
-      Left = 214
+    object rgMedium: TDBRadioGroup
+      Left = 222
       Height = 105
       Top = 8
-      Width = 166
-      AutoFill = True
-      Caption = 'Rückmeldung'
-      ChildSizing.LeftRightSpacing = 6
-      ChildSizing.TopBottomSpacing = 6
-      ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
-      ChildSizing.EnlargeVertical = crsHomogenousChildResize
-      ChildSizing.ShrinkHorizontal = crsScaleChilds
-      ChildSizing.ShrinkVertical = crsScaleChilds
-      ChildSizing.Layout = cclLeftToRightThenTopToBottom
-      ChildSizing.ControlsPerLine = 1
-      ClientHeight = 87
-      ClientWidth = 162
-      Items.Strings = (
-        'keins'
-        'Eingangsbetätigung'
-        'Einladung'
-      )
-      TabOrder = 1
-    end
-    object rgMedium: TDBRadioGroup
-      Left = 214
-      Height = 105
-      Top = 120
       Width = 166
       Caption = 'Medium'
       DataField = 'MEDIUM'
@@ -92,7 +68,7 @@ object frmSettings: TfrmSettings
         'Post'
         'Online-Formular'
       )
-      TabOrder = 2
+      TabOrder = 1
       Values.Strings = (
         '0'
         '1'
@@ -100,30 +76,11 @@ object frmSettings: TfrmSettings
         '3'
       )
     end
-    object rgErgebnis: TDBRadioGroup
-      Left = 14
-      Height = 105
-      Top = 120
-      Width = 185
-      Caption = 'Ergebnis'
-      DataField = 'RESULT'
-      Items.Strings = (
-        'keins'
-        'Zusage'
-        'Absage'
-      )
-      TabOrder = 3
-      Values.Strings = (
-        '0'
-        '1'
-        '2'
-      )
-    end
   end
   object BitBtn1: TBitBtn
     Left = 8
     Height = 30
-    Top = 320
+    Top = 200
     Width = 75
     Caption = '&Ok'
     Default = True
@@ -132,9 +89,9 @@ object frmSettings: TfrmSettings
     TabOrder = 2
   end
   object BitBtn2: TBitBtn
-    Left = 304
+    Left = 308
     Height = 30
-    Top = 320
+    Top = 200
     Width = 109
     Cancel = True
     Caption = 'Abbrechen'
