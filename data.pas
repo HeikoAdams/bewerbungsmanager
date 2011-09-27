@@ -356,19 +356,23 @@ begin
 end;
 
 procedure TdmBewerbungen.qryBewerbungenBeforePost(DataSet: TDataSet);
+var
+  nDays: Word;
 begin
+  nDays := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'WVL', 14);
+
   with qryBewerbungen do
   begin
     FieldByName('DATUM').AsDateTime := frmMain.edtDatum.Date;
 
     if (State = dsInsert) then
-      FieldByName('WVL').AsDateTime := IncDay(frmMain.edtDatum.Date, 14)
+      FieldByName('WVL').AsDateTime := IncDay(frmMain.edtDatum.Date, nDays)
     else
     begin
       if (frmMain.edtWVL.Date <> 0) then
         FieldByName('WVL').AsDateTime := frmMain.edtWVL.Date
       else
-        FieldByName('WVL').AsDateTime := IncDay(frmMain.edtWVL.Date, 14);
+        FieldByName('WVL').AsDateTime := IncDay(frmMain.edtWVL.Date, nDays);
     end;
   end;
 end;

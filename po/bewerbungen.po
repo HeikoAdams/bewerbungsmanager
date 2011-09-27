@@ -510,6 +510,10 @@ msgstr ""
 msgid "Standardwerte"
 msgstr ""
 
+#: TFRMSETTINGS.LABEL1.CAPTION
+msgid "Tage bis zur Wiedervorlage"
+msgstr ""
+
 #: TFRMSETTINGS.RGMEDIUM.CAPTION
 msgctxt "TFRMSETTINGS.RGMEDIUM.CAPTION"
 msgid "Medium"

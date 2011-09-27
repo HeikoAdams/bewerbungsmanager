@@ -1,11 +1,11 @@
 object frmSettings: TfrmSettings
   Left = 454
-  Height = 240
+  Height = 282
   Top = 251
   Width = 426
   BorderStyle = bsDialog
   Caption = 'Einstellungen'
-  ClientHeight = 240
+  ClientHeight = 282
   ClientWidth = 426
   OnClose = FormClose
   OnCreate = FormCreate
@@ -25,11 +25,11 @@ object frmSettings: TfrmSettings
   end
   object GroupBox1: TGroupBox
     Left = 8
-    Height = 144
+    Height = 184
     Top = 48
     Width = 409
     Caption = 'Standardwerte'
-    ClientHeight = 126
+    ClientHeight = 166
     ClientWidth = 405
     TabOrder = 1
     object rgTyp: TRadioGroup
@@ -76,11 +76,28 @@ object frmSettings: TfrmSettings
         '3'
       )
     end
+    object edtWVLTage: TSpinEdit
+      Left = 222
+      Height = 26
+      Top = 128
+      Width = 50
+      MinValue = 1
+      TabOrder = 2
+      Value = 1
+    end
+    object Label1: TLabel
+      Left = 14
+      Height = 17
+      Top = 137
+      Width = 156
+      Caption = 'Tage bis zur Wiedervorlage'
+      ParentColor = False
+    end
   end
   object BitBtn1: TBitBtn
     Left = 8
     Height = 30
-    Top = 200
+    Top = 248
     Width = 75
     Caption = '&Ok'
     Default = True
@@ -91,7 +108,7 @@ object frmSettings: TfrmSettings
   object BitBtn2: TBitBtn
     Left = 308
     Height = 30
-    Top = 200
+    Top = 248
     Width = 109
     Cancel = True
     Caption = 'Abbrechen'
