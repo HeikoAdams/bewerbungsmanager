@@ -25,6 +25,15 @@ msgctxt "bewerbung_strings.rsddatenstze"
 msgid "%d Datensätze in der Datenbank"
 msgstr ""
 
+#: bewerbung_strings.rsdienderungen
+msgid "Die Änderungen werden zum Teil erst nach einem Neustart wirksam!"
+msgstr ""
+
+#: bewerbung_strings.rseinstellunge
+msgctxt "bewerbung_strings.rseinstellunge"
+msgid "Einstellungen"
+msgstr ""
+
 #: bewerbung_strings.rsesbefindensi
 msgid "Es befinden sich aktuell %d Bewerbungen in der Wiedervorlage!"
 msgstr ""
@@ -233,6 +242,10 @@ msgstr ""
 msgid "&Post"
 msgstr ""
 
+#: TFRMMAIN.ACTSETTINGS.CAPTION
+msgid "&Einstellungen"
+msgstr ""
+
 #: TFRMMAIN.ACTVERMITTLER.CAPTION
 msgid "&Vermittler"
 msgstr ""
@@ -437,18 +450,22 @@ msgid "&Typ"
 msgstr ""
 
 #: TFRMMAIN.RGERGEBNIS.CAPTION
+msgctxt "TFRMMAIN.RGERGEBNIS.CAPTION"
 msgid "Ergebnis"
 msgstr ""
 
 #: TFRMMAIN.RGFEEDBACK.CAPTION
+msgctxt "TFRMMAIN.RGFEEDBACK.CAPTION"
 msgid "Rückmeldung"
 msgstr ""
 
 #: TFRMMAIN.RGMEDIUM.CAPTION
+msgctxt "TFRMMAIN.RGMEDIUM.CAPTION"
 msgid "Medium"
 msgstr ""
 
 #: TFRMMAIN.RGTYP.CAPTION
+msgctxt "TFRMMAIN.RGTYP.CAPTION"
 msgid "Bewerbungstyp"
 msgstr ""
 
@@ -466,5 +483,50 @@ msgstr ""
 
 #: TFRMMAIN.TSDOKUMENTE.CAPTION
 msgid "Dokumente"
+msgstr ""
+
+#: TFRMSETTINGS.BITBTN1.CAPTION
+msgid "&Ok"
+msgstr ""
+
+#: TFRMSETTINGS.BITBTN2.CAPTION
+msgid "Abbrechen"
+msgstr ""
+
+#: TFRMSETTINGS.CHKNOTIFYWVL.CAPTION
+msgid "Info bei überfälligen Wiedervorlangen"
+msgstr ""
+
+#: TFRMSETTINGS.CHKNOTIFYWVL.HINT
+msgid "Wenn aktiviert, informiert das Programm beim Start über überfällige Wiedervorlagen von Bewerbungen"
+msgstr ""
+
+#: TFRMSETTINGS.FRMSETTINGS.CAPTION
+msgctxt "TFRMSETTINGS.FRMSETTINGS.CAPTION"
+msgid "Einstellungen"
+msgstr ""
+
+#: TFRMSETTINGS.GROUPBOX1.CAPTION
+msgid "Standardwerte"
+msgstr ""
+
+#: TFRMSETTINGS.RGERGEBNIS.CAPTION
+msgctxt "TFRMSETTINGS.RGERGEBNIS.CAPTION"
+msgid "Ergebnis"
+msgstr ""
+
+#: TFRMSETTINGS.RGFEEDBACK.CAPTION
+msgctxt "TFRMSETTINGS.RGFEEDBACK.CAPTION"
+msgid "Rückmeldung"
+msgstr ""
+
+#: TFRMSETTINGS.RGMEDIUM.CAPTION
+msgctxt "TFRMSETTINGS.RGMEDIUM.CAPTION"
+msgid "Medium"
+msgstr ""
+
+#: TFRMSETTINGS.RGTYP.CAPTION
+msgctxt "TFRMSETTINGS.RGTYP.CAPTION"
+msgid "Bewerbungstyp"
 msgstr ""
 

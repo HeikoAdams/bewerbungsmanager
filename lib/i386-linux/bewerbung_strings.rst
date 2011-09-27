@@ -16,6 +16,15 @@ bewerbung_strings.rsdatenbanksko='Datenbank (%s) konnte nicht gefunden we'+
 bewerbung_strings.rsddatenstze='%d Datens'#195#164'tze in der Datenbank'
 
 
+# hash value = 50182049
+bewerbung_strings.rsdienderungen='Die '#195#132'nderungen werden zum Teil'+
+' erst nach einem Neustart wirksam!'
+
+
+# hash value = 255846078
+bewerbung_strings.rseinstellunge='Einstellungen'
+
+
 # hash value = 38019713
 bewerbung_strings.rsesbefindensi='Es befinden sich aktuell %d Bewerbungen'+
 ' in der Wiedervorlage!'

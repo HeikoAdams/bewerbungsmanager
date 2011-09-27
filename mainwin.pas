@@ -40,6 +40,7 @@ type
     actAngebot: TAction;
     actAllNoAbsage: TAction;
     actFind: TAction;
+    actSettings: TAction;
     actOnlineForm: TAction;
     actPost: TAction;
     actMail: TAction;
@@ -60,6 +61,7 @@ type
     edtFile: TDBEdit;
     DBGrid1: TDBGrid;
     dlgFindCompany: TFindDialog;
+    miSettings: TMenuItem;
     miSuche: TMenuItem;
     miAlleNoAbsagen: TMenuItem;
     MenuItem4: TMenuItem;
@@ -138,6 +140,7 @@ type
     procedure actNoResultExecute(Sender: TObject);
     procedure actOnlineFormExecute(Sender: TObject);
     procedure actPostExecute(Sender: TObject);
+    procedure actSettingsExecute(Sender: TObject);
     procedure actVermittlerExecute(Sender: TObject);
     procedure actVorschlagExecute(Sender: TObject);
     procedure actWVLExecute(Sender: TObject);
@@ -175,7 +178,7 @@ var
 implementation
 
 uses LCLType, dateutils, Data, bewerbung_strings, Process, variants,
-  exportdate;
+  exportdate, settings;
 
 {$R *.lfm}
 
@@ -299,6 +302,13 @@ begin
   dmBewerbungen.FetchData(Format(rsMEDIUMD, [1]));
 
   FGridFilter := 13;
+end;
+
+procedure TfrmMain.actSettingsExecute(Sender: TObject);
+begin
+  Application.CreateForm(TfrmSettings, frmSettings);
+  frmSettings.ShowModal;
+  FreeAndNil(frmSettings);
 end;
 
 procedure TfrmMain.actVermittlerExecute(Sender: TObject);
