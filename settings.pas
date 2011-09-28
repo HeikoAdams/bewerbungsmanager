@@ -23,7 +23,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  DbCtrls, ExtCtrls, Buttons, EditBtn, Spin;
+  DBCtrls, ExtCtrls, Buttons, EditBtn, Spin;
 
 type
 
@@ -32,6 +32,7 @@ type
   TfrmSettings = class(TForm)
     BitBtn1: TBitBtn;
     BitBtn2: TBitBtn;
+    chkCleanup: TCheckBox;
     chkNotifyWVL: TCheckBox;
     GroupBox1: TGroupBox;
     Label1: TLabel;
@@ -44,7 +45,7 @@ type
     { private declarations }
   public
     { public declarations }
-  end; 
+  end;
 
 var
   frmSettings: TfrmSettings;
@@ -59,21 +60,22 @@ uses mainwin, LCLType, bewerbung_strings;
 
 procedure TfrmSettings.FormCreate(Sender: TObject);
 begin
-  chkNotifyWVL.Checked := frmMain.ConfigFile.ReadBool('GENERAL', 'NOTIFY-WVL', TRUE);
+  chkNotifyWVL.Checked := frmMain.ConfigFile.ReadBool('GENERAL', 'NOTIFY-WVL', True);
   rgTyp.ItemIndex := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'TYP', 1);
   rgMedium.ItemIndex := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'MEDIUM', 0);
   edtWVLTage.Value := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'WVL', 14);
+  chkCleanup.Checked := frmMain.ConfigFile.ReadBool('GENERAL', 'CLEANDB', false);
 end;
 
-procedure TfrmSettings.FormClose(Sender: TObject; var CloseAction: TCloseAction
-  );
+procedure TfrmSettings.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
-  if (ModalResult = mrOK) then
+  if (ModalResult = mrOk) then
   begin
     frmMain.ConfigFile.WriteBool('GENERAL', 'NOTIFY-WVL', chkNotifyWVL.Checked);
     frmMain.ConfigFile.WriteInteger('DEFAULTS', 'TYP', rgTyp.ItemIndex);
     frmMain.ConfigFile.WriteInteger('DEFAULTS', 'MEDIUM', rgMedium.ItemIndex);
     frmMain.ConfigFile.WriteInteger('DEFAULTS', 'WVL', edtWVLTage.Value);
+    frmMain.ConfigFile.WriteBool('GENERAL', 'CLEANDB', chkCleanup.Checked);
 
     Application.MessageBox(PChar(rsDieNderungen), PChar(rsEinstellunge),
       MB_ICONWARNING + MB_OK);

@@ -194,25 +194,25 @@ end;
 
 procedure TfrmMain.NotifyWVL;
 var
-  nCount: Integer;
+  nCount: integer;
   sMessage: string;
 begin
   with TSQLQuery.Create(nil) do
   begin
-     DataBase := dmBewerbungen.conData;
-     Transaction := dmBewerbungen.traData;
+    DataBase := dmBewerbungen.conData;
+    Transaction := dmBewerbungen.traData;
 
-     with SQL do
-     begin
-        Add('SELECT COUNT(*) ANZAHL');
-        Add('FROM BEWERBUNGEN');
-        Add(Format('WHERE ' + rsWHEREWVLSAND, [FloatToStr(date)]));
-     end;
+    with SQL do
+    begin
+      Add('SELECT COUNT(*) ANZAHL');
+      Add('FROM BEWERBUNGEN');
+      Add(Format('WHERE ' + rsWHEREWVLSAND, [FloatToStr(date)]));
+    end;
 
-     Open;
-     nCount := FieldByName('ANZAHL').AsInteger;
-     Close;
-     Free;
+    Open;
+    nCount := FieldByName('ANZAHL').AsInteger;
+    Close;
+    Free;
   end;
 
   if (nCount > 0) then
@@ -267,8 +267,17 @@ begin
     Open;
   end;
 
-  if FConfigFile.ReadBool('GENERAL', 'NOTIFY-WVL', TRUE) then
-     NotifyWVL;
+  if FConfigFile.ReadBool('GENERAL', 'CLEANDB', False) then
+  begin
+    with dmBewerbungen do
+    begin
+      conData.ExecuteDirect(Format(
+        'DELETE FROM BEWERBUNGEN WHERE (DATUM < %d) AND (RESULT = 1)', [trunc(Date)]));
+    end;
+  end;
+
+  if FConfigFile.ReadBool('GENERAL', 'NOTIFY-WVL', True) then
+    NotifyWVL;
 
   dmBewerbungen.FetchData(rsRESULT2);
 
@@ -365,10 +374,9 @@ end;
 procedure TfrmMain.dlgFindCompanyFind(Sender: TObject);
 begin
   if not dmBewerbungen.qryBewerbungen.Locate('NAME',
-     VarArrayOf([dlgFindCompany.FindText]),
-     [loCaseInsensitive, loPartialKey]) then
-     Application.MessageBox(PChar(rsKeineBereins), PChar(rsSuche),
-     MB_OK + MB_ICONWARNING)
+    VarArrayOf([dlgFindCompany.FindText]), [loCaseInsensitive, loPartialKey]) then
+    Application.MessageBox(PChar(rsKeineBereins), PChar(rsSuche),
+      MB_OK + MB_ICONWARNING)
   else
     dlgFindCompany.CloseDialog;
 end;
@@ -431,7 +439,7 @@ begin
     Exit;
   end;
 
-  dlgExport.InitialDir:=GetUserDir;
+  dlgExport.InitialDir := GetUserDir;
 
   if dlgExport.Execute then
   begin
@@ -441,10 +449,10 @@ begin
     FreeAndNil(frmExportDate);
     AssignFile(ExportFile, sFileName);
     dmBewerbungen.FetchExportData(Format('WHERE (DATUM >= %d) AND (DATUM <= %d)',
-    [trunc(dtDateFrom), trunc(dtDateDue)]));
+      [trunc(dtDateFrom), trunc(dtDateDue)]));
 
     if FileExists(sFileName) then
-       DeleteFile(sFileName);
+      DeleteFile(sFileName);
 
     Rewrite(ExportFile);
 

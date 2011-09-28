@@ -1,11 +1,11 @@
 object frmSettings: TfrmSettings
   Left = 454
-  Height = 282
+  Height = 308
   Top = 251
   Width = 426
   BorderStyle = bsDialog
   Caption = 'Einstellungen'
-  ClientHeight = 282
+  ClientHeight = 308
   ClientWidth = 426
   OnClose = FormClose
   OnCreate = FormCreate
@@ -25,11 +25,11 @@ object frmSettings: TfrmSettings
   end
   object GroupBox1: TGroupBox
     Left = 8
-    Height = 184
+    Height = 216
     Top = 48
     Width = 409
     Caption = 'Standardwerte'
-    ClientHeight = 166
+    ClientHeight = 198
     ClientWidth = 405
     TabOrder = 1
     object rgTyp: TRadioGroup
@@ -93,11 +93,22 @@ object frmSettings: TfrmSettings
       Caption = 'Tage bis zur Wiedervorlage'
       ParentColor = False
     end
+    object chkCleanup: TCheckBox
+      Left = 14
+      Height = 22
+      Hint = 'Bei jedem Start werden Bewerbungen mit dem Status "Absage", die älter als 3 Monate sind, gelöscht'
+      Top = 168
+      Width = 312
+      Caption = 'abgesagte Bewerbungen nach 3 Monaten löschen'
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 3
+    end
   end
   object BitBtn1: TBitBtn
     Left = 8
     Height = 30
-    Top = 248
+    Top = 272
     Width = 75
     Caption = '&Ok'
     Default = True
@@ -108,7 +119,7 @@ object frmSettings: TfrmSettings
   object BitBtn2: TBitBtn
     Left = 308
     Height = 30
-    Top = 248
+    Top = 272
     Width = 109
     Cancel = True
     Caption = 'Abbrechen'
