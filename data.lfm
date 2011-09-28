@@ -38,11 +38,11 @@ object dmBewerbungen: TdmBewerbungen
   object qryBewerbungen: TSQLQuery
     IndexName = 'DEFAULT_ORDER'
     AfterDelete = qryBewerbungenAfterPost
-    AfterInsert = qryBewerbungenAfterInsert
     AfterOpen = qryBewerbungenAfterOpen
     AfterPost = qryBewerbungenAfterPost
     AfterScroll = qryBewerbungenAfterScroll
     BeforePost = qryBewerbungenBeforePost
+    OnNewRecord = qryBewerbungenNewRecord
     Database = conData
     Transaction = traData
     ReadOnly = False

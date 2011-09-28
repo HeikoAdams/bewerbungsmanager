@@ -22,7 +22,8 @@ unit Data;
 interface
 
 uses
-  Classes, SysUtils, sqldb, sqlite3conn, DB, FileUtil, DBCtrls, DateUtils;
+  Classes, SysUtils, sqldb, sqlite3conn, DB, FileUtil, DBCtrls, DateUtils,
+  Variants;
 
 type
 
@@ -43,11 +44,11 @@ type
     procedure dsDataStateChange(Sender: TObject);
     procedure dsDocsStateChange(Sender: TObject);
     procedure dsLogStateChange(Sender: TObject);
-    procedure qryBewerbungenAfterInsert(DataSet: TDataSet);
     procedure qryBewerbungenAfterOpen(DataSet: TDataSet);
     procedure qryBewerbungenAfterPost(DataSet: TDataSet);
     procedure qryBewerbungenAfterScroll(DataSet: TDataSet);
     procedure qryBewerbungenBeforePost(DataSet: TDataSet);
+    procedure qryBewerbungenNewRecord(DataSet: TDataSet);
     procedure qryDocumentsBeforePost(DataSet: TDataSet);
     procedure qryLogAfterScroll(DataSet: TDataSet);
     procedure qryLogBeforePost(DataSet: TDataSet);
@@ -257,34 +258,6 @@ begin
   end;
 end;
 
-procedure TdmBewerbungen.qryBewerbungenAfterInsert(DataSet: TDataSet);
-var
-  nDefaults: array[0..3] of integer;
-begin
-  if FileExists(frmMain.ConfigFile.FileName) then
-  begin
-    nDefaults[0] := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'TYP', 1);
-    nDefaults[1] := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'FEEDBACK', 0);
-    nDefaults[2] := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'RESULT', 0);
-    nDefaults[3] := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'MEDIUM', 0);
-  end
-  else
-  begin
-    nDefaults[0] := 1;
-    nDefaults[1] := 0;
-    nDefaults[2] := 0;
-    nDefaults[3] := 0;
-  end;
-
-  with DataSet do
-  begin
-    FieldByName('TYP').AsInteger := nDefaults[0];
-    FieldByName('FEEDBACK').AsInteger := nDefaults[1];
-    FieldByName('RESULT').AsInteger := nDefaults[2];
-    FieldByName('MEDIUM').AsInteger := nDefaults[3];
-  end;
-end;
-
 procedure TdmBewerbungen.qryBewerbungenAfterOpen(DataSet: TDataSet);
 begin
   DataSet.First;
@@ -334,13 +307,13 @@ var
 begin
   with qryBewerbungen do
   begin
+    if VarIsNull(FieldByName('ID').AsVariant) then
+      Exit;
+
     frmMain.edtDatum.Date := FieldByName('DATUM').AsDateTime;
     frmMain.edtWVL.Date := FieldByName('WVL').AsDateTime;
     nID := FieldByName('ID').AsInteger;
   end;
-
-  if (nID <= 0) then
-    Exit;
 
   with qryLog do
   begin
@@ -376,6 +349,34 @@ begin
       else
         FieldByName('WVL').AsDateTime := IncDay(frmMain.edtWVL.Date, nDays);
     end;
+  end;
+end;
+
+procedure TdmBewerbungen.qryBewerbungenNewRecord(DataSet: TDataSet);
+var
+  nDefaults: array[0..3] of integer;
+begin
+  if FileExists(frmMain.ConfigFile.FileName) then
+  begin
+    nDefaults[0] := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'TYP', 1);
+    nDefaults[1] := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'FEEDBACK', 0);
+    nDefaults[2] := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'RESULT', 0);
+    nDefaults[3] := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'MEDIUM', 0);
+  end
+  else
+  begin
+    nDefaults[0] := 1;
+    nDefaults[1] := 0;
+    nDefaults[2] := 0;
+    nDefaults[3] := 0;
+  end;
+
+  with DataSet do
+  begin
+    FieldByName('TYP').AsInteger := nDefaults[0];
+    FieldByName('FEEDBACK').AsInteger := nDefaults[1];
+    FieldByName('RESULT').AsInteger := nDefaults[2];
+    FieldByName('MEDIUM').AsInteger := nDefaults[3];
   end;
 end;
 
