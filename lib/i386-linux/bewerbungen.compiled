@@ -1,5 +1,0 @@
-<?xml version="1.0"?>
-<CONFIG>
-  <Compiler Value="/usr/bin/fpc" Date="1297277173"/>
-  <Params Value=" -MObjFPC -Scghi -CX -CirotR -Os3 -OoUNCERTAIN -OoREGVAR -g -gl -Xg -Xs -XX -WG -vewnhi -l -Fi/home/heiko/Projekte/bewerbungsmanager/lib/i386-linux -Fu/home/heiko/.lazarus/lib/SQLDBLaz/i386-linux -Fu/usr/lib/lazarus/components/synedit/units/i386-linux -Fu/usr/lib/lazarus/ideintf/units/i386-linux -Fu/usr/lib/lazarus/lcl/units/i386-linux -Fu/usr/lib/lazarus/lcl/units/i386-linux/gtk2 -Fu/usr/lib/lazarus/packager/units/i386-linux -Fu/home/heiko/Projekte/bewerbungsmanager/ -Fu. -FU/home/heiko/Projekte/bewerbungsmanager/lib/i386-linux/ -Fr/usr/lib/fpc/2.4.2/msg/errord.msg -obewerbungen -dLCL -dLCLgtk2 bewerbungen.lpr"/>
-</CONFIG>

@@ -546,6 +546,10 @@ begin
     // Absage erhalten
     if (DataSource.DataSet.FieldByName('RESULT').AsInteger = 2) then
       Canvas.Font.Color := clRed;
+
+    // Bewerbung zurückgezogen
+    if (DataSource.DataSet.FieldByName('RESULT').AsInteger = 3) then
+      Canvas.Font.Color := clGray;
   end;
 end;
 

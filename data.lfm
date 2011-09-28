@@ -27,7 +27,6 @@ object dmBewerbungen: TdmBewerbungen
     Connected = False
     LoginPrompt = False
     AfterConnect = conDataAfterConnect
-    BeforeDisconnect = conDataBeforeDisconnect
     DatabaseName = '/home/heiko/.config/bewerbungen/bewerbungen.db'
     KeepConnection = True
     Transaction = traData

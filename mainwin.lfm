@@ -15,10 +15,10 @@ object frmMain: TfrmMain
     Height = 498
     Top = 25
     Width = 654
-    ActivePage = tsBewerbungen
+    ActivePage = tsBewerbungData
     Align = alClient
     Images = ilIcons
-    TabIndex = 0
+    TabIndex = 1
     TabOrder = 1
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'
@@ -313,7 +313,7 @@ object frmMain: TfrmMain
           '0'
           '1'
           '2'
-          '4'
+          '3'
         )
       end
       object mmoNotes: TDBMemo
