@@ -24,7 +24,7 @@ interface
 uses
   Classes, SysUtils, dbf, DB, sqlite3conn, sqldb, FileUtil, Forms, Controls,
   Graphics, Dialogs, Grids, ComCtrls, ExtCtrls, StdCtrls, EditBtn,
-  DBGrids, Menus, ActnList, IniFiles, DBCtrls, Buttons;
+  DBGrids, Menus, ActnList, IniFiles, DBCtrls, Buttons, types;
 
 type
 
@@ -40,6 +40,7 @@ type
     actAngebot: TAction;
     actAllNoAbsage: TAction;
     actFind: TAction;
+    actRevoke: TAction;
     actSettings: TAction;
     actOnlineForm: TAction;
     actPost: TAction;
@@ -61,6 +62,7 @@ type
     edtFile: TDBEdit;
     DBGrid1: TDBGrid;
     dlgFindCompany: TFindDialog;
+    miRevoke: TMenuItem;
     miSettings: TMenuItem;
     miSuche: TMenuItem;
     miAlleNoAbsagen: TMenuItem;
@@ -140,6 +142,7 @@ type
     procedure actNoResultExecute(Sender: TObject);
     procedure actOnlineFormExecute(Sender: TObject);
     procedure actPostExecute(Sender: TObject);
+    procedure actRevokeExecute(Sender: TObject);
     procedure actSettingsExecute(Sender: TObject);
     procedure actVermittlerExecute(Sender: TObject);
     procedure actVorschlagExecute(Sender: TObject);
@@ -279,9 +282,7 @@ begin
   if FConfigFile.ReadBool('GENERAL', 'NOTIFY-WVL', True) then
     NotifyWVL;
 
-  dmBewerbungen.FetchData(rsRESULT2);
-
-  FGridFilter := 15;
+  actAllNoAbsage.Execute;
   PageControl1.ActivePageIndex := 0;
 end;
 
@@ -311,6 +312,13 @@ begin
   dmBewerbungen.FetchData(Format(rsMEDIUMD, [1]));
 
   FGridFilter := 13;
+end;
+
+procedure TfrmMain.actRevokeExecute(Sender: TObject);
+begin
+  dmBewerbungen.FetchData(Format(rsRESULTD, [3]));
+
+  FGridFilter := 16;
 end;
 
 procedure TfrmMain.actSettingsExecute(Sender: TObject);

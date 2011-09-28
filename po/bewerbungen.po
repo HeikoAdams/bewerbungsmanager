@@ -242,6 +242,10 @@ msgstr ""
 msgid "&Post"
 msgstr ""
 
+#: TFRMMAIN.ACTREVOKE.CAPTION
+msgid "&Zurückgezogen"
+msgstr ""
+
 #: TFRMMAIN.ACTSETTINGS.CAPTION
 msgid "&Einstellungen"
 msgstr ""

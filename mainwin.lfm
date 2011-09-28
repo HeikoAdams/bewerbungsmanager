@@ -15,10 +15,10 @@ object frmMain: TfrmMain
     Height = 498
     Top = 25
     Width = 654
-    ActivePage = tsBewerbungData
+    ActivePage = tsBewerbungen
     Align = alClient
     Images = ilIcons
-    TabIndex = 1
+    TabIndex = 0
     TabOrder = 1
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'
@@ -306,12 +306,14 @@ object frmMain: TfrmMain
           'keins'
           'Zusage'
           'Absage'
+          'Zurückgezogen'
         )
         TabOrder = 8
         Values.Strings = (
           '0'
           '1'
           '2'
+          '4'
         )
       end
       object mmoNotes: TDBMemo
@@ -1249,6 +1251,11 @@ object frmMain: TfrmMain
       ImageIndex = 10
       OnExecute = actSettingsExecute
     end
+    object actRevoke: TAction
+      Category = 'Result'
+      Caption = '&Zurückgezogen'
+      OnExecute = actRevokeExecute
+    end
   end
   object pmFilter: TPopupMenu
     Images = ilIcons
@@ -1357,6 +1364,10 @@ object frmMain: TfrmMain
       object miAbsage: TMenuItem
         Tag = 6
         Action = actAbsage
+      end
+      object miRevoke: TMenuItem
+        Tag = 16
+        Action = actRevoke
       end
     end
     object miTyp: TMenuItem

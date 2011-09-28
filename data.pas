@@ -336,9 +336,11 @@ begin
   begin
     frmMain.edtDatum.Date := FieldByName('DATUM').AsDateTime;
     frmMain.edtWVL.Date := FieldByName('WVL').AsDateTime;
+    nID := FieldByName('ID').AsInteger;
   end;
 
-  nID := qryBewerbungen.FieldByName('ID').AsInteger;
+  if (nID <= 0) then
+    Exit;
 
   with qryLog do
   begin
