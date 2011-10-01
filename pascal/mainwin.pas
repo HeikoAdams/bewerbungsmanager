@@ -40,6 +40,7 @@ type
     actAngebot: TAction;
     actAllNoAbsage: TAction;
     actFind: TAction;
+    actWriteMail: TAction;
     actRevoke: TAction;
     actSettings: TAction;
     actOnlineForm: TAction;
@@ -62,6 +63,7 @@ type
     edtFile: TDBEdit;
     DBGrid1: TDBGrid;
     dlgFindCompany: TFindDialog;
+    miWriteMail: TMenuItem;
     miRevoke: TMenuItem;
     miSettings: TMenuItem;
     miSuche: TMenuItem;
@@ -146,6 +148,7 @@ type
     procedure actSettingsExecute(Sender: TObject);
     procedure actVermittlerExecute(Sender: TObject);
     procedure actVorschlagExecute(Sender: TObject);
+    procedure actWriteMailExecute(Sender: TObject);
     procedure actWVLExecute(Sender: TObject);
     procedure actZusageExecute(Sender: TObject);
     procedure btnBrowseClick(Sender: TObject);
@@ -340,6 +343,34 @@ begin
   dmBewerbungen.FetchData(Format(rsTYPD, [2]));
 
   FGridFilter := 11;
+end;
+
+procedure TfrmMain.actWriteMailExecute(Sender: TObject);
+var
+  sCommand: string;
+begin
+  if (Length(dmBewerbungen.qryBewerbungen.FieldByName('Mail').AsString) = 0) then
+  begin
+    Application.MessageBox('keine Mail-Adresse hinterlegt', 'Warnung',
+      MB_OK + MB_ICONWARNING);
+    Abort;
+  end;
+
+  sCommand := Format(rsMailtoS, [dmBewerbungen.qryBewerbungen.FieldByName('Mail').AsString]);
+
+  { TODO 1 : Shell-Execute Code zum Öffnen der Dokumente unter Windows einfügen }
+  {$IFDEF Unix}
+  with TProcess.Create(nil) do
+  begin
+    CommandLine := Format(rsUnixLauncher, [sCommand]);
+    Options := Options + [poWaitOnExit];
+    Execute;
+    Free;
+  end;
+  {$endif}
+  {$IFDEF Windows}
+
+  {$endif}
 end;
 
 procedure TfrmMain.actWVLExecute(Sender: TObject);
@@ -537,7 +568,7 @@ begin
     // Einladung liegt vor
     if (DataSource.DataSet.FieldByName('FEEDBACK').AsInteger = 2) and
       (DataSource.DataSet.FieldByName('RESULT').AsInteger = 0) then
-      Canvas.Font.Color := clBlue;
+      Canvas.Font.Color := clPurple;
 
     // Zusage erhalten
     if (DataSource.DataSet.FieldByName('RESULT').AsInteger = 1) then

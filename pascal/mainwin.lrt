@@ -1,11 +1,11 @@
 TFRMMAIN.FRMMAIN.CAPTION=Bewerbungsmanager
 TFRMMAIN.TSBEWERBUNGEN.CAPTION=Bewerbungen
-TFRMMAIN.GRDBEWERBUNGEN.HINT=blau = Einladung liegt vor
-dunkelblau = Eingang bestätigt
+TFRMMAIN.GRDBEWERBUNGEN.HINT=dunkelblau = Eingang bestätigt
 dunkelrot = Wiedervorlagedatum ohne Reaktion überschritten
 grün = Zusage erhalten
 rot = Absage erhalten
 schwarz = noch keine Reaktion
+violet = Einladung liegt vor
 TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[0].TCOLUMNTITLE.CAPTION=Datum
 TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[1].TCOLUMNTITLE.CAPTION=Wiedervorlage
 TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[2].TCOLUMNTITLE.CAPTION=Empfänger
@@ -65,6 +65,7 @@ TFRMMAIN.ACTALLNOABSAGE.CAPTION=&alle ohne Absagen
 TFRMMAIN.ACTFIND.CAPTION=&Suche
 TFRMMAIN.ACTSETTINGS.CAPTION=&Einstellungen
 TFRMMAIN.ACTREVOKE.CAPTION=&Zurückgezogen
+TFRMMAIN.ACTWRITEMAIL.CAPTION=E-&Mail schreiben
 TFRMMAIN.MIFEEDBACK.CAPTION=&Feedback
 TFRMMAIN.MIRESULT.CAPTION=&Ergebnis
 TFRMMAIN.MITYP.CAPTION=&Typ

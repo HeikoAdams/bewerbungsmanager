@@ -40,6 +40,7 @@ resourcestring
   rsDateFormat = 'dd.mm.yyyy';
   rsJOBS = 'JOBS';
   rsKeineBereins = 'keine Übereinstimmung gefunden';
+  rsMailtoS = 'mailto:%s';
   rsMEDIUMD = '(MEDIUM = %d)';
   rsMAILS = 'MAILS';
   rsRESULT2 = '(RESULT <> 2)';
