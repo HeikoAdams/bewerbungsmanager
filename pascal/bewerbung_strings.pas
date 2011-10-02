@@ -47,7 +47,7 @@ resourcestring
   rsRESULTD = '(RESULT = %d)';
   rsSuche = 'Suche';
   rsTYPD = '(TYP = %d)';
-  rsUnixLauncher = '/usr/bin/xdg-open "%s"';
+  //rsUnixLauncher = '/usr/bin/xdg-open "%s"';
   rsWERT = 'WERT';
   rsWHEREWVLSAND = '(WVL <= %s) AND (FEEDBACK = 0) AND (RESULT = 0)';
 

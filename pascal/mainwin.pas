@@ -166,6 +166,7 @@ type
     FConfigDir: string;
     FDataFile: string;
     FErrorMsg: string;
+    FLinuxLaunch: string;
     FConfigFile: TIniFile;
 
     FErrorCode: integer;
@@ -285,6 +286,10 @@ begin
   if FConfigFile.ReadBool('GENERAL', 'NOTIFY-WVL', True) then
     NotifyWVL;
 
+  {$IFDEF Unix}
+    FLinuxLaunch := FConfigFile.ReadString('LINUX', 'LAUNCHER', '/usr/bin/xdg-open "%s"');
+  {$ENDIF}
+
   actAllNoAbsage.Execute;
   PageControl1.ActivePageIndex := 0;
 end;
@@ -351,11 +356,11 @@ var
 begin
   sCommand := Format(rsMailtoS, [dmBewerbungen.qryBewerbungen.FieldByName('Mail').AsString]);
 
-  { TODO 1 : Shell-Execute Code zum Öffnen der Dokumente unter Windows einfügen }
+  { TODO 1 : Shell-Execute Code zum Erstellen einer Mail unter Windows einfügen }
   {$IFDEF Unix}
   with TProcess.Create(nil) do
   begin
-    CommandLine := Format(rsUnixLauncher, [sCommand]);
+    CommandLine := Format(FLinuxLaunch, [sCommand]);
     Options := Options + [poWaitOnExit];
     Execute;
     Free;
@@ -392,7 +397,7 @@ begin
   {$IFDEF Unix}
   with TProcess.Create(nil) do
   begin
-    CommandLine := Format(rsUnixLauncher, [edtFile.Text]);
+    CommandLine := Format(FLinuxLaunch, [edtFile.Text]);
     Options := Options + [poWaitOnExit];
     Execute;
     Free;
