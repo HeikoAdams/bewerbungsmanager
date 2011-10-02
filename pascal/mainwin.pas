@@ -349,13 +349,6 @@ procedure TfrmMain.actWriteMailExecute(Sender: TObject);
 var
   sCommand: string;
 begin
-  if (Length(dmBewerbungen.qryBewerbungen.FieldByName('Mail').AsString) = 0) then
-  begin
-    Application.MessageBox('keine Mail-Adresse hinterlegt', 'Warnung',
-      MB_OK + MB_ICONWARNING);
-    Abort;
-  end;
-
   sCommand := Format(rsMailtoS, [dmBewerbungen.qryBewerbungen.FieldByName('Mail').AsString]);
 
   { TODO 1 : Shell-Execute Code zum Öffnen der Dokumente unter Windows einfügen }
@@ -617,6 +610,8 @@ var
   nCount, nCount2: integer;
   TempItem: TMenuItem;
 begin
+  actWriteMail.Enabled := not (Length(dmBewerbungen.qryBewerbungen.FieldByName('Mail').AsString) = 0);
+
   for nCount := 0 to pmFilter.Items.Count - 1 do
   begin
     TempItem := pmFilter.Items[nCount];

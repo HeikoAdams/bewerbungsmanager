@@ -66,9 +66,9 @@ object dmBewerbungen: TdmBewerbungen
     )
     Params = <    
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'ID'
-        ParamType = ptUnknown
+        ParamType = ptInput
       end>
     left = 96
     top = 144

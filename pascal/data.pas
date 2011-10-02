@@ -309,14 +309,7 @@ begin
     nID := FieldByName('ID').AsInteger;
   end;
 
-  with qryLog do
-  begin
-    Close;
-    Params.ParamValues['ID'] := nID;
-    Open;
-  end;
-
-  with qryDocuments do
+  with qryDocuments, qryLog do
   begin
     Close;
     Params.ParamValues['ID'] := nID;
