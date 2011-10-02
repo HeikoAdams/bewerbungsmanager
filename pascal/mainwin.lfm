@@ -1511,23 +1511,23 @@ object frmMain: TfrmMain
         Action = actOnlineForm
       end
     end
-    object miWVL: TMenuItem
-      Tag = 7
-      Action = actWVL
-    end
     object miVermittler: TMenuItem
       Tag = 8
       Action = actVermittler
     end
-    object MenuItem4: TMenuItem
-      Caption = '-'
+    object miWVL: TMenuItem
+      Tag = 7
+      Action = actWVL
     end
-    object miAlleNoAbsagen: TMenuItem
-      Tag = 15
-      Action = actAllNoAbsage
-    end
-    object miAlle: TMenuItem
-      Action = actAlle
+    object MenuItem3: TMenuItem
+      Caption = '&Ansicht'
+      object miAlleNoAbs: TMenuItem
+        Tag = 15
+        Action = actAllNoAbsage
+      end
+      object miAlle: TMenuItem
+        Action = actAlle
+      end
     end
     object MenuItem1: TMenuItem
       Caption = '-'

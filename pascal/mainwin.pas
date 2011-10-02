@@ -63,12 +63,14 @@ type
     edtFile: TDBEdit;
     DBGrid1: TDBGrid;
     dlgFindCompany: TFindDialog;
+    MenuItem3: TMenuItem;
+    miWVL: TMenuItem;
+    miAlleNoAbs: TMenuItem;
+    miAlle: TMenuItem;
     miWriteMail: TMenuItem;
     miRevoke: TMenuItem;
     miSettings: TMenuItem;
     miSuche: TMenuItem;
-    miAlleNoAbsagen: TMenuItem;
-    MenuItem4: TMenuItem;
     miOnlineForm: TMenuItem;
     miPost: TMenuItem;
     miMail: TMenuItem;
@@ -108,11 +110,9 @@ type
     lblRefNr: TLabel;
     lblWo: TLabel;
     lblWVL: TLabel;
-    miWVL: TMenuItem;
     miAbsage: TMenuItem;
     miZusage: TMenuItem;
     miNoResult: TMenuItem;
-    miAlle: TMenuItem;
     miResult: TMenuItem;
     miEinladung: TMenuItem;
     miEingang: TMenuItem;
