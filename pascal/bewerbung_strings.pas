@@ -25,6 +25,7 @@ uses
   Classes, SysUtils; 
 
 resourcestring
+  rsACTION = 'ACTION';
   rsCOMPANIES = 'COMPANIES';
   rsCSVExport = 'CSV-Export';
   rsDatenbankSKo = 'Datenbank (%s) konnte nicht gefunden werden!';
@@ -40,14 +41,15 @@ resourcestring
   rsDateFormat = 'dd.mm.yyyy';
   rsJOBS = 'JOBS';
   rsKeineBereins = 'keine Übereinstimmung gefunden';
-  rsMailtoS = 'mailto:%s';
+  rsMailtoS = 'mailto:%s?subject=%s';
   rsMEDIUMD = '(MEDIUM = %d)';
   rsMAILS = 'MAILS';
+  rsMeineBewerbu = 'Meine Bewerbung vom %s als %s (Ref.Nr. %s)';
+  rsMeineBewerbu2 = 'Meine Bewerbung vom %s als %s';
   rsRESULT2 = '(RESULT <> 2)';
   rsRESULTD = '(RESULT = %d)';
   rsSuche = 'Suche';
   rsTYPD = '(TYP = %d)';
-  //rsUnixLauncher = '/usr/bin/xdg-open "%s"';
   rsWERT = 'WERT';
   rsWHEREWVLSAND = '(WVL <= %s) AND (FEEDBACK = 0) AND (RESULT = 0)';
 

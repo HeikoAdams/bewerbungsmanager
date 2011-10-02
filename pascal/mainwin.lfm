@@ -420,13 +420,14 @@ object frmMain: TfrmMain
           item
             Title.Alignment = taCenter
             Title.Caption = 'Datum'
+            Width = 100
             FieldName = 'DATUM'
             DisplayFormat = 'dd.mm.yyyy'
           end        
           item
             Title.Alignment = taCenter
             Title.Caption = 'Art'
-            Width = 250
+            Width = 200
             FieldName = 'TYP'
           end>
         DataSource = dmBewerbungen.dsLog
@@ -471,6 +472,7 @@ object frmMain: TfrmMain
           CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
           OKCaption = 'OK'
           CancelCaption = 'Cancel'
+          DefaultToday = True
           DateOrder = doDMY
           ButtonWidth = 23
           CharCase = ecNormal
@@ -538,17 +540,6 @@ object frmMain: TfrmMain
           Caption = 'Text'
           ParentColor = False
         end
-        object edtLogTyp: TDBEdit
-          Left = 86
-          Height = 26
-          Top = 41
-          Width = 191
-          DataField = 'TYP'
-          DataSource = dmBewerbungen.dsLog
-          CharCase = ecNormal
-          MaxLength = 0
-          TabOrder = 1
-        end
         object mmoText: TDBMemo
           Left = 357
           Height = 128
@@ -557,6 +548,18 @@ object frmMain: TfrmMain
           DataField = 'BESCHREIBUNG'
           DataSource = dmBewerbungen.dsLog
           ScrollBars = ssAutoBoth
+          TabOrder = 1
+        end
+        object cbbLogTyp: TDBComboBox
+          Left = 86
+          Height = 28
+          Top = 41
+          Width = 191
+          DataField = 'TYP'
+          DataSource = dmBewerbungen.dsLog
+          ItemHeight = 0
+          MaxLength = 0
+          Sorted = True
           TabOrder = 2
         end
       end
@@ -742,17 +745,17 @@ object frmMain: TfrmMain
           item
             Title.Alignment = taCenter
             Title.Caption = 'Art'
-            Width = 150
+            Width = 32
             FieldName = 'TYPE'
           end        
           item
             Title.Alignment = taCenter
             Title.Caption = 'Datei'
-            Width = 250
+            Width = 45
             FieldName = 'FILENAME'
           end>
         DataSource = dmBewerbungen.dsDocs
-        Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgAutoSizeColumns]
         TabOrder = 1
         TitleStyle = tsNative
       end

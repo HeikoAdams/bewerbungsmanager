@@ -63,6 +63,7 @@ type
     edtFile: TDBEdit;
     DBGrid1: TDBGrid;
     dlgFindCompany: TFindDialog;
+    cbbLogTyp: TDBComboBox;
     MenuItem3: TMenuItem;
     miWVL: TMenuItem;
     miAlleNoAbs: TMenuItem;
@@ -81,7 +82,6 @@ type
     dlgDocuments: TOpenDialog;
     pnlDokBottom: TPanel;
     rgMedium: TDBRadioGroup;
-    edtLogTyp: TDBEdit;
     grdBewerbungen: TDBGrid;
     grdLog: TDBGrid;
     lblNotes: TLabel;
@@ -287,7 +287,8 @@ begin
     NotifyWVL;
 
   {$IFDEF Unix}
-    FLinuxLaunch := FConfigFile.ReadString('LINUX', 'LAUNCHER', '/usr/bin/xdg-open "%s"');
+  FLinuxLaunch := FConfigFile.ReadString('LINUX', 'LAUNCHER',
+    '/usr/bin/xdg-open "%s"');
   {$ENDIF}
 
   actAllNoAbsage.Execute;
@@ -353,8 +354,20 @@ end;
 procedure TfrmMain.actWriteMailExecute(Sender: TObject);
 var
   sCommand: string;
+  sSubject: string;
 begin
-  sCommand := Format(rsMailtoS, [dmBewerbungen.qryBewerbungen.FieldByName('Mail').AsString]);
+  if (dmBewerbungen.qryBewerbungen.FieldByName('REFNR').AsString <> EmptyStr) then
+    sSubject := Format(rsMeineBewerbu,
+      [FormatDateTime(rsDateFormat, dmBewerbungen.qryBewerbungen.FieldByName(
+      'DATUM').AsDateTime), dmBewerbungen.qryBewerbungen.FieldByName('JOBTITEL').AsString,
+      dmBewerbungen.qryBewerbungen.FieldByName('REFNR').AsString])
+  else
+    sSubject := Format(rsMeineBewerbu2,
+      [FormatDateTime(rsDateFormat, dmBewerbungen.qryBewerbungen.FieldByName(
+      'DATUM').AsDateTime), dmBewerbungen.qryBewerbungen.FieldByName('JOBTITEL').AsString]);
+
+  sCommand := Format(rsMailtoS,
+    [dmBewerbungen.qryBewerbungen.FieldByName('Mail').AsString, sSubject]);
 
   { TODO 1 : Shell-Execute Code zum Erstellen einer Mail unter Windows einfügen }
   {$IFDEF Unix}
@@ -615,7 +628,8 @@ var
   nCount, nCount2: integer;
   TempItem: TMenuItem;
 begin
-  actWriteMail.Enabled := not (Length(dmBewerbungen.qryBewerbungen.FieldByName('Mail').AsString) = 0);
+  actWriteMail.Enabled := not (Length(dmBewerbungen.qryBewerbungen.FieldByName(
+    'Mail').AsString) = 0);
 
   for nCount := 0 to pmFilter.Items.Count - 1 do
   begin

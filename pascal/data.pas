@@ -163,6 +163,8 @@ begin
     sSQL := 'SELECT VALUE FROM V_MAILS'
   else if (UpperCase(aType) = rsJOBS) then
     sSQL := 'SELECT VALUE FROM V_JOBS'
+  else if (UpperCase(aType) = rsACTION) then
+    sSQL := 'SELECT DISTINCT TYP VALUE FROM LOG'
   else
     sSQL := EmptyStr;
 
@@ -247,7 +249,7 @@ begin
   with frmMain do
   begin
     edtLogDatum.Enabled := bEditMode;
-    edtLogTyp.Enabled := bEditMode;
+    cbbLogTyp.Enabled := bEditMode;
     mmoText.Enabled := bEditMode;
   end;
 end;
@@ -260,6 +262,7 @@ begin
   UpdateList(rsCOMPANIES, frmMain.cbbEmpfName.Items);
   UpdateList(rsMAILS, frmMain.cbbEmpfMail.Items);
   UpdateList(rsJOBS, frmMain.cbbJobTitel.Items);
+  UpdateList(rsACTION, frmMain.cbbLogTyp.Items);
 end;
 
 procedure TdmBewerbungen.qryBewerbungenAfterPost(DataSet: TDataSet);
@@ -292,6 +295,7 @@ begin
   UpdateList(rsCOMPANIES, frmMain.cbbEmpfName.Items);
   UpdateList(rsMAILS, frmMain.cbbEmpfMail.Items);
   UpdateList(rsJOBS, frmMain.cbbJobTitel.Items);
+  UpdateList(rsACTION, frmMain.cbbLogTyp.Items);
   frmMain.sbInfo.SimpleText := Format(rsDDatensTze, [GetRecordsCount(DataSet)]);
 end;
 
@@ -309,7 +313,14 @@ begin
     nID := FieldByName('ID').AsInteger;
   end;
 
-  with qryDocuments, qryLog do
+  with qryLog do
+  begin
+    Close;
+    Params.ParamValues['ID'] := nID;
+    Open;
+  end;
+
+  with qryDocuments do
   begin
     Close;
     Params.ParamValues['ID'] := nID;
