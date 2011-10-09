@@ -12,7 +12,7 @@ object frmMain: TfrmMain
   LCLVersion = '0.9.30'
   object PageControl1: TPageControl
     Left = 0
-    Height = 498
+    Height = 499
     Top = 25
     Width = 654
     ActivePage = tsActions
@@ -22,7 +22,7 @@ object frmMain: TfrmMain
     TabOrder = 1
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'
-      ClientHeight = 464
+      ClientHeight = 465
       ClientWidth = 648
       object grdBewerbungen: TDBGrid
         Left = 0
@@ -89,7 +89,7 @@ object frmMain: TfrmMain
     end
     object tsBewerbungData: TTabSheet
       Caption = 'Daten'
-      ClientHeight = 464
+      ClientHeight = 465
       ClientWidth = 648
       ImageIndex = 1
       object lblDatum: TLabel
@@ -406,12 +406,12 @@ object frmMain: TfrmMain
     end
     object tsActions: TTabSheet
       Caption = 'Aktivitäten'
-      ClientHeight = 464
+      ClientHeight = 465
       ClientWidth = 648
       ImageIndex = 2
       object grdLog: TDBGrid
         Left = 0
-        Height = 302
+        Height = 303
         Top = 25
         Width = 648
         Align = alClient
@@ -458,7 +458,7 @@ object frmMain: TfrmMain
       object pnlBottom: TPanel
         Left = 0
         Height = 137
-        Top = 327
+        Top = 328
         Width = 648
         Align = alBottom
         ClientHeight = 137
@@ -466,7 +466,7 @@ object frmMain: TfrmMain
         TabOrder = 2
         object edtLogDatum: TDateEdit
           Left = 86
-          Height = 26
+          Height = 25
           Top = 8
           Width = 168
           CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
@@ -518,7 +518,7 @@ object frmMain: TfrmMain
         end
         object lblLogDatum: TLabel
           Left = 13
-          Height = 17
+          Height = 16
           Top = 17
           Width = 39
           Caption = 'Datum'
@@ -526,7 +526,7 @@ object frmMain: TfrmMain
         end
         object lblLogTyp: TLabel
           Left = 13
-          Height = 17
+          Height = 16
           Top = 49
           Width = 18
           Caption = 'Art'
@@ -534,7 +534,7 @@ object frmMain: TfrmMain
         end
         object lblLogText: TLabel
           Left = 293
-          Height = 17
+          Height = 16
           Top = 16
           Width = 25
           Caption = 'Text'
@@ -552,7 +552,7 @@ object frmMain: TfrmMain
         end
         object cbbLogTyp: TDBComboBox
           Left = 86
-          Height = 28
+          Height = 27
           Top = 41
           Width = 191
           DataField = 'TYP'
@@ -566,7 +566,7 @@ object frmMain: TfrmMain
     end
     object tsDokumente: TTabSheet
       Caption = 'Dokumente'
-      ClientHeight = 464
+      ClientHeight = 465
       ClientWidth = 648
       ImageIndex = 7
       object navDocs: TDBNavigator
@@ -782,8 +782,8 @@ object frmMain: TfrmMain
   end
   object sbInfo: TStatusBar
     Left = 0
-    Height = 20
-    Top = 523
+    Height = 19
+    Top = 524
     Width = 654
     Panels = <>
   end

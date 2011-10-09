@@ -167,9 +167,11 @@ type
     FDataFile: string;
     FErrorMsg: string;
     FLinuxLaunch: string;
+    FLockFile: string;
     FConfigFile: TIniFile;
 
     FErrorCode: integer;
+    FLockHandle: integer;
     FGridFilter: word;
 
     procedure NotifyWVL;
@@ -234,6 +236,18 @@ begin
   FConfigDir := GetAppConfigDir(False);
   FDataFile := IncludeTrailingPathDelimiter(FConfigDir) + 'bewerbungen.db';
   FConfigFile := TIniFile.Create(GetAppConfigFile(False, True));
+  FLockFile := IncludeTrailingPathDelimiter(FConfigDir) + '.lock';
+  FLockHandle := 0;
+
+  if FileExists(FLockFile) then
+  begin
+    Application.MessageBox(PChar(rsDasProgrammW),
+      PChar(rsWarnung), MB_ICONWARNING + MB_OK);
+    Application.Terminate;
+    Exit;
+  end
+  else
+    FLockHandle := FileCreate(FLockFile);
 
   if FileExists(FConfigFile.FileName) then
   begin
@@ -359,12 +373,13 @@ begin
   if (dmBewerbungen.qryBewerbungen.FieldByName('REFNR').AsString <> EmptyStr) then
     sSubject := Format(rsMeineBewerbu,
       [FormatDateTime(rsDateFormat, dmBewerbungen.qryBewerbungen.FieldByName(
-      'DATUM').AsDateTime), dmBewerbungen.qryBewerbungen.FieldByName('JOBTITEL').AsString,
-      dmBewerbungen.qryBewerbungen.FieldByName('REFNR').AsString])
+      'DATUM').AsDateTime), dmBewerbungen.qryBewerbungen.FieldByName(
+      'JOBTITEL').AsString, dmBewerbungen.qryBewerbungen.FieldByName('REFNR').AsString])
   else
     sSubject := Format(rsMeineBewerbu2,
       [FormatDateTime(rsDateFormat, dmBewerbungen.qryBewerbungen.FieldByName(
-      'DATUM').AsDateTime), dmBewerbungen.qryBewerbungen.FieldByName('JOBTITEL').AsString]);
+      'DATUM').AsDateTime), dmBewerbungen.qryBewerbungen.FieldByName(
+      'JOBTITEL').AsString]);
 
   sCommand := Format(rsMailtoS,
     [dmBewerbungen.qryBewerbungen.FieldByName('Mail').AsString, sSubject]);
@@ -615,6 +630,9 @@ begin
   end;
 
   dmBewerbungen.conData.Close;
+
+  if (FLockHandle <> 0) then
+    DeleteFile(FLockFile);
 end;
 
 procedure TfrmMain.grdLogDblClick(Sender: TObject);

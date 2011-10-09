@@ -28,6 +28,7 @@ resourcestring
   rsACTION = 'ACTION';
   rsCOMPANIES = 'COMPANIES';
   rsCSVExport = 'CSV-Export';
+  rsDasProgrammW = 'Das Programm wird bereits ausgeführt!';
   rsDatenbankSKo = 'Datenbank (%s) konnte nicht gefunden werden!';
   rsDDatensTze = '%d Datensätze in der Datenbank';
   rsDieNderungen = 'Die Änderungen werden zum Teil erst nach einem Neustart '
@@ -50,6 +51,7 @@ resourcestring
   rsRESULTD = '(RESULT = %d)';
   rsSuche = 'Suche';
   rsTYPD = '(TYP = %d)';
+  rsWarnung = 'Warnung';
   rsWERT = 'WERT';
   rsWHEREWVLSAND = '(WVL <= %s) AND (FEEDBACK = 0) AND (RESULT = 0)';
 
