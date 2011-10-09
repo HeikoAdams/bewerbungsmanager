@@ -239,6 +239,7 @@ begin
   FLockFile := IncludeTrailingPathDelimiter(FConfigDir) + '.lock';
   FLockHandle := 0;
 
+  // If a lock-file exists, abort start. Otherwise create it
   if FileExists(FLockFile) then
   begin
     Application.MessageBox(PChar(rsDasProgrammW),
@@ -631,6 +632,7 @@ begin
 
   dmBewerbungen.conData.Close;
 
+  // If a lock-file is created delete it
   if (FLockHandle <> 0) then
     DeleteFile(FLockFile);
 end;
