@@ -535,7 +535,12 @@ begin
         sLine := EmptyStr;
 
         for nCount := 0 to Fields.Count - 1 do
-          sLine := sLine + Fields[nCount].Text + ';';
+          if (Fields[nCount].DataType = ftString) then
+            sLine := sLine +  '"' +Fields[nCount].DisplayText + '";'
+          else if (Fields[nCount].DataType in [ftDate, ftDateTime]) then
+            sLine := sLine + FormatDateTime('dd.mm.yyyy', Fields[nCount].Value) + ';'
+          else
+            sLine := sLine + Fields[nCount].DisplayText + ';';
 
         WriteLn(ExportFile, UTF8ToSys(sLine));
         Next;
