@@ -592,6 +592,11 @@ begin
       (DataSource.DataSet.FieldByName('WVL').AsDateTime <= Date) then
       Canvas.Font.Color := clMaroon;
 
+    // Bewerbung liegt mehr als 6 Wochen zurück und noch kein Ergebnis
+    if (DataSource.DataSet.FieldByName('RESULT').AsInteger = 0) and
+      (DataSource.DataSet.FieldByName('DATUM').AsDateTime <= IncWeek(Date, -6)) then
+      Canvas.Font.Style := [fsItalic];
+
     // Eingangsbestätigung liegt vor
     if (DataSource.DataSet.FieldByName('FEEDBACK').AsInteger = 1) and
       (DataSource.DataSet.FieldByName('RESULT').AsInteger = 0) then
