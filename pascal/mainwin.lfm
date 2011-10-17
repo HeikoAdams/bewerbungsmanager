@@ -15,10 +15,10 @@ object frmMain: TfrmMain
     Height = 499
     Top = 25
     Width = 654
-    ActivePage = tsBewerbungen
+    ActivePage = tsBewerbungData
     Align = alClient
     Images = ilIcons
-    TabIndex = 0
+    TabIndex = 1
     TabOrder = 1
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'
@@ -94,7 +94,7 @@ object frmMain: TfrmMain
       ImageIndex = 1
       object lblDatum: TLabel
         Left = 9
-        Height = 17
+        Height = 16
         Top = 16
         Width = 39
         Caption = 'Datum'
@@ -102,7 +102,7 @@ object frmMain: TfrmMain
       end
       object lblWo: TLabel
         Left = 9
-        Height = 17
+        Height = 16
         Top = 49
         Width = 63
         Caption = 'Empfänger'
@@ -110,7 +110,7 @@ object frmMain: TfrmMain
       end
       object lblWVL: TLabel
         Left = 333
-        Height = 17
+        Height = 16
         Top = 16
         Width = 82
         Caption = 'Wiedervorlage'
@@ -118,7 +118,7 @@ object frmMain: TfrmMain
       end
       object lblEmpfMail: TLabel
         Left = 333
-        Height = 17
+        Height = 16
         Top = 49
         Width = 77
         Caption = 'Mail-Adresse'
@@ -126,7 +126,7 @@ object frmMain: TfrmMain
       end
       object lblJobTitel: TLabel
         Left = 9
-        Height = 17
+        Height = 16
         Top = 84
         Width = 49
         Caption = 'Job-Titel'
@@ -134,7 +134,7 @@ object frmMain: TfrmMain
       end
       object lblRefNr: TLabel
         Left = 333
-        Height = 17
+        Height = 16
         Top = 84
         Width = 41
         Caption = 'Ref.-Nr'
@@ -162,7 +162,7 @@ object frmMain: TfrmMain
       end
       object edtDatum: TDateEdit
         Left = 108
-        Height = 26
+        Height = 25
         Top = 8
         Width = 176
         CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
@@ -214,7 +214,7 @@ object frmMain: TfrmMain
       end
       object edtWVL: TDateEdit
         Left = 424
-        Height = 26
+        Height = 25
         Top = 8
         Width = 173
         CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
@@ -265,7 +265,7 @@ object frmMain: TfrmMain
       end
       object edtRefNr: TDBEdit
         Left = 424
-        Height = 26
+        Height = 25
         Top = 75
         Width = 200
         DataField = 'REFNR'
@@ -328,7 +328,7 @@ object frmMain: TfrmMain
       end
       object lblNotes: TLabel
         Left = 9
-        Height = 17
+        Height = 16
         Top = 272
         Width = 81
         Caption = 'Bemerkungen'
@@ -369,7 +369,7 @@ object frmMain: TfrmMain
       end
       object cbbEmpfName: TDBComboBox
         Left = 108
-        Height = 28
+        Height = 27
         Top = 38
         Width = 200
         DataField = 'NAME'
@@ -381,7 +381,7 @@ object frmMain: TfrmMain
       end
       object cbbEmpfMail: TDBComboBox
         Left = 424
-        Height = 28
+        Height = 27
         Top = 40
         Width = 200
         DataField = 'MAIL'
@@ -393,7 +393,7 @@ object frmMain: TfrmMain
       end
       object cbbJobTitel: TDBComboBox
         Left = 108
-        Height = 28
+        Height = 27
         Top = 73
         Width = 200
         DataField = 'JOBTITEL'
@@ -1281,6 +1281,7 @@ object frmMain: TfrmMain
       Caption = '&Suche'
       ImageIndex = 9
       OnExecute = actFindExecute
+      ShortCut = 114
     end
     object actSettings: TAction
       Caption = '&Einstellungen'
