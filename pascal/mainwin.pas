@@ -154,7 +154,7 @@ type
     procedure btnBrowseClick(Sender: TObject);
     procedure btnFileOpenClick(Sender: TObject);
     procedure dlgFindCompanyFind(Sender: TObject);
-    procedure FormDestroy(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure grdBewerbungenDblClick(Sender: TObject);
     procedure grdBewerbungenPrepareCanvas(Sender: TObject; DataCol: integer;
       Column: TColumn; AState: TGridDrawState);
@@ -241,7 +241,7 @@ begin
 
   {$IFDEF Unix}
   // If a lock-file exists, abort start. Otherwise create it
-  {if FileExists(FLockFile) then
+  if FileExists(FLockFile) then
   begin
     Application.MessageBox(PChar(rsDasProgrammW),
       PChar(rsWarnung), MB_ICONWARNING + MB_OK);
@@ -250,7 +250,6 @@ begin
   end
   else
     FLockHandle := FileCreate(FLockFile);
-  }
   {$ENDiF}
 
   if FileExists(FConfigFile.FileName) then
@@ -450,7 +449,7 @@ begin
     dlgFindCompany.CloseDialog;
 end;
 
-procedure TfrmMain.FormDestroy(Sender: TObject);
+procedure TfrmMain.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
   with FConfigFile do
   begin
@@ -467,14 +466,16 @@ begin
       wsMaximized: WriteInteger('UI', 'WINDOWSTATE', 1);
       wsMinimized: WriteInteger('UI', 'WINDOWSTATE', 2);
     end;
+
+    UpdateFile;
   end;
 
   dmBewerbungen.conData.Close;
 
   {$IFDEF Unix}
   // If a lock-file is created delete it
-  {if (FLockHandle <> 0) then
-    DeleteFile(FLockFile);}
+  if (FLockHandle <> 0) then
+    DeleteFile(FLockFile);
   {$ENDIF}
 end;
 
