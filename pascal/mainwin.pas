@@ -624,7 +624,8 @@ begin
       Canvas.Font.Color := clMaroon;
 
     // Bewerbung liegt mehr als 6 Wochen zurück und noch kein Ergebnis
-    if (DataSource.DataSet.FieldByName('RESULT').AsInteger = 0) and
+    if FConfigFile.ReadBool('GENERAL', 'HIGHLIGHT OLD APPLICATIONS', false) and
+      (DataSource.DataSet.FieldByName('RESULT').AsInteger = 0) and
       (DataSource.DataSet.FieldByName('DATUM').AsDateTime <= IncWeek(Date, -6)) then
       Canvas.Font.Style := [fsItalic];
 

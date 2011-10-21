@@ -40,6 +40,7 @@ type
     qryDocuments: TSQLQuery;
     traData: TSQLTransaction;
     procedure conDataAfterConnect(Sender: TObject);
+    procedure conDataBeforeDisconnect(Sender: TObject);
     procedure dsDataStateChange(Sender: TObject);
     procedure dsDocsStateChange(Sender: TObject);
     procedure dsLogStateChange(Sender: TObject);
@@ -151,6 +152,13 @@ begin
   qryBewerbungen.Open;
   qryLog.Open;
   qryDocuments.Open;
+end;
+
+procedure TdmBewerbungen.conDataBeforeDisconnect(Sender: TObject);
+begin
+  qryBewerbungen.Close;
+  qryLog.Close;
+  qryDocuments.Close;
 end;
 
 procedure TdmBewerbungen.UpdateList(aType: string; aList: TStrings);

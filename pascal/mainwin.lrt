@@ -3,7 +3,6 @@ TFRMMAIN.TSBEWERBUNGEN.CAPTION=Bewerbungen
 TFRMMAIN.GRDBEWERBUNGEN.HINT=dunkelblau = Eingang bestätigt
 dunkelrot = Wiedervorlagedatum ohne Reaktion überschritten
 grün = Zusage erhalten
-kursiv = älter als 6 Wochen und ohne Ergebnis
 rot = Absage erhalten
 schwarz = noch keine Reaktion
 violet = Einladung liegt vor

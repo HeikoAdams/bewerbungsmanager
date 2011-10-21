@@ -15,10 +15,10 @@ object frmMain: TfrmMain
     Height = 499
     Top = 25
     Width = 654
-    ActivePage = tsBewerbungData
+    ActivePage = tsBewerbungen
     Align = alClient
     Images = ilIcons
-    TabIndex = 1
+    TabIndex = 0
     TabOrder = 1
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'
@@ -27,7 +27,7 @@ object frmMain: TfrmMain
       object grdBewerbungen: TDBGrid
         Left = 0
         Height = 465
-        Hint = 'dunkelblau = Eingang bestätigt'#10'dunkelrot = Wiedervorlagedatum ohne Reaktion überschritten'#10'grün = Zusage erhalten'#10'kursiv = älter als 6 Wochen und ohne Ergebnis'#10'rot = Absage erhalten'#10'schwarz = noch keine Reaktion'#10'violet = Einladung liegt vor'
+        Hint = 'dunkelblau = Eingang bestätigt'#10'dunkelrot = Wiedervorlagedatum ohne Reaktion überschritten'#10'grün = Zusage erhalten'#10'rot = Absage erhalten'#10'schwarz = noch keine Reaktion'#10'violet = Einladung liegt vor'
         Top = 0
         Width = 648
         Align = alClient

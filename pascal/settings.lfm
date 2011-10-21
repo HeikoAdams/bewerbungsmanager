@@ -1,11 +1,11 @@
 object frmSettings: TfrmSettings
   Left = 454
-  Height = 308
+  Height = 347
   Top = 251
   Width = 426
   BorderStyle = bsDialog
   Caption = 'Einstellungen'
-  ClientHeight = 308
+  ClientHeight = 347
   ClientWidth = 426
   OnClose = FormClose
   OnCreate = FormCreate
@@ -25,11 +25,11 @@ object frmSettings: TfrmSettings
   end
   object GroupBox1: TGroupBox
     Left = 8
-    Height = 216
+    Height = 248
     Top = 48
     Width = 409
     Caption = 'Standardwerte'
-    ClientHeight = 198
+    ClientHeight = 231
     ClientWidth = 405
     TabOrder = 1
     object rgTyp: TRadioGroup
@@ -47,7 +47,7 @@ object frmSettings: TfrmSettings
       ChildSizing.ShrinkVertical = crsScaleChilds
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 1
-      ClientHeight = 87
+      ClientHeight = 88
       ClientWidth = 181
       Items.Strings = (
         'Initiativbewerbung'
@@ -78,7 +78,7 @@ object frmSettings: TfrmSettings
     end
     object edtWVLTage: TSpinEdit
       Left = 222
-      Height = 26
+      Height = 25
       Top = 128
       Width = 50
       MinValue = 1
@@ -87,7 +87,7 @@ object frmSettings: TfrmSettings
     end
     object Label1: TLabel
       Left = 14
-      Height = 17
+      Height = 16
       Top = 137
       Width = 156
       Caption = 'Tage bis zur Wiedervorlage'
@@ -104,11 +104,19 @@ object frmSettings: TfrmSettings
       ShowHint = True
       TabOrder = 3
     end
+    object chkOldApplications: TCheckBox
+      Left = 14
+      Height = 22
+      Top = 193
+      Width = 308
+      Caption = 'offene Bewerbungen nach 6 Wochen hervorheben'
+      TabOrder = 4
+    end
   end
   object BitBtn1: TBitBtn
     Left = 8
     Height = 30
-    Top = 272
+    Top = 312
     Width = 75
     Caption = '&Ok'
     Default = True
@@ -119,7 +127,7 @@ object frmSettings: TfrmSettings
   object BitBtn2: TBitBtn
     Left = 308
     Height = 30
-    Top = 272
+    Top = 312
     Width = 109
     Cancel = True
     Caption = 'Abbrechen'
