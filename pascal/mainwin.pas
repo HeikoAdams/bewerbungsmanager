@@ -154,11 +154,11 @@ type
     procedure btnBrowseClick(Sender: TObject);
     procedure btnFileOpenClick(Sender: TObject);
     procedure dlgFindCompanyFind(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
     procedure grdBewerbungenDblClick(Sender: TObject);
     procedure grdBewerbungenPrepareCanvas(Sender: TObject; DataCol: integer;
       Column: TColumn; AState: TGridDrawState);
     procedure FormCreate(Sender: TObject);
-    procedure FormDestroy(Sender: TObject);
     procedure grdLogDblClick(Sender: TObject);
     procedure pmFilterPopup(Sender: TObject);
   private
@@ -166,7 +166,7 @@ type
     FConfigDir: string;
     FDataFile: string;
     FErrorMsg: string;
-    FLinuxLaunch: string;
+    {$IFDEF Unix}FLinuxLaunch: string;{$ENDIF}
     FLockFile: string;
     FConfigFile: TIniFile;
 
@@ -239,8 +239,9 @@ begin
   FLockFile := IncludeTrailingPathDelimiter(FConfigDir) + '.lock';
   FLockHandle := 0;
 
+  {$IFDEF Unix}
   // If a lock-file exists, abort start. Otherwise create it
-  if FileExists(FLockFile) then
+  {if FileExists(FLockFile) then
   begin
     Application.MessageBox(PChar(rsDasProgrammW),
       PChar(rsWarnung), MB_ICONWARNING + MB_OK);
@@ -249,6 +250,8 @@ begin
   end
   else
     FLockHandle := FileCreate(FLockFile);
+  }
+  {$ENDiF}
 
   if FileExists(FConfigFile.FileName) then
   begin
@@ -447,6 +450,34 @@ begin
     dlgFindCompany.CloseDialog;
 end;
 
+procedure TfrmMain.FormDestroy(Sender: TObject);
+begin
+  with FConfigFile do
+  begin
+    if (WindowState <> wsMaximized) then
+    begin
+      WriteInteger('UI', 'TOP', Top);
+      WriteInteger('UI', 'LEFT', Left);
+      WriteInteger('UI', 'HEIGHT', Height);
+      WriteInteger('UI', 'WIDTH', Width);
+    end;
+
+    case WindowState of
+      wsNormal: WriteInteger('UI', 'WINDOWSTATE', 0);
+      wsMaximized: WriteInteger('UI', 'WINDOWSTATE', 1);
+      wsMinimized: WriteInteger('UI', 'WINDOWSTATE', 2);
+    end;
+  end;
+
+  dmBewerbungen.conData.Close;
+
+  {$IFDEF Unix}
+  // If a lock-file is created delete it
+  {if (FLockHandle <> 0) then
+    DeleteFile(FLockFile);}
+  {$ENDIF}
+end;
+
 procedure TfrmMain.actEingangExecute(Sender: TObject);
 begin
   dmBewerbungen.FetchData(Format(rsFEEDBACKD, [1]));
@@ -619,32 +650,6 @@ begin
     if (DataSource.DataSet.FieldByName('RESULT').AsInteger = 3) then
       Canvas.Font.Color := clGray;
   end;
-end;
-
-procedure TfrmMain.FormDestroy(Sender: TObject);
-begin
-  with FConfigFile do
-  begin
-    if (WindowState <> wsMaximized) then
-    begin
-      WriteInteger('UI', 'TOP', Top);
-      WriteInteger('UI', 'LEFT', Left);
-      WriteInteger('UI', 'HEIGHT', Height);
-      WriteInteger('UI', 'WIDTH', Width);
-    end;
-
-    case WindowState of
-      wsNormal: WriteInteger('UI', 'WINDOWSTATE', 0);
-      wsMaximized: WriteInteger('UI', 'WINDOWSTATE', 1);
-      wsMinimized: WriteInteger('UI', 'WINDOWSTATE', 2);
-    end;
-  end;
-
-  dmBewerbungen.conData.Close;
-
-  // If a lock-file is created delete it
-  if (FLockHandle <> 0) then
-    DeleteFile(FLockFile);
 end;
 
 procedure TfrmMain.grdLogDblClick(Sender: TObject);
