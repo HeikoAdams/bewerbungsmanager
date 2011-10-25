@@ -60,10 +60,12 @@ type
     cbbEmpfName: TDBComboBox;
     cbbEmpfMail: TDBComboBox;
     cbbJobTitel: TDBComboBox;
+    edtAnspr: TDBEdit;
     edtFile: TDBEdit;
     DBGrid1: TDBGrid;
     dlgFindCompany: TFindDialog;
     cbbLogTyp: TDBComboBox;
+    Label1: TLabel;
     MenuItem3: TMenuItem;
     miWVL: TMenuItem;
     miAlleNoAbs: TMenuItem;

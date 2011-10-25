@@ -1,10 +1,10 @@
 object frmMain: TfrmMain
   Left = 244
-  Height = 543
+  Height = 540
   Top = 132
   Width = 654
   Caption = 'Bewerbungsmanager'
-  ClientHeight = 543
+  ClientHeight = 540
   ClientWidth = 654
   KeyPreview = True
   OnClose = FormClose
@@ -12,17 +12,17 @@ object frmMain: TfrmMain
   LCLVersion = '0.9.30'
   object PageControl1: TPageControl
     Left = 0
-    Height = 499
+    Height = 496
     Top = 25
     Width = 654
-    ActivePage = tsBewerbungen
+    ActivePage = tsBewerbungData
     Align = alClient
     Images = ilIcons
-    TabIndex = 0
+    TabIndex = 1
     TabOrder = 1
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'
-      ClientHeight = 465
+      ClientHeight = 462
       ClientWidth = 648
       object grdBewerbungen: TDBGrid
         Left = 0
@@ -89,7 +89,7 @@ object frmMain: TfrmMain
     end
     object tsBewerbungData: TTabSheet
       Caption = 'Daten'
-      ClientHeight = 465
+      ClientHeight = 462
       ClientWidth = 648
       ImageIndex = 1
       object lblDatum: TLabel
@@ -125,17 +125,17 @@ object frmMain: TfrmMain
         ParentColor = False
       end
       object lblJobTitel: TLabel
-        Left = 9
+        Left = 333
         Height = 16
-        Top = 84
+        Top = 81
         Width = 49
         Caption = 'Job-Titel'
         ParentColor = False
       end
       object lblRefNr: TLabel
-        Left = 333
+        Left = 9
         Height = 16
-        Top = 84
+        Top = 113
         Width = 41
         Caption = 'Ref.-Nr'
         ParentColor = False
@@ -143,7 +143,7 @@ object frmMain: TfrmMain
       object rgTyp: TDBRadioGroup
         Left = 5
         Height = 105
-        Top = 112
+        Top = 144
         Width = 185
         Caption = 'Bewerbungstyp'
         DataField = 'TYP'
@@ -153,7 +153,7 @@ object frmMain: TfrmMain
           'Stellenangebot'
           'Vermittlungsvorschlag'
         )
-        TabOrder = 6
+        TabOrder = 8
         Values.Strings = (
           '0'
           '1'
@@ -264,20 +264,20 @@ object frmMain: TfrmMain
         TabOrder = 1
       end
       object edtRefNr: TDBEdit
-        Left = 424
+        Left = 108
         Height = 25
-        Top = 75
+        Top = 104
         Width = 200
         DataField = 'REFNR'
         DataSource = dmBewerbungen.dsData
         CharCase = ecNormal
         MaxLength = 0
-        TabOrder = 5
+        TabOrder = 6
       end
       object rgFeedback: TDBRadioGroup
         Left = 197
         Height = 105
-        Top = 112
+        Top = 144
         Width = 166
         Caption = 'Rückmeldung'
         DataField = 'FEEDBACK'
@@ -287,7 +287,7 @@ object frmMain: TfrmMain
           'Eingangsbetätigung'
           'Einladung'
         )
-        TabOrder = 7
+        TabOrder = 9
         Values.Strings = (
           '0'
           '1'
@@ -297,7 +297,7 @@ object frmMain: TfrmMain
       object rgErgebnis: TDBRadioGroup
         Left = 373
         Height = 105
-        Top = 112
+        Top = 144
         Width = 128
         Caption = 'Ergebnis'
         DataField = 'RESULT'
@@ -308,7 +308,7 @@ object frmMain: TfrmMain
           'Absage'
           'Zurückgezogen'
         )
-        TabOrder = 8
+        TabOrder = 10
         Values.Strings = (
           '0'
           '1'
@@ -324,7 +324,7 @@ object frmMain: TfrmMain
         DataField = 'NOTES'
         DataSource = dmBewerbungen.dsData
         ScrollBars = ssAutoBoth
-        TabOrder = 11
+        TabOrder = 12
       end
       object lblNotes: TLabel
         Left = 9
@@ -335,21 +335,21 @@ object frmMain: TfrmMain
         ParentColor = False
       end
       object chkVermittler: TDBCheckBox
-        Left = 9
+        Left = 333
         Height = 23
-        Top = 232
+        Top = 106
         Width = 171
         Caption = 'Personalvermittler'
         DataField = 'VERMITTLER'
         DataSource = dmBewerbungen.dsData
-        TabOrder = 10
+        TabOrder = 7
         ValueChecked = 'True'
         ValueUnchecked = 'False'
       end
       object rgMedium: TDBRadioGroup
         Left = 509
         Height = 105
-        Top = 112
+        Top = 144
         Width = 137
         Caption = 'Medium'
         DataField = 'MEDIUM'
@@ -359,7 +359,7 @@ object frmMain: TfrmMain
           'Post'
           'Online-Formular'
         )
-        TabOrder = 9
+        TabOrder = 11
         Values.Strings = (
           '0'
           '1'
@@ -382,7 +382,7 @@ object frmMain: TfrmMain
       object cbbEmpfMail: TDBComboBox
         Left = 424
         Height = 27
-        Top = 40
+        Top = 38
         Width = 200
         DataField = 'MAIL'
         DataSource = dmBewerbungen.dsData
@@ -392,21 +392,40 @@ object frmMain: TfrmMain
         TabOrder = 3
       end
       object cbbJobTitel: TDBComboBox
-        Left = 108
+        Left = 424
         Height = 27
-        Top = 73
+        Top = 70
         Width = 200
         DataField = 'JOBTITEL'
         DataSource = dmBewerbungen.dsData
         ItemHeight = 0
         MaxLength = 0
         Sorted = True
+        TabOrder = 5
+      end
+      object edtAnspr: TDBEdit
+        Left = 108
+        Height = 25
+        Top = 72
+        Width = 196
+        DataField = 'ANSPRECHPARTNER'
+        DataSource = dmBewerbungen.dsData
+        CharCase = ecNormal
+        MaxLength = 0
         TabOrder = 4
+      end
+      object Label1: TLabel
+        Left = 9
+        Height = 16
+        Top = 81
+        Width = 78
+        Caption = 'Anspr.partner'
+        ParentColor = False
       end
     end
     object tsActions: TTabSheet
       Caption = 'Aktivitäten'
-      ClientHeight = 465
+      ClientHeight = 462
       ClientWidth = 648
       ImageIndex = 2
       object grdLog: TDBGrid
@@ -566,7 +585,7 @@ object frmMain: TfrmMain
     end
     object tsDokumente: TTabSheet
       Caption = 'Dokumente'
-      ClientHeight = 465
+      ClientHeight = 462
       ClientWidth = 648
       ImageIndex = 7
       object navDocs: TDBNavigator
@@ -784,7 +803,7 @@ object frmMain: TfrmMain
   object sbInfo: TStatusBar
     Left = 0
     Height = 19
-    Top = 524
+    Top = 521
     Width = 654
     Panels = <>
   end
@@ -1713,7 +1732,7 @@ object frmMain: TfrmMain
     Title = 'Empfänger suchen'
     Options = [frDown, frHideMatchCase, frHideWholeWord, frHideUpDown, frMatchCase, frDisableMatchCase, frDisableUpDown, frDisableWholeWord]
     OnFind = dlgFindCompanyFind
-    left = 200
-    top = 176
+    left = 448
+    top = 448
   end
 end
