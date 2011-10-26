@@ -51,6 +51,7 @@ resourcestring
   rsRESULTD = '(RESULT = %d)';
   rsSuche = 'Suche';
   rsTYPD = '(TYP = %d)';
+  {$IFDEF Unix}rsUsrBinXdgOpe = '/usr/bin/xdg-open "%s"';{$ENDIF}
   rsWarnung = 'Warnung';
   rsWERT = 'WERT';
   rsWHEREWVLSAND = '(WVL <= %s) AND (FEEDBACK = 0) AND (RESULT = 0)';

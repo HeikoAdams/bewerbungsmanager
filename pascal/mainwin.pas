@@ -394,7 +394,7 @@ begin
   {$IFDEF Unix}
   with TProcess.Create(nil) do
   begin
-    CommandLine := Format(FLinuxLaunch, [sCommand]);
+    CommandLine := Format(rsUsrBinXdgOpe, [sCommand]);
     Options := Options + [poWaitOnExit];
     Execute;
     Free;
