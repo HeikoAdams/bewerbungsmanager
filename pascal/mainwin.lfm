@@ -15,10 +15,10 @@ object frmMain: TfrmMain
     Height = 496
     Top = 25
     Width = 654
-    ActivePage = tsBewerbungData
+    ActivePage = tsBewerbungen
     Align = alClient
     Images = ilIcons
-    TabIndex = 1
+    TabIndex = 0
     TabOrder = 1
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'
@@ -26,7 +26,7 @@ object frmMain: TfrmMain
       ClientWidth = 648
       object grdBewerbungen: TDBGrid
         Left = 0
-        Height = 465
+        Height = 462
         Hint = 'dunkelblau = Eingang bestätigt'#10'dunkelrot = Wiedervorlagedatum ohne Reaktion überschritten'#10'grün = Zusage erhalten'#10'rot = Absage erhalten'#10'schwarz = noch keine Reaktion'#10'violet = Einladung liegt vor'
         Top = 0
         Width = 648
@@ -68,7 +68,8 @@ object frmMain: TfrmMain
           item
             Title.Alignment = taCenter
             Title.Caption = 'Ref.Nr'
-            Width = 150
+            Width = 0
+            Visible = False
             FieldName = 'REFNR'
           end        
           item
@@ -76,6 +77,11 @@ object frmMain: TfrmMain
             Title.Caption = 'Personalvermittler'
             Width = 150
             FieldName = 'VERMITTLER'
+          end        
+          item
+            Title.Alignment = taCenter
+            Title.Caption = 'befristet'
+            FieldName = 'BEFRISTET'
           end>
         DataSource = dmBewerbungen.dsData
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
@@ -271,7 +277,7 @@ object frmMain: TfrmMain
         DataField = 'REFNR'
         DataSource = dmBewerbungen.dsData
         CharCase = ecNormal
-        MaxLength = 0
+        MaxLength = 255
         TabOrder = 6
       end
       object rgFeedback: TDBRadioGroup
@@ -338,7 +344,7 @@ object frmMain: TfrmMain
         Left = 333
         Height = 23
         Top = 106
-        Width = 171
+        Width = 128
         Caption = 'Personalvermittler'
         DataField = 'VERMITTLER'
         DataSource = dmBewerbungen.dsData
@@ -411,7 +417,7 @@ object frmMain: TfrmMain
         DataField = 'ANSPRECHPARTNER'
         DataSource = dmBewerbungen.dsData
         CharCase = ecNormal
-        MaxLength = 0
+        MaxLength = 255
         TabOrder = 4
       end
       object Label1: TLabel
@@ -421,6 +427,18 @@ object frmMain: TfrmMain
         Width = 78
         Caption = 'Anspr.partner'
         ParentColor = False
+      end
+      object chkBefristet: TDBCheckBox
+        Left = 485
+        Height = 23
+        Top = 106
+        Width = 128
+        Caption = 'befristet'
+        DataField = 'BEFRISTET'
+        DataSource = dmBewerbungen.dsData
+        TabOrder = 13
+        ValueChecked = 'True'
+        ValueUnchecked = 'False'
       end
     end
     object tsActions: TTabSheet

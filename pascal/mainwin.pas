@@ -60,6 +60,7 @@ type
     cbbEmpfName: TDBComboBox;
     cbbEmpfMail: TDBComboBox;
     cbbJobTitel: TDBComboBox;
+    chkBefristet: TDBCheckBox;
     edtAnspr: TDBEdit;
     edtFile: TDBEdit;
     DBGrid1: TDBGrid;
@@ -173,7 +174,7 @@ type
     FConfigFile: TIniFile;
 
     FErrorCode: integer;
-    FLockHandle: integer;
+    {$IFDEF Unix}FLockHandle: integer;{$ENDIF}
     FGridFilter: word;
 
     procedure NotifyWVL;
