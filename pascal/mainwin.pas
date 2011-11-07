@@ -235,10 +235,23 @@ begin
 end;
 
 procedure TfrmMain.FormCreate(Sender: TObject);
+var
+  sConfFileName: string;
 begin
-  FConfigDir := GetAppConfigDir(False);
+  if (ParamStr(1) = 'portable') then
+  begin
+    FConfigDir := ExtractFilePath(Application.ExeName);
+    sConfFileName := StringReplace(GetAppConfigFile(False, True),
+      GetAppConfigDir(False), FConfigDir, [rfIgnoreCase, rfReplaceAll]);
+  end
+  else
+  begin
+    FConfigDir := GetAppConfigDir(False);
+    sConfFileName := GetAppConfigFile(False, True);
+  end;
+
   FDataFile := IncludeTrailingPathDelimiter(FConfigDir) + 'bewerbungen.db';
-  FConfigFile := TIniFile.Create(GetAppConfigFile(False, True));
+  FConfigFile := TIniFile.Create(sConfFileName);
   FLockFile := IncludeTrailingPathDelimiter(FConfigDir) + '.lock';
   FLockHandle := 0;
 
@@ -401,7 +414,7 @@ begin
   end;
   {$endif}
   {$IFDEF Windows}
-
+  Beep;
   {$endif}
 end;
 
@@ -425,10 +438,10 @@ begin
     dmBewerbungen.qryDocuments.FieldByName('FILENAME').AsString := dlgDocuments.FileName;
 end;
 
+{$IFDEF Unix}
 procedure TfrmMain.btnFileOpenClick(Sender: TObject);
 begin
   { TODO 1 : Shell-Execute Code zum Öffnen der Dokumente unter Windows einfügen }
-  {$IFDEF Unix}
   with TProcess.Create(nil) do
   begin
     CommandLine := Format(FLinuxLaunch, [edtFile.Text]);
@@ -436,11 +449,16 @@ begin
     Execute;
     Free;
   end;
-  {$endif}
-  {$IFDEF Windows}
-
-  {$endif}
 end;
+{$endif}
+
+{$IFDEF Windows}
+procedure TfrmMain.btnFileOpenClick(Sender: TObject);
+begin
+  { TODO 1 : Shell-Execute Code zum Öffnen der Dokumente unter Windows einfügen }
+  Beep;
+end;
+{$endif}
 
 procedure TfrmMain.dlgFindCompanyFind(Sender: TObject);
 begin

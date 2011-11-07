@@ -628,7 +628,7 @@ object frmMain: TfrmMain
       object pnlDokBottom: TPanel
         Left = 0
         Height = 88
-        Top = 377
+        Top = 374
         Width = 648
         Align = alBottom
         ClientHeight = 88
@@ -774,7 +774,7 @@ object frmMain: TfrmMain
       end
       object DBGrid1: TDBGrid
         Left = 0
-        Height = 352
+        Height = 349
         Top = 25
         Width = 648
         Align = alClient
