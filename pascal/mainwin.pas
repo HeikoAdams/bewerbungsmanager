@@ -69,7 +69,7 @@ type
     cbbLogTyp: TDBComboBox;
     Label1: TLabel;
     MenuItem3: TMenuItem;
-    MenuItem4: TMenuItem;
+    miIgnorieren: TMenuItem;
     miWVL: TMenuItem;
     miAlleNoAbs: TMenuItem;
     miAlle: TMenuItem;
