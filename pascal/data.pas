@@ -337,31 +337,21 @@ begin
 end;
 
 procedure TdmBewerbungen.qryBewerbungenBeforePost(DataSet: TDataSet);
-var
-  nDays: Word;
 begin
-  nDays := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'WVL', 14);
-
   with qryBewerbungen do
   begin
     FieldByName('DATUM').AsDateTime := frmMain.edtDatum.Date;
-
-    if (State = dsInsert) then
-      FieldByName('WVL').AsDateTime := IncDay(frmMain.edtDatum.Date, nDays)
-    else
-    begin
-      if (frmMain.edtWVL.Date <> 0) then
-        FieldByName('WVL').AsDateTime := frmMain.edtWVL.Date
-      else
-        FieldByName('WVL').AsDateTime := IncDay(frmMain.edtWVL.Date, nDays);
-    end;
+    FieldByName('WVL').AsDateTime := frmMain.edtWVL.Date;
   end;
 end;
 
 procedure TdmBewerbungen.qryBewerbungenNewRecord(DataSet: TDataSet);
 var
   nDefaults: array[0..3] of integer;
+  nDays: Word;
 begin
+  nDays := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'WVL', 14);
+
   if FileExists(frmMain.ConfigFile.FileName) then
   begin
     nDefaults[0] := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'TYP', 1);
@@ -383,6 +373,12 @@ begin
     FieldByName('FEEDBACK').AsInteger := nDefaults[1];
     FieldByName('RESULT').AsInteger := nDefaults[2];
     FieldByName('MEDIUM').AsInteger := nDefaults[3];
+  end;
+
+  with frmMain do
+  begin
+    edtDatum.Date := Date;
+    edtWVL.Date := IncDay(Date, nDays);
   end;
 end;
 
