@@ -40,6 +40,7 @@ type
     actAngebot: TAction;
     actAllNoAbsage: TAction;
     actFind: TAction;
+    actIgnore: TAction;
     actWriteMail: TAction;
     actRevoke: TAction;
     actSettings: TAction;
@@ -68,6 +69,7 @@ type
     cbbLogTyp: TDBComboBox;
     Label1: TLabel;
     MenuItem3: TMenuItem;
+    MenuItem4: TMenuItem;
     miWVL: TMenuItem;
     miAlleNoAbs: TMenuItem;
     miAlle: TMenuItem;
@@ -141,6 +143,7 @@ type
     procedure actEinladungExecute(Sender: TObject);
     procedure actExportExecute(Sender: TObject);
     procedure actFindExecute(Sender: TObject);
+    procedure actIgnoreExecute(Sender: TObject);
     procedure actInitiativExecute(Sender: TObject);
     procedure actMailExecute(Sender: TObject);
     procedure actNoFeedbackExecute(Sender: TObject);
@@ -613,6 +616,11 @@ procedure TfrmMain.actFindExecute(Sender: TObject);
 begin
   actAlle.Execute;
   dlgFindCompany.Execute;
+end;
+
+procedure TfrmMain.actIgnoreExecute(Sender: TObject);
+begin
+  dmBewerbungen.SetIgnoreState(grdBewerbungen.DataSource.DataSet.FieldByName('ID').AsInteger);
 end;
 
 procedure TfrmMain.actInitiativExecute(Sender: TObject);

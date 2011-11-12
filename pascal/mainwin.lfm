@@ -1,10 +1,10 @@
 object frmMain: TfrmMain
   Left = 244
-  Height = 540
+  Height = 552
   Top = 132
   Width = 654
   Caption = 'Bewerbungsmanager'
-  ClientHeight = 540
+  ClientHeight = 552
   ClientWidth = 654
   KeyPreview = True
   OnClose = FormClose
@@ -12,21 +12,21 @@ object frmMain: TfrmMain
   LCLVersion = '0.9.30'
   object PageControl1: TPageControl
     Left = 0
-    Height = 490
+    Height = 502
     Top = 25
     Width = 654
-    ActivePage = tsDokumente
+    ActivePage = tsBewerbungen
     Align = alClient
     Images = ilIcons
-    TabIndex = 3
+    TabIndex = 0
     TabOrder = 1
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'
-      ClientHeight = 451
+      ClientHeight = 463
       ClientWidth = 648
       object grdBewerbungen: TDBGrid
         Left = 0
-        Height = 451
+        Height = 463
         Hint = 'dunkelblau = Eingang bestätigt'#10'dunkelrot = Wiedervorlagedatum ohne Reaktion überschritten'#10'grün = Zusage erhalten'#10'rot = Absage erhalten'#10'schwarz = noch keine Reaktion'#10'violet = Einladung liegt vor'
         Top = 0
         Width = 648
@@ -82,6 +82,11 @@ object frmMain: TfrmMain
             Title.Alignment = taCenter
             Title.Caption = 'befristet'
             FieldName = 'BEFRISTET'
+          end        
+          item
+            Title.Alignment = taCenter
+            Title.Caption = 'Ignoriert'
+            FieldName = 'IGNORIERT'
           end>
         DataSource = dmBewerbungen.dsData
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
@@ -95,7 +100,7 @@ object frmMain: TfrmMain
     end
     object tsBewerbungData: TTabSheet
       Caption = 'Daten'
-      ClientHeight = 451
+      ClientHeight = 463
       ClientWidth = 648
       ImageIndex = 1
       object lblDatum: TLabel
@@ -344,7 +349,7 @@ object frmMain: TfrmMain
         Left = 333
         Height = 23
         Top = 106
-        Width = 128
+        Width = 152
         Caption = 'Personalvermittler'
         DataField = 'VERMITTLER'
         DataSource = dmBewerbungen.dsData
@@ -429,7 +434,7 @@ object frmMain: TfrmMain
         ParentColor = False
       end
       object chkBefristet: TDBCheckBox
-        Left = 485
+        Left = 496
         Height = 23
         Top = 106
         Width = 128
@@ -443,7 +448,7 @@ object frmMain: TfrmMain
     end
     object tsActions: TTabSheet
       Caption = 'Aktivitäten'
-      ClientHeight = 451
+      ClientHeight = 463
       ClientWidth = 648
       ImageIndex = 2
       object grdLog: TDBGrid
@@ -603,7 +608,7 @@ object frmMain: TfrmMain
     end
     object tsDokumente: TTabSheet
       Caption = 'Dokumente'
-      ClientHeight = 451
+      ClientHeight = 463
       ClientWidth = 648
       ImageIndex = 7
       object navDocs: TDBNavigator
@@ -783,13 +788,13 @@ object frmMain: TfrmMain
           item
             Title.Alignment = taCenter
             Title.Caption = 'Art'
-            Width = 150
+            Width = 37
             FieldName = 'TYPE'
           end        
           item
             Title.Alignment = taCenter
             Title.Caption = 'Datei'
-            Width = 500
+            Width = 50
             FieldName = 'FILENAME'
           end>
         DataSource = dmBewerbungen.dsDocs
@@ -821,7 +826,7 @@ object frmMain: TfrmMain
   object sbInfo: TStatusBar
     Left = 0
     Height = 25
-    Top = 515
+    Top = 527
     Width = 654
     Panels = <>
   end
@@ -1311,7 +1316,7 @@ object frmMain: TfrmMain
     end
     object actAllNoAbsage: TAction
       Tag = 15
-      Caption = '&alle ohne Absagen'
+      Caption = '&alle ohne Absagen und ignorierte'
       OnExecute = actAllNoAbsageExecute
     end
     object actFind: TAction
@@ -1334,6 +1339,10 @@ object frmMain: TfrmMain
       Caption = 'E-&Mail schreiben'
       ImageIndex = 11
       OnExecute = actWriteMailExecute
+    end
+    object actIgnore: TAction
+      Caption = '&Ignorieren'
+      OnExecute = actIgnoreExecute
     end
   end
   object pmFilter: TPopupMenu
@@ -1693,6 +1702,9 @@ object frmMain: TfrmMain
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00CDCDCD9FC9C9
         C9FBC4C4C4FFC0C0C0FFBBBBBBFFB6B6B6FFB0B0B0FFABABABA7
       }
+    end
+    object MenuItem4: TMenuItem
+      Action = actIgnore
     end
     object miSettings: TMenuItem
       Tag = 120

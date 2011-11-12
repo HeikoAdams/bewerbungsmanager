@@ -47,14 +47,14 @@ resourcestring
   rsMAILS = 'MAILS';
   rsMeineBewerbu = 'Meine Bewerbung vom %s als %s (Ref.Nr. %s)';
   rsMeineBewerbu2 = 'Meine Bewerbung vom %s als %s';
-  rsRESULT2 = '(RESULT <> 2)';
+  rsRESULT2 = '(RESULT <> 2) AND (IGNORIERT = 0)';
   rsRESULTD = '(RESULT = %d)';
   rsSuche = 'Suche';
   rsTYPD = '(TYP = %d)';
   {$IFDEF Unix}rsUsrBinXdgOpe = '/usr/bin/xdg-open "%s"';{$ENDIF}
   rsWarnung = 'Warnung';
   rsWERT = 'WERT';
-  rsWHEREWVLSAND = '(WVL <= %s) AND (FEEDBACK = 0) AND (RESULT = 0)';
+  rsWHEREWVLSAND = '(WVL <= %s) AND (FEEDBACK = 0) AND (RESULT = 0) AND (IGNORIERT = 0)';
 
 implementation
 

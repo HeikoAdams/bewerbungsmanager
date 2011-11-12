@@ -63,6 +63,7 @@ type
     { public declarations }
     procedure FetchData(aWhere: string);
     procedure FetchExportData(aWhere: string);
+    procedure SetIgnoreState(const aID: Integer);
   end;
 
 var
@@ -75,6 +76,29 @@ uses mainwin, bewerbung_strings;
 {$R *.lfm}
 
 { TdmBewerbungen }
+
+procedure TdmBewerbungen.SetIgnoreState(const aID: Integer);
+begin
+  with TSQLQuery.Create(nil) do
+  begin
+    DataBase := conData;
+    Transaction := traData;
+
+    with SQL do
+    begin
+      Clear;
+      Add('UPDATE BEWERBUNGEN SET IGNORIERT = NOT IGNORIERT WHERE ID = :pID');
+
+      Params.ParamValues['pID'] := aID;
+    end;
+
+    ExecSQL;
+    Free;
+  end;
+
+  traData.CommitRetaining;
+  qryBewerbungen.Refresh;
+end;
 
 procedure TdmBewerbungen.FetchData(aWhere: string);
 begin
