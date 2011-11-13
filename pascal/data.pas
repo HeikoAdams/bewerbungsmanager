@@ -58,6 +58,7 @@ type
     FInsertMode: boolean;
 
     procedure UpdateList(aType: string; aList: TStrings);
+    procedure OpenDataSources;
     function GetRecordsCount(DataSet: TDataSet): Integer;
   public
     { public declarations }
@@ -76,6 +77,18 @@ uses mainwin, bewerbung_strings;
 {$R *.lfm}
 
 { TdmBewerbungen }
+
+procedure TdmBewerbungen.OpenDataSources;
+begin
+  if not qryBewerbungen.Active then
+    qryBewerbungen.Open;
+
+  if not qryLog.Active then
+    qryLog.Open;
+
+  if not qryDocuments.Active then
+    qryDocuments.Open;
+end;
 
 procedure TdmBewerbungen.SetIgnoreState(const aID: Integer);
 var
@@ -101,7 +114,7 @@ begin
   end;
 
   traData.Commit;
-  qryBewerbungen.Open;
+  OpenDataSources;
 
   qryBewerbungen.Locate('ID', nID, []);
 end;
@@ -179,9 +192,7 @@ end;
 
 procedure TdmBewerbungen.conDataAfterConnect(Sender: TObject);
 begin
-  qryBewerbungen.Open;
-  qryLog.Open;
-  qryDocuments.Open;
+  OpenDataSources;
 end;
 
 procedure TdmBewerbungen.conDataBeforeDisconnect(Sender: TObject);
@@ -318,7 +329,7 @@ begin
     if traData.Active then
     begin
       traData.Commit;
-      DataSet.Open;
+      OpenDataSources;
 
       if (nID > 0) then
         DataSet.Locate('ID', nID, []);
