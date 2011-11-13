@@ -253,12 +253,17 @@ begin
     sConfFileName := GetAppConfigFile(False, True);
   end;
 
+  if DirectoryExists(ExtractFileDir(sConfFileName)) then
+    if CreateDir(ExtractFileDir(sConfFileName)) then
+      HandleError;
+
   FDataFile := IncludeTrailingPathDelimiter(FConfigDir) + 'bewerbungen.db';
   FConfigFile := TIniFile.Create(sConfFileName);
   FLockFile := IncludeTrailingPathDelimiter(FConfigDir) + '.lock';
-  FLockHandle := 0;
 
   {$IFDEF Unix}
+  FLockHandle := 0;
+
   // If a lock-file exists, abort start. Otherwise create it
   if FileExists(FLockFile) then
   begin

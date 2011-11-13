@@ -96,8 +96,8 @@ begin
     Free;
   end;
 
-  traData.CommitRetaining;
-  qryBewerbungen.Refresh;
+  traData.Commit;
+  qryBewerbungen.Open;
 end;
 
 procedure TdmBewerbungen.FetchData(aWhere: string);
@@ -299,30 +299,23 @@ end;
 
 procedure TdmBewerbungen.qryBewerbungenAfterPost(DataSet: TDataSet);
 var
-  Bookmark: TBookmark;
+  nID: Integer;
 begin
   try
-    Bookmark := DataSet.GetBookmark;
+    nID := DataSet.FieldByName('ID').AsInteger;
     TSQLQuery(DataSet).ApplyUpdates;
 
     if traData.Active then
     begin
-      traData.CommitRetaining;
-      DataSet.Refresh;
+      traData.Commit;
+      DataSet.Open;
 
-      if DataSet.BookmarkValid(Bookmark) then
-        DataSet.GotoBookmark(Bookmark)
-      else
-        DataSet.First;
-
-      DataSet.FreeBookmark(Bookmark);
+      if (nID > 0) then
+        DataSet.Locate('ID', nID, []);
     end;
   except
     traData.Rollback;
   end;
-
-  if not conData.Connected then
-     conData.Open;
 
   UpdateList(rsCOMPANIES, frmMain.cbbEmpfName.Items);
   UpdateList(rsMAILS, frmMain.cbbEmpfMail.Items);

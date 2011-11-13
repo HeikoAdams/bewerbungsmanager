@@ -31,7 +31,7 @@ object dmBewerbungen: TdmBewerbungen
     DatabaseName = '/home/heiko/.config/bewerbungen/bewerbungen.db'
     KeepConnection = True
     Transaction = traData
-    Options = [sloTransactions]
+    Options = []
     left = 216
     top = 80
   end
