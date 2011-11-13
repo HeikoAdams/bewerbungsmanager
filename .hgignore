@@ -1,4 +1,4 @@
-backup/*
-bewerbungen
-bewerbungen.dbg
-lib/*
+pascal/backup/*
+pascal/bewerbungen
+pascal/bewerbungen.dbg
+pascal/lib/*
