@@ -78,7 +78,11 @@ uses mainwin, bewerbung_strings;
 { TdmBewerbungen }
 
 procedure TdmBewerbungen.SetIgnoreState(const aID: Integer);
+var
+  nID: Integer;
 begin
+  nID := qryBewerbungen.FieldByName('ID').AsInteger;
+
   with TSQLQuery.Create(nil) do
   begin
     DataBase := conData;
@@ -98,6 +102,8 @@ begin
 
   traData.Commit;
   qryBewerbungen.Open;
+
+  qryBewerbungen.Locate('ID', nID, []);
 end;
 
 procedure TdmBewerbungen.FetchData(aWhere: string);
@@ -302,7 +308,11 @@ var
   nID: Integer;
 begin
   try
-    nID := DataSet.FieldByName('ID').AsInteger;
+    if Assigned(DataSet.Fields.FindField('ID')) then
+      nID := DataSet.FieldByName('ID').AsInteger
+    else
+      nID := -1;
+
     TSQLQuery(DataSet).ApplyUpdates;
 
     if traData.Active then

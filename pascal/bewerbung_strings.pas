@@ -47,7 +47,7 @@ resourcestring
   rsMAILS = 'MAILS';
   rsMeineBewerbu = 'Meine Bewerbung vom %s als %s (Ref.Nr. %s)';
   rsMeineBewerbu2 = 'Meine Bewerbung vom %s als %s';
-  rsRESULT2 = '(RESULT <> 2) AND (IGNORIERT = 0)';
+  rsRESULT2 = '(RESULT <> 2)';
   rsRESULTD = '(RESULT = %d)';
   rsSuche = 'Suche';
   rsTYPD = '(TYP = %d)';

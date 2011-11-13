@@ -15,10 +15,10 @@ object frmMain: TfrmMain
     Height = 502
     Top = 25
     Width = 654
-    ActivePage = tsDokumente
+    ActivePage = tsBewerbungData
     Align = alClient
     Images = ilIcons
-    TabIndex = 3
+    TabIndex = 1
     TabOrder = 1
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'
@@ -154,7 +154,7 @@ object frmMain: TfrmMain
       object rgTyp: TDBRadioGroup
         Left = 5
         Height = 105
-        Top = 144
+        Top = 155
         Width = 185
         Caption = 'Bewerbungstyp'
         DataField = 'TYP'
@@ -288,7 +288,7 @@ object frmMain: TfrmMain
       object rgFeedback: TDBRadioGroup
         Left = 197
         Height = 105
-        Top = 144
+        Top = 155
         Width = 166
         Caption = 'Rückmeldung'
         DataField = 'FEEDBACK'
@@ -308,7 +308,7 @@ object frmMain: TfrmMain
       object rgErgebnis: TDBRadioGroup
         Left = 373
         Height = 105
-        Top = 144
+        Top = 155
         Width = 128
         Caption = 'Ergebnis'
         DataField = 'RESULT'
@@ -360,7 +360,7 @@ object frmMain: TfrmMain
       object rgMedium: TDBRadioGroup
         Left = 509
         Height = 105
-        Top = 144
+        Top = 155
         Width = 137
         Caption = 'Medium'
         DataField = 'MEDIUM'
@@ -442,6 +442,18 @@ object frmMain: TfrmMain
         DataField = 'BEFRISTET'
         DataSource = dmBewerbungen.dsData
         TabOrder = 13
+        ValueChecked = 'True'
+        ValueUnchecked = 'False'
+      end
+      object chkIgnoriert: TDBCheckBox
+        Left = 333
+        Height = 23
+        Top = 131
+        Width = 154
+        Caption = 'ignoriert'
+        DataField = 'IGNORIERT'
+        DataSource = dmBewerbungen.dsData
+        TabOrder = 14
         ValueChecked = 'True'
         ValueUnchecked = 'False'
       end
