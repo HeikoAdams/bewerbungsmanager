@@ -15,10 +15,10 @@ object frmMain: TfrmMain
     Height = 502
     Top = 25
     Width = 654
-    ActivePage = tsBewerbungData
+    ActivePage = tsDokumente
     Align = alClient
     Images = ilIcons
-    TabIndex = 1
+    TabIndex = 3
     TabOrder = 1
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'
@@ -813,6 +813,7 @@ object frmMain: TfrmMain
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
         TabOrder = 1
         TitleStyle = tsNative
+        OnPrepareCanvas = DBGrid1PrepareCanvas
       end
     end
   end

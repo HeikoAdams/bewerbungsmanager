@@ -160,6 +160,8 @@ type
     procedure actZusageExecute(Sender: TObject);
     procedure btnBrowseClick(Sender: TObject);
     procedure btnFileOpenClick(Sender: TObject);
+    procedure DBGrid1PrepareCanvas(sender: TObject; DataCol: Integer;
+      Column: TColumn; AState: TGridDrawState);
     procedure dlgFindCompanyFind(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure grdBewerbungenDblClick(Sender: TObject);
@@ -459,6 +461,22 @@ begin
     Free;
   end;
 end;
+
+procedure TfrmMain.DBGrid1PrepareCanvas(sender: TObject; DataCol: Integer;
+  Column: TColumn; AState: TGridDrawState);
+begin
+  with (Sender as TDBGrid) do
+  begin
+    btnFileOpen.Enabled := FileExists(DataSource.DataSet.FieldByName('FILENAME').AsString);
+
+    if not btnFileOpen.Enabled then
+    begin
+      Canvas.Font.Color := clMaroon;
+      Canvas.Font.Style := [fsBold];
+    end;
+  end;
+end;
+
 {$endif}
 
 {$IFDEF Windows}
