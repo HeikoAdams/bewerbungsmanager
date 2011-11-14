@@ -88,6 +88,10 @@ msgstr ""
 msgid "Meine Bewerbung vom %s als %s"
 msgstr ""
 
+#: bewerbung_strings.rsreceipents
+msgid "RECEIPENTS"
+msgstr ""
+
 #: bewerbung_strings.rsresult2
 msgid "(RESULT <> 2)"
 msgstr ""

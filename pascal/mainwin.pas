@@ -63,7 +63,7 @@ type
     cbbJobTitel: TDBComboBox;
     chkBefristet: TDBCheckBox;
     chkIgnoriert: TDBCheckBox;
-    edtAnspr: TDBEdit;
+    cbbAnspr: TDBComboBox;
     edtFile: TDBEdit;
     DBGrid1: TDBGrid;
     dlgFindCompany: TFindDialog;

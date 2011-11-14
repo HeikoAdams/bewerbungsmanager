@@ -214,6 +214,8 @@ begin
     sSQL := 'SELECT VALUE FROM V_JOBS'
   else if (UpperCase(aType) = rsACTION) then
     sSQL := 'SELECT DISTINCT TYP VALUE FROM LOG'
+  else if (UpperCase(aType) = rsRECEIPENTS) then
+    sSQL := 'SELECT VALUE FROM V_RECEIPENTS'
   else
     sSQL := EmptyStr;
 
@@ -312,6 +314,7 @@ begin
   UpdateList(rsMAILS, frmMain.cbbEmpfMail.Items);
   UpdateList(rsJOBS, frmMain.cbbJobTitel.Items);
   UpdateList(rsACTION, frmMain.cbbLogTyp.Items);
+  UpdateList(rsRECEIPENTS, frmMain.cbbAnspr.Items);
 end;
 
 procedure TdmBewerbungen.qryBewerbungenAfterPost(DataSet: TDataSet);
@@ -342,6 +345,7 @@ begin
   UpdateList(rsMAILS, frmMain.cbbEmpfMail.Items);
   UpdateList(rsJOBS, frmMain.cbbJobTitel.Items);
   UpdateList(rsACTION, frmMain.cbbLogTyp.Items);
+  UpdateList(rsRECEIPENTS, frmMain.cbbAnspr.Items);
   frmMain.sbInfo.SimpleText := Format(rsDDatensTze, [GetRecordsCount(DataSet)]);
 end;
 
