@@ -22,7 +22,7 @@ unit mainwin;
 interface
 
 uses
-  Classes, SysUtils, dbf, DB, sqlite3conn, sqldb, FileUtil, Forms, Controls,
+  Classes, SysUtils, FileUtil, Forms, Controls,
   Graphics, Dialogs, Grids, ComCtrls, ExtCtrls, StdCtrls, EditBtn,
   DBGrids, Menus, ActnList, IniFiles, DBCtrls, Buttons, types;
 
@@ -196,7 +196,7 @@ var
 implementation
 
 uses LCLType, dateutils, Data, bewerbung_strings, Process, variants,
-  exportdate, settings;
+  exportdate, settings, DB, sqldb;
 
 {$R *.lfm}
 
@@ -672,7 +672,8 @@ begin
   with (Sender as TDBGrid) do
   begin
     // Kein Feedback und WVL-Termin überschritten
-    if (DataSource.DataSet.FieldByName('FEEDBACK').AsInteger = 0) and
+    if (not DataSource.DataSet.FieldByName('IGNORIERT').AsBoolean) and
+      (DataSource.DataSet.FieldByName('FEEDBACK').AsInteger = 0) and
       (DataSource.DataSet.FieldByName('RESULT').AsInteger = 0) and
       (DataSource.DataSet.FieldByName('WVL').AsDateTime <= Date) then
       Canvas.Font.Color := clMaroon;
