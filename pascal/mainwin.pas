@@ -41,6 +41,8 @@ type
     actAllNoAbsage: TAction;
     actFind: TAction;
     actIgnore: TAction;
+    actBefristet: TAction;
+    actIgnoriert: TAction;
     actWriteMail: TAction;
     actRevoke: TAction;
     actSettings: TAction;
@@ -70,8 +72,11 @@ type
     cbbLogTyp: TDBComboBox;
     Label1: TLabel;
     MenuItem3: TMenuItem;
-    miIgnorieren: TMenuItem;
+    MenuItem4: TMenuItem;
+    miBefristet: TMenuItem;
+    miVermittler: TMenuItem;
     miWVL: TMenuItem;
+    miIgnorieren: TMenuItem;
     miAlleNoAbs: TMenuItem;
     miAlle: TMenuItem;
     miWriteMail: TMenuItem;
@@ -96,7 +101,6 @@ type
     miVorschlag: TMenuItem;
     miAngebot: TMenuItem;
     miTyp: TMenuItem;
-    miVermittler: TMenuItem;
     miExport: TMenuItem;
     mmoNotes: TDBMemo;
     navData: TDBNavigator;
@@ -140,11 +144,13 @@ type
     procedure actAlleExecute(Sender: TObject);
     procedure actAllNoAbsageExecute(Sender: TObject);
     procedure actAngebotExecute(Sender: TObject);
+    procedure actBefristetExecute(Sender: TObject);
     procedure actEingangExecute(Sender: TObject);
     procedure actEinladungExecute(Sender: TObject);
     procedure actExportExecute(Sender: TObject);
     procedure actFindExecute(Sender: TObject);
     procedure actIgnoreExecute(Sender: TObject);
+    procedure actIgnoriertExecute(Sender: TObject);
     procedure actInitiativExecute(Sender: TObject);
     procedure actMailExecute(Sender: TObject);
     procedure actNoFeedbackExecute(Sender: TObject);
@@ -555,6 +561,13 @@ begin
   FGridFilter := 10;
 end;
 
+procedure TfrmMain.actBefristetExecute(Sender: TObject);
+begin
+  dmBewerbungen.FetchData('(CAST(BEFRISTET AS INTEGER) <> 0)');
+
+  FGridFilter := 16;
+end;
+
 procedure TfrmMain.actAbsageExecute(Sender: TObject);
 begin
   dmBewerbungen.FetchData(Format(rsRESULTD, [2]));
@@ -645,6 +658,13 @@ end;
 procedure TfrmMain.actIgnoreExecute(Sender: TObject);
 begin
   dmBewerbungen.SetIgnoreState(grdBewerbungen.DataSource.DataSet.FieldByName('ID').AsInteger);
+end;
+
+procedure TfrmMain.actIgnoriertExecute(Sender: TObject);
+begin
+  dmBewerbungen.FetchData('(CAST(IGNORIERT AS INTEGER) <> 0)');
+
+  FGridFilter := 17;
 end;
 
 procedure TfrmMain.actInitiativExecute(Sender: TObject);

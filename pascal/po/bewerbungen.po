@@ -234,6 +234,10 @@ msgstr ""
 msgid "&Stellenangebot"
 msgstr ""
 
+#: TFRMMAIN.ACTBEFRISTET.CAPTION
+msgid "&befristet"
+msgstr ""
+
 #: TFRMMAIN.ACTEINGANG.CAPTION
 msgid "&Eingang bestätigt"
 msgstr ""
@@ -252,6 +256,10 @@ msgstr ""
 
 #: TFRMMAIN.ACTIGNORE.CAPTION
 msgid "&Ignorieren"
+msgstr ""
+
+#: TFRMMAIN.ACTIGNORIERT.CAPTION
+msgid "&ignoriert"
 msgstr ""
 
 #: TFRMMAIN.ACTINITIATIV.CAPTION

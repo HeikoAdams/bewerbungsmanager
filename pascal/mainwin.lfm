@@ -1390,6 +1390,16 @@ object frmMain: TfrmMain
       ImageIndex = 12
       OnExecute = actIgnoreExecute
     end
+    object actBefristet: TAction
+      Tag = 16
+      Caption = '&befristet'
+      OnExecute = actBefristetExecute
+    end
+    object actIgnoriert: TAction
+      Tag = 17
+      Caption = '&ignoriert'
+      OnExecute = actIgnoriertExecute
+    end
   end
   object pmFilter: TPopupMenu
     Images = ilIcons
@@ -1608,16 +1618,24 @@ object frmMain: TfrmMain
         Action = actOnlineForm
       end
     end
-    object miVermittler: TMenuItem
-      Tag = 8
-      Action = actVermittler
-    end
-    object miWVL: TMenuItem
-      Tag = 7
-      Action = actWVL
-    end
     object MenuItem3: TMenuItem
       Caption = '&Ansicht'
+      object miBefristet: TMenuItem
+        Tag = 16
+        Action = actBefristet
+      end
+      object MenuItem4: TMenuItem
+        Tag = 17
+        Action = actIgnoriert
+      end
+      object miVermittler: TMenuItem
+        Tag = 8
+        Action = actVermittler
+      end
+      object miWVL: TMenuItem
+        Tag = 7
+        Action = actWVL
+      end
       object miAlleNoAbs: TMenuItem
         Tag = 15
         Action = actAllNoAbsage
