@@ -264,7 +264,7 @@ begin
 
   if FEditMode then
   begin
-    if (frmMain.PageControl1.ActivePageIndex <> 1) then
+    if (frmMain.PageControl1.ActivePageIndex = 0) then
       frmMain.PageControl1.ActivePageIndex := 1;
 
     frmMain.navActions.VisibleButtons := WriteModeButtons;
