@@ -1,4 +1,3 @@
 pascal/src/backup/*
-pascal/bin/bewerbungen
-pascal/bin/bewerbungen.dbg
+pascal/bin/*
 pascal/src/lib/*
