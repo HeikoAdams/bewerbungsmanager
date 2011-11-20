@@ -306,7 +306,7 @@ begin
     if not CreateDir(FConfigDir) then
       HandleError;
 
-  if not FileExists(FDataFile) then
+  {if not FileExists(FDataFile) then
   begin
     with Application do
     begin
@@ -316,7 +316,7 @@ begin
       Terminate;
       Exit;
     end;
-  end;
+  end;}
 
   with dmBewerbungen.conData do
   begin
@@ -467,6 +467,7 @@ begin
     Free;
   end;
 end;
+{$endif}
 
 procedure TfrmMain.DBGrid1PrepareCanvas(sender: TObject; DataCol: Integer;
   Column: TColumn; AState: TGridDrawState);
@@ -482,8 +483,6 @@ begin
     end;
   end;
 end;
-
-{$endif}
 
 {$IFDEF Windows}
 procedure TfrmMain.btnFileOpenClick(Sender: TObject);

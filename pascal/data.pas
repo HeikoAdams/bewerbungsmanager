@@ -40,6 +40,7 @@ type
     qryDocuments: TSQLQuery;
     traData: TSQLTransaction;
     procedure conDataAfterConnect(Sender: TObject);
+    procedure conDataBeforeConnect(Sender: TObject);
     procedure conDataBeforeDisconnect(Sender: TObject);
     procedure dsDataStateChange(Sender: TObject);
     procedure dsDocsStateChange(Sender: TObject);
@@ -56,10 +57,12 @@ type
     { private declarations }
     FEditMode: boolean;
     FInsertMode: boolean;
+    FNewDB: boolean;
 
     procedure UpdateList(aType: string; aList: TStrings);
     procedure OpenDataSources;
     function GetRecordsCount(DataSet: TDataSet): Integer;
+    procedure NewDataBase;
   public
     { public declarations }
     procedure FetchData(aWhere: string);
@@ -72,11 +75,50 @@ var
 
 implementation
 
-uses mainwin, bewerbung_strings;
+uses mainwin, bewerbung_strings, Forms, Dialogs;
 
 {$R *.lfm}
 
 { TdmBewerbungen }
+
+procedure TdmBewerbungen.NewDataBase;
+var
+  scripts: TSearchRec;
+  sSearchPath: string;
+  Script: TStringList;
+  Files: TStringList;
+  nCount: Integer;
+begin
+  Files := TStringList.Create;
+  sSearchPath := ExtractFilePath(Application.ExeName);
+  sSearchPath := IncludeTrailingPathDelimiter(sSearchPath) + 'SQL' + PathDelim;
+
+  conData.ExecuteDirect('PRAGMA auto_vacuum = 1;');
+
+  if FindFirst(sSearchPath + '*.sql', faAnyFile, scripts) = 0 then
+  begin
+    repeat
+      Files.Add(scripts.Name);
+    until FindNext(scripts) <> 0
+  end;
+
+  FindClose(scripts);
+  Files.Sort;
+
+  Script := TStringList.Create;
+
+  for nCount := 0 to Files.Count -1 do
+  begin
+    Script.LoadFromFile(sSearchPath + Files.Strings[nCount]);
+    conData.ExecuteDirect(Script.Text);
+
+    traData.Commit;
+  end;
+
+  Script.Free;
+
+  Files.Free;
+end;
 
 procedure TdmBewerbungen.OpenDataSources;
 begin
@@ -192,7 +234,17 @@ end;
 
 procedure TdmBewerbungen.conDataAfterConnect(Sender: TObject);
 begin
+  if FNewDB then
+    NewDatabase;
+
+  TSQLite3Connection(Sender).ExecuteDirect('PRAGMA foreign_keys = ON;');
+
   OpenDataSources;
+end;
+
+procedure TdmBewerbungen.conDataBeforeConnect(Sender: TObject);
+begin
+  FNewDB:=not FileExists(TSQLite3Connection(Sender).DatabaseName);
 end;
 
 procedure TdmBewerbungen.conDataBeforeDisconnect(Sender: TObject);
