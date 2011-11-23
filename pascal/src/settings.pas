@@ -32,7 +32,6 @@ type
     BitBtn1: TBitBtn;
     BitBtn2: TBitBtn;
     chkOldApplications: TCheckBox;
-    chkCleanup: TCheckBox;
     chkNotifyWVL: TCheckBox;
     GroupBox1: TGroupBox;
     Label1: TLabel;
@@ -64,7 +63,6 @@ begin
   rgTyp.ItemIndex := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'TYP', 1);
   rgMedium.ItemIndex := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'MEDIUM', 0);
   edtWVLTage.Value := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'WVL', 14);
-  chkCleanup.Checked := frmMain.ConfigFile.ReadBool('GENERAL', 'CLEANDB', false);
   chkOldApplications.Checked := frmMain.ConfigFile.ReadBool('GENERAL', 'HIGHLIGHT OLD APPLICATIONS', false);
 end;
 
@@ -76,7 +74,6 @@ begin
     frmMain.ConfigFile.WriteInteger('DEFAULTS', 'TYP', rgTyp.ItemIndex);
     frmMain.ConfigFile.WriteInteger('DEFAULTS', 'MEDIUM', rgMedium.ItemIndex);
     frmMain.ConfigFile.WriteInteger('DEFAULTS', 'WVL', edtWVLTage.Value);
-    frmMain.ConfigFile.WriteBool('GENERAL', 'CLEANDB', chkCleanup.Checked);
     frmMain.ConfigFile.WriteBool('GENERAL', 'HIGHLIGHT OLD APPLICATIONS', chkOldApplications.Checked);
 
     Application.MessageBox(PChar(rsDieNderungen), PChar(rsEinstellunge),

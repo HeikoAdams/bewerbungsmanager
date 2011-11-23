@@ -305,31 +305,10 @@ begin
     if not CreateDir(FConfigDir) then
       HandleError;
 
-  {if not FileExists(FDataFile) then
-  begin
-    with Application do
-    begin
-      MessageBox(PChar(rsFehler),
-        PChar(Format(rsDatenbankSKo, [FDataFile])),
-        MB_ICONERROR + MB_OK);
-      Terminate;
-      Exit;
-    end;
-  end;}
-
   with dmBewerbungen.conData do
   begin
     DatabaseName := FDataFile;
     Open;
-  end;
-
-  if FConfigFile.ReadBool('GENERAL', 'CLEANDB', False) then
-  begin
-    with dmBewerbungen do
-    begin
-      conData.ExecuteDirect(Format(
-        'DELETE FROM BEWERBUNGEN WHERE (DATUM < %d) AND (RESULT = 1)', [trunc(Date)]));
-    end;
   end;
 
   if FConfigFile.ReadBool('GENERAL', 'NOTIFY-WVL', True) then
@@ -701,7 +680,7 @@ begin
       (DataSource.DataSet.FieldByName('FEEDBACK').AsInteger < 2) and
       (DataSource.DataSet.FieldByName('RESULT').AsInteger = 0) and
       (DataSource.DataSet.FieldByName('DATUM').AsDateTime <= IncWeek(Date, -6)) then
-      Canvas.Font.Style := [fsItalic];
+      Canvas.Font.Style := [fsBold];
 
     // Eingangsbestätigung liegt vor
     if (DataSource.DataSet.FieldByName('FEEDBACK').AsInteger = 1) and

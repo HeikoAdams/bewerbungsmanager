@@ -22,7 +22,7 @@
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="9"/>
       <RevisionNr Value="9"/>
-      <BuildNr Value="129"/>
+      <BuildNr Value="131"/>
       <Language Value="0407"/>
       <StringTable CompanyName="Heiko Adams" FileDescription="Verwaltung für Bewerbungen" InternalName="bewerbungen" LegalCopyright="2011 Heiko Adams" OriginalFilename="bewerbungen" ProductName="Bewerbungsverwaltung" ProductVersion="0.99"/>
     </VersionInfo>
@@ -62,7 +62,7 @@
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="64" Y="10"/>
+        <CursorPos X="27" Y="10"/>
         <UsageCount Value="82"/>
         <Loaded Value="True"/>
       </Unit0>
@@ -72,11 +72,10 @@
         <ComponentName Value="frmMain"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="mainwin"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="685"/>
-        <CursorPos X="7" Y="701"/>
+        <TopLine Value="302"/>
+        <CursorPos X="1" Y="314"/>
         <UsageCount Value="82"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -238,7 +237,7 @@
         <UnitName Value="SQLDBLaz"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="1" Y="21"/>
+        <CursorPos X="1" Y="1"/>
         <UsageCount Value="10"/>
       </Unit21>
       <Unit22>
@@ -349,10 +348,14 @@
         <ComponentName Value="frmSettings"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="settings"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
-        <CursorPos X="1" Y="1"/>
+        <TopLine Value="53"/>
+        <CursorPos X="77" Y="76"/>
         <UsageCount Value="36"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit35>
       <Unit36>
         <Filename Value="/usr/lib/lazarus/lcl/lcltype.pp"/>
@@ -510,11 +513,23 @@
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit57>
     </Units>
-    <JumpHistory Count="1" HistoryIndex="0">
+    <JumpHistory Count="4" HistoryIndex="3">
       <Position1>
         <Filename Value="mainwin.pas"/>
         <Caret Line="7" Column="22" TopLine="1"/>
       </Position1>
+      <Position2>
+        <Filename Value="bewerbungen.lpr"/>
+        <Caret Line="10" Column="64" TopLine="1"/>
+      </Position2>
+      <Position3>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="704" Column="35" TopLine="658"/>
+      </Position3>
+      <Position4>
+        <Filename Value="settings.pas"/>
+        <Caret Line="1" Column="1" TopLine="1"/>
+      </Position4>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
@@ -567,7 +582,7 @@
     <BreakPoints Count="1">
       <Item1>
         <Source Value="mainwin.pas"/>
-        <Line Value="783"/>
+        <Line Value="762"/>
       </Item1>
     </BreakPoints>
     <Exceptions Count="3">

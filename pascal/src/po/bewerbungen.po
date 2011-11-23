@@ -566,14 +566,6 @@ msgstr ""
 msgid "Abbrechen"
 msgstr ""
 
-#: TFRMSETTINGS.CHKCLEANUP.CAPTION
-msgid "abgesagte Bewerbungen nach 3 Monaten löschen"
-msgstr ""
-
-#: TFRMSETTINGS.CHKCLEANUP.HINT
-msgid "Bei jedem Start werden Bewerbungen mit dem Status \"Absage\", die älter als 3 Monate sind, gelöscht"
-msgstr ""
-
 #: TFRMSETTINGS.CHKNOTIFYWVL.CAPTION
 msgid "Info bei überfälligen Wiedervorlangen"
 msgstr ""
