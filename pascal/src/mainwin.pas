@@ -248,6 +248,7 @@ end;
 procedure TfrmMain.FormCreate(Sender: TObject);
 var
   sConfFileName: string;
+  nCounter: Integer;
 begin
   if (ParamStr(1) = 'portable') then
   begin
@@ -319,7 +320,16 @@ begin
     '/usr/bin/xdg-open "%s"');
   {$ENDIF}
 
-  actAllNoAbsage.Execute;
+  //actAllNoAbsage.Execute;
+  FGridFilter := FConfigFile.ReadInteger('FILTER', 'LAST FILTER', 15);
+
+  for nCounter := 0 to alFilter.ActionCount -1 do
+    if alFilter.Actions[nCounter].Tag = FGridFilter then
+    begin
+      alFilter.Actions[nCounter].Execute;
+      Break;
+    end;
+
   PageControl1.ActivePageIndex := 0;
 end;
 
@@ -497,6 +507,8 @@ begin
       wsMaximized: WriteInteger('UI', 'WINDOWSTATE', 1);
       wsMinimized: WriteInteger('UI', 'WINDOWSTATE', 2);
     end;
+
+    WriteInteger('FILTER', 'LAST FILTER', FGridFilter);
 
     UpdateFile;
   end;

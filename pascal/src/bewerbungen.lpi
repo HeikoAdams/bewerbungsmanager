@@ -22,7 +22,7 @@
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="9"/>
       <RevisionNr Value="9"/>
-      <BuildNr Value="131"/>
+      <BuildNr Value="132"/>
       <Language Value="0407"/>
       <StringTable CompanyName="Heiko Adams" FileDescription="Verwaltung für Bewerbungen" InternalName="bewerbungen" LegalCopyright="2011 Heiko Adams" OriginalFilename="bewerbungen" ProductName="Bewerbungsverwaltung" ProductVersion="0.99"/>
     </VersionInfo>
@@ -72,10 +72,11 @@
         <ComponentName Value="frmMain"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="mainwin"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="302"/>
-        <CursorPos X="1" Y="314"/>
+        <TopLine Value="230"/>
+        <CursorPos X="21" Y="251"/>
         <UsageCount Value="82"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -348,14 +349,10 @@
         <ComponentName Value="frmSettings"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="settings"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
         <TopLine Value="53"/>
         <CursorPos X="77" Y="76"/>
         <UsageCount Value="36"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit35>
       <Unit36>
         <Filename Value="/usr/lib/lazarus/lcl/lcltype.pp"/>
@@ -513,7 +510,7 @@
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit57>
     </Units>
-    <JumpHistory Count="4" HistoryIndex="3">
+    <JumpHistory Count="8" HistoryIndex="7">
       <Position1>
         <Filename Value="mainwin.pas"/>
         <Caret Line="7" Column="22" TopLine="1"/>
@@ -527,9 +524,25 @@
         <Caret Line="704" Column="35" TopLine="658"/>
       </Position3>
       <Position4>
-        <Filename Value="settings.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="312" Column="25" TopLine="302"/>
       </Position4>
+      <Position5>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="330" Column="14" TopLine="326"/>
+      </Position5>
+      <Position6>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="501" Column="5" TopLine="483"/>
+      </Position6>
+      <Position7>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="323" Column="56" TopLine="302"/>
+      </Position7>
+      <Position8>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="532" Column="3" TopLine="530"/>
+      </Position8>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
@@ -582,7 +595,7 @@
     <BreakPoints Count="1">
       <Item1>
         <Source Value="mainwin.pas"/>
-        <Line Value="762"/>
+        <Line Value="774"/>
       </Item1>
     </BreakPoints>
     <Exceptions Count="3">
