@@ -698,8 +698,8 @@ begin
 
     // Bewerbung liegt mehr als 6 Wochen zurück und noch kein Ergebnis
     if FConfigFile.ReadBool('GENERAL', 'HIGHLIGHT OLD APPLICATIONS', false) and
-      ((DataSource.DataSet.FieldByName('FEEDBACK').AsInteger < 2) or
-      (DataSource.DataSet.FieldByName('FEEDBACK').AsInteger = 0)) and
+      (DataSource.DataSet.FieldByName('FEEDBACK').AsInteger < 2) and
+      (DataSource.DataSet.FieldByName('RESULT').AsInteger = 0) and
       (DataSource.DataSet.FieldByName('DATUM').AsDateTime <= IncWeek(Date, -6)) then
       Canvas.Font.Style := [fsItalic];
 
