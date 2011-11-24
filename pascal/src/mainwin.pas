@@ -262,8 +262,8 @@ begin
     sConfFileName := GetAppConfigFile(False, True);
   end;
 
-  if DirectoryExists(ExtractFileDir(sConfFileName)) then
-    if CreateDir(ExtractFileDir(sConfFileName)) then
+  if not DirectoryExists(FConfigDir) then
+    if not CreateDir(FConfigDir) then
       HandleError;
 
   FDataFile := IncludeTrailingPathDelimiter(FConfigDir) + 'bewerbungen.db';

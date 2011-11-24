@@ -12,6 +12,7 @@ uses
 {$R *.res}
 
 begin
+  Application.Title:='Bewerbungsmanager';
   Application.Initialize;
   Application.CreateForm(TdmBewerbungen, dmBewerbungen);
   Application.CreateForm(TfrmMain, frmMain);
