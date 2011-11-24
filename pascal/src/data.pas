@@ -127,8 +127,9 @@ begin
     with SQL do
       Add('SELECT MAX(VERSION) VERSION FROM DBVERSION');
 
-    ExecSQL;
+    Open;
     Result := FieldByName('VERSION').AsInteger;
+    Close;
     Free;
   end;
 end;
@@ -169,8 +170,9 @@ begin
     traData.Commit;
   end;
 
+  // Wenn SQL-Skripte ausgeführt wurden, neue Datenbankversion setzen
   if (Files.Count > 0) then
-    SetDBVersion;
+    SetDBVersion(aVersion);
 
   Script.Free;
   Files.Free;
@@ -180,8 +182,10 @@ procedure TdmBewerbungen.UpdateDB;
 var
   nVersionCur: Integer;
 begin
+  // aktuelle Datenbankversion abfragen
   nVersionCur := GetDBVersion;
 
+  // Datenbank aktualisieren
   while (nVersionCur < nVersion) do
   begin
     InstallUpdates(nVersionCur);
@@ -194,7 +198,8 @@ begin
   // Automatisch freien Speicher wieder freigeben
   conData.ExecuteDirect('PRAGMA auto_vacuum = 1;');
 
-  InstallUpdates(nVersion);
+  // SQLs für die Datenbankstruktur ausführen
+  InstallUpdates(nInitVer);
 end;
 
 procedure TdmBewerbungen.OpenDataSources;
@@ -311,9 +316,11 @@ end;
 
 procedure TdmBewerbungen.conDataAfterConnect(Sender: TObject);
 begin
+  // Wenn eine neue Datenbank erstellt wurde, die benötigte Struktur anlegen
   if FNewDB then
     NewDatabase;
 
+  // Prüfen, ob Datenbank- und Programmversion identisch sind
   if (GetDBVersion < nVersion) then
     UpdateDB;
 

@@ -25,6 +25,7 @@ uses
 
 const
   nVersion = 100;
+  nInitVer = 100; //Konstante für die Initialisierung der Datenbank. NICHT ÄNDERN!
 
 resourcestring
   rsACTION = 'ACTION';
