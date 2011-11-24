@@ -23,6 +23,9 @@ interface
 uses
   Classes, SysUtils; 
 
+const
+  nVersion = 100;
+
 resourcestring
   rsACTION = 'ACTION';
   rsCOMPANIES = 'COMPANIES';

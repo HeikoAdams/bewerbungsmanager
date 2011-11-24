@@ -62,6 +62,10 @@ type
     procedure OpenDataSources;
     function GetRecordsCount(DataSet: TDataSet): Integer;
     procedure NewDataBase;
+    procedure SetDBVersion(const aVersion: Integer = 0);
+    function GetDBVersion: Integer;
+    procedure InstallUpdates(const aVersion: Integer);
+    procedure UpdateDB;
   public
     { public declarations }
     procedure FetchData(aWhere: string);
@@ -80,7 +84,56 @@ uses mainwin, bewerbung_strings, Forms, Dialogs;
 
 { TdmBewerbungen }
 
-procedure TdmBewerbungen.NewDataBase;
+procedure TdmBewerbungen.SetDBVersion(const aVersion: Integer = 0);
+begin
+  with TSQLQuery.Create(self) do
+  begin
+    DataBase := conData;
+    Transaction := traData;
+
+    with SQL do
+    begin
+      Add('INSERT INTO DBVERSION(DATUM, VERSION)');
+      Add('SELECT :pDatum, :pVersion')
+    end;
+
+    with Params do
+    begin
+      Clear;
+      ParseSQL(SQL.Text, True);
+
+      ParamValues['pDatum'] := Date;
+
+      if (aVersion = 0) then
+        ParamValues['pVersion'] := nVersion
+      else
+        ParamValues['pVersion'] := aVersion;
+    end;
+
+    ExecSQL;
+    Free;
+  end;
+
+  traData.Commit;
+end;
+
+function TdmBewerbungen.GetDBVersion: Integer;
+begin
+  with TSQLQuery.Create(self) do
+  begin
+    DataBase := conData;
+    Transaction := traData;
+
+    with SQL do
+      Add('SELECT MAX(VERSION) VERSION FROM DBVERSION');
+
+    ExecSQL;
+    Result := FieldByName('VERSION').AsInteger;
+    Free;
+  end;
+end;
+
+procedure TdmBewerbungen.InstallUpdates(const aVersion: Integer);
 var
   scripts: TSearchRec;
   sSearchPath: string;
@@ -90,10 +143,8 @@ var
 begin
   Files := TStringList.Create;
   sSearchPath := ExtractFilePath(Application.ExeName);
-  sSearchPath := IncludeTrailingPathDelimiter(sSearchPath) + 'SQL' + PathDelim;
-
-  // Automatisch freien Speicher wieder freigeben
-  conData.ExecuteDirect('PRAGMA auto_vacuum = 1;');
+  sSearchPath := IncludeTrailingPathDelimiter(sSearchPath) + 'SQL' + PathDelim +
+    IntToStr(aVersion) + PathDelim;
 
   // Sicherstellen, das SQLs in der richtigen Reihenfolge ausgeführt werden ..
   if FindFirst(sSearchPath + '*.sql', faAnyFile, scripts) = 0 then
@@ -118,8 +169,32 @@ begin
     traData.Commit;
   end;
 
+  if (Files.Count > 0) then
+    SetDBVersion;
+
   Script.Free;
   Files.Free;
+end;
+
+procedure TdmBewerbungen.UpdateDB;
+var
+  nVersionCur: Integer;
+begin
+  nVersionCur := GetDBVersion;
+
+  while (nVersionCur < nVersion) do
+  begin
+    InstallUpdates(nVersionCur);
+    Inc(nVersionCur);
+  end;
+end;
+
+procedure TdmBewerbungen.NewDataBase;
+begin
+  // Automatisch freien Speicher wieder freigeben
+  conData.ExecuteDirect('PRAGMA auto_vacuum = 1;');
+
+  InstallUpdates(nVersion);
 end;
 
 procedure TdmBewerbungen.OpenDataSources;
@@ -238,6 +313,9 @@ procedure TdmBewerbungen.conDataAfterConnect(Sender: TObject);
 begin
   if FNewDB then
     NewDatabase;
+
+  if (GetDBVersion < nVersion) then
+    UpdateDB;
 
   // Referenzielle Integritätsprüfung aktivieren
   TSQLite3Connection(Sender).ExecuteDirect('PRAGMA foreign_keys = ON;');

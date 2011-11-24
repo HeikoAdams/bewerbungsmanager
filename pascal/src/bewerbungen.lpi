@@ -22,7 +22,7 @@
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="9"/>
       <RevisionNr Value="9"/>
-      <BuildNr Value="136"/>
+      <BuildNr Value="137"/>
       <Language Value="0407"/>
       <StringTable CompanyName="Heiko Adams" FileDescription="Verwaltung für Bewerbungen" InternalName="bewerbungen" LegalCopyright="2011 Heiko Adams" OriginalFilename="bewerbungen" ProductName="Bewerbungsverwaltung" ProductVersion="0.99"/>
     </VersionInfo>
@@ -59,12 +59,11 @@
         <Filename Value="bewerbungen.lpr"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="bewerbungen"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="27" Y="10"/>
-        <UsageCount Value="83"/>
+        <UsageCount Value="84"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
@@ -73,10 +72,13 @@
         <ComponentName Value="frmMain"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="mainwin"/>
+        <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
         <TopLine Value="299"/>
-        <CursorPos X="1" Y="312"/>
-        <UsageCount Value="83"/>
+        <CursorPos X="1" Y="314"/>
+        <UsageCount Value="84"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="/usr/lib/lazarus/lcl/forms.pp"/>
@@ -130,10 +132,12 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SQLStringsPropertyEditorDlg"/>
+        <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
+        <TopLine Value="265"/>
         <CursorPos X="1" Y="290"/>
         <UsageCount Value="10"/>
+        <Loaded Value="True"/>
       </Unit8>
       <Unit9>
         <Filename Value="/usr/share/fpcsrc/packages/fcl-db/src/base/db.pas"/>
@@ -217,10 +221,14 @@
         <ComponentName Value="dmBewerbungen"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="Data"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="102"/>
-        <CursorPos X="15" Y="106"/>
-        <UsageCount Value="54"/>
+        <TopLine Value="48"/>
+        <CursorPos X="15" Y="68"/>
+        <UsageCount Value="55"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit19>
       <Unit20>
         <Filename Value="mainwin.lfm"/>
@@ -265,10 +273,12 @@
         <Filename Value="bewerbung_strings.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="bewerbung_strings"/>
+        <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
-        <CursorPos X="1" Y="16"/>
-        <UsageCount Value="51"/>
+        <TopLine Value="10"/>
+        <CursorPos X="18" Y="27"/>
+        <UsageCount Value="52"/>
+        <Loaded Value="True"/>
       </Unit25>
       <Unit26>
         <Filename Value="/usr/lib/lazarus/lcl/shellctrls.pas"/>
@@ -331,7 +341,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="9"/>
         <CursorPos X="20" Y="9"/>
-        <UsageCount Value="39"/>
+        <UsageCount Value="40"/>
       </Unit33>
       <Unit34>
         <Filename Value="/usr/lib/lazarus/lcl/include/application.inc"/>
@@ -349,7 +359,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="53"/>
         <CursorPos X="77" Y="76"/>
-        <UsageCount Value="37"/>
+        <UsageCount Value="38"/>
       </Unit35>
       <Unit36>
         <Filename Value="/usr/lib/lazarus/lcl/lcltype.pp"/>
@@ -507,7 +517,44 @@
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit57>
     </Units>
-    <JumpHistory Count="0" HistoryIndex="-1"/>
+    <JumpHistory Count="9" HistoryIndex="8">
+      <Position1>
+        <Filename Value="data.pas"/>
+        <Caret Line="77" Column="20" TopLine="66"/>
+      </Position1>
+      <Position2>
+        <Filename Value="/usr/lib/lazarus/components/sqldb/sqlstringspropertyeditordlg.pas"/>
+        <Caret Line="290" Column="1" TopLine="265"/>
+      </Position2>
+      <Position3>
+        <Filename Value="data.pas"/>
+        <Caret Line="70" Column="27" TopLine="57"/>
+      </Position3>
+      <Position4>
+        <Filename Value="data.pas"/>
+        <Caret Line="88" Column="13" TopLine="75"/>
+      </Position4>
+      <Position5>
+        <Filename Value="data.pas"/>
+        <Caret Line="93" Column="33" TopLine="93"/>
+      </Position5>
+      <Position6>
+        <Filename Value="data.pas"/>
+        <Caret Line="113" Column="37" TopLine="106"/>
+      </Position6>
+      <Position7>
+        <Filename Value="data.pas"/>
+        <Caret Line="65" Column="55" TopLine="51"/>
+      </Position7>
+      <Position8>
+        <Filename Value="data.pas"/>
+        <Caret Line="134" Column="40" TopLine="133"/>
+      </Position8>
+      <Position9>
+        <Filename Value="data.pas"/>
+        <Caret Line="171" Column="23" TopLine="170"/>
+      </Position9>
+    </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
     <Version Value="9"/>
@@ -557,15 +604,11 @@
     </Other>
   </CompilerOptions>
   <Debugging>
-    <BreakPoints Count="2">
+    <BreakPoints Count="1">
       <Item1>
         <Source Value="mainwin.pas"/>
         <Line Value="774"/>
       </Item1>
-      <Item2>
-        <Source Value="data.pas"/>
-        <Line Value="239"/>
-      </Item2>
     </BreakPoints>
     <Exceptions Count="3">
       <Item1>
