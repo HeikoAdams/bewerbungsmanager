@@ -33,8 +33,10 @@ type
     BitBtn2: TBitBtn;
     chkOldApplications: TCheckBox;
     chkNotifyWVL: TCheckBox;
+    edtDocsDir: TDirectoryEdit;
     GroupBox1: TGroupBox;
     Label1: TLabel;
+    Label2: TLabel;
     rgMedium: TDBRadioGroup;
     rgTyp: TRadioGroup;
     edtWVLTage: TSpinEdit;
@@ -64,6 +66,7 @@ begin
   rgMedium.ItemIndex := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'MEDIUM', 0);
   edtWVLTage.Value := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'WVL', 14);
   chkOldApplications.Checked := frmMain.ConfigFile.ReadBool('GENERAL', 'HIGHLIGHT OLD APPLICATIONS', false);
+  edtDocsDir.Directory := frmMain.ConfigFile.ReadString('GENERAL', 'DOC DIR', GetUserDir);
 end;
 
 procedure TfrmSettings.FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -75,6 +78,8 @@ begin
     frmMain.ConfigFile.WriteInteger('DEFAULTS', 'MEDIUM', rgMedium.ItemIndex);
     frmMain.ConfigFile.WriteInteger('DEFAULTS', 'WVL', edtWVLTage.Value);
     frmMain.ConfigFile.WriteBool('GENERAL', 'HIGHLIGHT OLD APPLICATIONS', chkOldApplications.Checked);
+    frmMain.ConfigFile.WriteString('GENERAL', 'DOC DIR', edtDocsDir.Directory);
+    frmMain.ConfigFile.UpdateFile;
 
     Application.MessageBox(PChar(rsDieNderungen), PChar(rsEinstellunge),
       MB_ICONWARNING + MB_OK);

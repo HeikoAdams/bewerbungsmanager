@@ -439,6 +439,8 @@ end;
 
 procedure TfrmMain.btnBrowseClick(Sender: TObject);
 begin
+  dlgDocuments.InitialDir := ConfigFile.ReadString('GENERAL', 'DOC DIR', GetUserDir);
+
   if dlgDocuments.Execute then
     dmBewerbungen.qryDocuments.FieldByName('FILENAME').AsString := dlgDocuments.FileName;
 end;

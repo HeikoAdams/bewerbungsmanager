@@ -591,6 +591,10 @@ msgstr ""
 msgid "Tage bis zur Wiedervorlage"
 msgstr ""
 
+#: TFRMSETTINGS.LABEL2.CAPTION
+msgid "Dokumente:"
+msgstr ""
+
 #: TFRMSETTINGS.RGMEDIUM.CAPTION
 msgctxt "TFRMSETTINGS.RGMEDIUM.CAPTION"
 msgid "Medium"

@@ -1,11 +1,11 @@
 object frmSettings: TfrmSettings
   Left = 454
-  Height = 302
+  Height = 326
   Top = 251
   Width = 426
   BorderStyle = bsDialog
   Caption = 'Einstellungen'
-  ClientHeight = 302
+  ClientHeight = 326
   ClientWidth = 426
   OnClose = FormClose
   OnCreate = FormCreate
@@ -25,11 +25,11 @@ object frmSettings: TfrmSettings
   end
   object GroupBox1: TGroupBox
     Left = 8
-    Height = 208
+    Height = 232
     Top = 48
     Width = 409
     Caption = 'Standardwerte'
-    ClientHeight = 191
+    ClientHeight = 215
     ClientWidth = 405
     TabOrder = 1
     object rgTyp: TRadioGroup
@@ -79,16 +79,16 @@ object frmSettings: TfrmSettings
     object edtWVLTage: TSpinEdit
       Left = 222
       Height = 25
-      Top = 128
+      Top = 153
       Width = 50
       MinValue = 1
-      TabOrder = 2
+      TabOrder = 3
       Value = 1
     end
     object Label1: TLabel
       Left = 14
       Height = 16
-      Top = 137
+      Top = 162
       Width = 156
       Caption = 'Tage bis zur Wiedervorlage'
       ParentColor = False
@@ -96,16 +96,35 @@ object frmSettings: TfrmSettings
     object chkOldApplications: TCheckBox
       Left = 14
       Height = 22
-      Top = 161
+      Top = 186
       Width = 308
       Caption = 'offene Bewerbungen nach 6 Wochen hervorheben'
-      TabOrder = 3
+      TabOrder = 4
+    end
+    object edtDocsDir: TDirectoryEdit
+      Left = 119
+      Height = 25
+      Top = 121
+      Width = 208
+      ShowHidden = False
+      ButtonWidth = 23
+      NumGlyphs = 0
+      MaxLength = 0
+      TabOrder = 2
+    end
+    object Label2: TLabel
+      Left = 14
+      Height = 16
+      Top = 129
+      Width = 71
+      Caption = 'Dokumente:'
+      ParentColor = False
     end
   end
   object BitBtn1: TBitBtn
     Left = 8
     Height = 30
-    Top = 264
+    Top = 288
     Width = 75
     Caption = '&Ok'
     Default = True
@@ -116,7 +135,7 @@ object frmSettings: TfrmSettings
   object BitBtn2: TBitBtn
     Left = 308
     Height = 30
-    Top = 264
+    Top = 288
     Width = 109
     Cancel = True
     Caption = 'Abbrechen'
