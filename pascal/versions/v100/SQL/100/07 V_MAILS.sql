@@ -1,1 +1,0 @@
-CREATE VIEW "V_MAILS" AS   select distinct mail VALUE from bewerbungen where not (mail is null) order by mail;
