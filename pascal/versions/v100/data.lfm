@@ -1,0 +1,118 @@
+object dmBewerbungen: TdmBewerbungen
+  OldCreateOrder = False
+  Height = 267
+  HorizontalOffset = 464
+  VerticalOffset = 263
+  Width = 427
+  object dsData: TDatasource
+    DataSet = qryBewerbungen
+    OnStateChange = dsDataStateChange
+    left = 16
+    top = 80
+  end
+  object dsLog: TDatasource
+    DataSet = qryLog
+    OnStateChange = dsLogStateChange
+    left = 64
+    top = 80
+  end
+  object traData: TSQLTransaction
+    Active = False
+    Action = caNone
+    Database = conData
+    left = 152
+    top = 80
+  end
+  object conData: TSQLite3Connection
+    Connected = False
+    LoginPrompt = False
+    AfterConnect = conDataAfterConnect
+    BeforeConnect = conDataBeforeConnect
+    BeforeDisconnect = conDataBeforeDisconnect
+    DatabaseName = '/home/heiko/.config/bewerbungen/bewerbungen.db'
+    KeepConnection = True
+    Transaction = traData
+    Options = []
+    left = 216
+    top = 80
+  end
+  object qryBewerbungen: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    AfterDelete = qryBewerbungenAfterPost
+    AfterOpen = qryBewerbungenAfterOpen
+    AfterPost = qryBewerbungenAfterPost
+    AfterScroll = qryBewerbungenAfterScroll
+    BeforePost = qryBewerbungenBeforePost
+    OnNewRecord = qryBewerbungenNewRecord
+    Database = conData
+    Transaction = traData
+    ReadOnly = False
+    SQL.Strings = (
+      'SELECT * FROM BEWERBUNGEN ORDER BY Datum DESC, NAME'
+    )
+    Params = <>
+    left = 16
+    top = 144
+  end
+  object qryLog: TSQLQuery
+    IndexFieldNames = 'ID'
+    AfterDelete = qryBewerbungenBeforePost
+    AfterPost = qryBewerbungenAfterPost
+    AfterScroll = qryLogAfterScroll
+    BeforePost = qryLogBeforePost
+    Database = conData
+    Transaction = traData
+    ReadOnly = False
+    SQL.Strings = (
+      'SELECT * FROM LOG WHERE (BEWERBUNG = :ID) ORDER BY Datum DESC'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ID'
+        ParamType = ptUnknown
+      end>
+    left = 96
+    top = 144
+  end
+  object qryCSVExport: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    Database = conData
+    Transaction = traData
+    ReadOnly = True
+    SQL.Strings = (
+      'SELECT DATUM, WVL, NAME, MAIL, JOBTITEL, REFNR, (RESULT = 1) AS ZUSAGE, (RESULT = 2) AS ABSAGE'
+      'FROM BEWERBUNGEN'
+      'ORDER BY DATUM DESC, NAME'
+    )
+    Params = <>
+    left = 152
+    top = 144
+  end
+  object qryDocuments: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    AfterDelete = qryBewerbungenAfterPost
+    AfterPost = qryBewerbungenAfterPost
+    BeforePost = qryDocumentsBeforePost
+    Database = conData
+    Transaction = traData
+    ReadOnly = False
+    SQL.Strings = (
+      'SELECT * FROM DOCUMENTS WHERE BEWERBUNG = :ID;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ID'
+        ParamType = ptUnknown
+      end>
+    left = 240
+    top = 144
+  end
+  object dsDocs: TDatasource
+    DataSet = qryDocuments
+    OnStateChange = dsDocsStateChange
+    left = 112
+    top = 80
+  end
+end
