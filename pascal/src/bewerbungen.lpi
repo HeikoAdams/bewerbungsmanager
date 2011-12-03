@@ -59,7 +59,6 @@
         <Filename Value="bewerbungen.lpr"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="bewerbungen"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
@@ -73,10 +72,14 @@
         <ComponentName Value="frmMain"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="mainwin"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="494"/>
-        <CursorPos X="1" Y="442"/>
+        <TopLine Value="248"/>
+        <CursorPos X="1" Y="261"/>
         <UsageCount Value="84"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="/usr/lib/lazarus/lcl/forms.pp"/>
@@ -507,7 +510,12 @@
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit57>
     </Units>
-    <JumpHistory Count="0" HistoryIndex="-1"/>
+    <JumpHistory Count="1" HistoryIndex="0">
+      <Position1>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="421" Column="1" TopLine="406"/>
+      </Position1>
+    </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
     <Version Value="9"/>
@@ -560,7 +568,7 @@
     <BreakPoints Count="3">
       <Item1>
         <Source Value="mainwin.pas"/>
-        <Line Value="776"/>
+        <Line Value="773"/>
       </Item1>
       <Item2>
         <Source Value="data.pas"/>

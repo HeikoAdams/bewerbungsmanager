@@ -250,17 +250,14 @@ var
   sConfFileName: string;
   nCounter: Integer;
 begin
-  if (ParamStr(1) = 'portable') then
-  begin
+  {$IFDEF Windows}
     FConfigDir := ExtractFilePath(Application.ExeName);
     sConfFileName := StringReplace(GetAppConfigFile(False, True),
       GetAppConfigDir(False), FConfigDir, [rfIgnoreCase, rfReplaceAll]);
-  end
-  else
-  begin
+  {$else}
     FConfigDir := GetAppConfigDir(False);
     sConfFileName := GetAppConfigFile(False, True);
-  end;
+  {$endif}
 
   if not DirectoryExists(FConfigDir) then
     if not CreateDir(FConfigDir) then
