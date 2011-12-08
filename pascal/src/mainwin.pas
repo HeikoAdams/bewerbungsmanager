@@ -762,10 +762,11 @@ begin
     if (TempItem.Count > 0) then
     begin
       for nCount2 := 0 to TempItem.Count - 1 do
-        TempItem.Items[nCount2].Checked := (TempItem.Items[nCount2].Tag = FGridFilter);
+        TempItem.Items[nCount2].Checked := (TempItem.Items[nCount2].Tag = FGridFilter)
+          and (TempItem.Items[nCount2].Tag < 100);
     end
     else
-      TempItem.Checked := (TempItem.Tag = FGridFilter);
+      TempItem.Checked := (TempItem.Tag = FGridFilter) and (TempItem.Tag < 100);
   end;
 end;
 

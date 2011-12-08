@@ -1345,16 +1345,19 @@ object frmMain: TfrmMain
       OnExecute = actVorschlagExecute
     end
     object actMail: TAction
+      Tag = 12
       Category = 'Medium'
       Caption = '&Mail'
       OnExecute = actMailExecute
     end
     object actPost: TAction
+      Tag = 13
       Category = 'Medium'
       Caption = '&Post'
       OnExecute = actPostExecute
     end
     object actOnlineForm: TAction
+      Tag = 14
       Category = 'Medium'
       Caption = '&Online-Formular'
       OnExecute = actOnlineFormExecute
@@ -1365,27 +1368,32 @@ object frmMain: TfrmMain
       OnExecute = actAllNoAbsageExecute
     end
     object actFind: TAction
+      Tag = 101
       Caption = '&Suche'
       ImageIndex = 9
       OnExecute = actFindExecute
       ShortCut = 114
     end
     object actSettings: TAction
+      Tag = 102
       Caption = '&Einstellungen'
       ImageIndex = 10
       OnExecute = actSettingsExecute
     end
     object actRevoke: TAction
+      Tag = 103
       Category = 'Result'
       Caption = '&Zurückgezogen'
       OnExecute = actRevokeExecute
     end
     object actWriteMail: TAction
+      Tag = 104
       Caption = 'E-&Mail schreiben'
       ImageIndex = 11
       OnExecute = actWriteMailExecute
     end
     object actIgnore: TAction
+      Tag = 105
       Caption = '&Ignorieren'
       ImageIndex = 12
       OnExecute = actIgnoreExecute
@@ -1657,7 +1665,7 @@ object frmMain: TfrmMain
       Caption = '-'
     end
     object miSuche: TMenuItem
-      Tag = 110
+      Tag = 101
       Action = actFind
       Bitmap.Data = {
         36040000424D3604000000000000360000002800000010000000100000000100
@@ -1697,7 +1705,7 @@ object frmMain: TfrmMain
       }
     end
     object miWriteMail: TMenuItem
-      Tag = 140
+      Tag = 104
       Action = actWriteMail
       Bitmap.Data = {
         36040000424D3604000000000000360000002800000010000000100000000100
@@ -1777,6 +1785,7 @@ object frmMain: TfrmMain
       }
     end
     object miIgnorieren: TMenuItem
+      Tag = 105
       Action = actIgnore
       Bitmap.Data = {
         36040000424D3604000000000000360000002800000010000000100000000100
@@ -1816,7 +1825,7 @@ object frmMain: TfrmMain
       }
     end
     object miSettings: TMenuItem
-      Tag = 120
+      Tag = 102
       Action = actSettings
       Bitmap.Data = {
         36040000424D3604000000000000360000002800000010000000100000000100
