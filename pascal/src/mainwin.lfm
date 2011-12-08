@@ -1400,6 +1400,11 @@ object frmMain: TfrmMain
       Caption = '&ignoriert'
       OnExecute = actIgnoriertExecute
     end
+    object actFilter: TAction
+      Tag = 18
+      Caption = '&Filter'
+      OnExecute = actFilterExecute
+    end
   end
   object pmFilter: TPopupMenu
     Images = ilIcons
@@ -1642,6 +1647,10 @@ object frmMain: TfrmMain
       end
       object miAlle: TMenuItem
         Action = actAlle
+      end
+      object miFilter: TMenuItem
+        Tag = 18
+        Action = actFilter
       end
     end
     object MenuItem1: TMenuItem

@@ -42,6 +42,7 @@ type
     actIgnore: TAction;
     actBefristet: TAction;
     actIgnoriert: TAction;
+    actFilter: TAction;
     actWriteMail: TAction;
     actRevoke: TAction;
     actSettings: TAction;
@@ -72,6 +73,7 @@ type
     Label1: TLabel;
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
+    miFilter: TMenuItem;
     miBefristet: TMenuItem;
     miVermittler: TMenuItem;
     miWVL: TMenuItem;
@@ -147,6 +149,7 @@ type
     procedure actEingangExecute(Sender: TObject);
     procedure actEinladungExecute(Sender: TObject);
     procedure actExportExecute(Sender: TObject);
+    procedure actFilterExecute(Sender: TObject);
     procedure actFindExecute(Sender: TObject);
     procedure actIgnoreExecute(Sender: TObject);
     procedure actIgnoriertExecute(Sender: TObject);
@@ -201,7 +204,7 @@ var
 implementation
 
 uses LCLType, dateutils, Data, bewerbung_strings, Process, variants,
-  exportdate, settings, DB, sqldb;
+  exportdate, settings, DB, sqldb, datafilter;
 
 {$R *.lfm}
 
@@ -635,6 +638,27 @@ begin
     Application.MessageBox(PChar(rsExportBeende), PChar(rsCSVExport),
       MB_ICONINFORMATION + MB_OK);
   end;
+end;
+
+procedure TfrmMain.actFilterExecute(Sender: TObject);
+var
+  dtDateFrom, dtDateDue: TDate;
+begin
+  Application.CreateForm(TfrmFilterDate, frmFilterDate);
+
+  if (frmFilterDate.ShowModal = mrAbort) then
+  begin
+    FreeAndNil(frmFilterDate);
+    Exit;
+  end;
+
+  frmFilterDate.GetDateRange(dtDateFrom, dtDateDue);
+  FreeAndNil(frmFilterDate);
+
+  dmBewerbungen.FetchData(Format('(DATUM >= %d) AND (DATUM <= %d)',
+    [trunc(dtDateFrom), trunc(dtDateDue)]));
+
+  FGridFilter := 18;
 end;
 
 procedure TfrmMain.actFindExecute(Sender: TObject);

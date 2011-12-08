@@ -1,0 +1,15 @@
+inherited frmFilterDate: TfrmFilterDate
+  Caption = 'Filter'
+  inherited edtDateFrom: TDateEdit
+    Height = 25
+  end
+  inherited edtDateDue: TDateEdit
+    Height = 25
+  end
+  inherited Label1: TLabel
+    Height = 16
+  end
+  inherited Label2: TLabel
+    Height = 16
+  end
+end

@@ -218,6 +218,10 @@ msgstr ""
 msgid "Datum bis"
 msgstr ""
 
+#: TFRMFILTERDATE.FRMFILTERDATE.CAPTION
+msgid "Filter"
+msgstr ""
+
 #: TFRMMAIN.ACTABSAGE.CAPTION
 msgid "&Absage"
 msgstr ""
@@ -248,6 +252,10 @@ msgstr ""
 
 #: TFRMMAIN.ACTEXPORT.CAPTION
 msgid "&CSV-Export"
+msgstr ""
+
+#: TFRMMAIN.ACTFILTER.CAPTION
+msgid "&Filter"
 msgstr ""
 
 #: TFRMMAIN.ACTFIND.CAPTION

@@ -7,7 +7,7 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, bewerbung_strings, Data, exportdate, mainwin, settings;
+  Forms, bewerbung_strings, Data, exportdate, mainwin, settings, datafilter;
 
 {$R *.res}
 
