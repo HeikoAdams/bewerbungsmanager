@@ -20,11 +20,11 @@
     <VersionInfo>
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
+      <MajorVersionNr Value="1"/>
       <MinorVersionNr Value="9"/>
-      <RevisionNr Value="9"/>
-      <BuildNr Value="147"/>
+      <BuildNr Value="149"/>
       <Language Value="0407"/>
-      <StringTable CompanyName="Heiko Adams" FileDescription="Verwaltung für Bewerbungen" InternalName="bewerbungen" LegalCopyright="2011 Heiko Adams" OriginalFilename="bewerbungen" ProductName="Bewerbungsverwaltung" ProductVersion="0.99"/>
+      <StringTable CompanyName="Heiko Adams" FileDescription="Verwaltung für Bewerbungen" InternalName="bewerbungen" LegalCopyright="2011 Heiko Adams" OriginalFilename="bewerbungen" ProductName="Bewerbungsverwaltung" ProductVersion="1.90"/>
     </VersionInfo>
     <BuildModes Count="1" Active="Default">
       <Item1 Name="Default" Default="True"/>
@@ -54,15 +54,16 @@
         <PackageName Value="LCL"/>
       </Item3>
     </RequiredPackages>
-    <Units Count="62">
+    <Units Count="64">
       <Unit0>
         <Filename Value="bewerbungen.lpr"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="bewerbungen"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="27" Y="10"/>
+        <CursorPos X="13" Y="11"/>
         <UsageCount Value="85"/>
         <Loaded Value="True"/>
       </Unit0>
@@ -72,13 +73,10 @@
         <ComponentName Value="frmMain"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="mainwin"/>
-        <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="672"/>
-        <CursorPos X="14" Y="693"/>
+        <TopLine Value="1"/>
+        <CursorPos X="27" Y="656"/>
         <UsageCount Value="85"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="/usr/lib/lazarus/lcl/forms.pp"/>
@@ -267,13 +265,10 @@
         <Filename Value="bewerbung_strings.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="bewerbung_strings"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="36"/>
-        <CursorPos X="3" Y="49"/>
+        <TopLine Value="1"/>
+        <CursorPos X="32" Y="20"/>
         <UsageCount Value="53"/>
-        <Loaded Value="True"/>
       </Unit25>
       <Unit26>
         <Filename Value="/usr/lib/lazarus/lcl/shellctrls.pas"/>
@@ -334,8 +329,8 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="exportdate"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="9"/>
-        <CursorPos X="20" Y="9"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="16"/>
         <UsageCount Value="41"/>
       </Unit33>
       <Unit34>
@@ -524,12 +519,11 @@
       </Unit58>
       <Unit59>
         <Filename Value="datafilter.pas"/>
-        <IsPartOfProject Value="True"/>
         <ComponentName Value="frmFilterDate"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="datafilter"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
+        <TopLine Value="17"/>
         <CursorPos X="16" Y="1"/>
         <UsageCount Value="21"/>
       </Unit59>
@@ -547,129 +541,31 @@
         <CursorPos X="1" Y="813"/>
         <UsageCount Value="10"/>
       </Unit61>
+      <Unit62>
+        <Filename Value="filterdate.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmDateFilter"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="filterdate"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="18"/>
+        <UsageCount Value="20"/>
+      </Unit62>
+      <Unit63>
+        <Filename Value="viewfilter.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmViewFilter"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="viewfilter"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="16"/>
+        <UsageCount Value="20"/>
+      </Unit63>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
-      <Position1>
-        <Filename Value="mainwin.pas"/>
-        <Caret Line="1" Column="14" TopLine="1"/>
-      </Position1>
-      <Position2>
-        <Filename Value="mainwin.pas"/>
-        <Caret Line="193" Column="16" TopLine="172"/>
-      </Position2>
-      <Position3>
-        <Filename Value="mainwin.pas"/>
-        <Caret Line="325" Column="14" TopLine="304"/>
-      </Position3>
-      <Position4>
-        <Filename Value="mainwin.pas"/>
-        <Caret Line="328" Column="52" TopLine="307"/>
-      </Position4>
-      <Position5>
-        <Filename Value="mainwin.pas"/>
-        <Caret Line="341" Column="16" TopLine="320"/>
-      </Position5>
-      <Position6>
-        <Filename Value="mainwin.pas"/>
-        <Caret Line="348" Column="16" TopLine="327"/>
-      </Position6>
-      <Position7>
-        <Filename Value="mainwin.pas"/>
-        <Caret Line="385" Column="5" TopLine="360"/>
-      </Position7>
-      <Position8>
-        <Filename Value="mainwin.pas"/>
-        <Caret Line="402" Column="5" TopLine="377"/>
-      </Position8>
-      <Position9>
-        <Filename Value="mainwin.pas"/>
-        <Caret Line="431" Column="16" TopLine="410"/>
-      </Position9>
-      <Position10>
-        <Filename Value="mainwin.pas"/>
-        <Caret Line="436" Column="28" TopLine="417"/>
-      </Position10>
-      <Position11>
-        <Filename Value="mainwin.pas"/>
-        <Caret Line="438" Column="16" TopLine="417"/>
-      </Position11>
-      <Position12>
-        <Filename Value="mainwin.pas"/>
-        <Caret Line="443" Column="6" TopLine="422"/>
-      </Position12>
-      <Position13>
-        <Filename Value="mainwin.pas"/>
-        <Caret Line="519" Column="54" TopLine="498"/>
-      </Position13>
-      <Position14>
-        <Filename Value="mainwin.pas"/>
-        <Caret Line="537" Column="16" TopLine="516"/>
-      </Position14>
-      <Position15>
-        <Filename Value="mainwin.pas"/>
-        <Caret Line="544" Column="16" TopLine="523"/>
-      </Position15>
-      <Position16>
-        <Filename Value="mainwin.pas"/>
-        <Caret Line="551" Column="16" TopLine="530"/>
-      </Position16>
-      <Position17>
-        <Filename Value="mainwin.pas"/>
-        <Caret Line="565" Column="16" TopLine="544"/>
-      </Position17>
-      <Position18>
-        <Filename Value="mainwin.pas"/>
-        <Caret Line="572" Column="16" TopLine="551"/>
-      </Position18>
-      <Position19>
-        <Filename Value="mainwin.pas"/>
-        <Caret Line="579" Column="16" TopLine="558"/>
-      </Position19>
-      <Position20>
-        <Filename Value="mainwin.pas"/>
-        <Caret Line="667" Column="16" TopLine="646"/>
-      </Position20>
-      <Position21>
-        <Filename Value="mainwin.pas"/>
-        <Caret Line="685" Column="16" TopLine="664"/>
-      </Position21>
-      <Position22>
-        <Filename Value="mainwin.pas"/>
-        <Caret Line="692" Column="16" TopLine="671"/>
-      </Position22>
-      <Position23>
-        <Filename Value="mainwin.pas"/>
-        <Caret Line="699" Column="16" TopLine="678"/>
-      </Position23>
-      <Position24>
-        <Filename Value="mainwin.pas"/>
-        <Caret Line="771" Column="86" TopLine="750"/>
-      </Position24>
-      <Position25>
-        <Filename Value="mainwin.pas"/>
-        <Caret Line="775" Column="54" TopLine="754"/>
-      </Position25>
-      <Position26>
-        <Filename Value="mainwin.pas"/>
-        <Caret Line="443" Column="1" TopLine="432"/>
-      </Position26>
-      <Position27>
-        <Filename Value="mainwin.pas"/>
-        <Caret Line="444" Column="35" TopLine="432"/>
-      </Position27>
-      <Position28>
-        <Filename Value="mainwin.pas"/>
-        <Caret Line="1" Column="3" TopLine="1"/>
-      </Position28>
-      <Position29>
-        <Filename Value="mainwin.pas"/>
-        <Caret Line="693" Column="14" TopLine="672"/>
-      </Position29>
-      <Position30>
-        <Filename Value="bewerbung_strings.pas"/>
-        <Caret Line="49" Column="3" TopLine="36"/>
-      </Position30>
-    </JumpHistory>
+    <JumpHistory Count="0" HistoryIndex="-1"/>
   </ProjectOptions>
   <CompilerOptions>
     <Version Value="9"/>

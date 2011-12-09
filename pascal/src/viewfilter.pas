@@ -14,7 +14,7 @@
   limitations under the License.
 }
 
-unit exportdate;
+unit viewfilter;
 
 {$mode objfpc}{$H+}
 
@@ -24,7 +24,7 @@ uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, filterdate; 
 
 type
-  TfrmExportDate = class(TfrmDateFilter)
+  TfrmViewFilter = class(TfrmDateFilter)
   private
     { private declarations }
   public
@@ -32,7 +32,7 @@ type
   end; 
 
 var
-  frmExportDate: TfrmExportDate;
+  frmViewFilter: TfrmViewFilter;
 
 implementation
 

@@ -1,0 +1,3 @@
+inherited frmViewFilter: TfrmViewFilter
+  Caption = 'Anzeige-Zeitraum'
+end

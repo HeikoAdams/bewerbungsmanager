@@ -204,7 +204,7 @@ var
 implementation
 
 uses LCLType, dateutils, Data, bewerbung_strings, Process, variants,
-  exportdate, settings, DB, sqldb, datafilter;
+  exportdate, settings, DB, sqldb, viewfilter;
 
 {$R *.lfm}
 
@@ -644,16 +644,16 @@ procedure TfrmMain.actFilterExecute(Sender: TObject);
 var
   dtDateFrom, dtDateDue: TDate;
 begin
-  Application.CreateForm(TfrmFilterDate, frmFilterDate);
+  Application.CreateForm(TfrmViewFilter, frmViewFilter);
 
-  if (frmFilterDate.ShowModal = mrAbort) then
+  if (frmViewFilter.ShowModal = mrAbort) then
   begin
-    FreeAndNil(frmFilterDate);
+    FreeAndNil(frmViewFilter);
     Exit;
   end;
 
-  frmFilterDate.GetDateRange(dtDateFrom, dtDateDue);
-  FreeAndNil(frmFilterDate);
+  frmViewFilter.GetDateRange(dtDateFrom, dtDateDue);
+  FreeAndNil(frmViewFilter);
 
   dmBewerbungen.FetchData(Format('(DATUM >= %d) AND (DATUM <= %d)',
     [trunc(dtDateFrom), trunc(dtDateDue)]));
