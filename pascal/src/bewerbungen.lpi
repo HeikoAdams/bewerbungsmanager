@@ -22,7 +22,7 @@
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="1"/>
       <MinorVersionNr Value="9"/>
-      <BuildNr Value="149"/>
+      <BuildNr Value="150"/>
       <Language Value="0407"/>
       <StringTable CompanyName="Heiko Adams" FileDescription="Verwaltung für Bewerbungen" InternalName="bewerbungen" LegalCopyright="2011 Heiko Adams" OriginalFilename="bewerbungen" ProductName="Bewerbungsverwaltung" ProductVersion="1.90"/>
     </VersionInfo>
@@ -514,7 +514,7 @@
         <UnitName Value="SQLStringsPropertyEditorDlg"/>
         <WindowIndex Value="0"/>
         <TopLine Value="265"/>
-        <CursorPos X="1" Y="290"/>
+        <CursorPos X="56" Y="285"/>
         <UsageCount Value="10"/>
       </Unit58>
       <Unit59>
@@ -570,7 +570,7 @@
   <CompilerOptions>
     <Version Value="9"/>
     <Target>
-      <Filename Value="../bin/bewerbungen"/>
+      <Filename Value="../bin/$(TargetCPU)/$(TargetOS)/bewerbungen"/>
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
