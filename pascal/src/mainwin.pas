@@ -751,22 +751,32 @@ procedure TfrmMain.pmFilterPopup(Sender: TObject);
 var
   nCount, nCount2: integer;
   TempItem: TMenuItem;
+  bItemEnabled: boolean;
 begin
   actWriteMail.Enabled := not (Length(dmBewerbungen.qryBewerbungen.FieldByName(
     'Mail').AsString) = 0);
+  bItemEnabled:= (dmBewerbungen.qryBewerbungen.RecordCount > 0);
 
   for nCount := 0 to pmFilter.Items.Count - 1 do
   begin
     TempItem := pmFilter.Items[nCount];
 
-    if (TempItem.Count > 0) then
+    if bItemEnabled then
     begin
-      for nCount2 := 0 to TempItem.Count - 1 do
-        TempItem.Items[nCount2].Checked := (TempItem.Items[nCount2].Tag = FGridFilter)
-          and (TempItem.Items[nCount2].Tag < 100);
+      if (TempItem.Count > 0) then
+      begin
+        for nCount2 := 0 to TempItem.Count - 1 do
+          TempItem.Items[nCount2].Checked := (TempItem.Items[nCount2].Tag = FGridFilter)
+            and (TempItem.Items[nCount2].Tag < 100);
+      end
+      else
+        TempItem.Checked := (TempItem.Tag = FGridFilter) and (TempItem.Tag < 100);
     end
     else
-      TempItem.Checked := (TempItem.Tag = FGridFilter) and (TempItem.Tag < 100);
+    begin
+      if not (TempItem.Action = actSettings) then
+        TempItem.Enabled:= bItemEnabled;
+    end;
   end;
 end;
 

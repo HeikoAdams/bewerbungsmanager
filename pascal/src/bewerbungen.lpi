@@ -59,7 +59,6 @@
         <Filename Value="bewerbungen.lpr"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="bewerbungen"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
@@ -73,10 +72,14 @@
         <ComponentName Value="frmMain"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="mainwin"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
-        <CursorPos X="27" Y="656"/>
+        <TopLine Value="758"/>
+        <CursorPos X="40" Y="778"/>
         <UsageCount Value="85"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="/usr/lib/lazarus/lcl/forms.pp"/>
@@ -565,7 +568,12 @@
         <UsageCount Value="20"/>
       </Unit63>
     </Units>
-    <JumpHistory Count="0" HistoryIndex="-1"/>
+    <JumpHistory Count="1" HistoryIndex="0">
+      <Position1>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="656" Column="27" TopLine="631"/>
+      </Position1>
+    </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
     <Version Value="9"/>
@@ -584,7 +592,6 @@
         <OverflowChecks Value="True"/>
         <StackChecks Value="True"/>
       </Checks>
-      <VerifyObjMethodCallValidity Value="True"/>
       <SmallerCode Value="True"/>
       <Optimizations>
         <VariablesInRegisters Value="True"/>
@@ -616,7 +623,7 @@
     <BreakPoints Count="2">
       <Item1>
         <Source Value="mainwin.pas"/>
-        <Line Value="798"/>
+        <Line Value="808"/>
       </Item1>
       <Item2>
         <Source Value="data.pas"/>
