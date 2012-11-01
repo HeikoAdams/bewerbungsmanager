@@ -15,10 +15,10 @@ object frmMain: TfrmMain
     Height = 508
     Top = 25
     Width = 654
-    ActivePage = tsBewerbungen
+    ActivePage = tsBewerbungData
     Align = alClient
     Images = ilIcons
-    TabIndex = 0
+    TabIndex = 1
     TabOrder = 1
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'
@@ -369,6 +369,8 @@ object frmMain: TfrmMain
           'E-Mail'
           'Post'
           'Online-Formular'
+          'Telefon'
+          'Sonstige'
         )
         TabOrder = 10
         Values.Strings = (
@@ -380,7 +382,7 @@ object frmMain: TfrmMain
       end
       object cbbEmpfName: TDBComboBox
         Left = 108
-        Height = 27
+        Height = 25
         Top = 38
         Width = 200
         DataField = 'NAME'
@@ -392,7 +394,7 @@ object frmMain: TfrmMain
       end
       object cbbEmpfMail: TDBComboBox
         Left = 424
-        Height = 27
+        Height = 25
         Top = 38
         Width = 200
         DataField = 'MAIL'
@@ -404,7 +406,7 @@ object frmMain: TfrmMain
       end
       object cbbJobTitel: TDBComboBox
         Left = 424
-        Height = 27
+        Height = 25
         Top = 72
         Width = 200
         DataField = 'JOBTITEL'
@@ -448,7 +450,7 @@ object frmMain: TfrmMain
       end
       object cbbAnspr: TDBComboBox
         Left = 108
-        Height = 27
+        Height = 25
         Top = 72
         Width = 200
         DataField = 'ANSPRECHPARTNER'

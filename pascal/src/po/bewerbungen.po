@@ -109,7 +109,7 @@ msgid "(TYP = %d)"
 msgstr ""
 
 #: bewerbung_strings.rsusrbinxdgope
-msgid "/usr/bin/xdg-open \"%s\""
+msgid "xdg-open \"%s\""
 msgstr ""
 
 #: bewerbung_strings.rswarnung

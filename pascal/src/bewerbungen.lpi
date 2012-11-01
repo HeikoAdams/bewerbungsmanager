@@ -72,11 +72,10 @@
         <ComponentName Value="frmMain"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="mainwin"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="758"/>
-        <CursorPos X="40" Y="778"/>
+        <TopLine Value="400"/>
+        <CursorPos X="3" Y="397"/>
         <UsageCount Value="85"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -268,10 +267,13 @@
         <Filename Value="bewerbung_strings.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="bewerbung_strings"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
-        <CursorPos X="32" Y="20"/>
+        <TopLine Value="43"/>
+        <CursorPos X="34" Y="58"/>
         <UsageCount Value="53"/>
+        <Loaded Value="True"/>
       </Unit25>
       <Unit26>
         <Filename Value="/usr/lib/lazarus/lcl/shellctrls.pas"/>
@@ -568,11 +570,19 @@
         <UsageCount Value="20"/>
       </Unit63>
     </Units>
-    <JumpHistory Count="1" HistoryIndex="0">
+    <JumpHistory Count="3" HistoryIndex="2">
       <Position1>
         <Filename Value="mainwin.pas"/>
         <Caret Line="656" Column="27" TopLine="631"/>
       </Position1>
+      <Position2>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="778" Column="40" TopLine="758"/>
+      </Position2>
+      <Position3>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="691" Column="3" TopLine="673"/>
+      </Position3>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
