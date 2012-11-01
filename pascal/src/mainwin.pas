@@ -183,7 +183,10 @@ type
     FConfigDir: string;
     FDataFile: string;
     FErrorMsg: string;
-    {$IFDEF Unix}FLinuxLaunch: string;{$ENDIF}
+    {$IFDEF Unix}
+    FLinuxLaunch: string;
+    FXDGPath: string;
+    {$ENDIF}
     FLockFile: string;
     FConfigFile: TIniFile;
 
@@ -318,6 +321,8 @@ begin
   {$IFDEF Unix}
   FLinuxLaunch := FConfigFile.ReadString('LINUX', 'LAUNCHER',
     '/usr/bin/xdg-open "%s"');
+  FXDGPath := FConfigFile.ReadString('LINUX', 'XDG-PATH',
+    '/usr/bin');
   {$ENDIF}
 
   //actAllNoAbsage.Execute;
@@ -412,7 +417,7 @@ begin
   {$IFDEF Unix}
   with TProcess.Create(nil) do
   begin
-    CommandLine := Format(rsUsrBinXdgOpe, [sCommand]);
+    CommandLine := Format(rsUsrBinXdgOpe, [FXDGPath, sCommand]);
     Options := Options + [poWaitOnExit];
     Execute;
     Free;
@@ -511,6 +516,10 @@ begin
     end;
 
     WriteInteger('FILTER', 'LAST FILTER', FGridFilter);
+
+    {$IFDEF Unix}
+    WriteString('LINUX', 'XDG-PATH',FXDGPath);
+    {$ENDIF}
 
     UpdateFile;
   end;
