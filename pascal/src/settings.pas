@@ -61,25 +61,31 @@ uses mainwin, LCLType, bewerbung_strings;
 
 procedure TfrmSettings.FormCreate(Sender: TObject);
 begin
-  chkNotifyWVL.Checked := frmMain.ConfigFile.ReadBool('GENERAL', 'NOTIFY-WVL', True);
-  rgTyp.ItemIndex := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'TYP', 1);
-  rgMedium.ItemIndex := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'MEDIUM', 0);
-  edtWVLTage.Value := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'WVL', 14);
-  chkOldApplications.Checked := frmMain.ConfigFile.ReadBool('GENERAL', 'HIGHLIGHT OLD APPLICATIONS', false);
-  edtDocsDir.Directory := frmMain.ConfigFile.ReadString('GENERAL', 'DOC DIR', GetUserDir);
+  with frmMain.ConfigFile do
+  begin
+       chkNotifyWVL.Checked := ReadBool('GENERAL', 'NOTIFY-WVL', True);
+       rgTyp.ItemIndex := ReadInteger('DEFAULTS', 'TYP', 1);
+       rgMedium.ItemIndex := ReadInteger('DEFAULTS', 'MEDIUM', 0);
+       edtWVLTage.Value := ReadInteger('DEFAULTS', 'WVL', 14);
+       chkOldApplications.Checked := ReadBool('GENERAL', 'HIGHLIGHT OLD APPLICATIONS', false);
+       edtDocsDir.Directory := ReadString('GENERAL', 'DOC DIR', GetUserDir);
+  end;
 end;
 
 procedure TfrmSettings.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
   if (ModalResult = mrOk) then
   begin
-    frmMain.ConfigFile.WriteBool('GENERAL', 'NOTIFY-WVL', chkNotifyWVL.Checked);
-    frmMain.ConfigFile.WriteInteger('DEFAULTS', 'TYP', rgTyp.ItemIndex);
-    frmMain.ConfigFile.WriteInteger('DEFAULTS', 'MEDIUM', rgMedium.ItemIndex);
-    frmMain.ConfigFile.WriteInteger('DEFAULTS', 'WVL', edtWVLTage.Value);
-    frmMain.ConfigFile.WriteBool('GENERAL', 'HIGHLIGHT OLD APPLICATIONS', chkOldApplications.Checked);
-    frmMain.ConfigFile.WriteString('GENERAL', 'DOC DIR', edtDocsDir.Directory);
-    frmMain.ConfigFile.UpdateFile;
+    with frmMain.ConfigFile do
+    begin
+         WriteBool('GENERAL', 'NOTIFY-WVL', chkNotifyWVL.Checked);
+         WriteInteger('DEFAULTS', 'TYP', rgTyp.ItemIndex);
+         WriteInteger('DEFAULTS', 'MEDIUM', rgMedium.ItemIndex);
+         WriteInteger('DEFAULTS', 'WVL', edtWVLTage.Value);
+         WriteBool('GENERAL', 'HIGHLIGHT OLD APPLICATIONS', chkOldApplications.Checked);
+         WriteString('GENERAL', 'DOC DIR', edtDocsDir.Directory);
+         UpdateFile;
+    end;
 
     Application.MessageBox(PChar(rsDieNderungen), PChar(rsEinstellunge),
       MB_ICONWARNING + MB_OK);
