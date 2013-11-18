@@ -61,7 +61,7 @@ resourcestring
   {$IFDEF Unix}rsUsrBinXdgOpe = '%s/xdg-open "%s"';{$ENDIF}
   rsWarnung = 'Warnung';
   rsWERT = 'WERT';
-  rsWHEREWVLSAND = '(WVL < %s) AND (FEEDBACK = 0) AND (RESULT = 0) AND (IGNORIERT = 0)';
+  rsWHEREWVLSAND = '(Date(WVL) <= Date(''now'')) AND (RESULT = 0) AND (IGNORIERT = 0)';
 
 implementation
 

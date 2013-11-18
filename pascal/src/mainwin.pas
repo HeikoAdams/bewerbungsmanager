@@ -238,7 +238,7 @@ begin
     begin
       Add('SELECT COUNT(*) ANZAHL');
       Add('FROM BEWERBUNGEN');
-      Add(Format('WHERE ' + rsWHEREWVLSAND, [FormatFloat('###0.00', now)]));
+      Add('WHERE ' + rsWHEREWVLSAND);
     end;
 
     Open;
@@ -748,21 +748,25 @@ begin
 
     // Kein Feedback und WVL-Termin überschritten
     if (not DataSource.DataSet.FieldByName('IGNORIERT').AsBoolean) and
-      (DataSource.DataSet.FieldByName('FEEDBACK').AsInteger = 0) and
-      (DataSource.DataSet.FieldByName('RESULT').AsInteger in [0,4]) and
+      //(DataSource.DataSet.FieldByName('FEEDBACK').AsInteger = 0) and
+      (DataSource.DataSet.FieldByName('RESULT').AsInteger = 0) and
       (DataSource.DataSet.FieldByName('WVL').AsDateTime <= Date) then
+    begin
       Canvas.Font.Color := clMaroon;
+      Canvas.Font.Style := [fsBold];
+    end;
 
     // Bewerbung liegt mehr als 6 Wochen zurück und noch kein Ergebnis
-    if FConfigFile.ReadBool('GENERAL', 'HIGHLIGHT OLD APPLICATIONS', false) and
-      (DataSource.DataSet.FieldByName('FEEDBACK').AsInteger < 2) and
-      (DataSource.DataSet.FieldByName('RESULT').AsInteger = 0) and
-      (DataSource.DataSet.FieldByName('DATUM').AsDateTime <= IncWeek(Date, -6)) then
-      Canvas.Font.Style := [fsBold];
+    //if FConfigFile.ReadBool('GENERAL', 'HIGHLIGHT OLD APPLICATIONS', false) and
+    //  (DataSource.DataSet.FieldByName('FEEDBACK').AsInteger < 2) and
+    //  (DataSource.DataSet.FieldByName('RESULT').AsInteger = 0) and
+    //  (DataSource.DataSet.FieldByName('DATUM').AsDateTime <= IncWeek(Date, -6)) then
+    //  Canvas.Font.Style := [fsBold];
 
-    // Eingangsbestätigung liegt vor
+    // Eingangsbestätigung liegt vor und WVL ist noch nicht überschritten
     if (DataSource.DataSet.FieldByName('FEEDBACK').AsInteger = 1) and
-      (DataSource.DataSet.FieldByName('RESULT').AsInteger = 0) then
+      (DataSource.DataSet.FieldByName('RESULT').AsInteger = 0)and
+      (DataSource.DataSet.FieldByName('WVL').AsDateTime >= Date) then
       Canvas.Font.Color := clNavy;
 
     // Einladung liegt vor
@@ -781,6 +785,10 @@ begin
     // Bewerbung zurückgezogen
     if (DataSource.DataSet.FieldByName('RESULT').AsInteger = 3) then
       Canvas.Font.Color := clGray;
+
+    // keine Antwort auf Nachfragen
+    if (DataSource.DataSet.FieldByName('RESULT').AsInteger = 4) then
+      Canvas.Font.Color := clMaroon;
   end;
 end;
 

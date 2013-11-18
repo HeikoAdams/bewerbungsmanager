@@ -129,7 +129,7 @@ msgid "WERT"
 msgstr ""
 
 #: bewerbung_strings.rswherewvlsand
-msgid "(WVL < %s) AND (FEEDBACK = 0) AND (RESULT = 0) AND (IGNORIERT = 0)"
+msgid "(Date(WVL) <= Date('now')) AND (RESULT = 0) AND (IGNORIERT = 0)"
 msgstr ""
 
 #: dunkelblau 
