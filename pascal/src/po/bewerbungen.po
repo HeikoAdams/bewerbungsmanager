@@ -101,7 +101,7 @@ msgid "RECEIPENTS"
 msgstr ""
 
 #: bewerbung_strings.rsresult2
-msgid "(RESULT <> 2)"
+msgid "(RESULT <> 2) AND (IGNORIERT IS 0)"
 msgstr ""
 
 #: bewerbung_strings.rsresultd
@@ -129,7 +129,7 @@ msgid "WERT"
 msgstr ""
 
 #: bewerbung_strings.rswherewvlsand
-msgid "(WVL <= %s) AND (FEEDBACK = 0) AND (RESULT = 0) AND (IGNORIERT = 0)"
+msgid "(WVL < %s) AND (FEEDBACK = 0) AND (RESULT = 0) AND (IGNORIERT = 0)"
 msgstr ""
 
 #: dunkelblau 

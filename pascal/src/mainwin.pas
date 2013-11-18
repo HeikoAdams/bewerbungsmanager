@@ -238,7 +238,7 @@ begin
     begin
       Add('SELECT COUNT(*) ANZAHL');
       Add('FROM BEWERBUNGEN');
-      Add(Format('WHERE ' + rsWHEREWVLSAND, [FloatToStr(date)]));
+      Add(Format('WHERE ' + rsWHEREWVLSAND, [FormatFloat('###0.00', now)]));
     end;
 
     Open;
@@ -742,6 +742,10 @@ procedure TfrmMain.grdBewerbungenPrepareCanvas(Sender: TObject;
 begin
   with (Sender as TDBGrid) do
   begin
+    // Ignorierte Bewerbungen
+    if (DataSource.DataSet.FieldByName('IGNORIERT').AsBoolean) then
+       Canvas.Font.Style := [fsItalic];
+
     // Kein Feedback und WVL-Termin überschritten
     if (not DataSource.DataSet.FieldByName('IGNORIERT').AsBoolean) and
       (DataSource.DataSet.FieldByName('FEEDBACK').AsInteger = 0) and
