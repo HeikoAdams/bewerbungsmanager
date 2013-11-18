@@ -588,7 +588,9 @@ var
   sFileName: string;
   sLine: string;
   nCount: integer;
-  dtDateFrom, dtDateDue: TDate;
+  sDateFrom, sDateDue: string;
+  dtDateFrom, dtDateDue: TDateTime;
+  nRecordCount: Integer;
 begin
   Application.CreateForm(TfrmExportDate, frmExportDate);
 
@@ -598,17 +600,35 @@ begin
     Exit;
   end;
 
+  frmExportDate.GetDateRange(dtDateFrom, dtDateDue);
+
+  if (dtDateFrom > date) or (dtDateDue > Endofthemonth(date)) then
+  begin
+    Application.MessageBox(PChar(rsDateInFuture), PChar(rsCSVExport),
+       MB_ICONINFORMATION + MB_OK);
+    FreeAndNil(frmExportDate);
+    exit;
+  end;
+
   dlgExport.InitialDir := GetUserDir;
 
   if dlgExport.Execute then
   begin
     sFileName := dlgExport.FileName;
 
-    frmExportDate.GetDateRange(dtDateFrom, dtDateDue);
+    frmExportDate.GetDateRangeTxt(sDateFrom, sDateDue);
     FreeAndNil(frmExportDate);
     AssignFile(ExportFile, sFileName);
-    dmBewerbungen.FetchExportData(Format('WHERE (DATUM >= %d) AND (DATUM <= %d)',
-      [trunc(dtDateFrom), trunc(dtDateDue)]));
+    dmBewerbungen.FetchExportData('WHERE strftime(''%d-%m-%Y'', DATUM)' +
+      Format(' BETWEEN ''%s'' AND ''%s''', [sDateFrom, sDateDue]));
+    nRecordCount := dmBewerbungen.qryCSVExport.RecordCount;
+
+    if (nRecordCount = 0) then
+    begin
+      Application.MessageBox(PChar(rsNoExportData), PChar(rsCSVExport),
+         MB_ICONINFORMATION + MB_OK);
+      exit;
+    end;
 
     if FileExists(sFileName) then
       DeleteFile(sFileName);
@@ -644,7 +664,7 @@ begin
 
     CloseFile(ExportFile);
 
-    Application.MessageBox(PChar(rsExportBeende), PChar(rsCSVExport),
+    Application.MessageBox(PChar(Format(rsExportBeende, [nRecordCount])), PChar(rsCSVExport),
       MB_ICONINFORMATION + MB_OK);
   end;
 end;

@@ -43,7 +43,8 @@ type
     { private declarations }
   public
     { public declarations }
-    procedure GetDateRange(var aDateFrom, aDateDue: TDate);
+    procedure GetDateRange(var aDateFrom, aDateDue: TDateTime);
+    procedure GetDateRangeTxt(var aDateFrom, aDateDue: String);
   end; 
 
 var
@@ -73,10 +74,16 @@ begin
   edtDateDue.Date:=EndOfTheMonth(Date);
 end;
 
-procedure TfrmDateFilter.GetDateRange(var aDateFrom, aDateDue: TDate);
+procedure TfrmDateFilter.GetDateRange(var aDateFrom, aDateDue: TDateTime);
 begin
   aDateFrom := edtDateFrom.Date;
   aDateDue := edtDateDue.Date;
+end;
+
+procedure TfrmDateFilter.GetDateRangeTxt(var aDateFrom, aDateDue: String);
+begin
+  aDateFrom := edtDateFrom.Text;
+  aDateDue := edtDateDue.Text;
 end;
 
 end.

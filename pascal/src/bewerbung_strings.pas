@@ -39,7 +39,10 @@ resourcestring
   rsEinstellunge = 'Einstellungen';
   rsEsBefindenSi = 'Es befinden sich aktuell %d Bewerbungen in der '
     +'Wiedervorlage!';
-  rsExportBeende = 'Export beendet';
+  rsExportBeende = 'Export beendet. Es wurden %d Datensätze exportiert';
+  rsNoExportData = 'In dem angegebenen Zeitraum existieren keine Daten, '+
+    'die exportiert werden können';
+  rsDateInFuture = 'Der Exportzeitraum darf nicht in der Zukunft liegen';
   rsFEEDBACKD = '(FEEDBACK = %d)';
   rsFehler = 'Fehler';
   rsDateFormat = 'dd.mm.yyyy';
