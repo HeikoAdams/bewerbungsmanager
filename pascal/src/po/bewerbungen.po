@@ -23,6 +23,10 @@ msgctxt "bewerbung_strings.rsdateformat"
 msgid "dd.mm.yyyy"
 msgstr ""
 
+#: bewerbung_strings.rsdateinfuture
+msgid "Der Exportzeitraum darf nicht in der Zukunft liegen"
+msgstr ""
+
 #: bewerbung_strings.rsdatenbanksko
 msgctxt "bewerbung_strings.rsdatenbanksko"
 msgid "Datenbank (%s) konnte nicht gefunden werden!"
@@ -48,7 +52,7 @@ msgstr ""
 
 #: bewerbung_strings.rsexportbeende
 msgctxt "bewerbung_strings.rsexportbeende"
-msgid "Export beendet"
+msgid "Export beendet. Es wurden %d Datensätze exportiert"
 msgstr ""
 
 #: bewerbung_strings.rsfeedbackd
@@ -86,6 +90,10 @@ msgstr ""
 
 #: bewerbung_strings.rsmeinebewerbu2
 msgid "Meine Bewerbung vom %s als %s"
+msgstr ""
+
+#: bewerbung_strings.rsnoexportdata
+msgid "In dem angegebenen Zeitraum existieren keine Daten, die exportiert werden können"
 msgstr ""
 
 #: bewerbung_strings.rsreceipents
@@ -178,452 +186,457 @@ msgstr ""
 msgid " noch keine Reaktion"
 msgstr ""
 
-#: TFRMDATEFILTER.BUTTON1.CAPTION
+#: tfrmdatefilter.button1.caption
 msgctxt "TFRMDATEFILTER.BUTTON1.CAPTION"
 msgid "&OK"
 msgstr ""
 
-#: TFRMDATEFILTER.BUTTON2.CAPTION
+#: tfrmdatefilter.button2.caption
 msgctxt "TFRMDATEFILTER.BUTTON2.CAPTION"
 msgid "&Abbruch"
 msgstr ""
 
-#: TFRMDATEFILTER.EDTDATEDUE.CANCELCAPTION
+#: tfrmdatefilter.caption
+msgctxt "TFRMDATEFILTER.CAPTION"
+msgid "Filter"
+msgstr ""
+
+#: tfrmdatefilter.edtdatedue.cancelcaption
 msgctxt "TFRMDATEFILTER.EDTDATEDUE.CANCELCAPTION"
 msgid "Cancel"
 msgstr ""
 
-#: TFRMDATEFILTER.EDTDATEDUE.OKCAPTION
+#: tfrmdatefilter.edtdatedue.okcaption
 msgctxt "TFRMDATEFILTER.EDTDATEDUE.OKCAPTION"
 msgid "OK"
 msgstr ""
 
-#: TFRMDATEFILTER.EDTDATEFROM.CANCELCAPTION
+#: tfrmdatefilter.edtdatefrom.cancelcaption
 msgctxt "TFRMDATEFILTER.EDTDATEFROM.CANCELCAPTION"
 msgid "Cancel"
 msgstr ""
 
-#: TFRMDATEFILTER.EDTDATEFROM.OKCAPTION
+#: tfrmdatefilter.edtdatefrom.okcaption
 msgctxt "TFRMDATEFILTER.EDTDATEFROM.OKCAPTION"
 msgid "OK"
 msgstr ""
 
-#: TFRMDATEFILTER.FRMDATEFILTER.CAPTION
-msgctxt "TFRMDATEFILTER.FRMDATEFILTER.CAPTION"
-msgid "Filter"
-msgstr ""
-
-#: TFRMDATEFILTER.LABEL1.CAPTION
+#: tfrmdatefilter.label1.caption
 msgctxt "TFRMDATEFILTER.LABEL1.CAPTION"
 msgid "Datum von"
 msgstr ""
 
-#: TFRMDATEFILTER.LABEL2.CAPTION
+#: tfrmdatefilter.label2.caption
 msgctxt "TFRMDATEFILTER.LABEL2.CAPTION"
 msgid "Datum bis"
 msgstr ""
 
-#: TFRMEXPORTDATE.FRMEXPORTDATE.CAPTION
+#: tfrmexportdate.frmexportdate.caption
 msgid "Export-Zeitraum"
 msgstr ""
 
-#: TFRMFILTERDATE.FRMFILTERDATE.CAPTION
+#: tfrmfilterdate.frmfilterdate.caption
 msgctxt "TFRMFILTERDATE.FRMFILTERDATE.CAPTION"
 msgid "Filter"
 msgstr ""
 
-#: TFRMMAIN.ACTABSAGE.CAPTION
+#: tfrmmain.actabsage.caption
 msgid "&Absage"
 msgstr ""
 
-#: TFRMMAIN.ACTALLE.CAPTION
+#: tfrmmain.actalle.caption
 msgid "&alle anzeigen"
 msgstr ""
 
-#: TFRMMAIN.ACTALLNOABSAGE.CAPTION
+#: tfrmmain.actallnoabsage.caption
 msgid "&alle ohne Absagen und ignorierte"
 msgstr ""
 
-#: TFRMMAIN.ACTANGEBOT.CAPTION
+#: tfrmmain.actangebot.caption
 msgid "&Stellenangebot"
 msgstr ""
 
-#: TFRMMAIN.ACTBEFRISTET.CAPTION
+#: tfrmmain.actbefristet.caption
 msgid "&befristet"
 msgstr ""
 
-#: TFRMMAIN.ACTEINGANG.CAPTION
+#: tfrmmain.acteingang.caption
 msgid "&Eingang bestätigt"
 msgstr ""
 
-#: TFRMMAIN.ACTEINLADUNG.CAPTION
+#: tfrmmain.acteinladung.caption
 msgid "&Einladung"
 msgstr ""
 
-#: TFRMMAIN.ACTEXPORT.CAPTION
+#: tfrmmain.actexport.caption
 msgid "&CSV-Export"
 msgstr ""
 
-#: TFRMMAIN.ACTFILTER.CAPTION
+#: tfrmmain.actfilter.caption
 msgid "&Filter"
 msgstr ""
 
-#: TFRMMAIN.ACTFIND.CAPTION
+#: tfrmmain.actfind.caption
 msgid "&Suche"
 msgstr ""
 
-#: TFRMMAIN.ACTIGNORE.CAPTION
+#: tfrmmain.actignore.caption
 msgid "&Ignorieren"
 msgstr ""
 
-#: TFRMMAIN.ACTIGNORIERT.CAPTION
+#: tfrmmain.actignoriert.caption
 msgid "&ignoriert"
 msgstr ""
 
-#: TFRMMAIN.ACTINITIATIV.CAPTION
+#: tfrmmain.actinitiativ.caption
 msgid "&Initiativbewerbung"
 msgstr ""
 
-#: TFRMMAIN.ACTMAIL.CAPTION
+#: tfrmmain.actmail.caption
 msgid "&Mail"
 msgstr ""
 
-#: TFRMMAIN.ACTNOFEEDBACK.CAPTION
+#: tfrmmain.actnofeedback.caption
 msgid "&kein Feedback"
 msgstr ""
 
-#: TFRMMAIN.ACTNORESULT.CAPTION
+#: tfrmmain.actnoresult.caption
 msgid "&kein Ergebnis"
 msgstr ""
 
-#: TFRMMAIN.ACTONLINEFORM.CAPTION
+#: tfrmmain.actonlineform.caption
 msgid "&Online-Formular"
 msgstr ""
 
-#: TFRMMAIN.ACTPOST.CAPTION
+#: tfrmmain.actpost.caption
 msgid "&Post"
 msgstr ""
 
-#: TFRMMAIN.ACTREVOKE.CAPTION
+#: tfrmmain.actrevoke.caption
 msgid "&Zurückgezogen"
 msgstr ""
 
-#: TFRMMAIN.ACTSETTINGS.CAPTION
+#: tfrmmain.actsettings.caption
 msgid "&Einstellungen"
 msgstr ""
 
-#: TFRMMAIN.ACTVERMITTLER.CAPTION
+#: tfrmmain.actvermittler.caption
 msgid "&Vermittler"
 msgstr ""
 
-#: TFRMMAIN.ACTVORSCHLAG.CAPTION
+#: tfrmmain.actvorschlag.caption
 msgid "&Vermittlungsvorschlag"
 msgstr ""
 
-#: TFRMMAIN.ACTWRITEMAIL.CAPTION
+#: tfrmmain.actwritemail.caption
 msgid "E-&Mail schreiben"
 msgstr ""
 
-#: TFRMMAIN.ACTWVL.CAPTION
+#: tfrmmain.actwvl.caption
 msgid "&Wiedervorlage"
 msgstr ""
 
-#: TFRMMAIN.ACTZUSAGE.CAPTION
+#: tfrmmain.actzusage.caption
 msgid "&Zusage"
 msgstr ""
 
-#: TFRMMAIN.BTNBROWSE.HINT
+#: tfrmmain.btnbrowse.hint
 msgid "Datei suchen"
 msgstr ""
 
-#: TFRMMAIN.BTNFILEOPEN.HINT
+#: tfrmmain.btnfileopen.hint
 msgid "Datei öffnen"
 msgstr ""
 
-#: TFRMMAIN.CHKBEFRISTET.CAPTION
+#: tfrmmain.caption
+msgctxt "TFRMMAIN.CAPTION"
+msgid "Bewerbungsmanager"
+msgstr ""
+
+#: tfrmmain.chkbefristet.caption
 msgctxt "TFRMMAIN.CHKBEFRISTET.CAPTION"
 msgid "befristet"
 msgstr ""
 
-#: TFRMMAIN.CHKIGNORIERT.CAPTION
+#: tfrmmain.chkignoriert.caption
 msgid "ignoriert"
 msgstr ""
 
-#: TFRMMAIN.CHKVERMITTLER.CAPTION
+#: tfrmmain.chkvermittler.caption
 msgctxt "TFRMMAIN.CHKVERMITTLER.CAPTION"
 msgid "Personalvermittler"
 msgstr ""
 
-#: TFRMMAIN.DBGRID1.COLUMNS[0].TCOLUMNTITLE.CAPTION
-msgctxt "TFRMMAIN.DBGRID1.COLUMNS[0].TCOLUMNTITLE.CAPTION"
+#: tfrmmain.dbgrid1.columns[0].title.caption
+msgctxt "TFRMMAIN.DBGRID1.COLUMNS[0].TITLE.CAPTION"
 msgid "Art"
 msgstr ""
 
-#: TFRMMAIN.DBGRID1.COLUMNS[1].TCOLUMNTITLE.CAPTION
+#: tfrmmain.dbgrid1.columns[1].title.caption
+msgctxt "TFRMMAIN.DBGRID1.COLUMNS[1].TITLE.CAPTION"
 msgid "Datei"
 msgstr ""
 
-#: TFRMMAIN.DLGFINDCOMPANY.TITLE
+#: tfrmmain.dlgfindcompany.title
 msgid "Empfänger suchen"
 msgstr ""
 
-#: TFRMMAIN.EDTDATUM.CANCELCAPTION
+#: tfrmmain.edtdatum.cancelcaption
 msgctxt "TFRMMAIN.EDTDATUM.CANCELCAPTION"
 msgid "Cancel"
 msgstr ""
 
-#: TFRMMAIN.EDTDATUM.OKCAPTION
+#: tfrmmain.edtdatum.okcaption
 msgctxt "TFRMMAIN.EDTDATUM.OKCAPTION"
 msgid "OK"
 msgstr ""
 
-#: TFRMMAIN.EDTLOGDATUM.CANCELCAPTION
+#: tfrmmain.edtlogdatum.cancelcaption
 msgctxt "TFRMMAIN.EDTLOGDATUM.CANCELCAPTION"
 msgid "Cancel"
 msgstr ""
 
-#: TFRMMAIN.EDTLOGDATUM.OKCAPTION
+#: tfrmmain.edtlogdatum.okcaption
 msgctxt "TFRMMAIN.EDTLOGDATUM.OKCAPTION"
 msgid "OK"
 msgstr ""
 
-#: TFRMMAIN.EDTWVL.CANCELCAPTION
+#: tfrmmain.edtwvl.cancelcaption
 msgctxt "TFRMMAIN.EDTWVL.CANCELCAPTION"
 msgid "Cancel"
 msgstr ""
 
-#: TFRMMAIN.EDTWVL.OKCAPTION
+#: tfrmmain.edtwvl.okcaption
 msgctxt "TFRMMAIN.EDTWVL.OKCAPTION"
 msgid "OK"
 msgstr ""
 
-#: TFRMMAIN.FRMMAIN.CAPTION
-msgid "Bewerbungsmanager"
-msgstr ""
-
-#: TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[0].TCOLUMNTITLE.CAPTION
-msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[0].TCOLUMNTITLE.CAPTION"
+#: tfrmmain.grdbewerbungen.columns[0].title.caption
+msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[0].TITLE.CAPTION"
 msgid "Datum"
 msgstr ""
 
-#: TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[1].TCOLUMNTITLE.CAPTION
-msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[1].TCOLUMNTITLE.CAPTION"
+#: tfrmmain.grdbewerbungen.columns[1].title.caption
+msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[1].TITLE.CAPTION"
 msgid "Wiedervorlage"
 msgstr ""
 
-#: TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[2].TCOLUMNTITLE.CAPTION
-msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[2].TCOLUMNTITLE.CAPTION"
+#: tfrmmain.grdbewerbungen.columns[2].title.caption
+msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[2].TITLE.CAPTION"
 msgid "Empfänger"
 msgstr ""
 
-#: TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[3].TCOLUMNTITLE.CAPTION
+#: tfrmmain.grdbewerbungen.columns[3].title.caption
+msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[3].TITLE.CAPTION"
 msgid "Mail"
 msgstr ""
 
-#: TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[4].TCOLUMNTITLE.CAPTION
-msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[4].TCOLUMNTITLE.CAPTION"
+#: tfrmmain.grdbewerbungen.columns[4].title.caption
+msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[4].TITLE.CAPTION"
 msgid "Job-Titel"
 msgstr ""
 
-#: TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[5].TCOLUMNTITLE.CAPTION
+#: tfrmmain.grdbewerbungen.columns[5].title.caption
+msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[5].TITLE.CAPTION"
 msgid "Ref.Nr"
 msgstr ""
 
-#: TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[6].TCOLUMNTITLE.CAPTION
-msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[6].TCOLUMNTITLE.CAPTION"
+#: tfrmmain.grdbewerbungen.columns[6].title.caption
+msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[6].TITLE.CAPTION"
 msgid "Personalvermittler"
 msgstr ""
 
-#: TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[7].TCOLUMNTITLE.CAPTION
-msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[7].TCOLUMNTITLE.CAPTION"
+#: tfrmmain.grdbewerbungen.columns[7].title.caption
+msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[7].TITLE.CAPTION"
 msgid "befristet"
 msgstr ""
 
-#: TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[8].TCOLUMNTITLE.CAPTION
+#: tfrmmain.grdbewerbungen.columns[8].title.caption
+msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[8].TITLE.CAPTION"
 msgid "Ignoriert"
 msgstr ""
 
-#: TFRMMAIN.GRDBEWERBUNGEN.HINT
+#: tfrmmain.grdbewerbungen.hint
 msgid "dunkelblau = Eingang bestätigt"
 msgstr ""
 
-#: TFRMMAIN.GRDLOG.COLUMNS[0].TCOLUMNTITLE.CAPTION
-msgctxt "TFRMMAIN.GRDLOG.COLUMNS[0].TCOLUMNTITLE.CAPTION"
+#: tfrmmain.grdlog.columns[0].title.caption
+msgctxt "TFRMMAIN.GRDLOG.COLUMNS[0].TITLE.CAPTION"
 msgid "Datum"
 msgstr ""
 
-#: TFRMMAIN.GRDLOG.COLUMNS[1].TCOLUMNTITLE.CAPTION
-msgctxt "TFRMMAIN.GRDLOG.COLUMNS[1].TCOLUMNTITLE.CAPTION"
+#: tfrmmain.grdlog.columns[1].title.caption
+msgctxt "TFRMMAIN.GRDLOG.COLUMNS[1].TITLE.CAPTION"
 msgid "Art"
 msgstr ""
 
-#: TFRMMAIN.LABEL1.CAPTION
+#: tfrmmain.label1.caption
 msgid "Anspr.partner"
 msgstr ""
 
-#: TFRMMAIN.LBLDATUM.CAPTION
+#: tfrmmain.lbldatum.caption
 msgctxt "TFRMMAIN.LBLDATUM.CAPTION"
 msgid "Datum"
 msgstr ""
 
-#: TFRMMAIN.LBLDOKDESCR.CAPTION
+#: tfrmmain.lbldokdescr.caption
 msgid "Bezeichnung"
 msgstr ""
 
-#: TFRMMAIN.LBLDOKFILENAME.CAPTION
+#: tfrmmain.lbldokfilename.caption
 msgid "Dateiname"
 msgstr ""
 
-#: TFRMMAIN.LBLEMPFMAIL.CAPTION
+#: tfrmmain.lblempfmail.caption
 msgid "Mail-Adresse"
 msgstr ""
 
-#: TFRMMAIN.LBLJOBTITEL.CAPTION
+#: tfrmmain.lbljobtitel.caption
 msgctxt "TFRMMAIN.LBLJOBTITEL.CAPTION"
 msgid "Job-Titel"
 msgstr ""
 
-#: TFRMMAIN.LBLLOGDATUM.CAPTION
+#: tfrmmain.lbllogdatum.caption
 msgctxt "TFRMMAIN.LBLLOGDATUM.CAPTION"
 msgid "Datum"
 msgstr ""
 
-#: TFRMMAIN.LBLLOGTEXT.CAPTION
+#: tfrmmain.lbllogtext.caption
 msgid "Text"
 msgstr ""
 
-#: TFRMMAIN.LBLLOGTYP.CAPTION
+#: tfrmmain.lbllogtyp.caption
 msgctxt "TFRMMAIN.LBLLOGTYP.CAPTION"
 msgid "Art"
 msgstr ""
 
-#: TFRMMAIN.LBLNOTES.CAPTION
+#: tfrmmain.lblnotes.caption
 msgid "Bemerkungen"
 msgstr ""
 
-#: TFRMMAIN.LBLREFNR.CAPTION
+#: tfrmmain.lblrefnr.caption
 msgid "Ref.-Nr"
 msgstr ""
 
-#: TFRMMAIN.LBLWO.CAPTION
+#: tfrmmain.lblwo.caption
 msgctxt "TFRMMAIN.LBLWO.CAPTION"
 msgid "Empfänger"
 msgstr ""
 
-#: TFRMMAIN.LBLWVL.CAPTION
+#: tfrmmain.lblwvl.caption
 msgctxt "TFRMMAIN.LBLWVL.CAPTION"
 msgid "Wiedervorlage"
 msgstr ""
 
-#: TFRMMAIN.MENUITEM1.CAPTION
+#: tfrmmain.menuitem1.caption
 msgctxt "TFRMMAIN.MENUITEM1.CAPTION"
 msgid "-"
 msgstr ""
 
-#: TFRMMAIN.MENUITEM3.CAPTION
+#: tfrmmain.menuitem3.caption
 msgid "&Ansicht"
 msgstr ""
 
-#: TFRMMAIN.MIFEEDBACK.CAPTION
+#: tfrmmain.mifeedback.caption
 msgid "&Feedback"
 msgstr ""
 
-#: TFRMMAIN.MIMEDIUM.CAPTION
+#: tfrmmain.mimedium.caption
 msgid "&Medium"
 msgstr ""
 
-#: TFRMMAIN.MIRESULT.CAPTION
+#: tfrmmain.miresult.caption
 msgid "&Ergebnis"
 msgstr ""
 
-#: TFRMMAIN.MITYP.CAPTION
+#: tfrmmain.mityp.caption
 msgid "&Typ"
 msgstr ""
 
-#: TFRMMAIN.RGERGEBNIS.CAPTION
+#: tfrmmain.rgergebnis.caption
 msgctxt "TFRMMAIN.RGERGEBNIS.CAPTION"
 msgid "Ergebnis"
 msgstr ""
 
-#: TFRMMAIN.RGFEEDBACK.CAPTION
+#: tfrmmain.rgfeedback.caption
 msgctxt "TFRMMAIN.RGFEEDBACK.CAPTION"
 msgid "Rückmeldung"
 msgstr ""
 
-#: TFRMMAIN.RGMEDIUM.CAPTION
+#: tfrmmain.rgmedium.caption
 msgctxt "TFRMMAIN.RGMEDIUM.CAPTION"
 msgid "Medium"
 msgstr ""
 
-#: TFRMMAIN.RGTYP.CAPTION
+#: tfrmmain.rgtyp.caption
 msgctxt "TFRMMAIN.RGTYP.CAPTION"
 msgid "Bewerbungstyp"
 msgstr ""
 
-#: TFRMMAIN.TSACTIONS.CAPTION
+#: tfrmmain.tsactions.caption
 msgid "Aktivitäten"
 msgstr ""
 
-#: TFRMMAIN.TSBEWERBUNGDATA.CAPTION
+#: tfrmmain.tsbewerbungdata.caption
 msgid "Daten"
 msgstr ""
 
-#: TFRMMAIN.TSBEWERBUNGEN.CAPTION
+#: tfrmmain.tsbewerbungen.caption
 msgid "Bewerbungen"
 msgstr ""
 
-#: TFRMMAIN.TSDOKUMENTE.CAPTION
+#: tfrmmain.tsdokumente.caption
 msgid "Dokumente"
 msgstr ""
 
-#: TFRMSETTINGS.BITBTN1.CAPTION
+#: tfrmsettings.bitbtn1.caption
 msgid "&Ok"
 msgstr ""
 
-#: TFRMSETTINGS.BITBTN2.CAPTION
+#: tfrmsettings.bitbtn2.caption
 msgid "Abbrechen"
 msgstr ""
 
-#: TFRMSETTINGS.CHKNOTIFYWVL.CAPTION
+#: tfrmsettings.chknotifywvl.caption
 msgid "Info bei überfälligen Wiedervorlangen"
 msgstr ""
 
-#: TFRMSETTINGS.CHKNOTIFYWVL.HINT
+#: tfrmsettings.chknotifywvl.hint
 msgid "Wenn aktiviert, informiert das Programm beim Start über überfällige Wiedervorlagen von Bewerbungen"
 msgstr ""
 
-#: TFRMSETTINGS.CHKOLDAPPLICATIONS.CAPTION
+#: tfrmsettings.chkoldapplications.caption
 msgid "offene Bewerbungen nach 6 Wochen hervorheben"
 msgstr ""
 
-#: TFRMSETTINGS.FRMSETTINGS.CAPTION
+#: tfrmsettings.frmsettings.caption
 msgctxt "TFRMSETTINGS.FRMSETTINGS.CAPTION"
 msgid "Einstellungen"
 msgstr ""
 
-#: TFRMSETTINGS.GROUPBOX1.CAPTION
+#: tfrmsettings.groupbox1.caption
 msgid "Standardwerte"
 msgstr ""
 
-#: TFRMSETTINGS.LABEL1.CAPTION
+#: tfrmsettings.label1.caption
 msgid "Tage bis zur Wiedervorlage"
 msgstr ""
 
-#: TFRMSETTINGS.LABEL2.CAPTION
+#: tfrmsettings.label2.caption
 msgid "Dokumente:"
 msgstr ""
 
-#: TFRMSETTINGS.RGMEDIUM.CAPTION
+#: tfrmsettings.rgmedium.caption
 msgctxt "TFRMSETTINGS.RGMEDIUM.CAPTION"
 msgid "Medium"
 msgstr ""
 
-#: TFRMSETTINGS.RGTYP.CAPTION
+#: tfrmsettings.rgtyp.caption
 msgctxt "TFRMSETTINGS.RGTYP.CAPTION"
 msgid "Bewerbungstyp"
 msgstr ""
 
-#: TFRMVIEWFILTER.FRMVIEWFILTER.CAPTION
+#: tfrmviewfilter.frmviewfilter.caption
 msgid "Anzeige-Zeitraum"
 msgstr ""
 

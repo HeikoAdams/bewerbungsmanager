@@ -32,12 +32,13 @@ object dmBewerbungen: TdmBewerbungen
     DatabaseName = '/home/heiko/.config/bewerbungen/bewerbungen.db'
     KeepConnection = True
     Transaction = traData
+    LogEvents = []
     Options = []
     left = 216
     top = 80
   end
   object qryBewerbungen: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <>
     AfterDelete = qryBewerbungenAfterPost
     AfterOpen = qryBewerbungenAfterOpen
     AfterPost = qryBewerbungenAfterPost
@@ -46,7 +47,6 @@ object dmBewerbungen: TdmBewerbungen
     OnNewRecord = qryBewerbungenNewRecord
     Database = conData
     Transaction = traData
-    ReadOnly = False
     SQL.Strings = (
       'SELECT * FROM BEWERBUNGEN ORDER BY Datum DESC, NAME'
     )
@@ -56,13 +56,13 @@ object dmBewerbungen: TdmBewerbungen
   end
   object qryLog: TSQLQuery
     IndexFieldNames = 'ID'
+    FieldDefs = <>
     AfterDelete = qryBewerbungenBeforePost
     AfterPost = qryBewerbungenAfterPost
     AfterScroll = qryLogAfterScroll
     BeforePost = qryLogBeforePost
     Database = conData
     Transaction = traData
-    ReadOnly = False
     SQL.Strings = (
       'SELECT * FROM LOG WHERE (BEWERBUNG = :ID) ORDER BY Datum DESC'
     )
@@ -70,13 +70,13 @@ object dmBewerbungen: TdmBewerbungen
       item
         DataType = ftUnknown
         Name = 'ID'
-        ParamType = ptUnknown
+        ParamType = ptInput
       end>
     left = 96
     top = 144
   end
   object qryCSVExport: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <>
     Database = conData
     Transaction = traData
     ReadOnly = True
@@ -90,13 +90,12 @@ object dmBewerbungen: TdmBewerbungen
     top = 144
   end
   object qryDocuments: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <>
     AfterDelete = qryBewerbungenAfterPost
     AfterPost = qryBewerbungenAfterPost
     BeforePost = qryDocumentsBeforePost
     Database = conData
     Transaction = traData
-    ReadOnly = False
     SQL.Strings = (
       'SELECT * FROM DOCUMENTS WHERE BEWERBUNG = :ID;'
     )
@@ -104,7 +103,7 @@ object dmBewerbungen: TdmBewerbungen
       item
         DataType = ftUnknown
         Name = 'ID'
-        ParamType = ptUnknown
+        ParamType = ptInput
       end>
     left = 240
     top = 144

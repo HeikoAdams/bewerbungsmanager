@@ -9,10 +9,10 @@ object frmMain: TfrmMain
   KeyPreview = True
   OnClose = FormClose
   OnCreate = FormCreate
-  LCLVersion = '0.9.30.4'
+  LCLVersion = '1.0.8.0'
   object PageControl1: TPageControl
     Left = 0
-    Height = 508
+    Height = 510
     Top = 25
     Width = 654
     ActivePage = tsBewerbungen
@@ -22,14 +22,14 @@ object frmMain: TfrmMain
     TabOrder = 1
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'
-      ClientHeight = 474
-      ClientWidth = 648
+      ClientHeight = 480
+      ClientWidth = 644
       object grdBewerbungen: TDBGrid
         Left = 0
-        Height = 474
+        Height = 480
         Hint = 'dunkelblau = Eingang bestätigt'#10'dunkelrot = Wiedervorlagedatum ohne Reaktion überschritten'#10'grün = Zusage erhalten'#10'rot = Absage erhalten'#10'schwarz = noch keine Reaktion'#10'violet = Einladung liegt vor'
         Top = 0
-        Width = 648
+        Width = 644
         Align = alClient
         Color = clWindow
         Columns = <        
@@ -100,8 +100,8 @@ object frmMain: TfrmMain
     end
     object tsBewerbungData: TTabSheet
       Caption = 'Daten'
-      ClientHeight = 474
-      ClientWidth = 648
+      ClientHeight = 480
+      ClientWidth = 644
       ImageIndex = 1
       object lblDatum: TLabel
         Left = 9
@@ -462,8 +462,8 @@ object frmMain: TfrmMain
     end
     object tsActions: TTabSheet
       Caption = 'Aktivitäten'
-      ClientHeight = 474
-      ClientWidth = 648
+      ClientHeight = 480
+      ClientWidth = 644
       ImageIndex = 2
       object grdLog: TDBGrid
         Left = 0
@@ -509,6 +509,7 @@ object frmMain: TfrmMain
         ClientWidth = 648
         DataSource = dmBewerbungen.dsLog
         Flat = True
+        Options = []
         TabOrder = 1
       end
       object pnlBottom: TPanel
@@ -622,8 +623,8 @@ object frmMain: TfrmMain
     end
     object tsDokumente: TTabSheet
       Caption = 'Dokumente'
-      ClientHeight = 474
-      ClientWidth = 648
+      ClientHeight = 480
+      ClientWidth = 644
       ImageIndex = 7
       object navDocs: TDBNavigator
         Left = 0
@@ -642,6 +643,7 @@ object frmMain: TfrmMain
         ClientWidth = 648
         DataSource = dmBewerbungen.dsDocs
         Flat = True
+        Options = []
         TabOrder = 0
       end
       object pnlDokBottom: TPanel
@@ -836,12 +838,13 @@ object frmMain: TfrmMain
     ClientWidth = 654
     DataSource = dmBewerbungen.dsData
     Flat = True
+    Options = []
     TabOrder = 0
   end
   object sbInfo: TStatusBar
     Left = 0
-    Height = 19
-    Top = 533
+    Height = 17
+    Top = 535
     Width = 654
     Panels = <>
   end

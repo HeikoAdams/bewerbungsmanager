@@ -10,10 +10,10 @@ object frmDateFilter: TfrmDateFilter
   FormStyle = fsStayOnTop
   OnCreate = FormCreate
   Position = poMainFormCenter
-  LCLVersion = '0.9.30'
+  LCLVersion = '1.0.8.0'
   object edtDateFrom: TDateEdit
     Left = 104
-    Height = 25
+    Height = 27
     Top = 8
     Width = 80
     CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
@@ -64,7 +64,7 @@ object frmDateFilter: TfrmDateFilter
   end
   object edtDateDue: TDateEdit
     Left = 104
-    Height = 25
+    Height = 27
     Top = 40
     Width = 80
     CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
@@ -117,7 +117,7 @@ object frmDateFilter: TfrmDateFilter
     Left = 8
     Height = 16
     Top = 15
-    Width = 62
+    Width = 65
     Caption = 'Datum von'
     ParentColor = False
   end
