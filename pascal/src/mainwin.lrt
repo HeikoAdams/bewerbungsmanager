@@ -1,7 +1,7 @@
 TFRMMAIN.CAPTION=Bewerbungsmanager
 TFRMMAIN.TSBEWERBUNGEN.CAPTION=Bewerbungen
 TFRMMAIN.GRDBEWERBUNGEN.HINT=dunkelblau = Eingang bestätigt
-dunkelrot = Wiedervorlagedatum ohne Reaktion überschritten
+dunkelrot = Wiedervorlagedatum ohne Reaktion überschritten oder keine Reaktion auf Rückfragen
 grün = Zusage erhalten
 rot = Absage erhalten
 schwarz = noch keine Reaktion
@@ -75,6 +75,7 @@ TFRMMAIN.ACTIGNORE.CAPTION=&Ignorieren
 TFRMMAIN.ACTBEFRISTET.CAPTION=&befristet
 TFRMMAIN.ACTIGNORIERT.CAPTION=&ignoriert
 TFRMMAIN.ACTFILTER.CAPTION=&Filter
+TFRMMAIN.ACTSILENT.CAPTION=keine &Rückmeldung
 TFRMMAIN.MIFEEDBACK.CAPTION=&Feedback
 TFRMMAIN.MIRESULT.CAPTION=&Ergebnis
 TFRMMAIN.MITYP.CAPTION=&Typ

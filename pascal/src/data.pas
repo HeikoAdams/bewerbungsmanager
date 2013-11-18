@@ -273,7 +273,7 @@ begin
     begin
       Clear;
 
-      Add('SELECT DATUM, WVL, NAME, MAIL, JOBTITEL, REFNR, (RESULT = 1) AS ZUSAGE, (RESULT = 2) AS ABSAGE');
+      Add('SELECT DATUM, WVL, NAME, MAIL, JOBTITEL, REFNR, (RESULT = 1) AS ZUSAGE, (RESULT = 2) AS ABSAGE, (RESULT = 4) AS STILL');
       Add('FROM BEWERBUNGEN');
 
       if not (aWhere = EmptyStr) then

@@ -137,11 +137,15 @@ msgid " Eingang bestätigt"
 msgstr ""
 
 #: dunkelrot 
-msgid " Wiedervorlagedatum ohne Reaktion überschritten"
+msgid " Wiedervorlagedatum ohne Reaktion überschritten oder keine Reaktion auf Rückfragen"
 msgstr ""
 
 #: grün 
 msgid " Zusage erhalten"
+msgstr ""
+
+#: hellblau 
+msgid " keine Antwort auf Rückfragen etc."
 msgstr ""
 
 #: kursiv 
@@ -318,6 +322,10 @@ msgstr ""
 
 #: tfrmmain.actsettings.caption
 msgid "&Einstellungen"
+msgstr ""
+
+#: tfrmmain.actsilent.caption
+msgid "keine &Rückmeldung"
 msgstr ""
 
 #: tfrmmain.actvermittler.caption

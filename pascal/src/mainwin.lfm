@@ -2,10 +2,10 @@ object frmMain: TfrmMain
   Left = 244
   Height = 552
   Top = 132
-  Width = 654
+  Width = 658
   Caption = 'Bewerbungsmanager'
   ClientHeight = 552
-  ClientWidth = 654
+  ClientWidth = 658
   KeyPreview = True
   OnClose = FormClose
   OnCreate = FormCreate
@@ -14,7 +14,7 @@ object frmMain: TfrmMain
     Left = 0
     Height = 510
     Top = 25
-    Width = 654
+    Width = 658
     ActivePage = tsBewerbungen
     Align = alClient
     Images = ilIcons
@@ -23,13 +23,13 @@ object frmMain: TfrmMain
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'
       ClientHeight = 480
-      ClientWidth = 644
+      ClientWidth = 648
       object grdBewerbungen: TDBGrid
         Left = 0
         Height = 480
-        Hint = 'dunkelblau = Eingang bestätigt'#10'dunkelrot = Wiedervorlagedatum ohne Reaktion überschritten'#10'grün = Zusage erhalten'#10'rot = Absage erhalten'#10'schwarz = noch keine Reaktion'#10'violet = Einladung liegt vor'
+        Hint = 'dunkelblau = Eingang bestätigt'#10'dunkelrot = Wiedervorlagedatum ohne Reaktion überschritten oder keine Reaktion auf Rückfragen'#10'grün = Zusage erhalten'#10'rot = Absage erhalten'#10'schwarz = noch keine Reaktion'#10'violet = Einladung liegt vor'
         Top = 0
-        Width = 644
+        Width = 648
         Align = alClient
         Color = clWindow
         Columns = <        
@@ -101,13 +101,13 @@ object frmMain: TfrmMain
     object tsBewerbungData: TTabSheet
       Caption = 'Daten'
       ClientHeight = 480
-      ClientWidth = 644
+      ClientWidth = 648
       ImageIndex = 1
       object lblDatum: TLabel
         Left = 9
         Height = 16
         Top = 16
-        Width = 39
+        Width = 40
         Caption = 'Datum'
         ParentColor = False
       end
@@ -115,7 +115,7 @@ object frmMain: TfrmMain
         Left = 9
         Height = 16
         Top = 49
-        Width = 63
+        Width = 65
         Caption = 'Empfänger'
         ParentColor = False
       end
@@ -123,7 +123,7 @@ object frmMain: TfrmMain
         Left = 333
         Height = 16
         Top = 16
-        Width = 82
+        Width = 85
         Caption = 'Wiedervorlage'
         ParentColor = False
       end
@@ -131,7 +131,7 @@ object frmMain: TfrmMain
         Left = 333
         Height = 16
         Top = 49
-        Width = 77
+        Width = 76
         Caption = 'Mail-Adresse'
         ParentColor = False
       end
@@ -139,7 +139,7 @@ object frmMain: TfrmMain
         Left = 333
         Height = 16
         Top = 81
-        Width = 49
+        Width = 47
         Caption = 'Job-Titel'
         ParentColor = False
       end
@@ -173,7 +173,7 @@ object frmMain: TfrmMain
       end
       object edtDatum: TDateEdit
         Left = 108
-        Height = 25
+        Height = 27
         Top = 8
         Width = 176
         CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
@@ -225,7 +225,7 @@ object frmMain: TfrmMain
       end
       object edtWVL: TDateEdit
         Left = 424
-        Height = 25
+        Height = 27
         Top = 8
         Width = 173
         CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
@@ -276,7 +276,7 @@ object frmMain: TfrmMain
       end
       object edtRefNr: TDBEdit
         Left = 108
-        Height = 25
+        Height = 27
         Top = 104
         Width = 200
         DataField = 'REFNR'
@@ -306,7 +306,7 @@ object frmMain: TfrmMain
         )
       end
       object rgErgebnis: TDBRadioGroup
-        Left = 373
+        Left = 371
         Height = 105
         Top = 155
         Width = 128
@@ -318,6 +318,7 @@ object frmMain: TfrmMain
           'Zusage'
           'Absage'
           'Zurückgezogen'
+          'keine Antwort'
         )
         TabOrder = 9
         Values.Strings = (
@@ -325,6 +326,7 @@ object frmMain: TfrmMain
           '1'
           '2'
           '3'
+          '4'
         )
       end
       object mmoNotes: TDBMemo
@@ -341,7 +343,7 @@ object frmMain: TfrmMain
         Left = 9
         Height = 16
         Top = 272
-        Width = 81
+        Width = 83
         Caption = 'Bemerkungen'
         ParentColor = False
       end
@@ -382,7 +384,7 @@ object frmMain: TfrmMain
       end
       object cbbEmpfName: TDBComboBox
         Left = 108
-        Height = 25
+        Height = 27
         Top = 38
         Width = 200
         DataField = 'NAME'
@@ -394,7 +396,7 @@ object frmMain: TfrmMain
       end
       object cbbEmpfMail: TDBComboBox
         Left = 424
-        Height = 25
+        Height = 27
         Top = 38
         Width = 200
         DataField = 'MAIL'
@@ -406,7 +408,7 @@ object frmMain: TfrmMain
       end
       object cbbJobTitel: TDBComboBox
         Left = 424
-        Height = 25
+        Height = 27
         Top = 72
         Width = 200
         DataField = 'JOBTITEL'
@@ -420,7 +422,7 @@ object frmMain: TfrmMain
         Left = 9
         Height = 16
         Top = 81
-        Width = 78
+        Width = 83
         Caption = 'Anspr.partner'
         ParentColor = False
       end
@@ -450,7 +452,7 @@ object frmMain: TfrmMain
       end
       object cbbAnspr: TDBComboBox
         Left = 108
-        Height = 25
+        Height = 27
         Top = 72
         Width = 200
         DataField = 'ANSPRECHPARTNER'
@@ -463,7 +465,7 @@ object frmMain: TfrmMain
     object tsActions: TTabSheet
       Caption = 'Aktivitäten'
       ClientHeight = 480
-      ClientWidth = 644
+      ClientWidth = 648
       ImageIndex = 2
       object grdLog: TDBGrid
         Left = 0
@@ -624,7 +626,7 @@ object frmMain: TfrmMain
     object tsDokumente: TTabSheet
       Caption = 'Dokumente'
       ClientHeight = 480
-      ClientWidth = 644
+      ClientWidth = 648
       ImageIndex = 7
       object navDocs: TDBNavigator
         Left = 0
@@ -825,7 +827,7 @@ object frmMain: TfrmMain
     Left = 0
     Height = 25
     Top = 0
-    Width = 654
+    Width = 658
     Align = alTop
     BevelOuter = bvNone
     ChildSizing.EnlargeHorizontal = crsScaleChilds
@@ -835,7 +837,7 @@ object frmMain: TfrmMain
     ChildSizing.Layout = cclLeftToRightThenTopToBottom
     ChildSizing.ControlsPerLine = 100
     ClientHeight = 25
-    ClientWidth = 654
+    ClientWidth = 658
     DataSource = dmBewerbungen.dsData
     Flat = True
     Options = []
@@ -845,7 +847,7 @@ object frmMain: TfrmMain
     Left = 0
     Height = 17
     Top = 535
-    Width = 654
+    Width = 658
     Panels = <>
   end
   object ilIcons: TImageList
@@ -1418,6 +1420,12 @@ object frmMain: TfrmMain
       Caption = '&Filter'
       OnExecute = actFilterExecute
     end
+    object actSilent: TAction
+      Tag = 104
+      Category = 'Result'
+      Caption = 'keine &Rückmeldung'
+      OnExecute = actSilentExecute
+    end
   end
   object pmFilter: TPopupMenu
     Images = ilIcons
@@ -1530,6 +1538,10 @@ object frmMain: TfrmMain
       object miRevoke: TMenuItem
         Tag = 16
         Action = actRevoke
+      end
+      object MenuItem5: TMenuItem
+        Tag = 106
+        Action = actSilent
       end
     end
     object miTyp: TMenuItem

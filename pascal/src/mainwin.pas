@@ -43,6 +43,7 @@ type
     actBefristet: TAction;
     actIgnoriert: TAction;
     actFilter: TAction;
+    actSilent: TAction;
     actWriteMail: TAction;
     actRevoke: TAction;
     actSettings: TAction;
@@ -73,6 +74,7 @@ type
     Label1: TLabel;
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
+    MenuItem5: TMenuItem;
     miFilter: TMenuItem;
     miBefristet: TMenuItem;
     miVermittler: TMenuItem;
@@ -161,6 +163,7 @@ type
     procedure actPostExecute(Sender: TObject);
     procedure actRevokeExecute(Sender: TObject);
     procedure actSettingsExecute(Sender: TObject);
+    procedure actSilentExecute(Sender: TObject);
     procedure actVermittlerExecute(Sender: TObject);
     procedure actVorschlagExecute(Sender: TObject);
     procedure actWriteMailExecute(Sender: TObject);
@@ -378,6 +381,13 @@ begin
   Application.CreateForm(TfrmSettings, frmSettings);
   frmSettings.ShowModal;
   FreeAndNil(frmSettings);
+end;
+
+procedure TfrmMain.actSilentExecute(Sender: TObject);
+begin
+  dmBewerbungen.FetchData(Format(rsRESULTD, [4]));
+
+  FGridFilter := 106;
 end;
 
 procedure TfrmMain.actVermittlerExecute(Sender: TObject);
@@ -735,7 +745,7 @@ begin
     // Kein Feedback und WVL-Termin überschritten
     if (not DataSource.DataSet.FieldByName('IGNORIERT').AsBoolean) and
       (DataSource.DataSet.FieldByName('FEEDBACK').AsInteger = 0) and
-      (DataSource.DataSet.FieldByName('RESULT').AsInteger = 0) and
+      (DataSource.DataSet.FieldByName('RESULT').AsInteger in [0,4]) and
       (DataSource.DataSet.FieldByName('WVL').AsDateTime <= Date) then
       Canvas.Font.Color := clMaroon;
 
