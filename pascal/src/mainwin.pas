@@ -43,6 +43,7 @@ type
     actBefristet: TAction;
     actIgnoriert: TAction;
     actFilter: TAction;
+    actNewWVL: TAction;
     actSilent: TAction;
     actWriteMail: TAction;
     actRevoke: TAction;
@@ -75,6 +76,7 @@ type
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
     MenuItem5: TMenuItem;
+    miNewWVL: TMenuItem;
     miFilter: TMenuItem;
     miBefristet: TMenuItem;
     miVermittler: TMenuItem;
@@ -157,6 +159,7 @@ type
     procedure actIgnoriertExecute(Sender: TObject);
     procedure actInitiativExecute(Sender: TObject);
     procedure actMailExecute(Sender: TObject);
+    procedure actNewWVLExecute(Sender: TObject);
     procedure actNoFeedbackExecute(Sender: TObject);
     procedure actNoResultExecute(Sender: TObject);
     procedure actOnlineFormExecute(Sender: TObject);
@@ -731,6 +734,16 @@ begin
   dmBewerbungen.FetchData(Format(rsMEDIUMD, [0]));
 
   FGridFilter := 12;
+end;
+
+procedure TfrmMain.actNewWVLExecute(Sender: TObject);
+var
+  nID: Integer;
+  nDays: Integer;
+begin
+  nDays := FConfigFile.ReadInteger('DEFAULTS', 'WVL', 14);
+  nID := dmBewerbungen.dsData.DataSet.FieldByName('ID').AsInteger;
+  dmBewerbungen.UpdateWVL(nID, nDays);
 end;
 
 procedure TfrmMain.grdBewerbungenDblClick(Sender: TObject);

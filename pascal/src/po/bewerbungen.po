@@ -300,6 +300,10 @@ msgstr ""
 msgid "&Mail"
 msgstr ""
 
+#: tfrmmain.actnewwvl.caption
+msgid "neue WVL"
+msgstr ""
+
 #: tfrmmain.actnofeedback.caption
 msgid "&kein Feedback"
 msgstr ""

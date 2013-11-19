@@ -15,10 +15,10 @@ object frmMain: TfrmMain
     Height = 510
     Top = 25
     Width = 658
-    ActivePage = tsBewerbungData
+    ActivePage = tsBewerbungen
     Align = alClient
     Images = ilIcons
-    TabIndex = 1
+    TabIndex = 0
     TabOrder = 1
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'
@@ -469,7 +469,7 @@ object frmMain: TfrmMain
       ImageIndex = 2
       object grdLog: TDBGrid
         Left = 0
-        Height = 312
+        Height = 318
         Top = 25
         Width = 648
         Align = alClient
@@ -517,7 +517,7 @@ object frmMain: TfrmMain
       object pnlBottom: TPanel
         Left = 0
         Height = 137
-        Top = 337
+        Top = 343
         Width = 648
         Align = alBottom
         ClientHeight = 137
@@ -525,7 +525,7 @@ object frmMain: TfrmMain
         TabOrder = 2
         object edtLogDatum: TDateEdit
           Left = 86
-          Height = 25
+          Height = 27
           Top = 8
           Width = 168
           CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
@@ -579,7 +579,7 @@ object frmMain: TfrmMain
           Left = 13
           Height = 16
           Top = 17
-          Width = 39
+          Width = 40
           Caption = 'Datum'
           ParentColor = False
         end
@@ -1426,6 +1426,11 @@ object frmMain: TfrmMain
       Caption = 'keine &Rückmeldung'
       OnExecute = actSilentExecute
     end
+    object actNewWVL: TAction
+      Tag = 106
+      Caption = 'neue WVL'
+      OnExecute = actNewWVLExecute
+    end
   end
   object pmFilter: TPopupMenu
     Images = ilIcons
@@ -1800,6 +1805,10 @@ object frmMain: TfrmMain
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00CDCDCD9FC9C9
         C9FBC4C4C4FFC0C0C0FFBBBBBBFFB6B6B6FFB0B0B0FFABABABA7
       }
+    end
+    object miNewWVL: TMenuItem
+      Tag = 107
+      Action = actNewWVL
     end
     object miIgnorieren: TMenuItem
       Tag = 105

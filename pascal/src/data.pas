@@ -76,6 +76,7 @@ type
     procedure FetchData(aWhere: string);
     procedure FetchExportData(aWhere: string);
     procedure SetIgnoreState(const aID: Integer);
+    procedure UpdateWVL(aID, aDays: Integer);
   end;
 
 var
@@ -395,6 +396,37 @@ begin
       Free;
     end;
   end;
+end;
+
+procedure TdmBewerbungen.UpdateWVL(aID, aDays: Integer);
+var
+  sSQL: string;
+begin
+  sSQL := 'UPDATE Bewerbungen SET WVL = DATE(WVL, ''+' + IntToStr(aDays)+ ' days'')'
+       + ' WHERE ID = ' + IntToStr(aID) + ';';
+
+  if (sSQL <> EmptyStr) then
+  begin
+
+    with TSQLQuery.Create(nil) do
+    begin
+      DataBase := conData;
+      Transaction := traData;
+
+      with SQL do
+      begin
+        Clear;
+        Add(sSQL);
+      end;
+
+      ExecSQL;
+      Free;
+    end;
+  end;
+
+  traData.Commit;
+  OpenDataSources;
+  qryBewerbungen.Locate('ID', aID, []);
 end;
 
 procedure TdmBewerbungen.dsDataStateChange(Sender: TObject);
