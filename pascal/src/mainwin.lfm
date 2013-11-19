@@ -15,10 +15,10 @@ object frmMain: TfrmMain
     Height = 510
     Top = 25
     Width = 658
-    ActivePage = tsBewerbungen
+    ActivePage = tsBewerbungData
     Align = alClient
     Images = ilIcons
-    TabIndex = 0
+    TabIndex = 1
     TabOrder = 1
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'
@@ -153,7 +153,7 @@ object frmMain: TfrmMain
       end
       object rgTyp: TDBRadioGroup
         Left = 5
-        Height = 105
+        Height = 121
         Top = 155
         Width = 185
         Caption = 'Bewerbungstyp'
@@ -287,7 +287,7 @@ object frmMain: TfrmMain
       end
       object rgFeedback: TDBRadioGroup
         Left = 197
-        Height = 105
+        Height = 121
         Top = 155
         Width = 166
         Caption = 'Rückmeldung'
@@ -307,7 +307,7 @@ object frmMain: TfrmMain
       end
       object rgErgebnis: TDBRadioGroup
         Left = 371
-        Height = 105
+        Height = 120
         Top = 155
         Width = 128
         Caption = 'Ergebnis'
@@ -332,7 +332,7 @@ object frmMain: TfrmMain
       object mmoNotes: TDBMemo
         Left = 108
         Height = 186
-        Top = 272
+        Top = 287
         Width = 516
         DataField = 'NOTES'
         DataSource = dmBewerbungen.dsData
@@ -342,7 +342,7 @@ object frmMain: TfrmMain
       object lblNotes: TLabel
         Left = 9
         Height = 16
-        Top = 272
+        Top = 287
         Width = 83
         Caption = 'Bemerkungen'
         ParentColor = False
@@ -361,7 +361,7 @@ object frmMain: TfrmMain
       end
       object rgMedium: TDBRadioGroup
         Left = 509
-        Height = 105
+        Height = 121
         Top = 155
         Width = 137
         Caption = 'Medium'

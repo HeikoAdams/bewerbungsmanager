@@ -464,6 +464,7 @@ end;
 procedure TfrmMain.btnFileOpenClick(Sender: TObject);
 begin
   { TODO 1 : Shell-Execute Code zum Öffnen der Dokumente unter Windows einfügen }
+
   with TProcess.Create(nil) do
   begin
     CommandLine := Format(FLinuxLaunch, [edtFile.Text]);

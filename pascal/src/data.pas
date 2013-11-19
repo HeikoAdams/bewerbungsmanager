@@ -31,12 +31,17 @@ type
   TdmBewerbungen = class(TDataModule)
     conData: TSQLite3Connection;
     dsData: TDatasource;
+    dsFeedback: TDatasource;
     dsLog: TDatasource;
     dsDocs: TDatasource;
+    dsMedium: TDatasource;
+    dsResult: TDatasource;
+    dsTyp: TDatasource;
     qryBewerbungen: TSQLQuery;
     qryCSVExport: TSQLQuery;
     qryLog: TSQLQuery;
     qryDocuments: TSQLQuery;
+    scUpdate: TSQLScript;
     traData: TSQLTransaction;
     procedure conDataAfterConnect(Sender: TObject);
     procedure conDataBeforeConnect(Sender: TObject);
@@ -160,12 +165,14 @@ begin
   // ..
 
   // Datenbankstruktur erstellen
-  Script := TStringList.Create;
+  //Script := TStringList.Create;
 
   for nCount := 0 to Files.Count -1 do
   begin
-    Script.LoadFromFile(sSearchPath + Files.Strings[nCount]);
-    conData.ExecuteDirect(Script.Text);
+    //Script.LoadFromFile(sSearchPath + Files.Strings[nCount]);
+    //conData.ExecuteDirect(Script.Text);
+    scUpdate.Script.LoadFromFile(sSearchPath + Files.Strings[nCount]);
+    scUpdate.ExecuteScript;
 
     traData.Commit;
   end;
@@ -174,7 +181,7 @@ begin
   if (Files.Count > 0) then
     SetDBVersion(aVersion);
 
-  Script.Free;
+  //Script.Free;
   Files.Free;
 end;
 

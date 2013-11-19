@@ -29,7 +29,7 @@ object dmBewerbungen: TdmBewerbungen
     AfterConnect = conDataAfterConnect
     BeforeConnect = conDataBeforeConnect
     BeforeDisconnect = conDataBeforeDisconnect
-    DatabaseName = '/home/heiko/.config/bewerbungen/bewerbungen.db'
+    DatabaseName = '/home/heiko/.config/Bewerbungsmanager/bewerbungen.db'
     KeepConnection = True
     Transaction = traData
     LogEvents = []
@@ -38,7 +38,103 @@ object dmBewerbungen: TdmBewerbungen
     top = 80
   end
   object qryBewerbungen: TSQLQuery
-    FieldDefs = <>
+    FieldDefs = <    
+      item
+        Name = 'ID'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'DATUM'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'NAME'
+        DataType = ftString
+        Precision = -1
+        Size = 255
+      end    
+      item
+        Name = 'MAIL'
+        DataType = ftString
+        Precision = -1
+        Size = 255
+      end    
+      item
+        Name = 'JOBTITEL'
+        DataType = ftString
+        Precision = -1
+        Size = 255
+      end    
+      item
+        Name = 'REFNR'
+        DataType = ftString
+        Precision = -1
+        Size = 255
+      end    
+      item
+        Name = 'TYP'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'FEEDBACK'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'RESULT'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'WVL'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'NOTES'
+        DataType = ftString
+        Precision = -1
+        Size = 8000
+      end    
+      item
+        Name = 'VERMITTLER'
+        DataType = ftBoolean
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'MEDIUM'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'ANSPRECHPARTNER'
+        DataType = ftString
+        Precision = -1
+        Size = 255
+      end    
+      item
+        Name = 'BEFRISTET'
+        DataType = ftBoolean
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'IGNORIERT'
+        DataType = ftBoolean
+        Precision = -1
+        Size = 0
+      end>
     AfterDelete = qryBewerbungenAfterPost
     AfterOpen = qryBewerbungenAfterOpen
     AfterPost = qryBewerbungenAfterPost
@@ -56,7 +152,37 @@ object dmBewerbungen: TdmBewerbungen
   end
   object qryLog: TSQLQuery
     IndexFieldNames = 'ID'
-    FieldDefs = <>
+    FieldDefs = <    
+      item
+        Name = 'ID'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'DATUM'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'BEWERBUNG'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'TYP'
+        DataType = ftString
+        Precision = -1
+        Size = 255
+      end    
+      item
+        Name = 'BESCHREIBUNG'
+        DataType = ftString
+        Precision = -1
+        Size = 8000
+      end>
     AfterDelete = qryBewerbungenBeforePost
     AfterPost = qryBewerbungenAfterPost
     AfterScroll = qryLogAfterScroll
@@ -76,7 +202,55 @@ object dmBewerbungen: TdmBewerbungen
     top = 144
   end
   object qryCSVExport: TSQLQuery
-    FieldDefs = <>
+    FieldDefs = <    
+      item
+        Name = 'DATUM'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'WVL'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'NAME'
+        DataType = ftString
+        Precision = -1
+        Size = 255
+      end    
+      item
+        Name = 'MAIL'
+        DataType = ftString
+        Precision = -1
+        Size = 255
+      end    
+      item
+        Name = 'JOBTITEL'
+        DataType = ftString
+        Precision = -1
+        Size = 255
+      end    
+      item
+        Name = 'REFNR'
+        DataType = ftString
+        Precision = -1
+        Size = 255
+      end    
+      item
+        Name = 'ZUSAGE'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'ABSAGE'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end>
     Database = conData
     Transaction = traData
     ReadOnly = True
@@ -90,7 +264,31 @@ object dmBewerbungen: TdmBewerbungen
     top = 144
   end
   object qryDocuments: TSQLQuery
-    FieldDefs = <>
+    FieldDefs = <    
+      item
+        Name = 'ID'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'TYPE'
+        DataType = ftString
+        Precision = -1
+        Size = 255
+      end    
+      item
+        Name = 'FILENAME'
+        DataType = ftString
+        Precision = -1
+        Size = 255
+      end    
+      item
+        Name = 'BEWERBUNG'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end>
     AfterDelete = qryBewerbungenAfterPost
     AfterPost = qryBewerbungenAfterPost
     BeforePost = qryDocumentsBeforePost
@@ -113,5 +311,43 @@ object dmBewerbungen: TdmBewerbungen
     OnStateChange = dsDocsStateChange
     left = 112
     top = 80
+  end
+  object dsFeedback: TDatasource
+    left = 16
+    top = 16
+  end
+  object dsMedium: TDatasource
+    left = 64
+    top = 16
+  end
+  object dsTyp: TDatasource
+    left = 112
+    top = 16
+  end
+  object dsResult: TDatasource
+    left = 152
+    top = 16
+  end
+  object scUpdate: TSQLScript
+    DataBase = conData
+    Transaction = traData
+    Directives.Strings = (
+      'SET TERM'
+      'COMMIT'
+      '#IFDEF'
+      '#IFNDEF'
+      '#ELSE'
+      '#ENDIF'
+      '#DEFINE'
+      '#UNDEF'
+      '#UNDEFINE'
+    )
+    Terminator = ';'
+    CommentsinSQL = True
+    UseSetTerm = True
+    UseCommit = True
+    UseDefines = True
+    left = 216
+    top = 16
   end
 end
