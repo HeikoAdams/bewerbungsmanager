@@ -1,22 +1,22 @@
 object frmSettings: TfrmSettings
   Left = 454
-  Height = 326
+  Height = 370
   Top = 251
   Width = 426
   BorderStyle = bsDialog
   Caption = 'Einstellungen'
-  ClientHeight = 326
+  ClientHeight = 370
   ClientWidth = 426
   OnClose = FormClose
   OnCreate = FormCreate
   Position = poMainFormCenter
-  LCLVersion = '0.9.30'
+  LCLVersion = '1.0.8.0'
   object chkNotifyWVL: TCheckBox
     Left = 16
-    Height = 22
+    Height = 23
     Hint = 'Wenn aktiviert, informiert das Programm beim Start über überfällige Wiedervorlagen von Bewerbungen'
     Top = 16
-    Width = 233
+    Width = 248
     Caption = 'Info bei überfälligen Wiedervorlangen'
     ParentShowHint = False
     ParentBidiMode = False
@@ -26,11 +26,11 @@ object frmSettings: TfrmSettings
   object GroupBox1: TGroupBox
     Left = 8
     Height = 232
-    Top = 48
+    Top = 88
     Width = 409
     Caption = 'Standardwerte'
-    ClientHeight = 215
-    ClientWidth = 405
+    ClientHeight = 216
+    ClientWidth = 407
     TabOrder = 1
     object rgTyp: TRadioGroup
       Left = 14
@@ -47,8 +47,8 @@ object frmSettings: TfrmSettings
       ChildSizing.ShrinkVertical = crsScaleChilds
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 1
-      ClientHeight = 88
-      ClientWidth = 181
+      ClientHeight = 89
+      ClientWidth = 183
       Items.Strings = (
         'Initiativbewerbung'
         'Stellenangebot'
@@ -78,7 +78,7 @@ object frmSettings: TfrmSettings
     end
     object edtWVLTage: TSpinEdit
       Left = 222
-      Height = 25
+      Height = 27
       Top = 153
       Width = 50
       MinValue = 1
@@ -89,21 +89,21 @@ object frmSettings: TfrmSettings
       Left = 14
       Height = 16
       Top = 162
-      Width = 156
+      Width = 157
       Caption = 'Tage bis zur Wiedervorlage'
       ParentColor = False
     end
     object chkOldApplications: TCheckBox
       Left = 14
-      Height = 22
+      Height = 23
       Top = 186
-      Width = 308
+      Width = 323
       Caption = 'offene Bewerbungen nach 6 Wochen hervorheben'
       TabOrder = 4
     end
     object edtDocsDir: TDirectoryEdit
       Left = 119
-      Height = 25
+      Height = 27
       Top = 121
       Width = 208
       ShowHidden = False
@@ -116,7 +116,7 @@ object frmSettings: TfrmSettings
       Left = 14
       Height = 16
       Top = 129
-      Width = 71
+      Width = 72
       Caption = 'Dokumente:'
       ParentColor = False
     end
@@ -124,8 +124,9 @@ object frmSettings: TfrmSettings
   object BitBtn1: TBitBtn
     Left = 8
     Height = 30
-    Top = 288
+    Top = 332
     Width = 75
+    Anchors = [akLeft, akBottom]
     Caption = '&Ok'
     Default = True
     Kind = bkOK
@@ -135,12 +136,21 @@ object frmSettings: TfrmSettings
   object BitBtn2: TBitBtn
     Left = 308
     Height = 30
-    Top = 288
+    Top = 332
     Width = 109
+    Anchors = [akLeft, akBottom]
     Cancel = True
     Caption = 'Abbrechen'
     Kind = bkCancel
     ModalResult = 2
     TabOrder = 3
+  end
+  object chkNewWVL: TCheckBox
+    Left = 16
+    Height = 34
+    Top = 48
+    Width = 362
+    Caption = 'Beim Setzen einer neuen Wiedervorlage das Ergebnis der '#10'Bewerbung auf "keine Antwort" setzen'
+    TabOrder = 4
   end
 end

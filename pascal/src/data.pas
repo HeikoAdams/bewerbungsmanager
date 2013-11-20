@@ -402,8 +402,12 @@ procedure TdmBewerbungen.UpdateWVL(aID, aDays: Integer);
 var
   sSQL: string;
 begin
-  sSQL := 'UPDATE Bewerbungen SET WVL = DATE(WVL, ''+' + IntToStr(aDays)+ ' days'')'
-       + ' WHERE ID = ' + IntToStr(aID) + ';';
+  sSQL := 'UPDATE Bewerbungen SET WVL = DATE(WVL, ''+' + IntToStr(aDays)+ ' days'')';
+
+  if (frmMain.ConfigFile.ReadBool('GENERAL', 'MODIFY-APPLICATION-RESULT', True)) then
+     sSQL := sSQL + ', RESULT = 4';
+
+  sSQL := sSQL + ' WHERE ID = ' + IntToStr(aID) + ';';
 
   if (sSQL <> EmptyStr) then
   begin

@@ -27,11 +27,10 @@ object frmMain: TfrmMain
       object grdBewerbungen: TDBGrid
         Left = 0
         Height = 480
-        Hint = 'dunkelblau = Eingang bestätigt'#10'dunkelrot = Wiedervorlagedatum ohne Reaktion überschritten oder keine Reaktion auf Rückfragen'#10'grün = Zusage erhalten'#10'rot = Absage erhalten'#10'schwarz = noch keine Reaktion'#10'violet = Einladung liegt vor'
+        Hint = 'dunkelblau = Eingang bestätigt'#10'dunkelrot = Wiedervorlagedatum ohne Reaktion überschritten'#10'türkis = keine Antwort auf Rückfragen '#10'grün = Zusage erhalten'#10'rot = Absage erhalten'#10'schwarz = noch keine Reaktion und erste Wiedervorlage ist noch nicht fällig'#10'violet = Einladung liegt vor'#10'grau = Bewerbung zurückgezogen'#10#10'fett = Wiedervorlage ist fällig'#10'kursiv = ignorierte Bewerbung'#10'fett+kursiv = Bewerbung ist älter als 6 Wochen und noch offen'
         Top = 0
         Width = 648
         Align = alClient
-        Color = clWindow
         Columns = <        
           item
             Title.Alignment = taCenter

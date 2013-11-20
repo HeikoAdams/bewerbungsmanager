@@ -1,4 +1,4 @@
-msgid ""
+msgid "Bewerbung auf \"keine Antwort\" setzen"
 msgstr "Content-Type: text/plain; charset=UTF-8"
 
 #: bewerbung_strings.rsaction
@@ -137,7 +137,19 @@ msgid " Eingang bestätigt"
 msgstr ""
 
 #: dunkelrot 
-msgid " Wiedervorlagedatum ohne Reaktion überschritten oder keine Reaktion auf Rückfragen"
+msgid " Wiedervorlagedatum ohne Reaktion überschritten"
+msgstr ""
+
+#: fett 
+msgid " Wiedervorlage ist fällig"
+msgstr ""
+
+#: fett+kursiv 
+msgid " Bewerbung ist älter als 6 Wochen und noch offen"
+msgstr ""
+
+#: grau 
+msgid " Bewerbung zurückgezogen"
 msgstr ""
 
 #: grün 
@@ -149,7 +161,7 @@ msgid " keine Antwort auf Rückfragen etc."
 msgstr ""
 
 #: kursiv 
-msgid " älter als 6 Wochen und ohne Ergebnis"
+msgid " ignorierte Bewerbung"
 msgstr ""
 
 #: mainwin.rscsvexport
@@ -187,7 +199,7 @@ msgid " Absage erhalten"
 msgstr ""
 
 #: schwarz 
-msgid " noch keine Reaktion"
+msgid " noch keine Reaktion und erste Wiedervorlage ist noch nicht fällig"
 msgstr ""
 
 #: tfrmdatefilter.button1.caption
@@ -609,6 +621,15 @@ msgstr ""
 msgid "Abbrechen"
 msgstr ""
 
+#: tfrmsettings.caption
+msgctxt "TFRMSETTINGS.CAPTION"
+msgid "Einstellungen"
+msgstr ""
+
+#: tfrmsettings.chknewwvl.caption
+msgid "Beim Setzen einer neuen Wiedervorlage das Ergebnis der "
+msgstr ""
+
 #: tfrmsettings.chknotifywvl.caption
 msgid "Info bei überfälligen Wiedervorlangen"
 msgstr ""
@@ -619,11 +640,6 @@ msgstr ""
 
 #: tfrmsettings.chkoldapplications.caption
 msgid "offene Bewerbungen nach 6 Wochen hervorheben"
-msgstr ""
-
-#: tfrmsettings.frmsettings.caption
-msgctxt "TFRMSETTINGS.FRMSETTINGS.CAPTION"
-msgid "Einstellungen"
 msgstr ""
 
 #: tfrmsettings.groupbox1.caption
@@ -650,6 +666,10 @@ msgstr ""
 
 #: tfrmviewfilter.frmviewfilter.caption
 msgid "Anzeige-Zeitraum"
+msgstr ""
+
+#: türkis 
+msgid " keine Antwort auf Rückfragen "
 msgstr ""
 
 #: violet 

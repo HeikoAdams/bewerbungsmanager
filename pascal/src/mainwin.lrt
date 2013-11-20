@@ -1,11 +1,17 @@
 TFRMMAIN.CAPTION=Bewerbungsmanager
 TFRMMAIN.TSBEWERBUNGEN.CAPTION=Bewerbungen
 TFRMMAIN.GRDBEWERBUNGEN.HINT=dunkelblau = Eingang bestätigt
-dunkelrot = Wiedervorlagedatum ohne Reaktion überschritten oder keine Reaktion auf Rückfragen
+dunkelrot = Wiedervorlagedatum ohne Reaktion überschritten
+türkis = keine Antwort auf Rückfragen 
 grün = Zusage erhalten
 rot = Absage erhalten
-schwarz = noch keine Reaktion
+schwarz = noch keine Reaktion und erste Wiedervorlage ist noch nicht fällig
 violet = Einladung liegt vor
+grau = Bewerbung zurückgezogen
+
+fett = Wiedervorlage ist fällig
+kursiv = ignorierte Bewerbung
+fett+kursiv = Bewerbung ist älter als 6 Wochen und noch offen
 TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[0].TITLE.CAPTION=Datum
 TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[1].TITLE.CAPTION=Wiedervorlage
 TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[2].TITLE.CAPTION=Empfänger

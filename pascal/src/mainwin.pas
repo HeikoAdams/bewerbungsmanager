@@ -771,11 +771,11 @@ begin
     end;
 
     // Bewerbung liegt mehr als 6 Wochen zurück und noch kein Ergebnis
-    //if FConfigFile.ReadBool('GENERAL', 'HIGHLIGHT OLD APPLICATIONS', false) and
-    //  (DataSource.DataSet.FieldByName('FEEDBACK').AsInteger < 2) and
-    //  (DataSource.DataSet.FieldByName('RESULT').AsInteger = 0) and
-    //  (DataSource.DataSet.FieldByName('DATUM').AsDateTime <= IncWeek(Date, -6)) then
-    //  Canvas.Font.Style := [fsBold];
+    if FConfigFile.ReadBool('GENERAL', 'HIGHLIGHT OLD APPLICATIONS', false) and
+      (DataSource.DataSet.FieldByName('FEEDBACK').AsInteger < 2) and
+      (DataSource.DataSet.FieldByName('RESULT').AsInteger IN [0,4]) and
+      (DataSource.DataSet.FieldByName('DATUM').AsDateTime <= IncWeek(Date, -6)) then
+      Canvas.Font.Style := [fsBold, fsItalic];
 
     // Eingangsbestätigung liegt vor und WVL ist noch nicht überschritten
     if (DataSource.DataSet.FieldByName('FEEDBACK').AsInteger = 1) and
@@ -802,7 +802,7 @@ begin
 
     // keine Antwort auf Nachfragen
     if (DataSource.DataSet.FieldByName('RESULT').AsInteger = 4) then
-      Canvas.Font.Color := clMaroon;
+      Canvas.Font.Color := clTeal;
   end;
 end;
 
