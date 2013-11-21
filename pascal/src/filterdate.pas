@@ -22,7 +22,7 @@ unit filterdate;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtDlgs,
+  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs,
   EditBtn, StdCtrls;
 
 type

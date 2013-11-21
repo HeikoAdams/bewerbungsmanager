@@ -31,6 +31,7 @@ object frmMain: TfrmMain
         Top = 0
         Width = 648
         Align = alClient
+        Color = clWindow
         Columns = <        
           item
             Title.Alignment = taCenter

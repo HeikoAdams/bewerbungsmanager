@@ -144,7 +144,6 @@ procedure TdmBewerbungen.InstallUpdates(const aVersion: Integer);
 var
   scripts: TSearchRec;
   sSearchPath: string;
-  Script: TStringList;
   Files: TStringList;
   nCount: Integer;
 begin
@@ -166,12 +165,8 @@ begin
   // ..
 
   // Datenbankstruktur erstellen
-  //Script := TStringList.Create;
-
   for nCount := 0 to Files.Count -1 do
   begin
-    //Script.LoadFromFile(sSearchPath + Files.Strings[nCount]);
-    //conData.ExecuteDirect(Script.Text);
     scUpdate.Script.LoadFromFile(sSearchPath + Files.Strings[nCount]);
     scUpdate.ExecuteScript;
 
@@ -182,7 +177,6 @@ begin
   if (Files.Count > 0) then
     SetDBVersion(aVersion);
 
-  //Script.Free;
   Files.Free;
 end;
 

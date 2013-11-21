@@ -23,7 +23,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, Forms, Controls,
   Graphics, Dialogs, Grids, ComCtrls, ExtCtrls, StdCtrls, EditBtn,
-  DBGrids, Menus, ActnList, IniFiles, DBCtrls, Buttons, types;
+  DBGrids, Menus, ActnList, IniFiles, DBCtrls, Buttons;
 
 type
 
@@ -174,7 +174,7 @@ type
     procedure actZusageExecute(Sender: TObject);
     procedure btnBrowseClick(Sender: TObject);
     procedure btnFileOpenClick(Sender: TObject);
-    procedure DBGrid1PrepareCanvas(sender: TObject; DataCol: Integer;
+    procedure DBGrid1PrepareCanvas(Sender: TObject; DataCol: integer;
       Column: TColumn; AState: TGridDrawState);
     procedure dlgFindCompanyFind(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -260,15 +260,15 @@ end;
 procedure TfrmMain.FormCreate(Sender: TObject);
 var
   sConfFileName: string;
-  nCounter: Integer;
+  nCounter: integer;
 begin
   {$IFDEF Windows}
-    FConfigDir := ExtractFilePath(Application.ExeName);
-    sConfFileName := StringReplace(GetAppConfigFile(False, True),
-      GetAppConfigDir(False), FConfigDir, [rfIgnoreCase, rfReplaceAll]);
+  FConfigDir := ExtractFilePath(Application.ExeName);
+  sConfFileName := StringReplace(GetAppConfigFile(False, True),
+    GetAppConfigDir(False), FConfigDir, [rfIgnoreCase, rfReplaceAll]);
   {$else}
-    FConfigDir := GetAppConfigDir(False);
-    sConfFileName := GetAppConfigFile(False, True);
+  FConfigDir := GetAppConfigDir(False);
+  sConfFileName := GetAppConfigFile(False, True);
   {$endif}
 
   if not DirectoryExists(FConfigDir) then
@@ -296,11 +296,11 @@ begin
 
   if FileExists(FConfigFile.FileName) then
   begin
-    case FConfigFile.ReadInteger('UI', 'WINDOWSTATE', 0) of
-      0: WindowState := wsNormal;
-      1: WindowState := wsMaximized;
-      2: WindowState := wsMinimized;
-    end;
+    //case FConfigFile.ReadInteger('UI', 'WINDOWSTATE', 0) of
+    //  0: WindowState := wsNormal;
+    //  1: WindowState := wsMaximized;
+    //  2: WindowState := wsMinimized;
+    //end;
 
     if (WindowState <> wsMaximized) then
     begin
@@ -327,14 +327,13 @@ begin
   {$IFDEF Unix}
   FLinuxLaunch := FConfigFile.ReadString('LINUX', 'LAUNCHER',
     '/usr/bin/xdg-open "%s"');
-  FXDGPath := FConfigFile.ReadString('LINUX', 'XDG-PATH',
-    '/usr/bin');
+  FXDGPath := FConfigFile.ReadString('LINUX', 'XDG-PATH', '/usr/bin');
   {$ENDIF}
 
   //actAllNoAbsage.Execute;
   FGridFilter := FConfigFile.ReadInteger('FILTER', 'LAST FILTER', 15);
 
-  for nCounter := 0 to alFilter.ActionCount -1 do
+  for nCounter := 0 to alFilter.ActionCount - 1 do
     if alFilter.Actions[nCounter].Tag = FGridFilter then
     begin
       alFilter.Actions[nCounter].Execute;
@@ -476,14 +475,16 @@ begin
     Free;
   end;
 end;
+
 {$endif}
 
-procedure TfrmMain.DBGrid1PrepareCanvas(sender: TObject; DataCol: Integer;
+procedure TfrmMain.DBGrid1PrepareCanvas(Sender: TObject; DataCol: integer;
   Column: TColumn; AState: TGridDrawState);
 begin
   with (Sender as TDBGrid) do
   begin
-    btnFileOpen.Enabled := FileExists(DataSource.DataSet.FieldByName('FILENAME').AsString);
+    btnFileOpen.Enabled := FileExists(DataSource.DataSet.FieldByName(
+      'FILENAME').AsString);
 
     if not btnFileOpen.Enabled then
     begin
@@ -499,6 +500,7 @@ begin
   { TODO 1 : Shell-Execute Code zum Öffnen der Dokumente unter Windows einfügen }
   Beep;
 end;
+
 {$endif}
 
 procedure TfrmMain.dlgFindCompanyFind(Sender: TObject);
@@ -523,16 +525,16 @@ begin
       WriteInteger('UI', 'WIDTH', Width);
     end;
 
-    case WindowState of
-      wsNormal: WriteInteger('UI', 'WINDOWSTATE', 0);
-      wsMaximized: WriteInteger('UI', 'WINDOWSTATE', 1);
-      wsMinimized: WriteInteger('UI', 'WINDOWSTATE', 2);
-    end;
+    //case WindowState of
+    //  wsNormal: WriteInteger('UI', 'WINDOWSTATE', 0);
+    //  wsMaximized: WriteInteger('UI', 'WINDOWSTATE', 1);
+    //  wsMinimized: WriteInteger('UI', 'WINDOWSTATE', 2);
+    //end;
 
     WriteInteger('FILTER', 'LAST FILTER', FGridFilter);
 
     {$IFDEF Unix}
-    WriteString('LINUX', 'XDG-PATH',FXDGPath);
+    WriteString('LINUX', 'XDG-PATH', FXDGPath);
     {$ENDIF}
 
     UpdateFile;
@@ -604,8 +606,13 @@ var
   nCount: integer;
   sDateFrom, sDateDue: string;
   dtDateFrom, dtDateDue: TDateTime;
-  nRecordCount: Integer;
+  nRecordCount: integer;
 begin
+  dtDateFrom := date;
+  dtDateDue := date;
+  sDateFrom := DateToStr(dtDateFrom);
+  sDateDue := DateToStr(dtDateDue);
+
   Application.CreateForm(TfrmExportDate, frmExportDate);
 
   if (frmExportDate.ShowModal = mrAbort) then
@@ -619,7 +626,7 @@ begin
   if (dtDateFrom > date) or (dtDateDue > Endofthemonth(date)) then
   begin
     Application.MessageBox(PChar(rsDateInFuture), PChar(rsCSVExport),
-       MB_ICONINFORMATION + MB_OK);
+      MB_ICONINFORMATION + MB_OK);
     FreeAndNil(frmExportDate);
     exit;
   end;
@@ -640,7 +647,7 @@ begin
     if (nRecordCount = 0) then
     begin
       Application.MessageBox(PChar(rsNoExportData), PChar(rsCSVExport),
-         MB_ICONINFORMATION + MB_OK);
+        MB_ICONINFORMATION + MB_OK);
       exit;
     end;
 
@@ -663,7 +670,7 @@ begin
 
         for nCount := 0 to Fields.Count - 1 do
           if (Fields[nCount].DataType = ftString) then
-            sLine := sLine +  '"' +Fields[nCount].DisplayText + '";'
+            sLine := sLine + '"' + Fields[nCount].DisplayText + '";'
           else if (Fields[nCount].DataType in [ftDate, ftDateTime]) then
             sLine := sLine + FormatDateTime('dd.mm.yyyy', Fields[nCount].Value) + ';'
           else
@@ -678,7 +685,8 @@ begin
 
     CloseFile(ExportFile);
 
-    Application.MessageBox(PChar(Format(rsExportBeende, [nRecordCount])), PChar(rsCSVExport),
+    Application.MessageBox(PChar(Format(rsExportBeende, [nRecordCount])),
+      PChar(rsCSVExport),
       MB_ICONINFORMATION + MB_OK);
   end;
 end;
@@ -687,6 +695,9 @@ procedure TfrmMain.actFilterExecute(Sender: TObject);
 var
   dtDateFrom, dtDateDue: TDate;
 begin
+  dtDateFrom := date;
+  dtDateDue := date;
+
   Application.CreateForm(TfrmViewFilter, frmViewFilter);
 
   if (frmViewFilter.ShowModal = mrAbort) then
@@ -712,7 +723,8 @@ end;
 
 procedure TfrmMain.actIgnoreExecute(Sender: TObject);
 begin
-  dmBewerbungen.SetIgnoreState(grdBewerbungen.DataSource.DataSet.FieldByName('ID').AsInteger);
+  dmBewerbungen.SetIgnoreState(grdBewerbungen.DataSource.DataSet.FieldByName(
+    'ID').AsInteger);
 end;
 
 procedure TfrmMain.actIgnoriertExecute(Sender: TObject);
@@ -738,8 +750,8 @@ end;
 
 procedure TfrmMain.actNewWVLExecute(Sender: TObject);
 var
-  nID: Integer;
-  nDays: Integer;
+  nID: integer;
+  nDays: integer;
 begin
   nDays := FConfigFile.ReadInteger('DEFAULTS', 'WVL', 14);
   nID := dmBewerbungen.dsData.DataSet.FieldByName('ID').AsInteger;
@@ -758,7 +770,7 @@ begin
   begin
     // Ignorierte Bewerbungen
     if (DataSource.DataSet.FieldByName('IGNORIERT').AsBoolean) then
-       Canvas.Font.Style := [fsItalic];
+      Canvas.Font.Style := [fsItalic];
 
     // Kein Feedback und WVL-Termin überschritten
     if (not DataSource.DataSet.FieldByName('IGNORIERT').AsBoolean) and
@@ -770,16 +782,16 @@ begin
       Canvas.Font.Style := [fsBold];
     end;
 
-    // Bewerbung liegt mehr als 6 Wochen zurück und noch kein Ergebnis
-    if FConfigFile.ReadBool('GENERAL', 'HIGHLIGHT OLD APPLICATIONS', false) and
+    // Bewerbung liegt mehr als 12 Wochen zurück und noch kein Ergebnis
+    if FConfigFile.ReadBool('GENERAL', 'HIGHLIGHT OLD APPLICATIONS', False) and
       (DataSource.DataSet.FieldByName('FEEDBACK').AsInteger < 2) and
-      (DataSource.DataSet.FieldByName('RESULT').AsInteger IN [0,4]) and
-      (DataSource.DataSet.FieldByName('DATUM').AsDateTime <= IncWeek(Date, -6)) then
+      (DataSource.DataSet.FieldByName('RESULT').AsInteger in [0, 4]) and
+      (DataSource.DataSet.FieldByName('DATUM').AsDateTime <= IncWeek(Date, -12)) then
       Canvas.Font.Style := [fsBold, fsItalic];
 
     // Eingangsbestätigung liegt vor und WVL ist noch nicht überschritten
     if (DataSource.DataSet.FieldByName('FEEDBACK').AsInteger = 1) and
-      (DataSource.DataSet.FieldByName('RESULT').AsInteger = 0)and
+      (DataSource.DataSet.FieldByName('RESULT').AsInteger = 0) and
       (DataSource.DataSet.FieldByName('WVL').AsDateTime >= Date) then
       Canvas.Font.Color := clNavy;
 
@@ -820,7 +832,7 @@ var
 begin
   actWriteMail.Enabled := not (Length(dmBewerbungen.qryBewerbungen.FieldByName(
     'Mail').AsString) = 0);
-  bItemEnabled:= (dmBewerbungen.qryBewerbungen.RecordCount > 0);
+  bItemEnabled := (dmBewerbungen.qryBewerbungen.RecordCount > 0);
 
   for nCount := 0 to pmFilter.Items.Count - 1 do
   begin
@@ -831,8 +843,9 @@ begin
       if (TempItem.Count > 0) then
       begin
         for nCount2 := 0 to TempItem.Count - 1 do
-          TempItem.Items[nCount2].Checked := (TempItem.Items[nCount2].Tag = FGridFilter)
-            and (TempItem.Items[nCount2].Tag < 100);
+          TempItem.Items[nCount2].Checked :=
+            (TempItem.Items[nCount2].Tag = FGridFilter) and
+            (TempItem.Items[nCount2].Tag < 100);
       end
       else
         TempItem.Checked := (TempItem.Tag = FGridFilter) and (TempItem.Tag < 100);
@@ -840,10 +853,9 @@ begin
     else
     begin
       if not (TempItem.Action = actSettings) then
-        TempItem.Enabled:= bItemEnabled;
+        TempItem.Enabled := bItemEnabled;
     end;
   end;
 end;
 
 end.
-
