@@ -201,6 +201,7 @@ type
     FGridFilter: word;
 
     procedure NotifyWVL;
+    {$IFDEF Unix}procedure CreateDesktopFile();{$ENDIF}
   public
     { public declarations }
     property ConfigFile: TIniFile read FConfigFile;
@@ -213,7 +214,7 @@ var
 implementation
 
 uses LCLType, dateutils, Data, bewerbung_strings, Process, variants,
-  exportdate, settings, DB, sqldb, viewfilter;
+  exportdate, settings, DB, sqldb, viewfilter {$IFDEF Unix}, baseunix{$ENDIF};
 
 {$R *.lfm}
 
@@ -254,6 +255,40 @@ begin
   begin
     sMessage := Format(rsEsBefindenSi, [nCount]);
     Application.MessageBox(PChar(sMessage), 'Wiedervorlage', MB_ICONWARNING + MB_OK);
+  end;
+end;
+
+procedure TfrmMain.CreateDesktopFile();
+var
+  DesktopFile: TIniFile;
+  DFName: string;
+  HomeDir: string;
+begin
+  HomeDir := IncludeTrailingPathDelimiter(GetUserDir);
+  DFName := HomeDir + '.local/share/applications/' + Application.Title + '.desktop';
+
+  if not FileExists(DFName) then
+  begin
+    DesktopFile := TIniFile.Create(DFName);
+
+    with DesktopFile do
+    begin
+      WriteString('Desktop Entry', 'Version', '1.0');
+      WriteString('Desktop Entry', 'Type', 'Application');
+      WriteString('Desktop Entry', 'Name', Application.Title);
+      WriteString('Desktop Entry', 'Comment', EmptyStr);
+      WriteString('Desktop Entry', 'Exec', ExtractFileName(Application.ExeName));
+      WriteString('Desktop Entry', 'Icon', 'accessories-text-editor');
+      WriteString('Desktop Entry', 'Path', ExtractFilePath(Application.ExeName));
+      WriteString('Desktop Entry', 'Categories', 'GTK;ContactManagement;');
+      WriteString('Desktop Entry', 'Terminal', 'false');
+      WriteString('Desktop Entry', 'StartupNotify', 'true');
+      UpdateFile;
+    end;
+
+    if (FpChmod(DFName, S_IRWXU or S_IRWXG or S_IROTH or S_IXOTH) <> 0) then
+      Application.MessageBox(PChar(SysErrorMessage(GetLastOSError)),
+        PChar(rsWarnung), MB_ICONWARNING + MB_OK)
   end;
 end;
 
@@ -341,6 +376,10 @@ begin
     end;
 
   PageControl1.ActivePageIndex := 0;
+
+  {$IFDEF Unix}
+  CreateDesktopFile;
+  {$ENDIF}
 end;
 
 procedure TfrmMain.actNoFeedbackExecute(Sender: TObject);
