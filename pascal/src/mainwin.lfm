@@ -1432,7 +1432,7 @@ object frmMain: TfrmMain
       OnExecute = actNewWVLExecute
     end
     object actOpen: TAction
-      Tag = 107
+      Tag = 19
       Caption = 'alle offenen Bewerbungen'
       OnExecute = actOpenExecute
     end
@@ -1681,7 +1681,7 @@ object frmMain: TfrmMain
         Action = actAllNoAbsage
       end
       object MenuItem6: TMenuItem
-        Tag = 108
+        Tag = 19
         Action = actOpen
       end
       object miAlle: TMenuItem

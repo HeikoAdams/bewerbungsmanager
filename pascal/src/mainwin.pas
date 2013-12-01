@@ -410,7 +410,7 @@ procedure TfrmMain.actOpenExecute(Sender: TObject);
 begin
   dmBewerbungen.FetchData(rsRESULT3);
 
-  FGridFilter := 108;
+  FGridFilter := 19;
 end;
 
 procedure TfrmMain.actPostExecute(Sender: TObject);
