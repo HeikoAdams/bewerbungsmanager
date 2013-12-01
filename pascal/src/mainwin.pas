@@ -43,6 +43,7 @@ type
     actBefristet: TAction;
     actIgnoriert: TAction;
     actFilter: TAction;
+    actOpen: TAction;
     actNewWVL: TAction;
     actSilent: TAction;
     actWriteMail: TAction;
@@ -76,6 +77,7 @@ type
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
     MenuItem5: TMenuItem;
+    MenuItem6: TMenuItem;
     miNewWVL: TMenuItem;
     miFilter: TMenuItem;
     miBefristet: TMenuItem;
@@ -163,6 +165,7 @@ type
     procedure actNoFeedbackExecute(Sender: TObject);
     procedure actNoResultExecute(Sender: TObject);
     procedure actOnlineFormExecute(Sender: TObject);
+    procedure actOpenExecute(Sender: TObject);
     procedure actPostExecute(Sender: TObject);
     procedure actRevokeExecute(Sender: TObject);
     procedure actSettingsExecute(Sender: TObject);
@@ -401,6 +404,13 @@ begin
   dmBewerbungen.FetchData(Format(rsMEDIUMD, [2]));
 
   FGridFilter := 14;
+end;
+
+procedure TfrmMain.actOpenExecute(Sender: TObject);
+begin
+  dmBewerbungen.FetchData(rsRESULT3);
+
+  FGridFilter := 108;
 end;
 
 procedure TfrmMain.actPostExecute(Sender: TObject);

@@ -56,6 +56,7 @@ resourcestring
   rsRECEIPENTS = 'RECEIPENTS';
   rsRESULT2 = '(RESULT <> 2) AND (IGNORIERT IS 0)';
   rsRESULTD = '(RESULT = %d)';
+  rsRESULT3 = 'RESULT IN (0,4)';
   rsSuche = 'Suche';
   rsTYPD = '(TYP = %d)';
   {$IFDEF Unix}rsUsrBinXdgOpe = '%s/xdg-open "%s"';{$ENDIF}

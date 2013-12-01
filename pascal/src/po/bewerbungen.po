@@ -104,6 +104,10 @@ msgstr ""
 msgid "(RESULT <> 2) AND (IGNORIERT IS 0)"
 msgstr ""
 
+#: bewerbung_strings.rsresult3
+msgid "RESULT IN (0,4)"
+msgstr ""
+
 #: bewerbung_strings.rsresultd
 msgid "(RESULT = %d)"
 msgstr ""
@@ -326,6 +330,10 @@ msgstr ""
 
 #: tfrmmain.actonlineform.caption
 msgid "&Online-Formular"
+msgstr ""
+
+#: tfrmmain.actopen.caption
+msgid "alle offenen Bewerbungen"
 msgstr ""
 
 #: tfrmmain.actpost.caption

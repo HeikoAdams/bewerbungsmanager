@@ -12,7 +12,7 @@ object frmMain: TfrmMain
   LCLVersion = '1.0.8.0'
   object PageControl1: TPageControl
     Left = 0
-    Height = 510
+    Height = 508
     Top = 25
     Width = 658
     ActivePage = tsBewerbungen
@@ -22,14 +22,14 @@ object frmMain: TfrmMain
     TabOrder = 1
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'
-      ClientHeight = 480
-      ClientWidth = 648
+      ClientHeight = 482
+      ClientWidth = 654
       object grdBewerbungen: TDBGrid
         Left = 0
-        Height = 480
+        Height = 482
         Hint = 'dunkelblau = Eingang bestätigt'#10'dunkelrot = Wiedervorlagedatum ohne Reaktion überschritten'#10'türkis = keine Antwort auf Rückfragen '#10'grün = Zusage erhalten'#10'rot = Absage erhalten'#10'schwarz = noch keine Reaktion und erste Wiedervorlage ist noch nicht fällig'#10'violet = Einladung liegt vor'#10'grau = Bewerbung zurückgezogen'#10#10'fett = Wiedervorlage ist fällig'#10'kursiv = ignorierte Bewerbung'#10'fett+kursiv = Bewerbung ist älter als 6 Wochen und noch offen'
         Top = 0
-        Width = 648
+        Width = 654
         Align = alClient
         Color = clWindow
         Columns = <        
@@ -100,8 +100,8 @@ object frmMain: TfrmMain
     end
     object tsBewerbungData: TTabSheet
       Caption = 'Daten'
-      ClientHeight = 480
-      ClientWidth = 648
+      ClientHeight = 482
+      ClientWidth = 654
       ImageIndex = 1
       object lblDatum: TLabel
         Left = 9
@@ -464,8 +464,8 @@ object frmMain: TfrmMain
     end
     object tsActions: TTabSheet
       Caption = 'Aktivitäten'
-      ClientHeight = 480
-      ClientWidth = 648
+      ClientHeight = 482
+      ClientWidth = 654
       ImageIndex = 2
       object grdLog: TDBGrid
         Left = 0
@@ -625,8 +625,8 @@ object frmMain: TfrmMain
     end
     object tsDokumente: TTabSheet
       Caption = 'Dokumente'
-      ClientHeight = 480
-      ClientWidth = 648
+      ClientHeight = 482
+      ClientWidth = 654
       ImageIndex = 7
       object navDocs: TDBNavigator
         Left = 0
@@ -845,8 +845,8 @@ object frmMain: TfrmMain
   end
   object sbInfo: TStatusBar
     Left = 0
-    Height = 17
-    Top = 535
+    Height = 19
+    Top = 533
     Width = 658
     Panels = <>
   end
@@ -1431,6 +1431,11 @@ object frmMain: TfrmMain
       Caption = 'neue WVL'
       OnExecute = actNewWVLExecute
     end
+    object actOpen: TAction
+      Tag = 107
+      Caption = 'alle offenen Bewerbungen'
+      OnExecute = actOpenExecute
+    end
   end
   object pmFilter: TPopupMenu
     Images = ilIcons
@@ -1674,6 +1679,10 @@ object frmMain: TfrmMain
       object miAlleNoAbs: TMenuItem
         Tag = 15
         Action = actAllNoAbsage
+      end
+      object MenuItem6: TMenuItem
+        Tag = 108
+        Action = actOpen
       end
       object miAlle: TMenuItem
         Action = actAlle
