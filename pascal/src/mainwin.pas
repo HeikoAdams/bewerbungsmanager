@@ -280,7 +280,7 @@ begin
       WriteString('Desktop Entry', 'Type', 'Application');
       WriteString('Desktop Entry', 'Name', Application.Title);
       WriteString('Desktop Entry', 'Comment', 'Software zur Verwaltung eigener Bewerbungen');
-      WriteString('Desktop Entry', 'Exec', ExtractFileName(Application.ExeName));
+      WriteString('Desktop Entry', 'Exec', Application.ExeName);
       WriteString('Desktop Entry', 'Icon', 'accessories-text-editor');
       WriteString('Desktop Entry', 'Path', ExtractFilePath(Application.ExeName));
       WriteString('Desktop Entry', 'Categories', 'GTK;Office;ContactManagement;');
