@@ -76,8 +76,8 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="408"/>
-        <CursorPos X="20" Y="413"/>
+        <TopLine Value="176"/>
+        <CursorPos X="24" Y="186"/>
         <UsageCount Value="108"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -593,7 +593,7 @@
         <UsageCount Value="12"/>
       </Unit65>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="28" HistoryIndex="27">
       <Position1>
         <Filename Value="mainwin.pas"/>
         <Caret Line="773" Column="35" TopLine="763"/>
@@ -696,24 +696,16 @@
       </Position25>
       <Position26>
         <Filename Value="mainwin.pas"/>
-        <Caret Line="567" Column="3" TopLine="577"/>
+        <Caret Line="413" Column="21" TopLine="409"/>
       </Position26>
       <Position27>
         <Filename Value="mainwin.pas"/>
-        <Caret Line="303" Column="3" TopLine="361"/>
+        <Caret Line="883" Column="84" TopLine="883"/>
       </Position27>
       <Position28>
         <Filename Value="mainwin.pas"/>
-        <Caret Line="413" Column="21" TopLine="409"/>
+        <Caret Line="286" Column="62" TopLine="264"/>
       </Position28>
-      <Position29>
-        <Filename Value="mainwin.pas"/>
-        <Caret Line="303" Column="3" TopLine="361"/>
-      </Position29>
-      <Position30>
-        <Filename Value="mainwin.pas"/>
-        <Caret Line="883" Column="84" TopLine="883"/>
-      </Position30>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>

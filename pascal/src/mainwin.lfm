@@ -22,14 +22,14 @@ object frmMain: TfrmMain
     TabOrder = 1
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'
-      ClientHeight = 482
-      ClientWidth = 654
+      ClientHeight = 474
+      ClientWidth = 652
       object grdBewerbungen: TDBGrid
         Left = 0
-        Height = 482
+        Height = 474
         Hint = 'dunkelblau = Eingang bestätigt'#10'dunkelrot = Wiedervorlagedatum ohne Reaktion überschritten'#10'türkis = keine Antwort auf Rückfragen '#10'grün = Zusage erhalten'#10'rot = Absage erhalten'#10'schwarz = noch keine Reaktion und erste Wiedervorlage ist noch nicht fällig'#10'violet = Einladung liegt vor'#10'grau = Bewerbung zurückgezogen'#10#10'fett = Wiedervorlage ist fällig'#10'kursiv = ignorierte Bewerbung'#10'fett+kursiv = Bewerbung ist älter als 6 Wochen und noch offen'
         Top = 0
-        Width = 654
+        Width = 652
         Align = alClient
         Color = clWindow
         Columns = <        
@@ -100,8 +100,8 @@ object frmMain: TfrmMain
     end
     object tsBewerbungData: TTabSheet
       Caption = 'Daten'
-      ClientHeight = 482
-      ClientWidth = 654
+      ClientHeight = 474
+      ClientWidth = 652
       ImageIndex = 1
       object lblDatum: TLabel
         Left = 9
@@ -464,8 +464,8 @@ object frmMain: TfrmMain
     end
     object tsActions: TTabSheet
       Caption = 'Aktivitäten'
-      ClientHeight = 482
-      ClientWidth = 654
+      ClientHeight = 474
+      ClientWidth = 652
       ImageIndex = 2
       object grdLog: TDBGrid
         Left = 0
@@ -625,8 +625,8 @@ object frmMain: TfrmMain
     end
     object tsDokumente: TTabSheet
       Caption = 'Dokumente'
-      ClientHeight = 482
-      ClientWidth = 654
+      ClientHeight = 474
+      ClientWidth = 652
       ImageIndex = 7
       object navDocs: TDBNavigator
         Left = 0

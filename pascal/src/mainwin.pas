@@ -279,11 +279,11 @@ begin
       WriteString('Desktop Entry', 'Version', '1.0');
       WriteString('Desktop Entry', 'Type', 'Application');
       WriteString('Desktop Entry', 'Name', Application.Title);
-      WriteString('Desktop Entry', 'Comment', EmptyStr);
+      WriteString('Desktop Entry', 'Comment', 'Software zur Verwaltung eigener Bewerbungen');
       WriteString('Desktop Entry', 'Exec', ExtractFileName(Application.ExeName));
       WriteString('Desktop Entry', 'Icon', 'accessories-text-editor');
       WriteString('Desktop Entry', 'Path', ExtractFilePath(Application.ExeName));
-      WriteString('Desktop Entry', 'Categories', 'GTK;ContactManagement;');
+      WriteString('Desktop Entry', 'Categories', 'GTK;Office;ContactManagement;');
       WriteString('Desktop Entry', 'Terminal', 'false');
       WriteString('Desktop Entry', 'StartupNotify', 'true');
       UpdateFile;
