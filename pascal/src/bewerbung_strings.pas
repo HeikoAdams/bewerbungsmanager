@@ -26,6 +26,7 @@ uses
 const
   nVersion = 100;
   nInitVer = 100; //Konstante für die Initialisierung der Datenbank. NICHT ÄNDERN!
+  {$IFDEF Windows}CRLF = #13#10;{$endif}
 
 resourcestring
   rsACTION = 'ACTION';
@@ -37,8 +38,8 @@ resourcestring
   rsDieNderungen = 'Die Änderungen werden zum Teil erst nach einem Neustart '
     +'wirksam!';
   rsEinstellunge = 'Einstellungen';
-  rsEsBefindenSi = 'Es befinden sich aktuell %d Bewerbungen in der '
-    +'Wiedervorlage!';
+  rsEsBefindenSi = 'Es befinden sich aktuell %d Bewerbung(en) in der '
+    +'Wiedervorlage: %s';
   rsExportBeende = 'Export beendet. Es wurden %d Datensätze exportiert';
   rsNoExportData = 'In dem angegebenen Zeitraum existieren keine Daten, '+
     'die exportiert werden können';

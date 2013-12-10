@@ -47,7 +47,7 @@ msgid "Einstellungen"
 msgstr ""
 
 #: bewerbung_strings.rsesbefindensi
-msgid "Es befinden sich aktuell %d Bewerbungen in der Wiedervorlage!"
+msgid "Es befinden sich aktuell %d Bewerbung(en) in der Wiedervorlage: %s"
 msgstr ""
 
 #: bewerbung_strings.rsexportbeende

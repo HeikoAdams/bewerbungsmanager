@@ -232,8 +232,13 @@ begin
 end;
 
 procedure TfrmMain.NotifyWVL;
+{$IFDEF Windows}
+const
+  LineEnding = CRLF;
+{$endif}
 var
   nCount: integer;
+  sWVLs: string;
   sMessage: string;
 begin
   with TSQLQuery.Create(nil) do
@@ -243,20 +248,29 @@ begin
 
     with SQL do
     begin
-      Add('SELECT COUNT(*) ANZAHL');
+      Add('SELECT NAME');
       Add('FROM BEWERBUNGEN');
       Add('WHERE ' + rsWHEREWVLSAND);
     end;
 
     Open;
-    nCount := FieldByName('ANZAHL').AsInteger;
+    nCount := RecordCount;
+
+    First;
+    sWVLs:=LineEnding + LineEnding;
+    while not EOF do
+    begin
+      sWVLs := sWVLs + FieldByName('NAME').AsString + LineEnding;
+      Next;
+    end;
+
     Close;
     Free;
   end;
 
   if (nCount > 0) then
   begin
-    sMessage := Format(rsEsBefindenSi, [nCount]);
+    sMessage := Format(rsEsBefindenSi, [nCount, sWVLs]);
     Application.MessageBox(PChar(sMessage), 'Wiedervorlage', MB_ICONWARNING + MB_OK);
   end;
 end;
