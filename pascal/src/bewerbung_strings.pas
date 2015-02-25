@@ -57,13 +57,13 @@ resourcestring
   rsRECEIPENTS = 'RECEIPENTS';
   rsRESULT2 = '(RESULT <> 2) AND (IGNORIERT IS 0)';
   rsRESULTD = '(RESULT = %d)';
-  rsRESULT3 = 'RESULT IN (0,4)';
+  rsRESULT3 = 'RESULT IN (0,4) AND (IGNORIERT IS 0)';
   rsSuche = 'Suche';
   rsTYPD = '(TYP = %d)';
   {$IFDEF Unix}rsUsrBinXdgOpe = '%s/xdg-open "%s"';{$ENDIF}
   rsWarnung = 'Warnung';
   rsWERT = 'WERT';
-  rsWHEREWVLSAND = '(Date(WVL) <= Date(''now'')) AND (RESULT = 0) AND (IGNORIERT = 0)';
+  rsWHEREWVLSAND = '(Date(WVL) <= Date(''now'')) AND (RESULT IN (0,4)) AND (IGNORIERT = 0)';
 
 implementation
 

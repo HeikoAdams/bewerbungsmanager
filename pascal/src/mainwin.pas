@@ -838,7 +838,7 @@ begin
     // Kein Feedback und WVL-Termin überschritten
     if (not DataSource.DataSet.FieldByName('IGNORIERT').AsBoolean) and
       //(DataSource.DataSet.FieldByName('FEEDBACK').AsInteger = 0) and
-      (DataSource.DataSet.FieldByName('RESULT').AsInteger = 0) and
+      (DataSource.DataSet.FieldByName('RESULT').AsInteger in [0, 4]) and
       (DataSource.DataSet.FieldByName('WVL').AsDateTime <= Date) then
     begin
       Canvas.Font.Color := clMaroon;
