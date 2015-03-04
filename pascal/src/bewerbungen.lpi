@@ -22,9 +22,10 @@
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="1"/>
       <MinorVersionNr Value="9"/>
-      <BuildNr Value="158"/>
+      <RevisionNr Value="2"/>
+      <BuildNr Value="159"/>
       <Language Value="0407"/>
-      <StringTable CompanyName="Heiko Adams" FileDescription="Verwaltung für Bewerbungen" InternalName="bewerbungen" LegalCopyright="2011 Heiko Adams" OriginalFilename="bewerbungen" ProductName="Bewerbungsverwaltung" ProductVersion="1.90"/>
+      <StringTable CompanyName="Heiko Adams" FileDescription="Verwaltung für Bewerbungen" InternalName="bewerbungen" LegalCopyright="2015 Heiko Adams" OriginalFilename="bewerbungen" ProductName="Bewerbungsverwaltung" ProductVersion="1.9.2"/>
     </VersionInfo>
     <BuildModes Count="1" Active="Default">
       <Item1 Name="Default" Default="True"/>
@@ -65,7 +66,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="13" Y="11"/>
-        <UsageCount Value="113"/>
+        <UsageCount Value="114"/>
       </Unit0>
       <Unit1>
         <Filename Value="mainwin.pas"/>
@@ -79,7 +80,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="869"/>
         <CursorPos X="77" Y="878"/>
-        <UsageCount Value="113"/>
+        <UsageCount Value="114"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -227,7 +228,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="522"/>
         <CursorPos X="66" Y="541"/>
-        <UsageCount Value="84"/>
+        <UsageCount Value="85"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit19>
@@ -278,7 +279,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="44"/>
         <CursorPos X="83" Y="66"/>
-        <UsageCount Value="81"/>
+        <UsageCount Value="82"/>
         <Loaded Value="True"/>
       </Unit25>
       <Unit26>
@@ -342,7 +343,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="16"/>
-        <UsageCount Value="69"/>
+        <UsageCount Value="70"/>
       </Unit33>
       <Unit34>
         <Filename Value="/usr/lib/lazarus/lcl/include/application.inc"/>
@@ -362,7 +363,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="63"/>
         <CursorPos X="70" Y="69"/>
-        <UsageCount Value="67"/>
+        <UsageCount Value="68"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit35>
@@ -566,7 +567,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="15"/>
         <CursorPos X="66" Y="25"/>
-        <UsageCount Value="48"/>
+        <UsageCount Value="49"/>
       </Unit62>
       <Unit63>
         <Filename Value="viewfilter.pas"/>
@@ -577,7 +578,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="16"/>
-        <UsageCount Value="48"/>
+        <UsageCount Value="49"/>
       </Unit63>
       <Unit64>
         <Filename Value="/usr/share/fpcsrc/rtl/objpas/dateutils.pp"/>
@@ -619,7 +620,7 @@
         <UsageCount Value="10"/>
       </Unit68>
     </Units>
-    <JumpHistory Count="29" HistoryIndex="28">
+    <JumpHistory Count="28" HistoryIndex="27">
       <Position1>
         <Filename Value="data.pas"/>
         <Caret Line="137" Column="11" TopLine="118"/>
@@ -732,10 +733,6 @@
         <Filename Value="bewerbung_strings.pas"/>
         <Caret Line="41" Column="17" TopLine="31"/>
       </Position28>
-      <Position29>
-        <Filename Value="mainwin.pas"/>
-        <Caret Line="24" Column="32" TopLine="31"/>
-      </Position29>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
