@@ -123,7 +123,7 @@ object frmMain: TfrmMain
         Left = 333
         Height = 15
         Top = 16
-        Width = 83
+        Width = 82
         Caption = 'Wiedervorlage'
         ParentColor = False
       end
@@ -131,7 +131,7 @@ object frmMain: TfrmMain
         Left = 333
         Height = 15
         Top = 49
-        Width = 77
+        Width = 76
         Caption = 'Mail-Adresse'
         ParentColor = False
       end
@@ -155,7 +155,7 @@ object frmMain: TfrmMain
         Left = 5
         Height = 121
         Top = 155
-        Width = 185
+        Width = 177
         Caption = 'Bewerbungstyp'
         DataField = 'TYP'
         DataSource = dmBewerbungen.dsData
@@ -214,15 +214,15 @@ object frmMain: TfrmMain
         TabOrder = 5
       end
       object rgFeedback: TDBRadioGroup
-        Left = 197
+        Left = 189
         Height = 121
         Top = 155
-        Width = 166
+        Width = 158
         Caption = 'Rückmeldung'
         DataField = 'FEEDBACK'
         DataSource = dmBewerbungen.dsData
         Items.Strings = (
-          'keins'
+          'keine'
           'Eingangsbetätigung'
           'Einladung'
         )
@@ -234,15 +234,15 @@ object frmMain: TfrmMain
         )
       end
       object rgErgebnis: TDBRadioGroup
-        Left = 371
+        Left = 357
         Height = 120
         Top = 155
-        Width = 128
+        Width = 142
         Caption = 'Ergebnis'
         DataField = 'RESULT'
         DataSource = dmBewerbungen.dsData
         Items.Strings = (
-          'keins'
+          'offen'
           'Zusage'
           'Absage'
           'Zurückgezogen'
@@ -350,7 +350,7 @@ object frmMain: TfrmMain
         Left = 9
         Height = 15
         Top = 81
-        Width = 79
+        Width = 77
         Caption = 'Anspr.partner'
         ParentColor = False
       end
@@ -397,9 +397,9 @@ object frmMain: TfrmMain
       ImageIndex = 2
       object grdLog: TDBGrid
         Left = 0
-        Height = 318
+        Height = 312
         Top = 25
-        Width = 648
+        Width = 652
         Align = alClient
         Color = clWindow
         Columns = <        
@@ -426,7 +426,7 @@ object frmMain: TfrmMain
         Left = 0
         Height = 25
         Top = 0
-        Width = 648
+        Width = 652
         Align = alTop
         BevelOuter = bvNone
         ChildSizing.EnlargeHorizontal = crsScaleChilds
@@ -436,7 +436,7 @@ object frmMain: TfrmMain
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 100
         ClientHeight = 25
-        ClientWidth = 648
+        ClientWidth = 652
         DataSource = dmBewerbungen.dsLog
         Flat = True
         Options = []
@@ -445,15 +445,15 @@ object frmMain: TfrmMain
       object pnlBottom: TPanel
         Left = 0
         Height = 137
-        Top = 343
-        Width = 648
+        Top = 337
+        Width = 652
         Align = alBottom
         ClientHeight = 137
-        ClientWidth = 648
+        ClientWidth = 652
         TabOrder = 2
         object edtLogDatum: TDateEdit
           Left = 86
-          Height = 27
+          Height = 25
           Top = 8
           Width = 168
           CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
@@ -469,23 +469,23 @@ object frmMain: TfrmMain
         end
         object lblLogDatum: TLabel
           Left = 13
-          Height = 16
+          Height = 15
           Top = 17
-          Width = 40
+          Width = 38
           Caption = 'Datum'
           ParentColor = False
         end
         object lblLogTyp: TLabel
           Left = 13
-          Height = 16
+          Height = 15
           Top = 49
-          Width = 18
+          Width = 17
           Caption = 'Art'
           ParentColor = False
         end
         object lblLogText: TLabel
           Left = 293
-          Height = 16
+          Height = 15
           Top = 16
           Width = 25
           Caption = 'Text'
@@ -503,7 +503,7 @@ object frmMain: TfrmMain
         end
         object cbbLogTyp: TDBComboBox
           Left = 86
-          Height = 27
+          Height = 25
           Top = 41
           Width = 191
           DataField = 'TYP'
@@ -524,7 +524,7 @@ object frmMain: TfrmMain
         Left = 0
         Height = 25
         Top = 0
-        Width = 648
+        Width = 652
         Align = alTop
         BevelOuter = bvNone
         ChildSizing.EnlargeHorizontal = crsScaleChilds
@@ -534,7 +534,7 @@ object frmMain: TfrmMain
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 100
         ClientHeight = 25
-        ClientWidth = 648
+        ClientWidth = 652
         DataSource = dmBewerbungen.dsDocs
         Flat = True
         Options = []
@@ -544,10 +544,10 @@ object frmMain: TfrmMain
         Left = 0
         Height = 88
         Top = 386
-        Width = 648
+        Width = 652
         Align = alBottom
         ClientHeight = 88
-        ClientWidth = 648
+        ClientWidth = 652
         TabOrder = 2
         object edtFile: TDBEdit
           Left = 117
@@ -562,15 +562,15 @@ object frmMain: TfrmMain
         end
         object lblDokDescr: TLabel
           Left = 13
-          Height = 16
+          Height = 15
           Top = 19
-          Width = 76
+          Width = 75
           Caption = 'Bezeichnung'
           ParentColor = False
         end
         object cbFileType: TDBComboBox
           Left = 117
-          Height = 29
+          Height = 27
           Top = 8
           Width = 328
           DataField = 'TYPE'
@@ -588,9 +588,9 @@ object frmMain: TfrmMain
         end
         object lblDokFilename: TLabel
           Left = 13
-          Height = 16
+          Height = 15
           Top = 57
-          Width = 63
+          Width = 62
           Caption = 'Dateiname'
           ParentColor = False
         end
@@ -691,7 +691,7 @@ object frmMain: TfrmMain
         Left = 0
         Height = 361
         Top = 25
-        Width = 648
+        Width = 652
         Align = alClient
         Color = clWindow
         Columns = <        
@@ -740,7 +740,14 @@ object frmMain: TfrmMain
     Height = 19
     Top = 533
     Width = 658
-    Panels = <>
+    Panels = <    
+      item
+        Width = 200
+      end    
+      item
+        Width = 250
+      end>
+    SimplePanel = False
   end
   object ilIcons: TImageList
     left = 352

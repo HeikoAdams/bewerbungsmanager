@@ -486,7 +486,7 @@ end;
 procedure TdmBewerbungen.qryBewerbungenAfterOpen(DataSet: TDataSet);
 begin
   DataSet.First;
-  frmMain.sbInfo.SimpleText := Format(rsDDatensTze, [GetRecordsCount(DataSet)]);
+  frmMain.sbInfo.Panels[0].Text := Format(rsDDatensTze, [GetRecordsCount(DataSet)]);
 
   UpdateList(rsCOMPANIES, frmMain.cbbEmpfName.Items);
   UpdateList(rsMAILS, frmMain.cbbEmpfMail.Items);
@@ -524,7 +524,7 @@ begin
   UpdateList(rsJOBS, frmMain.cbbJobTitel.Items);
   UpdateList(rsACTION, frmMain.cbbLogTyp.Items);
   UpdateList(rsRECEIPENTS, frmMain.cbbAnspr.Items);
-  frmMain.sbInfo.SimpleText := Format(rsDDatensTze, [GetRecordsCount(DataSet)]);
+  frmMain.sbInfo.Panels[0].Text := Format(rsDDatensTze, [GetRecordsCount(DataSet)]);
 end;
 
 procedure TdmBewerbungen.qryBewerbungenAfterScroll(DataSet: TDataSet);
@@ -538,6 +538,7 @@ begin
 
     frmMain.edtDatum.Date := FieldByName('DATUM').AsDateTime;
     frmMain.edtWVL.Date := FieldByName('WVL').AsDateTime;
+    frmMain.sbInfo.Panels[1].Text := FieldByName('Name').AsString;
     nID := FieldByName('ID').AsInteger;
   end;
 

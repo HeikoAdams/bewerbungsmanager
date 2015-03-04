@@ -1,8 +1,5 @@
-msgid "Bewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzen"
+msgid "Bewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzen"
 msgstr "Content-Type: text/plain; charset=UTF-8"
-
-msgid "Bewerbung auf \"keine Antwort\" setzen"
-msgstr ""
 
 #: bewerbung_strings.rsaction
 msgid "ACTION"
@@ -136,7 +133,7 @@ msgid "WERT"
 msgstr ""
 
 #: bewerbung_strings.rswherewvlsand
-msgid "(Date(WVL) <= Date('now')) AND (RESULT IN (0,4)) AND (IGNORIERT = 0)"
+msgid "(((Date(WVL) <= Date('now')) AND (RESULT = 0)) OR RESULT = 4 ) AND (IGNORIERT = 0)"
 msgstr ""
 
 #: dunkelblau 
