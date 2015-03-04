@@ -877,10 +877,7 @@ begin
 
     // keine Antwort auf Nachfragen
     if (DataSource.DataSet.FieldByName('RESULT').AsInteger = 4) then
-    begin
       Canvas.Font.Color := clTeal;
-      Canvas.Font.Style := [fsBold];
-    end;
   end;
 end;
 
