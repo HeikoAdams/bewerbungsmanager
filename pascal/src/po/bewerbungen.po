@@ -64,6 +64,15 @@ msgctxt "bewerbung_strings.rsfehler"
 msgid "Fehler"
 msgstr ""
 
+#: bewerbung_strings.rsignored
+msgctxt "bewerbung_strings.rsignored"
+msgid "Ignoriert"
+msgstr ""
+
+#: bewerbung_strings.rsignoredtxt
+msgid "Status der Bewerbung auf \"Ignoriert\" geändert"
+msgstr ""
+
 #: bewerbung_strings.rsjobs
 msgid "JOBS"
 msgstr ""
@@ -90,6 +99,14 @@ msgstr ""
 
 #: bewerbung_strings.rsmeinebewerbu2
 msgid "Meine Bewerbung vom %s als %s"
+msgstr ""
+
+#: bewerbung_strings.rsnewwvl
+msgid "WVL verlängert"
+msgstr ""
+
+#: bewerbung_strings.rsnewwvltxt
+msgid "Datum der Wiedervorlage neu gesetzt"
 msgstr ""
 
 #: bewerbung_strings.rsnoexportdata

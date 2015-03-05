@@ -64,6 +64,10 @@ resourcestring
   rsWarnung = 'Warnung';
   rsWERT = 'WERT';
   rsWHEREWVLSAND = '(((Date(WVL) <= Date(''now'')) AND (RESULT = 0)) OR RESULT = 4 ) AND (IGNORIERT = 0)';
+  rsNewWVL = 'WVL verlängert';
+  rsNewWVLTxt = 'Datum der Wiedervorlage neu gesetzt';
+  rsIgnored = 'Ignoriert';
+  rsIgnoredTxt = 'Status der Bewerbung auf "Ignoriert" geändert';
 
 implementation
 

@@ -77,6 +77,7 @@ type
     procedure FetchExportData(aWhere: string);
     procedure SetIgnoreState(const aID: Integer);
     procedure UpdateWVL(aID, aDays: Integer);
+    procedure WriteToLog(aID: Integer; aAction, aText: string);
   end;
 
 var
@@ -237,6 +238,7 @@ begin
 
     ExecSQL;
     Free;
+    WriteToLog(aID, rsIgnored, rsIgnoredTxt);
   end;
 
   traData.Commit;
@@ -420,11 +422,23 @@ begin
       ExecSQL;
       Free;
     end;
+
+    WriteToLog(aID, rsNewWVL, rsNewWVLTxt);
   end;
 
   traData.Commit;
   OpenDataSources;
   qryBewerbungen.Locate('ID', aID, []);
+end;
+
+procedure TdmBewerbungen.WriteToLog(aID: Integer; aAction, aText: string);
+begin
+  qryLog.Append;
+  qryLog.FieldByName('Bewerbung').AsInteger := aID;
+  qryLog.FieldByName('Datum').AsDateTime := Date;
+  qryLog.FieldByName('Typ').AsString := aAction;
+  qryLog.FieldByName('Beschreibung').AsString:= aText;
+  qryLog.Post;
 end;
 
 procedure TdmBewerbungen.dsDataStateChange(Sender: TObject);
