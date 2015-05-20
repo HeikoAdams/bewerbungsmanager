@@ -440,6 +440,11 @@ msgctxt "TFRMMAIN.EDTDATUM.OKCAPTION"
 msgid "OK"
 msgstr ""
 
+#: tfrmmain.edtdatum.text
+msgctxt "tfrmmain.edtdatum.text"
+msgid "20.05.2015"
+msgstr ""
+
 #: tfrmmain.edtlogdatum.cancelcaption
 msgctxt "TFRMMAIN.EDTLOGDATUM.CANCELCAPTION"
 msgid "Cancel"
@@ -450,6 +455,11 @@ msgctxt "TFRMMAIN.EDTLOGDATUM.OKCAPTION"
 msgid "OK"
 msgstr ""
 
+#: tfrmmain.edtlogdatum.text
+msgctxt "TFRMMAIN.EDTLOGDATUM.TEXT"
+msgid "20.05.2015"
+msgstr ""
+
 #: tfrmmain.edtwvl.cancelcaption
 msgctxt "TFRMMAIN.EDTWVL.CANCELCAPTION"
 msgid "Cancel"
@@ -458,6 +468,10 @@ msgstr ""
 #: tfrmmain.edtwvl.okcaption
 msgctxt "TFRMMAIN.EDTWVL.OKCAPTION"
 msgid "OK"
+msgstr ""
+
+#: tfrmmain.edtwvl.text
+msgid "  .  .    "
 msgstr ""
 
 #: tfrmmain.grdbewerbungen.columns[0].title.caption

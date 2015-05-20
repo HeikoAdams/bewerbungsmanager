@@ -180,6 +180,8 @@ type
     procedure DBGrid1PrepareCanvas(Sender: TObject; DataCol: integer;
       Column: TColumn; AState: TGridDrawState);
     procedure dlgFindCompanyFind(Sender: TObject);
+    procedure edtDatumChange(Sender: TObject);
+    procedure edtDatumEditingDone(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure grdBewerbungenDblClick(Sender: TObject);
     procedure grdBewerbungenPrepareCanvas(Sender: TObject; DataCol: integer;
@@ -574,6 +576,17 @@ begin
       MB_OK + MB_ICONWARNING)
   else
     dlgFindCompany.CloseDialog;
+end;
+
+procedure TfrmMain.edtDatumChange(Sender: TObject);
+begin
+
+end;
+
+procedure TfrmMain.edtDatumEditingDone(Sender: TObject);
+begin
+  if (dmBewerbungen.dsData.State in [dsEdit]) and (edtWVL.Date > 0) then
+     edtWVL.Date := IncDay(edtWVL.Date, ConfigFile.ReadInteger('DEFAULTS', 'WVL', 14));
 end;
 
 procedure TfrmMain.FormClose(Sender: TObject; var CloseAction: TCloseAction);

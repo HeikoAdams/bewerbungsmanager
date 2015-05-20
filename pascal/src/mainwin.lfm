@@ -10,10 +10,10 @@ object frmMain: TfrmMain
   OnClose = FormClose
   OnCreate = FormCreate
   Position = poDesktopCenter
-  LCLVersion = '1.2.0.3'
+  LCLVersion = '1.4.0.2'
   object PageControl1: TPageControl
     Left = 0
-    Height = 508
+    Height = 504
     Top = 25
     Width = 658
     ActivePage = tsBewerbungen
@@ -23,11 +23,11 @@ object frmMain: TfrmMain
     TabOrder = 1
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'
-      ClientHeight = 474
+      ClientHeight = 467
       ClientWidth = 652
       object grdBewerbungen: TDBGrid
         Left = 0
-        Height = 474
+        Height = 467
         Hint = 'dunkelblau = Eingang bestätigt'#10'dunkelrot = Wiedervorlagedatum ohne Reaktion überschritten'#10'türkis = keine Antwort auf Rückfragen '#10'grün = Zusage erhalten'#10'rot = Absage erhalten'#10'schwarz = noch keine Reaktion und erste Wiedervorlage ist noch nicht fällig'#10'violet = Einladung liegt vor'#10'grau = Bewerbung zurückgezogen'#10#10'fett = Wiedervorlage ist fällig'#10'kursiv = ignorierte Bewerbung'#10'fett+kursiv = Bewerbung ist älter als 6 Wochen und noch offen'
         Top = 0
         Width = 652
@@ -101,54 +101,54 @@ object frmMain: TfrmMain
     end
     object tsBewerbungData: TTabSheet
       Caption = 'Daten'
-      ClientHeight = 474
+      ClientHeight = 467
       ClientWidth = 652
       ImageIndex = 1
       object lblDatum: TLabel
         Left = 9
-        Height = 15
+        Height = 19
         Top = 16
-        Width = 38
+        Width = 40
         Caption = 'Datum'
         ParentColor = False
       end
       object lblWo: TLabel
         Left = 9
-        Height = 15
+        Height = 19
         Top = 49
-        Width = 63
+        Width = 64
         Caption = 'Empfänger'
         ParentColor = False
       end
       object lblWVL: TLabel
         Left = 333
-        Height = 15
+        Height = 19
         Top = 16
-        Width = 82
+        Width = 87
         Caption = 'Wiedervorlage'
         ParentColor = False
       end
       object lblEmpfMail: TLabel
         Left = 333
-        Height = 15
+        Height = 19
         Top = 49
-        Width = 76
+        Width = 78
         Caption = 'Mail-Adresse'
         ParentColor = False
       end
       object lblJobTitel: TLabel
         Left = 333
-        Height = 15
+        Height = 19
         Top = 81
-        Width = 50
+        Width = 51
         Caption = 'Job-Titel'
         ParentColor = False
       end
       object lblRefNr: TLabel
         Left = 9
-        Height = 15
+        Height = 19
         Top = 113
-        Width = 41
+        Width = 40
         Caption = 'Ref.-Nr'
         ParentColor = False
       end
@@ -174,7 +174,7 @@ object frmMain: TfrmMain
       end
       object edtDatum: TDateEdit
         Left = 108
-        Height = 25
+        Height = 29
         Top = 8
         Width = 176
         CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
@@ -183,14 +183,17 @@ object frmMain: TfrmMain
         DefaultToday = True
         DateOrder = doDMY
         ButtonWidth = 23
-        CharCase = ecNormal
         NumGlyphs = 1
+        Flat = True
         MaxLength = 10
+        OnChange = edtDatumChange
+        OnEditingDone = edtDatumEditingDone
         TabOrder = 0
+        Text = '20.05.2015'
       end
       object edtWVL: TDateEdit
         Left = 424
-        Height = 25
+        Height = 29
         Top = 8
         Width = 173
         CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
@@ -198,14 +201,15 @@ object frmMain: TfrmMain
         CancelCaption = 'Cancel'
         DateOrder = doDMY
         ButtonWidth = 23
-        CharCase = ecNormal
         NumGlyphs = 1
+        Flat = True
         MaxLength = 10
         TabOrder = 1
+        Text = '  .  .    '
       end
       object edtRefNr: TDBEdit
         Left = 108
-        Height = 25
+        Height = 29
         Top = 104
         Width = 200
         DataField = 'REFNR'
@@ -270,9 +274,9 @@ object frmMain: TfrmMain
       end
       object lblNotes: TLabel
         Left = 9
-        Height = 15
+        Height = 19
         Top = 287
-        Width = 80
+        Width = 83
         Caption = 'Bemerkungen'
         ParentColor = False
       end
@@ -313,7 +317,7 @@ object frmMain: TfrmMain
       end
       object cbbEmpfName: TDBComboBox
         Left = 108
-        Height = 25
+        Height = 29
         Top = 38
         Width = 200
         DataField = 'NAME'
@@ -325,7 +329,7 @@ object frmMain: TfrmMain
       end
       object cbbEmpfMail: TDBComboBox
         Left = 424
-        Height = 25
+        Height = 29
         Top = 38
         Width = 200
         DataField = 'MAIL'
@@ -337,7 +341,7 @@ object frmMain: TfrmMain
       end
       object cbbJobTitel: TDBComboBox
         Left = 424
-        Height = 25
+        Height = 29
         Top = 72
         Width = 200
         DataField = 'JOBTITEL'
@@ -349,9 +353,9 @@ object frmMain: TfrmMain
       end
       object Label1: TLabel
         Left = 9
-        Height = 15
+        Height = 19
         Top = 81
-        Width = 77
+        Width = 82
         Caption = 'Anspr.partner'
         ParentColor = False
       end
@@ -381,7 +385,7 @@ object frmMain: TfrmMain
       end
       object cbbAnspr: TDBComboBox
         Left = 108
-        Height = 25
+        Height = 29
         Top = 72
         Width = 200
         DataField = 'ANSPRECHPARTNER'
@@ -393,12 +397,12 @@ object frmMain: TfrmMain
     end
     object tsActions: TTabSheet
       Caption = 'Aktivitäten'
-      ClientHeight = 474
+      ClientHeight = 467
       ClientWidth = 652
       ImageIndex = 2
       object grdLog: TDBGrid
         Left = 0
-        Height = 312
+        Height = 305
         Top = 25
         Width = 652
         Align = alClient
@@ -446,7 +450,7 @@ object frmMain: TfrmMain
       object pnlBottom: TPanel
         Left = 0
         Height = 137
-        Top = 337
+        Top = 330
         Width = 652
         Align = alBottom
         ClientHeight = 137
@@ -454,7 +458,7 @@ object frmMain: TfrmMain
         TabOrder = 2
         object edtLogDatum: TDateEdit
           Left = 86
-          Height = 25
+          Height = 29
           Top = 8
           Width = 168
           CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
@@ -463,32 +467,33 @@ object frmMain: TfrmMain
           DefaultToday = True
           DateOrder = doDMY
           ButtonWidth = 23
-          CharCase = ecNormal
           NumGlyphs = 1
+          Flat = True
           MaxLength = 10
           TabOrder = 0
+          Text = '20.05.2015'
         end
         object lblLogDatum: TLabel
           Left = 13
-          Height = 15
+          Height = 19
           Top = 17
-          Width = 38
+          Width = 40
           Caption = 'Datum'
           ParentColor = False
         end
         object lblLogTyp: TLabel
           Left = 13
-          Height = 15
+          Height = 19
           Top = 49
-          Width = 17
+          Width = 18
           Caption = 'Art'
           ParentColor = False
         end
         object lblLogText: TLabel
           Left = 293
-          Height = 15
+          Height = 19
           Top = 16
-          Width = 25
+          Width = 24
           Caption = 'Text'
           ParentColor = False
         end
@@ -504,7 +509,7 @@ object frmMain: TfrmMain
         end
         object cbbLogTyp: TDBComboBox
           Left = 86
-          Height = 25
+          Height = 29
           Top = 41
           Width = 191
           DataField = 'TYP'
@@ -518,7 +523,7 @@ object frmMain: TfrmMain
     end
     object tsDokumente: TTabSheet
       Caption = 'Dokumente'
-      ClientHeight = 474
+      ClientHeight = 467
       ClientWidth = 652
       ImageIndex = 7
       object navDocs: TDBNavigator
@@ -544,7 +549,7 @@ object frmMain: TfrmMain
       object pnlDokBottom: TPanel
         Left = 0
         Height = 88
-        Top = 386
+        Top = 379
         Width = 652
         Align = alBottom
         ClientHeight = 88
@@ -552,7 +557,7 @@ object frmMain: TfrmMain
         TabOrder = 2
         object edtFile: TDBEdit
           Left = 117
-          Height = 25
+          Height = 29
           Top = 48
           Width = 328
           DataField = 'FILENAME'
@@ -563,15 +568,15 @@ object frmMain: TfrmMain
         end
         object lblDokDescr: TLabel
           Left = 13
-          Height = 15
+          Height = 19
           Top = 19
-          Width = 75
+          Width = 77
           Caption = 'Bezeichnung'
           ParentColor = False
         end
         object cbFileType: TDBComboBox
           Left = 117
-          Height = 27
+          Height = 31
           Top = 8
           Width = 328
           DataField = 'TYPE'
@@ -589,9 +594,9 @@ object frmMain: TfrmMain
         end
         object lblDokFilename: TLabel
           Left = 13
-          Height = 15
+          Height = 19
           Top = 57
-          Width = 62
+          Width = 65
           Caption = 'Dateiname'
           ParentColor = False
         end
@@ -690,7 +695,7 @@ object frmMain: TfrmMain
       end
       object DBGrid1: TDBGrid
         Left = 0
-        Height = 361
+        Height = 354
         Top = 25
         Width = 652
         Align = alClient
@@ -738,8 +743,8 @@ object frmMain: TfrmMain
   end
   object sbInfo: TStatusBar
     Left = 0
-    Height = 19
-    Top = 533
+    Height = 23
+    Top = 529
     Width = 658
     Panels = <    
       item
