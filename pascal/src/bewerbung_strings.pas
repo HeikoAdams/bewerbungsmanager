@@ -68,6 +68,8 @@ resourcestring
   rsNewWVLTxt = 'Datum der Wiedervorlage neu gesetzt';
   rsIgnored = 'Ignoriert';
   rsIgnoredTxt = 'Status der Bewerbung auf "Ignoriert" geändert';
+  rsRecalcWVL = 'Soll das Wiedervolagedatum neu berechnet werden?';
+  rsWVL = 'Wiedervolage';
 
 implementation
 

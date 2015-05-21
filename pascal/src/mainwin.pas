@@ -180,7 +180,6 @@ type
     procedure DBGrid1PrepareCanvas(Sender: TObject; DataCol: integer;
       Column: TColumn; AState: TGridDrawState);
     procedure dlgFindCompanyFind(Sender: TObject);
-    procedure edtDatumChange(Sender: TObject);
     procedure edtDatumEditingDone(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure grdBewerbungenDblClick(Sender: TObject);
@@ -350,12 +349,6 @@ begin
 
   if FileExists(FConfigFile.FileName) then
   begin
-    //case FConfigFile.ReadInteger('UI', 'WINDOWSTATE', 0) of
-    //  0: WindowState := wsNormal;
-    //  1: WindowState := wsMaximized;
-    //  2: WindowState := wsMinimized;
-    //end;
-
     if (WindowState <> wsMaximized) then
     begin
       Top := FConfigFile.ReadInteger('UI', 'TOP', 0);
@@ -578,15 +571,13 @@ begin
     dlgFindCompany.CloseDialog;
 end;
 
-procedure TfrmMain.edtDatumChange(Sender: TObject);
-begin
-
-end;
-
 procedure TfrmMain.edtDatumEditingDone(Sender: TObject);
 begin
-  if (dmBewerbungen.dsData.State in [dsEdit]) and (edtWVL.Date > 0) then
-     edtWVL.Date := IncDay(edtWVL.Date, ConfigFile.ReadInteger('DEFAULTS', 'WVL', 14));
+  if (dmBewerbungen.dsData.State in [dsEdit]) and (edtWVL.Date > 0) and edtDatum.Modified then
+     if (Application.MessageBox(PChar(rsRecalcWVL), PChar(rsWVL), MB_YESNO or
+        MB_DEFBUTTON2 or MB_ICONQUESTION) = ID_YES) then
+        edtWVL.Date := IncDay(edtWVL.Date, ConfigFile.ReadInteger('DEFAULTS', 'WVL', 14));
+  (Sender as TDateEdit).ValidateEdit;
 end;
 
 procedure TfrmMain.FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -600,12 +591,6 @@ begin
       WriteInteger('UI', 'HEIGHT', Height);
       WriteInteger('UI', 'WIDTH', Width);
     end;
-
-    //case WindowState of
-    //  wsNormal: WriteInteger('UI', 'WINDOWSTATE', 0);
-    //  wsMaximized: WriteInteger('UI', 'WINDOWSTATE', 1);
-    //  wsMinimized: WriteInteger('UI', 'WINDOWSTATE', 2);
-    //end;
 
     WriteInteger('FILTER', 'LAST FILTER', FGridFilter);
 

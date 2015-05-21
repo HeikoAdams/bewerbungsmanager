@@ -113,6 +113,10 @@ msgstr ""
 msgid "In dem angegebenen Zeitraum existieren keine Daten, die exportiert werden können"
 msgstr ""
 
+#: bewerbung_strings.rsrecalcwvl
+msgid "Soll das Wiedervolagedatum neu berechnet werden?"
+msgstr ""
+
 #: bewerbung_strings.rsreceipents
 msgid "RECEIPENTS"
 msgstr ""
@@ -151,6 +155,10 @@ msgstr ""
 
 #: bewerbung_strings.rswherewvlsand
 msgid "(((Date(WVL) <= Date('now')) AND (RESULT = 0)) OR RESULT = 4 ) AND (IGNORIERT = 0)"
+msgstr ""
+
+#: bewerbung_strings.rswvl
+msgid "Wiedervolage"
 msgstr ""
 
 #: dunkelblau 

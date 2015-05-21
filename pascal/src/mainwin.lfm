@@ -16,10 +16,10 @@ object frmMain: TfrmMain
     Height = 504
     Top = 25
     Width = 658
-    ActivePage = tsBewerbungen
+    ActivePage = tsBewerbungData
     Align = alClient
     Images = ilIcons
-    TabIndex = 0
+    TabIndex = 1
     TabOrder = 1
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'
@@ -176,7 +176,7 @@ object frmMain: TfrmMain
         Left = 108
         Height = 29
         Top = 8
-        Width = 176
+        Width = 200
         CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
         OKCaption = 'OK'
         CancelCaption = 'Cancel'
@@ -186,7 +186,6 @@ object frmMain: TfrmMain
         NumGlyphs = 1
         Flat = True
         MaxLength = 10
-        OnChange = edtDatumChange
         OnEditingDone = edtDatumEditingDone
         TabOrder = 0
         Text = '20.05.2015'
@@ -195,7 +194,7 @@ object frmMain: TfrmMain
         Left = 424
         Height = 29
         Top = 8
-        Width = 173
+        Width = 200
         CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
         OKCaption = 'OK'
         CancelCaption = 'Cancel'
