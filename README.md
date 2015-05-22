@@ -11,6 +11,9 @@ Bewerbungsmanager bietet unter anderem folgende Funktionen:
 # Screenshots
 
 ![](http://i.imgur.com/WwO7B2n.png)
+
 ![](http://i.imgur.com/nmlrhTt.png)
+
 ![](http://i.imgur.com/oaFRcDz.png)
+
 ![](http://i.imgur.com/N0lGgkx.png)
