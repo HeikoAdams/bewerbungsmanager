@@ -276,7 +276,13 @@ msgctxt "TFRMDATEFILTER.LABEL2.CAPTION"
 msgid "Datum bis"
 msgstr ""
 
+#: tfrmexportdate.caption
+msgctxt "TFRMEXPORTDATE.CAPTION"
+msgid "Export-Zeitraum"
+msgstr ""
+
 #: tfrmexportdate.frmexportdate.caption
+msgctxt "tfrmexportdate.frmexportdate.caption"
 msgid "Export-Zeitraum"
 msgstr ""
 
