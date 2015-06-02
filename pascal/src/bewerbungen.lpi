@@ -71,8 +71,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="mainwin"/>
-        <TopLine Value="574"/>
-        <CursorPos X="90" Y="576"/>
+        <TopLine Value="382"/>
+        <CursorPos X="3" Y="318"/>
         <UsageCount Value="115"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -187,7 +187,6 @@
         <ComponentName Value="dmBewerbungen"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <UnitName Value="Data"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="43"/>
         <CursorPos X="41" Y="54"/>
@@ -227,9 +226,10 @@
         <Filename Value="bewerbung_strings.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="bewerbung_strings"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
-        <TopLine Value="57"/>
-        <CursorPos X="8" Y="72"/>
+        <TopLine Value="56"/>
+        <CursorPos X="75" Y="66"/>
         <UsageCount Value="83"/>
         <Loaded Value="True"/>
       </Unit25>
@@ -300,7 +300,6 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="settings"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
         <TopLine Value="4"/>
         <CursorPos X="65" Y="24"/>
@@ -514,7 +513,7 @@
         <UsageCount Value="10"/>
       </Unit70>
     </Units>
-    <JumpHistory Count="25" HistoryIndex="24">
+    <JumpHistory Count="26" HistoryIndex="25">
       <Position1>
         <Filename Value="mainwin.pas"/>
         <Caret Line="819" Column="3" TopLine="813"/>
@@ -615,6 +614,10 @@
         <Filename Value="mainwin.pas"/>
         <Caret Line="577" Column="64" TopLine="574"/>
       </Position25>
+      <Position26>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="576" Column="90" TopLine="574"/>
+      </Position26>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>

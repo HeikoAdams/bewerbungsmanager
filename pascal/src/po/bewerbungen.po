@@ -154,7 +154,7 @@ msgid "WERT"
 msgstr ""
 
 #: bewerbung_strings.rswherewvlsand
-msgid "(((Date(WVL) <= Date('now')) AND (RESULT = 0)) OR RESULT = 4 ) AND (IGNORIERT = 0)"
+msgid "(((Date(WVL) <= Date('now')) AND (RESULT IN (0,4)))) AND (IGNORIERT = 0)"
 msgstr ""
 
 #: bewerbung_strings.rswvl
