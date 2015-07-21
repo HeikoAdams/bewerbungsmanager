@@ -297,8 +297,6 @@ begin
       Add('ORDER BY DATUM DESC, NAME ');
     end;
 
-    ShowMessage(SQL.Text);
-
     Open;
   end;
 end;
@@ -323,7 +321,7 @@ begin
               Length(qryBewerbungen.SQL.Text) - nWherePos);
       SQL.Add(sWhere);
     end;
-
+    Params.ParamByName('pUserID').AsInteger:= frmMain.UserID;
     Open;
     Result := FieldByName('ANZAHL').AsInteger;
     Close;
