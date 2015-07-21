@@ -4,13 +4,13 @@ object dmBewerbungen: TdmBewerbungen
   HorizontalOffset = 464
   VerticalOffset = 263
   Width = 427
-  object dsData: TDatasource
+  object dsData: TDataSource
     DataSet = qryBewerbungen
     OnStateChange = dsDataStateChange
     left = 16
     top = 80
   end
-  object dsLog: TDatasource
+  object dsLog: TDataSource
     DataSet = qryLog
     OnStateChange = dsLogStateChange
     left = 64
@@ -25,7 +25,7 @@ object dmBewerbungen: TdmBewerbungen
   end
   object conData: TSQLite3Connection
     Connected = False
-    LoginPrompt = False
+    LoginPrompt = True
     AfterConnect = conDataAfterConnect
     BeforeConnect = conDataBeforeConnect
     BeforeDisconnect = conDataBeforeDisconnect
@@ -38,6 +38,7 @@ object dmBewerbungen: TdmBewerbungen
     top = 80
   end
   object qryBewerbungen: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'ID'
@@ -134,19 +135,31 @@ object dmBewerbungen: TdmBewerbungen
         DataType = ftBoolean
         Precision = -1
         Size = 0
+      end    
+      item
+        Name = 'UID'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
       end>
     AfterDelete = qryBewerbungenAfterPost
     AfterOpen = qryBewerbungenAfterOpen
     AfterPost = qryBewerbungenAfterPost
     AfterScroll = qryBewerbungenAfterScroll
+    BeforeOpen = qryBewerbungenBeforeOpen
     BeforePost = qryBewerbungenBeforePost
     OnNewRecord = qryBewerbungenNewRecord
     Database = conData
     Transaction = traData
     SQL.Strings = (
-      'SELECT * FROM BEWERBUNGEN ORDER BY Datum DESC, NAME'
+      'SELECT * FROM BEWERBUNGEN WHERE UID = :pUserID ORDER BY Datum DESC, NAME'
     )
-    Params = <>
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'pUserID'
+        ParamType = ptUnknown
+      end>
     left = 16
     top = 144
   end
@@ -306,25 +319,25 @@ object dmBewerbungen: TdmBewerbungen
     left = 240
     top = 144
   end
-  object dsDocs: TDatasource
+  object dsDocs: TDataSource
     DataSet = qryDocuments
     OnStateChange = dsDocsStateChange
     left = 112
     top = 80
   end
-  object dsFeedback: TDatasource
+  object dsFeedback: TDataSource
     left = 16
     top = 16
   end
-  object dsMedium: TDatasource
+  object dsMedium: TDataSource
     left = 64
     top = 16
   end
-  object dsTyp: TDatasource
+  object dsTyp: TDataSource
     left = 112
     top = 16
   end
-  object dsResult: TDatasource
+  object dsResult: TDataSource
     left = 152
     top = 16
   end
@@ -349,5 +362,16 @@ object dmBewerbungen: TdmBewerbungen
     UseDefines = True
     left = 216
     top = 16
+  end
+  object qryBenutzer: TSQLQuery
+    FieldDefs = <>
+    Database = conData
+    Transaction = traData
+    SQL.Strings = (
+      'SELECT * FROM BENUTZER ORDER BY UID'
+    )
+    Params = <>
+    left = 25
+    top = 210
   end
 end

@@ -201,6 +201,7 @@ type
     FConfigFile: TIniFile;
 
     FErrorCode: integer;
+    FUserID: integer;
     {$IFDEF Unix}FLockHandle: integer;{$ENDIF}
     FGridFilter: word;
 
@@ -209,6 +210,7 @@ type
   public
     { public declarations }
     property ConfigFile: TIniFile read FConfigFile;
+    property UserID: Integer read FUserID write FUserID;
     procedure HandleError;
   end;
 
@@ -701,7 +703,7 @@ begin
     frmExportDate.GetDateRangeTxt(sDateFrom, sDateDue);
     FreeAndNil(frmExportDate);
     AssignFile(ExportFile, sFileName);
-    dmBewerbungen.FetchExportData('WHERE strftime(''%d-%m-%Y'', DATUM)' +
+    dmBewerbungen.FetchExportData('WHERE UID = :pUserID AND strftime(''%d-%m-%Y'', DATUM)' +
       Format(' BETWEEN ''%s'' AND ''%s''', [sDateFrom, sDateDue]));
     nRecordCount := dmBewerbungen.qryCSVExport.RecordCount;
 

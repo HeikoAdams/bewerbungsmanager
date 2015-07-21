@@ -8,7 +8,7 @@ uses
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, bewerbung_strings, Data, mainwin, settings, filterdate, exportdate,
-  viewfilter;
+  viewfilter, login;
 
 {$R *.res}
 

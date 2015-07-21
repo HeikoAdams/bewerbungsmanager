@@ -137,8 +137,16 @@ msgstr ""
 msgid "Suche"
 msgstr ""
 
+#: bewerbung_strings.rstoomanylogin
+msgid "Sie haben 3x eine falsches Login angegeben. Die Anwendung wird beendet!"
+msgstr ""
+
 #: bewerbung_strings.rstypd
 msgid "(TYP = %d)"
+msgstr ""
+
+#: bewerbung_strings.rsunknowuser
+msgid "Der angegebene Benutzer existiert nicht oder wurde deaktiviert!"
 msgstr ""
 
 #: bewerbung_strings.rsusrbinxdgope
@@ -289,6 +297,24 @@ msgstr ""
 #: tfrmfilterdate.frmfilterdate.caption
 msgctxt "TFRMFILTERDATE.FRMFILTERDATE.CAPTION"
 msgid "Filter"
+msgstr ""
+
+#: tfrmlogin.btnlogin.caption
+msgctxt "TFRMLOGIN.BTNLOGIN.CAPTION"
+msgid "Login"
+msgstr ""
+
+#: tfrmlogin.caption
+msgctxt "tfrmlogin.caption"
+msgid "Login"
+msgstr ""
+
+#: tfrmlogin.lepassword.editlabel.caption
+msgid "Kennwort"
+msgstr ""
+
+#: tfrmlogin.leusername.editlabel.caption
+msgid "Benutzername"
 msgstr ""
 
 #: tfrmmain.actabsage.caption

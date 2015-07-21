@@ -42,6 +42,7 @@ type
     qryLog: TSQLQuery;
     qryDocuments: TSQLQuery;
     scUpdate: TSQLScript;
+    qryBenutzer: TSQLQuery;
     traData: TSQLTransaction;
     procedure conDataAfterConnect(Sender: TObject);
     procedure conDataBeforeConnect(Sender: TObject);
@@ -52,6 +53,7 @@ type
     procedure qryBewerbungenAfterOpen(DataSet: TDataSet);
     procedure qryBewerbungenAfterPost(DataSet: TDataSet);
     procedure qryBewerbungenAfterScroll(DataSet: TDataSet);
+    procedure qryBewerbungenBeforeOpen(DataSet: TDataSet);
     procedure qryBewerbungenBeforePost(DataSet: TDataSet);
     procedure qryBewerbungenNewRecord(DataSet: TDataSet);
     procedure qryDocumentsBeforePost(DataSet: TDataSet);
@@ -85,7 +87,7 @@ var
 
 implementation
 
-uses mainwin, bewerbung_strings, Forms, Dialogs;
+uses mainwin, bewerbung_strings, Forms, Dialogs, login;
 
 {$R *.lfm}
 
@@ -189,10 +191,12 @@ begin
   nVersionCur := GetDBVersion;
 
   // Datenbank aktualisieren
-  while (nVersionCur < nVersion) do
+  if (nVersionCur < nVersion) then
   begin
-    InstallUpdates(nVersionCur);
-    Inc(nVersionCur);
+    repeat
+      InstallUpdates(nVersionCur);
+      Inc(nVersionCur);
+    until (nVersionCur > nVersion);
   end;
 end;
 
@@ -207,6 +211,13 @@ end;
 
 procedure TdmBewerbungen.OpenDataSources;
 begin
+  if not qryBenutzer.Active then
+  begin
+    qryBenutzer.Open;
+    Application.CreateForm(TfrmLogin, frmLogin);
+    frmLogin.ShowModal;
+  end;
+
   if not qryBewerbungen.Active then
     qryBewerbungen.Open;
 
@@ -258,9 +269,9 @@ begin
       Clear;
 
       if (aWhere = EmptyStr) then
-         Add('SELECT * FROM BEWERBUNGEN ORDER BY Datum DESC, NAME')
+         Add('SELECT * FROM BEWERBUNGEN WHERE UID = :pUserID ORDER BY Datum DESC, NAME')
       else
-         Add(Format('SELECT * FROM BEWERBUNGEN WHERE %s ORDER BY Datum DESC, NAME', [aWhere]));
+         Add(Format('SELECT * FROM BEWERBUNGEN WHERE UID = :pUserID AND %s ORDER BY Datum DESC, NAME', [aWhere]));
     end;
 
     Open;
@@ -285,6 +296,8 @@ begin
 
       Add('ORDER BY DATUM DESC, NAME ');
     end;
+
+    ShowMessage(SQL.Text);
 
     Open;
   end;
@@ -571,6 +584,11 @@ begin
   end;
 end;
 
+procedure TdmBewerbungen.qryBewerbungenBeforeOpen(DataSet: TDataSet);
+begin
+  qryBewerbungen.Params.ParamByName('pUserID').AsInteger:= frmMain.UserID;
+end;
+
 procedure TdmBewerbungen.qryBewerbungenBeforePost(DataSet: TDataSet);
 begin
   with qryBewerbungen do
@@ -608,6 +626,7 @@ begin
     FieldByName('FEEDBACK').AsInteger := nDefaults[1];
     FieldByName('RESULT').AsInteger := nDefaults[2];
     FieldByName('MEDIUM').AsInteger := nDefaults[3];
+    FieldByName('UID').AsInteger:= frmMain.UserID;
   end;
 
   with frmMain do

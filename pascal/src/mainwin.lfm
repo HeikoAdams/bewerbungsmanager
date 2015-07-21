@@ -10,10 +10,10 @@ object frmMain: TfrmMain
   OnClose = FormClose
   OnCreate = FormCreate
   Position = poDesktopCenter
-  LCLVersion = '1.4.0.2'
+  LCLVersion = '1.4.2.0'
   object PageControl1: TPageControl
     Left = 0
-    Height = 506
+    Height = 504
     Top = 25
     Width = 658
     ActivePage = tsBewerbungData
@@ -23,8 +23,8 @@ object frmMain: TfrmMain
     TabOrder = 1
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'
-      ClientHeight = 473
-      ClientWidth = 648
+      ClientHeight = 467
+      ClientWidth = 652
       object grdBewerbungen: TDBGrid
         Left = 0
         Height = 467
@@ -101,8 +101,8 @@ object frmMain: TfrmMain
     end
     object tsBewerbungData: TTabSheet
       Caption = 'Daten'
-      ClientHeight = 473
-      ClientWidth = 648
+      ClientHeight = 467
+      ClientWidth = 652
       ImageIndex = 1
       object lblDatum: TLabel
         Left = 9
@@ -174,7 +174,7 @@ object frmMain: TfrmMain
       end
       object edtDatum: TDateEdit
         Left = 108
-        Height = 31
+        Height = 29
         Top = 8
         Width = 200
         CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
@@ -192,7 +192,7 @@ object frmMain: TfrmMain
       end
       object edtWVL: TDateEdit
         Left = 424
-        Height = 31
+        Height = 29
         Top = 8
         Width = 200
         CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
@@ -208,13 +208,13 @@ object frmMain: TfrmMain
       end
       object edtRefNr: TDBEdit
         Left = 108
-        Height = 31
+        Height = 29
         Top = 104
         Width = 200
         DataField = 'REFNR'
         DataSource = dmBewerbungen.dsData
         CharCase = ecNormal
-        MaxLength = 255
+        MaxLength = 0
         TabOrder = 5
       end
       object rgFeedback: TDBRadioGroup
@@ -316,7 +316,7 @@ object frmMain: TfrmMain
       end
       object cbbEmpfName: TDBComboBox
         Left = 108
-        Height = 31
+        Height = 29
         Top = 38
         Width = 200
         AutoComplete = True
@@ -329,7 +329,7 @@ object frmMain: TfrmMain
       end
       object cbbEmpfMail: TDBComboBox
         Left = 424
-        Height = 31
+        Height = 29
         Top = 38
         Width = 200
         AutoComplete = True
@@ -342,7 +342,7 @@ object frmMain: TfrmMain
       end
       object cbbJobTitel: TDBComboBox
         Left = 424
-        Height = 31
+        Height = 29
         Top = 72
         Width = 200
         AutoComplete = True
@@ -387,7 +387,7 @@ object frmMain: TfrmMain
       end
       object cbbAnspr: TDBComboBox
         Left = 108
-        Height = 31
+        Height = 29
         Top = 72
         Width = 200
         AutoComplete = True
@@ -401,8 +401,8 @@ object frmMain: TfrmMain
     end
     object tsActions: TTabSheet
       Caption = 'Aktivitäten'
-      ClientHeight = 473
-      ClientWidth = 648
+      ClientHeight = 467
+      ClientWidth = 652
       ImageIndex = 2
       object grdLog: TDBGrid
         Left = 0
@@ -527,8 +527,8 @@ object frmMain: TfrmMain
     end
     object tsDokumente: TTabSheet
       Caption = 'Dokumente'
-      ClientHeight = 473
-      ClientWidth = 648
+      ClientHeight = 467
+      ClientWidth = 652
       ImageIndex = 7
       object navDocs: TDBNavigator
         Left = 0
@@ -747,8 +747,8 @@ object frmMain: TfrmMain
   end
   object sbInfo: TStatusBar
     Left = 0
-    Height = 21
-    Top = 531
+    Height = 23
+    Top = 529
     Width = 658
     Panels = <    
       item

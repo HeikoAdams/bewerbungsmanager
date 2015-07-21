@@ -24,7 +24,7 @@ uses
   Classes, SysUtils; 
 
 const
-  nVersion = 100;
+  nVersion = 190;
   nInitVer = 100; //Konstante für die Initialisierung der Datenbank. NICHT ÄNDERN!
   {$IFDEF Windows}CRLF = #13#10;{$endif}
 
@@ -70,7 +70,8 @@ resourcestring
   rsIgnoredTxt = 'Status der Bewerbung auf "Ignoriert" geändert';
   rsRecalcWVL = 'Soll das Wiedervolagedatum neu berechnet werden?';
   rsWVL = 'Wiedervolage';
-
+  rsUnknowUser = 'Der angegebene Benutzer existiert nicht oder wurde deaktiviert!';
+  rsTooManyLogin = 'Sie haben 3x eine falsches Login angegeben. Die Anwendung wird beendet!';
 implementation
 
 end.
