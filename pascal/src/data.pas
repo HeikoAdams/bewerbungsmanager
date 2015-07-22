@@ -214,9 +214,12 @@ begin
   if not qryBenutzer.Active then
   begin
     qryBenutzer.Open;
-    Application.CreateForm(TfrmLogin, frmLogin);
-    frmLogin.ShowModal;
-    FreeAndNil(frmLogin);
+    if (frmMain.UserID = 0) then
+    begin
+      Application.CreateForm(TfrmLogin, frmLogin);
+      frmLogin.ShowModal;
+      FreeAndNil(frmLogin);
+    end;
   end;
 
   if not qryBewerbungen.Active then
@@ -595,6 +598,8 @@ begin
   begin
     FieldByName('DATUM').AsDateTime := frmMain.edtDatum.Date;
     FieldByName('WVL').AsDateTime := frmMain.edtWVL.Date;
+    if (FieldByName('REFNR').AsString <> EmptyStr) then
+      FieldByName('REFNR').AsString := trim(FieldByName('REFNR').AsString);
   end;
 end;
 
