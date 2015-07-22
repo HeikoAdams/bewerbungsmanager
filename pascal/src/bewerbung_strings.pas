@@ -73,6 +73,7 @@ resourcestring
   rsUnknowUser = 'Der angegebene Benutzer existiert nicht oder wurde deaktiviert!';
   rsTooManyLogin = 'Sie haben 3x eine falsches Login angegeben. Die Anwendung wird beendet!';
   rsUSER = 'BENUTZER';
+  rsUserExists = 'Der angegbene Benutzer existiert bereits!';
 implementation
 
 end.

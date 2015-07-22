@@ -22,7 +22,7 @@
       <MajorVersionNr Value="1"/>
       <MinorVersionNr Value="9"/>
       <RevisionNr Value="3"/>
-      <BuildNr Value="161"/>
+      <BuildNr Value="162"/>
       <Language Value="0407"/>
       <Attributes pvaPreRelease="True"/>
       <StringTable CompanyName="Heiko Adams" FileDescription="Verwaltung für Bewerbungen" InternalName="bewerbungen" LegalCopyright="2015 Heiko Adams" OriginalFilename="bewerbungen" ProductName="Bewerbungsverwaltung" ProductVersion="1.9.2"/>
@@ -58,12 +58,12 @@
         <PackageName Value="LCL"/>
       </Item4>
     </RequiredPackages>
-    <Units Count="74">
+    <Units Count="75">
       <Unit0>
         <Filename Value="bewerbungen.lpr"/>
         <IsPartOfProject Value="True"/>
         <CursorPos X="13" Y="11"/>
-        <UsageCount Value="121"/>
+        <UsageCount Value="123"/>
       </Unit0>
       <Unit1>
         <Filename Value="mainwin.pas"/>
@@ -71,9 +71,9 @@
         <ComponentName Value="frmMain"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <TopLine Value="661"/>
+        <TopLine Value="662"/>
         <CursorPos X="30" Y="682"/>
-        <UsageCount Value="121"/>
+        <UsageCount Value="123"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -172,8 +172,8 @@
       <Unit17>
         <Filename Value="/usr/share/fpcsrc/packages/fcl-db/src/sqldb/sqldb.pp"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="329"/>
-        <CursorPos X="11" Y="865"/>
+        <TopLine Value="427"/>
+        <CursorPos X="3" Y="437"/>
         <UsageCount Value="10"/>
       </Unit17>
       <Unit18>
@@ -189,11 +189,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="Data"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="4"/>
-        <TopLine Value="210"/>
-        <CursorPos Y="220"/>
-        <UsageCount Value="92"/>
+        <TopLine Value="95"/>
+        <CursorPos X="12" Y="98"/>
+        <UsageCount Value="94"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit19>
@@ -232,8 +231,8 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="3"/>
         <TopLine Value="56"/>
-        <CursorPos X="9" Y="75"/>
-        <UsageCount Value="89"/>
+        <CursorPos X="15" Y="76"/>
+        <UsageCount Value="91"/>
         <Loaded Value="True"/>
       </Unit25>
       <Unit26>
@@ -285,7 +284,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="1"/>
         <CursorPos Y="16"/>
-        <UsageCount Value="77"/>
+        <UsageCount Value="79"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit33>
@@ -304,7 +303,7 @@
         <EditorIndex Value="2"/>
         <TopLine Value="4"/>
         <CursorPos X="65" Y="24"/>
-        <UsageCount Value="75"/>
+        <UsageCount Value="77"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit35>
@@ -464,7 +463,7 @@
         <ResourceBaseClass Value="Form"/>
         <TopLine Value="15"/>
         <CursorPos X="66" Y="25"/>
-        <UsageCount Value="56"/>
+        <UsageCount Value="58"/>
       </Unit62>
       <Unit63>
         <Filename Value="viewfilter.pas"/>
@@ -472,7 +471,7 @@
         <ComponentName Value="frmViewFilter"/>
         <ResourceBaseClass Value="Form"/>
         <CursorPos Y="16"/>
-        <UsageCount Value="56"/>
+        <UsageCount Value="58"/>
       </Unit63>
       <Unit64>
         <Filename Value="/usr/share/fpcsrc/rtl/objpas/dateutils.pp"/>
@@ -520,9 +519,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="5"/>
-        <TopLine Value="41"/>
-        <CursorPos X="85" Y="45"/>
-        <UsageCount Value="25"/>
+        <TopLine Value="37"/>
+        <CursorPos X="50" Y="47"/>
+        <UsageCount Value="27"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit71>
@@ -540,127 +539,140 @@
         <CursorPos Y="2728"/>
         <UsageCount Value="11"/>
       </Unit73>
+      <Unit74>
+        <Filename Value="newuser.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmNewUser"/>
+        <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="66"/>
+        <CursorPos Y="79"/>
+        <UsageCount Value="22"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit74>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="data.pas"/>
-        <Caret Line="554" Column="13" TopLine="538"/>
+        <Filename Value="newuser.pas"/>
+        <Caret Line="76" Column="19" TopLine="57"/>
       </Position1>
       <Position2>
-        <Filename Value="data.pas"/>
-        <Caret Line="555" Column="13" TopLine="539"/>
+        <Filename Value="newuser.pas"/>
+        <Caret Line="83" TopLine="68"/>
       </Position2>
       <Position3>
-        <Filename Value="data.pas"/>
-        <Caret Line="556" Column="13" TopLine="531"/>
+        <Filename Value="newuser.pas"/>
+        <Caret Line="50" TopLine="40"/>
       </Position3>
       <Position4>
-        <Filename Value="data.pas"/>
-        <Caret Line="557" Column="13" TopLine="541"/>
+        <Filename Value="newuser.pas"/>
+        <Caret Line="52" TopLine="40"/>
       </Position4>
       <Position5>
-        <Filename Value="data.pas"/>
-        <Caret Line="68" Column="25" TopLine="59"/>
+        <Filename Value="newuser.pas"/>
+        <Caret Line="53" TopLine="40"/>
       </Position5>
       <Position6>
-        <Filename Value="data.pas"/>
-        <Caret Line="220" TopLine="203"/>
+        <Filename Value="newuser.pas"/>
+        <Caret Line="55" TopLine="40"/>
       </Position6>
       <Position7>
-        <Filename Value="data.pas"/>
-        <Caret Line="382" Column="39" TopLine="366"/>
+        <Filename Value="newuser.pas"/>
+        <Caret Line="57" TopLine="40"/>
       </Position7>
       <Position8>
-        <Filename Value="data.pas"/>
-        <Caret Line="220" TopLine="210"/>
+        <Filename Value="newuser.pas"/>
+        <Caret Line="58" TopLine="42"/>
       </Position8>
       <Position9>
-        <Filename Value="data.pas"/>
-        <Caret Line="370" TopLine="360"/>
+        <Filename Value="newuser.pas"/>
+        <Caret Line="61" TopLine="45"/>
       </Position9>
       <Position10>
-        <Filename Value="data.pas"/>
-        <Caret Line="371" TopLine="360"/>
+        <Filename Value="newuser.pas"/>
+        <Caret Line="63" TopLine="47"/>
       </Position10>
       <Position11>
-        <Filename Value="data.pas"/>
-        <Caret Line="373" TopLine="360"/>
+        <Filename Value="newuser.pas"/>
+        <Caret Line="64" TopLine="48"/>
       </Position11>
       <Position12>
-        <Filename Value="data.pas"/>
-        <Caret Line="375" TopLine="360"/>
+        <Filename Value="newuser.pas"/>
+        <Caret Line="66" TopLine="50"/>
       </Position12>
       <Position13>
-        <Filename Value="data.pas"/>
-        <Caret Line="377" TopLine="360"/>
+        <Filename Value="newuser.pas"/>
+        <Caret Line="67" Column="31" TopLine="51"/>
       </Position13>
       <Position14>
-        <Filename Value="data.pas"/>
-        <Caret Line="379" TopLine="362"/>
+        <Filename Value="newuser.pas"/>
+        <Caret Line="50" TopLine="39"/>
       </Position14>
       <Position15>
-        <Filename Value="data.pas"/>
-        <Caret Line="381" TopLine="364"/>
+        <Filename Value="newuser.pas"/>
+        <Caret Line="52" TopLine="39"/>
       </Position15>
       <Position16>
-        <Filename Value="data.pas"/>
-        <Caret Line="382" TopLine="365"/>
+        <Filename Value="newuser.pas"/>
+        <Caret Line="53" TopLine="39"/>
       </Position16>
       <Position17>
-        <Filename Value="data.pas"/>
-        <Caret Line="386" TopLine="377"/>
+        <Filename Value="newuser.pas"/>
+        <Caret Line="55" TopLine="39"/>
       </Position17>
       <Position18>
-        <Filename Value="data.pas"/>
-        <Caret Line="388" TopLine="377"/>
+        <Filename Value="newuser.pas"/>
+        <Caret Line="57" TopLine="40"/>
       </Position18>
       <Position19>
-        <Filename Value="data.pas"/>
-        <Caret Line="390" TopLine="377"/>
+        <Filename Value="newuser.pas"/>
+        <Caret Line="58" TopLine="42"/>
       </Position19>
       <Position20>
-        <Filename Value="data.pas"/>
-        <Caret Line="392" TopLine="377"/>
+        <Filename Value="newuser.pas"/>
+        <Caret Line="61" TopLine="45"/>
       </Position20>
       <Position21>
-        <Filename Value="data.pas"/>
-        <Caret Line="393" TopLine="377"/>
+        <Filename Value="newuser.pas"/>
+        <Caret Line="63" TopLine="47"/>
       </Position21>
       <Position22>
-        <Filename Value="data.pas"/>
-        <Caret Line="395" TopLine="379"/>
+        <Filename Value="newuser.pas"/>
+        <Caret Line="64" TopLine="48"/>
       </Position22>
       <Position23>
-        <Filename Value="data.pas"/>
-        <Caret Line="397" TopLine="381"/>
+        <Filename Value="newuser.pas"/>
+        <Caret Line="66" TopLine="50"/>
       </Position23>
       <Position24>
-        <Filename Value="data.pas"/>
-        <Caret Line="398" TopLine="382"/>
+        <Filename Value="newuser.pas"/>
+        <Caret Line="67" TopLine="51"/>
       </Position24>
       <Position25>
-        <Filename Value="data.pas"/>
-        <Caret Line="401" TopLine="385"/>
+        <Filename Value="newuser.pas"/>
+        <Caret Line="70" TopLine="54"/>
       </Position25>
       <Position26>
-        <Filename Value="data.pas"/>
-        <Caret Line="402" TopLine="386"/>
+        <Filename Value="newuser.pas"/>
+        <Caret Line="71" TopLine="55"/>
       </Position26>
       <Position27>
-        <Filename Value="data.pas"/>
-        <Caret Line="404" TopLine="388"/>
+        <Filename Value="newuser.pas"/>
+        <Caret Line="74" TopLine="58"/>
       </Position27>
       <Position28>
-        <Filename Value="data.pas"/>
-        <Caret Line="406" TopLine="390"/>
+        <Filename Value="newuser.pas"/>
+        <Caret Line="75" TopLine="59"/>
       </Position28>
       <Position29>
-        <Filename Value="data.pas"/>
-        <Caret Line="382" Column="34" TopLine="367"/>
+        <Filename Value="newuser.pas"/>
+        <Caret Line="76" TopLine="60"/>
       </Position29>
       <Position30>
-        <Filename Value="login.pas"/>
-        <Caret Line="45" Column="85" TopLine="41"/>
+        <Filename Value="newuser.pas"/>
+        <Caret Line="77" TopLine="61"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>

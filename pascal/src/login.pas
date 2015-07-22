@@ -17,9 +17,11 @@ type
     Label1: TLabel;
     lePassword: TLabeledEdit;
     cbUserName: TComboBox;
+    SpeedButton1: TSpeedButton;
     procedure btnLoginClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure cbUserNameChange(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
   private
     { private declarations }
     FLoginError: Integer;
@@ -32,7 +34,7 @@ var
 
 implementation
 
-uses data, mainwin, variants, db, bewerbung_strings, LCLType;
+uses data, mainwin, variants, db, bewerbung_strings, LCLType, md5, newuser;
 
 {$R *.lfm}
 
@@ -42,7 +44,8 @@ procedure TfrmLogin.btnLoginClick(Sender: TObject);
 begin
   if (FLoginError <= 3) then
   begin
-    if dmBewerbungen.qryBenutzer.Locate('NAME;PWD;ACTIVE', VarArrayOf([cbUserName.Text, lePassword.Text, 1]), [loCaseInsensitive]) then
+    if dmBewerbungen.qryBenutzer.Locate('NAME;PWD;ACTIVE', VarArrayOf([cbUserName.Text,
+      MD5Print(MD5String(lePassword.Text)), 1]), [loCaseInsensitive]) then
     begin
       frmMain.UserID:=dmBewerbungen.qryBenutzer.FieldByName('UID').AsInteger;
       frmLogin.Close;
@@ -68,6 +71,13 @@ end;
 procedure TfrmLogin.cbUserNameChange(Sender: TObject);
 begin
   btnLogin.Enabled:=(Length(cbUserName.Text) > 0);
+end;
+
+procedure TfrmLogin.SpeedButton1Click(Sender: TObject);
+begin
+  Application.CreateForm(TfrmNewUser, frmNewUser);
+  if (frmNewUser.ShowModal = mrOK) then
+    cbUserName.Items.Add(frmNewUser.leUsername.Text);
 end;
 
 end.

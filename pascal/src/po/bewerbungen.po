@@ -153,6 +153,10 @@ msgstr ""
 msgid "BENUTZER"
 msgstr ""
 
+#: bewerbung_strings.rsuserexists
+msgid "Der angegbene Benutzer existiert bereits!"
+msgstr ""
+
 #: bewerbung_strings.rsusrbinxdgope
 msgid "%s/xdg-open \"%s\""
 msgstr ""
@@ -319,7 +323,12 @@ msgid "Benutzername"
 msgstr ""
 
 #: tfrmlogin.lepassword.editlabel.caption
+msgctxt "tfrmlogin.lepassword.editlabel.caption"
 msgid "Kennwort"
+msgstr ""
+
+#: tfrmlogin.speedbutton1.hint
+msgid "Einen neuen Benutzer anlegen"
 msgstr ""
 
 #: tfrmmain.actabsage.caption
@@ -695,6 +704,25 @@ msgstr ""
 
 #: tfrmmain.tsdokumente.caption
 msgid "Dokumente"
+msgstr ""
+
+#: tfrmnewuser.caption
+msgid "neuen Benutzer anlegen"
+msgstr ""
+
+#: tfrmnewuser.lepassword.editlabel.caption
+msgctxt "TFRMNEWUSER.LEPASSWORD.EDITLABEL.CAPTION"
+msgid "Kennwort"
+msgstr ""
+
+#: tfrmnewuser.lepassword2.editlabel.caption
+msgctxt "TFRMNEWUSER.LEPASSWORD2.EDITLABEL.CAPTION"
+msgid "Kennwort Wdh."
+msgstr ""
+
+#: tfrmnewuser.leusername.editlabel.caption
+msgctxt "TFRMNEWUSER.LEUSERNAME.EDITLABEL.CAPTION"
+msgid "Benutzername"
 msgstr ""
 
 #: tfrmsettings.bitbtn1.caption
