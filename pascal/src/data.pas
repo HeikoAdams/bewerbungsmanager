@@ -216,6 +216,7 @@ begin
     qryBenutzer.Open;
     Application.CreateForm(TfrmLogin, frmLogin);
     frmLogin.ShowModal;
+    FreeAndNil(frmLogin);
   end;
 
   if not qryBewerbungen.Active then
@@ -321,6 +322,7 @@ begin
               Length(qryBewerbungen.SQL.Text) - nWherePos);
       SQL.Add(sWhere);
     end;
+
     Params.ParamByName('pUserID').AsInteger:= frmMain.UserID;
     Open;
     Result := FieldByName('ANZAHL').AsInteger;

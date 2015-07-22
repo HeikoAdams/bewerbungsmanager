@@ -38,7 +38,6 @@ object dmBewerbungen: TdmBewerbungen
     top = 80
   end
   object qryBewerbungen: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'ID'
@@ -158,7 +157,7 @@ object dmBewerbungen: TdmBewerbungen
       item
         DataType = ftUnknown
         Name = 'pUserID'
-        ParamType = ptUnknown
+        ParamType = ptInput
       end>
     left = 16
     top = 144

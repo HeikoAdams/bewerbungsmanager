@@ -18,6 +18,7 @@ type
     lePassword: TLabeledEdit;
     procedure btnLoginClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure leUserNameChange(Sender: TObject);
   private
     { private declarations }
     FLoginError: Integer;
@@ -48,12 +49,12 @@ begin
     else
     begin
       Inc(FLoginError);
-      Application.MessageBox(PChar(rsFehler), PChar(rsUnknowUser), MB_ICONWARNING + MB_OK);
+      Application.MessageBox(PChar(rsUnknowUser), PChar(rsFehler), MB_ICONWARNING + MB_OK);
     end;
   end
   else
   begin
-    Application.MessageBox(PChar(rsFehler), PChar(rsUnknowUser), MB_ICONWARNING + MB_OK);
+    Application.MessageBox(PChar(rsTooManyLogin), PChar(rsFehler), MB_ICONWARNING + MB_OK);
     Application.Terminate;
   end;
 end;
@@ -61,6 +62,11 @@ end;
 procedure TfrmLogin.FormCreate(Sender: TObject);
 begin
   FLoginError := 0;
+end;
+
+procedure TfrmLogin.leUserNameChange(Sender: TObject);
+begin
+  btnLogin.Enabled:=(Length(leUserName.Text) > 0);
 end;
 
 end.

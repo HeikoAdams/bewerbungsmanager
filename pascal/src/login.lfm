@@ -32,6 +32,7 @@ object frmLogin: TfrmLogin
     LabelPosition = lpLeft
     LabelSpacing = 6
     TabOrder = 0
+    OnChange = leUserNameChange
   end
   object lePassword: TLabeledEdit
     Left = 112
@@ -62,6 +63,7 @@ object frmLogin: TfrmLogin
     Width = 75
     Caption = 'Login'
     Default = True
+    Enabled = False
     Glyph.Data = {
       36040000424D3604000000000000360000002800000010000000100000000100
       2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
