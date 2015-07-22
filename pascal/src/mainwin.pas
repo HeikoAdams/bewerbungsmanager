@@ -61,15 +61,14 @@ type
     alFilter: TActionList;
     btnFileOpen: TBitBtn;
     btnBrowse: TBitBtn;
-    CheckListBox1: TCheckListBox;
-    chkVermittler: TDBCheckBox;
     cbFileType: TDBComboBox;
     cbbEmpfName: TDBComboBox;
     cbbEmpfMail: TDBComboBox;
     cbbJobTitel: TDBComboBox;
+    cbbAnspr: TDBComboBox;
     chkBefristet: TDBCheckBox;
     chkIgnoriert: TDBCheckBox;
-    cbbAnspr: TDBComboBox;
+    chkVermittler: TDBCheckBox;
     edtFile: TDBEdit;
     DBGrid1: TDBGrid;
     dlgFindCompany: TFindDialog;
