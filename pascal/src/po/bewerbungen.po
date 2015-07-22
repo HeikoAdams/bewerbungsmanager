@@ -149,6 +149,10 @@ msgstr ""
 msgid "Der angegebene Benutzer existiert nicht oder wurde deaktiviert!"
 msgstr ""
 
+#: bewerbung_strings.rsuser
+msgid "BENUTZER"
+msgstr ""
+
 #: bewerbung_strings.rsusrbinxdgope
 msgid "%s/xdg-open \"%s\""
 msgstr ""
@@ -309,12 +313,13 @@ msgctxt "tfrmlogin.caption"
 msgid "Login"
 msgstr ""
 
-#: tfrmlogin.lepassword.editlabel.caption
-msgid "Kennwort"
+#: tfrmlogin.label1.caption
+msgctxt "TFRMLOGIN.LABEL1.CAPTION"
+msgid "Benutzername"
 msgstr ""
 
-#: tfrmlogin.leusername.editlabel.caption
-msgid "Benutzername"
+#: tfrmlogin.lepassword.editlabel.caption
+msgid "Kennwort"
 msgstr ""
 
 #: tfrmmain.actabsage.caption

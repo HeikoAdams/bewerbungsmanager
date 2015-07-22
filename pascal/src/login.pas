@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  Buttons;
+  Buttons, StdCtrls;
 
 type
 
@@ -14,11 +14,12 @@ type
 
   TfrmLogin = class(TForm)
     btnLogin: TBitBtn;
-    leUserName: TLabeledEdit;
+    Label1: TLabel;
     lePassword: TLabeledEdit;
+    cbUserName: TComboBox;
     procedure btnLoginClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure leUserNameChange(Sender: TObject);
+    procedure cbUserNameChange(Sender: TObject);
   private
     { private declarations }
     FLoginError: Integer;
@@ -41,7 +42,7 @@ procedure TfrmLogin.btnLoginClick(Sender: TObject);
 begin
   if (FLoginError <= 3) then
   begin
-    if dmBewerbungen.qryBenutzer.Locate('NAME;PWD;ACTIVE', VarArrayOf([leUserName.Text, lePassword.Text, 1]), [loCaseInsensitive]) then
+    if dmBewerbungen.qryBenutzer.Locate('NAME;PWD;ACTIVE', VarArrayOf([cbUserName.Text, lePassword.Text, 1]), [loCaseInsensitive]) then
     begin
       frmMain.UserID:=dmBewerbungen.qryBenutzer.FieldByName('UID').AsInteger;
       frmLogin.Close;
@@ -64,9 +65,9 @@ begin
   FLoginError := 0;
 end;
 
-procedure TfrmLogin.leUserNameChange(Sender: TObject);
+procedure TfrmLogin.cbUserNameChange(Sender: TObject);
 begin
-  btnLogin.Enabled:=(Length(leUserName.Text) > 0);
+  btnLogin.Enabled:=(Length(cbUserName.Text) > 0);
 end;
 
 end.

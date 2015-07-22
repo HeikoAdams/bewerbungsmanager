@@ -217,6 +217,7 @@ begin
     if (frmMain.UserID = 0) then
     begin
       Application.CreateForm(TfrmLogin, frmLogin);
+      UpdateList(rsUSER, frmLogin.cbUserName.Items);
       frmLogin.ShowModal;
       FreeAndNil(frmLogin);
     end;
@@ -377,6 +378,8 @@ begin
     sSQL := 'SELECT DISTINCT TYP VALUE FROM LOG'
   else if (UpperCase(aType) = rsRECEIPENTS) then
     sSQL := 'SELECT VALUE FROM V_RECEIPENTS'
+  else if (UpperCase(aType) = rsUSER) then
+    sSQL := 'SELECT NAME AS VALUE FROM BENUTZER'
   else
     sSQL := EmptyStr;
 
