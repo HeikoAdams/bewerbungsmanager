@@ -272,6 +272,11 @@ msgctxt "TFRMDATEFILTER.EDTDATEDUE.OKCAPTION"
 msgid "OK"
 msgstr ""
 
+#: tfrmdatefilter.edtdatedue.text
+msgctxt "TFRMDATEFILTER.EDTDATEDUE.TEXT"
+msgid "  .  .    "
+msgstr ""
+
 #: tfrmdatefilter.edtdatefrom.cancelcaption
 msgctxt "TFRMDATEFILTER.EDTDATEFROM.CANCELCAPTION"
 msgid "Cancel"
@@ -280,6 +285,11 @@ msgstr ""
 #: tfrmdatefilter.edtdatefrom.okcaption
 msgctxt "TFRMDATEFILTER.EDTDATEFROM.OKCAPTION"
 msgid "OK"
+msgstr ""
+
+#: tfrmdatefilter.edtdatefrom.text
+msgctxt "TFRMDATEFILTER.EDTDATEFROM.TEXT"
+msgid "  .  .    "
 msgstr ""
 
 #: tfrmdatefilter.label1.caption
@@ -499,6 +509,21 @@ msgctxt "tfrmmain.edtdatum.text"
 msgid "20.05.2015"
 msgstr ""
 
+#: tfrmmain.edtende.cancelcaption
+msgctxt "TFRMMAIN.EDTENDE.CANCELCAPTION"
+msgid "Cancel"
+msgstr ""
+
+#: tfrmmain.edtende.okcaption
+msgctxt "TFRMMAIN.EDTENDE.OKCAPTION"
+msgid "OK"
+msgstr ""
+
+#: tfrmmain.edtende.text
+msgctxt "TFRMMAIN.EDTENDE.TEXT"
+msgid "  .  .    "
+msgstr ""
+
 #: tfrmmain.edtlogdatum.cancelcaption
 msgctxt "TFRMMAIN.EDTLOGDATUM.CANCELCAPTION"
 msgid "Cancel"
@@ -525,6 +550,7 @@ msgid "OK"
 msgstr ""
 
 #: tfrmmain.edtwvl.text
+msgctxt "tfrmmain.edtwvl.text"
 msgid "  .  .    "
 msgstr ""
 
@@ -540,12 +566,12 @@ msgstr ""
 
 #: tfrmmain.grdbewerbungen.columns[2].title.caption
 msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[2].TITLE.CAPTION"
-msgid "Empfänger"
+msgid "Bewerb. bis"
 msgstr ""
 
 #: tfrmmain.grdbewerbungen.columns[3].title.caption
 msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[3].TITLE.CAPTION"
-msgid "Mail"
+msgid "Empfänger"
 msgstr ""
 
 #: tfrmmain.grdbewerbungen.columns[4].title.caption
@@ -555,21 +581,26 @@ msgstr ""
 
 #: tfrmmain.grdbewerbungen.columns[5].title.caption
 msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[5].TITLE.CAPTION"
-msgid "Ref.Nr"
+msgid "Mail"
 msgstr ""
 
 #: tfrmmain.grdbewerbungen.columns[6].title.caption
 msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[6].TITLE.CAPTION"
-msgid "Personalvermittler"
+msgid "Ref.Nr"
 msgstr ""
 
 #: tfrmmain.grdbewerbungen.columns[7].title.caption
 msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[7].TITLE.CAPTION"
-msgid "befristet"
+msgid "Personalvermittler"
 msgstr ""
 
 #: tfrmmain.grdbewerbungen.columns[8].title.caption
 msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[8].TITLE.CAPTION"
+msgid "befristet"
+msgstr ""
+
+#: tfrmmain.grdbewerbungen.columns[9].title.caption
+msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[9].TITLE.CAPTION"
 msgid "Ignoriert"
 msgstr ""
 
@@ -606,6 +637,10 @@ msgstr ""
 
 #: tfrmmain.lblempfmail.caption
 msgid "Mail-Adresse"
+msgstr ""
+
+#: tfrmmain.lblfristende.caption
+msgid "Bewerbung bis"
 msgstr ""
 
 #: tfrmmain.lbljobtitel.caption

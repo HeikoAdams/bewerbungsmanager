@@ -293,7 +293,7 @@ begin
     begin
       Clear;
 
-      Add('SELECT DATUM, WVL, NAME, MAIL, JOBTITEL, REFNR, (RESULT = 1) AS ZUSAGE, (RESULT = 2) AS ABSAGE, (RESULT = 4) AS STILL');
+      Add('SELECT DATUM, WVL, BISDATUM, NAME, MAIL, JOBTITEL, REFNR, (RESULT = 1) AS ZUSAGE, (RESULT = 2) AS ABSAGE, (RESULT = 4) AS IGNORIERT');
       Add('FROM BEWERBUNGEN');
 
       if not (aWhere = EmptyStr) then
@@ -301,7 +301,8 @@ begin
 
       Add('ORDER BY DATUM DESC, NAME ');
     end;
-
+    Params.ParamByName('pUserID').AsInteger:= frmMain.UserID;
+    ShowMessage(aWhere);
     Open;
   end;
 end;
@@ -571,6 +572,7 @@ begin
 
     frmMain.edtDatum.Date := FieldByName('DATUM').AsDateTime;
     frmMain.edtWVL.Date := FieldByName('WVL').AsDateTime;
+    frmMain.edtEnde.Date := FieldByName('BISDATUM').AsDateTime;
     frmMain.sbInfo.Panels[1].Text := FieldByName('Name').AsString;
     nID := FieldByName('ID').AsInteger;
   end;
@@ -601,6 +603,8 @@ begin
   begin
     FieldByName('DATUM').AsDateTime := frmMain.edtDatum.Date;
     FieldByName('WVL').AsDateTime := frmMain.edtWVL.Date;
+    if (frmMain.edtEnde.Text <> '  .  .    ') then
+      FieldByName('BISDATUM').AsDateTime := frmMain.edtEnde.Date;
     if (FieldByName('REFNR').AsString <> EmptyStr) then
       FieldByName('REFNR').AsString := trim(FieldByName('REFNR').AsString);
   end;

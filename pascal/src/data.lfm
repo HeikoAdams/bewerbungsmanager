@@ -112,6 +112,7 @@ object dmBewerbungen: TdmBewerbungen
     top = 144
   end
   object qryCSVExport: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'DATUM'
@@ -121,6 +122,12 @@ object dmBewerbungen: TdmBewerbungen
       end    
       item
         Name = 'WVL'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'BISDATUM'
         DataType = ftDateTime
         Precision = -1
         Size = 0
@@ -160,12 +167,18 @@ object dmBewerbungen: TdmBewerbungen
         DataType = ftLargeint
         Precision = -1
         Size = 0
+      end    
+      item
+        Name = 'IGNORIERT'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
       end>
     Database = conData
     Transaction = traData
     ReadOnly = True
     SQL.Strings = (
-      'SELECT DATUM, WVL, NAME, MAIL, JOBTITEL, REFNR, (RESULT = 1) AS ZUSAGE, (RESULT = 2) AS ABSAGE'
+      'SELECT DATUM, WVL, BISDATUM, NAME, MAIL, JOBTITEL, REFNR, (RESULT = 1) AS ZUSAGE, (RESULT = 2) AS ABSAGE, (RESULT = 4) AS IGNORIERT'
       'FROM BEWERBUNGEN'
       'ORDER BY DATUM DESC, NAME'
     )

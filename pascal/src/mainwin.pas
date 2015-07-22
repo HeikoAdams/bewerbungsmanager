@@ -21,9 +21,9 @@ unit mainwin;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls,
+  Classes, SysUtils, FileUtil, DBDateTimePicker, Forms, Controls,
   Graphics, Dialogs, Grids, ComCtrls, ExtCtrls, StdCtrls, EditBtn,
-  DBGrids, Menus, ActnList, IniFiles, DBCtrls, Buttons;
+  DBGrids, Menus, ActnList, IniFiles, DBCtrls, Buttons, CheckLst;
 
 type
 
@@ -61,6 +61,7 @@ type
     alFilter: TActionList;
     btnFileOpen: TBitBtn;
     btnBrowse: TBitBtn;
+    CheckListBox1: TCheckListBox;
     chkVermittler: TDBCheckBox;
     cbFileType: TDBComboBox;
     cbbEmpfName: TDBComboBox;
@@ -73,7 +74,9 @@ type
     DBGrid1: TDBGrid;
     dlgFindCompany: TFindDialog;
     cbbLogTyp: TDBComboBox;
+    edtEnde: TDateEdit;
     Label1: TLabel;
+    lblFristEnde: TLabel;
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
     MenuItem5: TMenuItem;
@@ -181,6 +184,7 @@ type
       Column: TColumn; AState: TGridDrawState);
     procedure dlgFindCompanyFind(Sender: TObject);
     procedure edtDatumEditingDone(Sender: TObject);
+    procedure edtEndeEditingDone(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure grdBewerbungenDblClick(Sender: TObject);
     procedure grdBewerbungenPrepareCanvas(Sender: TObject; DataCol: integer;
@@ -575,10 +579,22 @@ end;
 
 procedure TfrmMain.edtDatumEditingDone(Sender: TObject);
 begin
-  if (dmBewerbungen.dsData.State in [dsEdit]) and (edtWVL.Date > 0) and edtDatum.Modified then
+  if (dmBewerbungen.dsData.State in [dsInsert, dsEdit]) and (edtWVL.Text <> '  .  .    ')
+    and (edtDatum.Date <> dmBewerbungen.qryBewerbungen.FieldByName('DATUM').AsDateTime) then
      if (Application.MessageBox(PChar(rsRecalcWVL), PChar(rsWVL), MB_YESNO or
         MB_DEFBUTTON2 or MB_ICONQUESTION) = ID_YES) then
-        edtWVL.Date := IncDay(edtWVL.Date, ConfigFile.ReadInteger('DEFAULTS', 'WVL', 14));
+        if (edtEnde.Text <> '  .  .    ') then
+          edtWVL.Date := IncDay(edtEnde.Date, ConfigFile.ReadInteger('DEFAULTS', 'WVL', 14))
+        else
+          edtWVL.Date := IncDay(edtWVL.Date, ConfigFile.ReadInteger('DEFAULTS', 'WVL', 14));
+  (Sender as TDateEdit).ValidateEdit;
+end;
+
+procedure TfrmMain.edtEndeEditingDone(Sender: TObject);
+begin
+  if (dmBewerbungen.dsData.State in [dsInsert, dsEdit]) and (edtEnde.Text <> '  .  .    ')
+    and (edtEnde.Date <> dmBewerbungen.qryBewerbungen.FieldByName('BISDATUM').AsDateTime) then
+      edtWVL.Date := IncDay(edtEnde.Date, ConfigFile.ReadInteger('DEFAULTS', 'WVL', 14));
   (Sender as TDateEdit).ValidateEdit;
 end;
 
@@ -673,8 +689,6 @@ var
 begin
   dtDateFrom := date;
   dtDateDue := date;
-  sDateFrom := DateToStr(dtDateFrom);
-  sDateDue := DateToStr(dtDateDue);
 
   Application.CreateForm(TfrmExportDate, frmExportDate);
 
@@ -703,8 +717,8 @@ begin
     frmExportDate.GetDateRangeTxt(sDateFrom, sDateDue);
     FreeAndNil(frmExportDate);
     AssignFile(ExportFile, sFileName);
-    dmBewerbungen.FetchExportData('WHERE UID = :pUserID AND strftime(''%d-%m-%Y'', DATUM)' +
-      Format(' BETWEEN ''%s'' AND ''%s''', [sDateFrom, sDateDue]));
+    dmBewerbungen.FetchExportData('WHERE UID = :pUserID AND strftime(''%s'', DATUM)' +
+      ' BETWEEN ' + sDateFrom + ' AND ' + sDateDue);
     nRecordCount := dmBewerbungen.qryCSVExport.RecordCount;
 
     if (nRecordCount = 0) then
@@ -735,7 +749,10 @@ begin
           if (Fields[nCount].DataType = ftString) then
             sLine := sLine + '"' + Fields[nCount].DisplayText + '";'
           else if (Fields[nCount].DataType in [ftDate, ftDateTime]) then
-            sLine := sLine + FormatDateTime('dd.mm.yyyy', Fields[nCount].Value) + ';'
+            if (Fields[nCount].Value > 0) then
+              sLine := sLine + FormatDateTime('dd.mm.yyyy', Fields[nCount].Value) + ';'
+            else
+              sLine := sLine + ';'
           else
             sLine := sLine + Fields[nCount].DisplayText + ';';
 

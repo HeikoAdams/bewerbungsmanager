@@ -82,8 +82,8 @@ end;
 
 procedure TfrmDateFilter.GetDateRangeTxt(var aDateFrom, aDateDue: String);
 begin
-  aDateFrom := edtDateFrom.Text;
-  aDateDue := edtDateDue.Text;
+  aDateFrom := 'strftime(''%s'',''' + FormatDateTime('yyyy-mm-dd',edtDateFrom.Date) + ''')';
+  aDateDue := 'strftime(''%s'',''' + FormatDateTime('yyyy-mm-dd',edtDateDue.Date) + ''')';
 end;
 
 end.
