@@ -1,6 +1,9 @@
 msgid "Bewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzen"
 msgstr "Content-Type: text/plain; charset=UTF-8"
 
+msgid "Bewerbung auf \"keine Antwort\" setzen"
+msgstr ""
+
 #: bewerbung_strings.rsaction
 msgid "ACTION"
 msgstr ""
@@ -304,11 +307,6 @@ msgstr ""
 
 #: tfrmexportdate.caption
 msgctxt "TFRMEXPORTDATE.CAPTION"
-msgid "Export-Zeitraum"
-msgstr ""
-
-#: tfrmexportdate.frmexportdate.caption
-msgctxt "tfrmexportdate.frmexportdate.caption"
 msgid "Export-Zeitraum"
 msgstr ""
 

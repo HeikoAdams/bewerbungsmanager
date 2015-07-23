@@ -112,7 +112,6 @@ object dmBewerbungen: TdmBewerbungen
     top = 144
   end
   object qryCSVExport: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'DATUM'
