@@ -3,22 +3,24 @@ inherited frmExportDate: TfrmExportDate
   FormStyle = fsNormal
   inherited edtDateFrom: TDateEdit
     Left = 88
-    Height = 29
+    Height = 31
     Width = 120
     Flat = True
   end
   inherited edtDateDue: TDateEdit
     Left = 88
-    Height = 29
+    Height = 31
     Width = 120
     Flat = True
   end
   inherited Label1: TLabel
     Height = 19
-    Width = 67
   end
   inherited Label2: TLabel
     Height = 19
-    Width = 62
+    Width = 59
+  end
+  inherited Button1: TButton
+    Default = True
   end
 end

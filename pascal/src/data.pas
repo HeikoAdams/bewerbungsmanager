@@ -297,7 +297,7 @@ begin
     begin
       Clear;
 
-      Add('SELECT DATUM, WVL, BISDATUM, NAME, MAIL, JOBTITEL, REFNR, (RESULT = 1) AS ZUSAGE, (RESULT = 2) AS ABSAGE, (RESULT = 4) AS IGNORIERT');
+      Add('SELECT DATUM, WVL, BISDATUM, NAME, MAIL, JOBTITEL, REFNR, (RESULT = 1) AS ZUSAGE, (RESULT = 2) AS ABSAGE, (RESULT = 4) AS KEINEANTWORT');
       Add('FROM BEWERBUNGEN');
 
       if not (aWhere = EmptyStr) then
@@ -306,7 +306,7 @@ begin
       Add('ORDER BY DATUM DESC, NAME ');
     end;
     Params.ParamByName('pUserID').AsInteger:= frmMain.UserID;
-    ShowMessage(aWhere);
+
     Open;
   end;
 end;
@@ -457,12 +457,15 @@ end;
 
 procedure TdmBewerbungen.WriteToLog(aID: Integer; aAction, aText: string);
 begin
-  qryLog.Append;
-  qryLog.FieldByName('Bewerbung').AsInteger := aID;
-  qryLog.FieldByName('Datum').AsDateTime := Date;
-  qryLog.FieldByName('Typ').AsString := aAction;
-  qryLog.FieldByName('Beschreibung').AsString:= aText;
-  qryLog.Post;
+  with qryLog do
+  begin
+    Append;
+    FieldByName('Bewerbung').AsInteger := aID;
+    FieldByName('Datum').AsDateTime := Date;
+    FieldByName('Typ').AsString := aAction;
+    FieldByName('Beschreibung').AsString:= aText;
+    Post;
+  end;
 end;
 
 procedure TdmBewerbungen.dsDataStateChange(Sender: TObject);
