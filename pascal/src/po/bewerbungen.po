@@ -1,4 +1,4 @@
-msgid "Bewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzen"
+msgid "Bewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzen"
 msgstr "Content-Type: text/plain; charset=UTF-8"
 
 #: bewerbung_strings.rsaction
@@ -111,6 +111,14 @@ msgstr ""
 
 #: bewerbung_strings.rsnoexportdata
 msgid "In dem angegebenen Zeitraum existieren keine Daten, die exportiert werden können"
+msgstr ""
+
+#: bewerbung_strings.rsolddatapurged
+msgid "%d alte Bewerbungen wurden aus dem System entfernt"
+msgstr ""
+
+#: bewerbung_strings.rspurging
+msgid "Datenbank-Bereinigung"
 msgstr ""
 
 #: bewerbung_strings.rsrecalcwvl
@@ -782,6 +790,10 @@ msgstr ""
 
 #: tfrmsettings.chkoldapplications.caption
 msgid "offene Bewerbungen nach 6 Wochen hervorheben"
+msgstr ""
+
+#: tfrmsettings.chkpurgedata.caption
+msgid "Bewerbungen nach 12 Monaten automatisch löschen"
 msgstr ""
 
 #: tfrmsettings.groupbox1.caption

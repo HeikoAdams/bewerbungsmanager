@@ -78,6 +78,8 @@ resourcestring
   rsTooManyLogin = 'Sie haben 3x eine falsches Login angegeben. Die Anwendung wird beendet!';
   rsUSER = 'BENUTZER';
   rsUserExists = 'Der angegbene Benutzer existiert bereits!';
+  rsOldDataPurged = '%d alte Bewerbungen wurden aus dem System entfernt';
+  rsPurging = 'Datenbank-Bereinigung';
 implementation
 
 end.

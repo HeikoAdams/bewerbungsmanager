@@ -91,7 +91,7 @@ var
 
 implementation
 
-uses mainwin, bewerbung_strings, Forms, Dialogs, login;
+uses mainwin, bewerbung_strings, Forms, Dialogs, login, LCLType;
 
 {$R *.lfm}
 
@@ -363,10 +363,39 @@ begin
 end;
 
 procedure TdmBewerbungen.conDataBeforeDisconnect(Sender: TObject);
+var
+  sMessage: string;
 begin
   qryBewerbungen.Close;
   qryLog.Close;
   qryDocuments.Close;
+
+  if (frmMain.ConfigFile.ReadBool('GENERAL', 'MODIFY-APPLICATION-RESULT', True)) then
+  begin
+    with TSQLQuery.Create(nil) do
+    begin
+      DataBase := conData;
+      Transaction := traData;
+
+      with SQL do
+      begin
+        Clear;
+        Add('DELETE FROM BEWERBUNGEN WHERE (UID = :pUserID) AND (DATE(DATUM) < DATE(''now'', ''-1 year'')) AND (RESULT <> 2);');
+      end;
+
+      Params.ParamByName('pUserID').AsInteger:= frmMain.UserID;
+
+      ExecSQL;
+      if (RowsAffected > 0) then
+      begin
+        sMessage:=Format(rsOldDataPurged, [RowsAffected]);
+        Application.MessageBox(PChar(sMessage), PChar(rsPurging), MB_ICONASTERISK or MB_OK);
+      end;
+      Close;
+      Free;
+    end;
+    traData.Commit;
+  end;
 end;
 
 procedure TdmBewerbungen.UpdateList(aType: string; aList: TStrings);

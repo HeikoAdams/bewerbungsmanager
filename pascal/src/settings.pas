@@ -35,9 +35,10 @@ type
   TfrmSettings = class(TForm)
     BitBtn1: TBitBtn;
     BitBtn2: TBitBtn;
+    chkPurgeData: TCheckBox;
     chkNewWVL: TCheckBox;
-    chkOldApplications: TCheckBox;
     chkNotifyWVL: TCheckBox;
+    chkOldApplications: TCheckBox;
     edtDocsDir: TDirectoryEdit;
     GroupBox1: TGroupBox;
     Label1: TLabel;
@@ -75,6 +76,7 @@ begin
        chkOldApplications.Checked := ReadBool('GENERAL', 'HIGHLIGHT OLD APPLICATIONS', false);
        edtDocsDir.Directory := ReadString('GENERAL', 'DOC DIR', GetUserDir);
        chkNewWVL.Checked := ReadBool('GENERAL', 'MODIFY-APPLICATION-RESULT', True);
+       chkPurgeData.Checked:=  ReadBool('GENERAL', 'PURGE-DATA', False);
   end;
 end;
 
@@ -86,6 +88,7 @@ begin
     begin
          WriteBool('GENERAL', 'NOTIFY-WVL', chkNotifyWVL.Checked);
          WriteBool('GENERAL', 'MODIFY-APPLICATION-RESULT', chkNewWVL.Checked);
+         WriteBool('GENERAL', 'PURGE-DATA', chkPurgeData.Checked);
          WriteInteger('DEFAULTS', 'TYP', rgTyp.ItemIndex);
          WriteInteger('DEFAULTS', 'MEDIUM', rgMedium.ItemIndex);
          WriteInteger('DEFAULTS', 'WVL', edtWVLTage.Value);
