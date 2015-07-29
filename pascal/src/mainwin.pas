@@ -261,7 +261,10 @@ begin
       Add('SELECT NAME');
       Add('FROM BEWERBUNGEN');
       Add('WHERE ' + rsWHEREWVLSAND);
+      Add('AND UID = :pUserID');
     end;
+
+    Params.ParamByName('pUserID').AsInteger:= frmMain.UserID;
 
     Open;
     nCount := RecordCount;
