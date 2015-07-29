@@ -59,9 +59,9 @@ resourcestring
   rsMeineBewerbu = 'Meine Bewerbung vom %s als %s (Ref.Nr. %s)';
   rsMeineBewerbu2 = 'Meine Bewerbung vom %s als %s';
   rsRECEIPENTS = 'RECEIPENTS';
-  rsRESULT2 = '(RESULT <> 2) AND (IGNORIERT IS 0)';
+  rsRESULT2 = '(RESULT <> 2)';
   rsRESULTD = '(RESULT = %d)';
-  rsRESULT3 = 'RESULT IN (0,4) AND (IGNORIERT IS 0)';
+  rsRESULT3 = 'RESULT IN (0,4)';
   rsSuche = 'Suche';
   rsTYPD = '(TYP = %d)';
   {$IFDEF Unix}rsUsrBinXdgOpe = '%s/xdg-open "%s"';{$ENDIF}

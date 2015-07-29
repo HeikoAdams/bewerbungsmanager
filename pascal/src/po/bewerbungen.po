@@ -130,11 +130,11 @@ msgid "RECEIPENTS"
 msgstr ""
 
 #: bewerbung_strings.rsresult2
-msgid "(RESULT <> 2) AND (IGNORIERT IS 0)"
+msgid "(RESULT <> 2)"
 msgstr ""
 
 #: bewerbung_strings.rsresult3
-msgid "RESULT IN (0,4) AND (IGNORIERT IS 0)"
+msgid "RESULT IN (0,4)"
 msgstr ""
 
 #: bewerbung_strings.rsresultd
@@ -476,6 +476,10 @@ msgstr ""
 
 #: tfrmmain.chkignoriert.caption
 msgid "ignoriert"
+msgstr ""
+
+#: tfrmmain.chkignoriert.hint
+msgid "Ignorierte Bewerbungen werden von der Wiedervorlage nicht berücksichtigt"
 msgstr ""
 
 #: tfrmmain.chkvermittler.caption

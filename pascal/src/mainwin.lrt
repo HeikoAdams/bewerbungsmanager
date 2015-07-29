@@ -11,7 +11,6 @@ grau = Bewerbung zurückgezogen
 
 fett = Wiedervorlage ist fällig
 kursiv = ignorierte Bewerbung
-fett+kursiv = Bewerbung ist älter als 6 Wochen und noch offen
 TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[0].TITLE.CAPTION=Datum
 TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[1].TITLE.CAPTION=Wiedervorlage
 TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[2].TITLE.CAPTION=Bewerb. bis
@@ -45,6 +44,7 @@ TFRMMAIN.EDTENDE.OKCAPTION=OK
 TFRMMAIN.EDTENDE.CANCELCAPTION=Cancel
 TFRMMAIN.EDTENDE.TEXT=  .  .    
 TFRMMAIN.LBLFRISTENDE.CAPTION=Bewerbung bis
+TFRMMAIN.CHKIGNORIERT.HINT=Ignorierte Bewerbungen werden von der Wiedervorlage nicht berücksichtigt
 TFRMMAIN.CHKIGNORIERT.CAPTION=ignoriert
 TFRMMAIN.CHKBEFRISTET.CAPTION=befristet
 TFRMMAIN.CHKVERMITTLER.CAPTION=Personalvermittler

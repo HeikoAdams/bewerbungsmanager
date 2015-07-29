@@ -28,7 +28,7 @@ object frmMain: TfrmMain
       object grdBewerbungen: TDBGrid
         Left = 0
         Height = 473
-        Hint = 'dunkelblau = Eingang bestätigt'#10'dunkelrot = Wiedervorlagedatum ohne Reaktion überschritten'#10'türkis = keine Antwort auf Rückfragen '#10'grün = Zusage erhalten'#10'rot = Absage erhalten'#10'schwarz = noch keine Reaktion und erste Wiedervorlage ist noch nicht fällig'#10'violet = Einladung liegt vor'#10'grau = Bewerbung zurückgezogen'#10#10'fett = Wiedervorlage ist fällig'#10'kursiv = ignorierte Bewerbung'#10'fett+kursiv = Bewerbung ist älter als 6 Wochen und noch offen'
+        Hint = 'dunkelblau = Eingang bestätigt'#10'dunkelrot = Wiedervorlagedatum ohne Reaktion überschritten'#10'türkis = keine Antwort auf Rückfragen '#10'grün = Zusage erhalten'#10'rot = Absage erhalten'#10'schwarz = noch keine Reaktion und erste Wiedervorlage ist noch nicht fällig'#10'violet = Einladung liegt vor'#10'grau = Bewerbung zurückgezogen'#10#10'fett = Wiedervorlage ist fällig'#10'kursiv = ignorierte Bewerbung'
         Top = 0
         Width = 648
         Align = alClient
@@ -397,11 +397,14 @@ object frmMain: TfrmMain
       object chkIgnoriert: TDBCheckBox
         Left = 360
         Height = 23
+        Hint = 'Ignorierte Bewerbungen werden von der Wiedervorlage nicht berücksichtigt'
         Top = 144
         Width = 154
         Caption = 'ignoriert'
         DataField = 'IGNORIERT'
         DataSource = dmBewerbungen.dsData
+        ParentShowHint = False
+        ShowHint = True
         TabOrder = 10
         ValueChecked = 'True'
         ValueUnchecked = 'False'
