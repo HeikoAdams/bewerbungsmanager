@@ -165,8 +165,8 @@ object frmSettings: TfrmSettings
     Left = 8
     Height = 23
     Top = 136
-    Width = 200
-    Caption = 'Personalvermittler ignorieren'
+    Width = 332
+    Caption = 'Personalvermittler und befristete Stellen ignorieren'
     TabOrder = 4
   end
 end

@@ -262,9 +262,12 @@ begin
       Add('FROM BEWERBUNGEN');
       Add('WHERE ' + rsWHEREWVLSAND);
       Add('AND UID = :pUserID');
-      Add('AND IGNORIERT IS 0');
+      //Add('AND IGNORIERT IS 0');
       if ConfigFile.ReadBool('GENERAL', 'IGNOREPV', False) then
+      begin
         Add('AND VERMITTLER = 0');
+        Add('AND BEFRISTET = 0');
+      end
     end;
 
     Params.ParamByName('pUserID').AsInteger:= frmMain.UserID;
@@ -859,7 +862,8 @@ var
 begin
   with (Sender as TDBGrid) do
   begin
-    bIgnoriert := (DataSource.DataSet.FieldByName('IGNORIERT').AsInteger = 1);
+    bIgnoriert := ((DataSource.DataSet.FieldByName('IGNORIERT').AsInteger = 1)
+      or (DataSource.DataSet.FieldByName('BEFRISTET').AsInteger = 1));
 
     if not bIgnoriert
       and ConfigFile.ReadBool('GENERAL','IGNOREPV', False) then

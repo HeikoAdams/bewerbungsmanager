@@ -1,6 +1,9 @@
 msgid "Bewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzen"
 msgstr "Content-Type: text/plain; charset=UTF-8"
 
+msgid "Bewerbung auf \"keine Antwort\" setzen"
+msgstr ""
+
 #: bewerbung_strings.rsaction
 msgid "ACTION"
 msgstr ""
@@ -785,7 +788,7 @@ msgid "Einstellungen"
 msgstr ""
 
 #: tfrmsettings.chkignorepv.caption
-msgid "Personalvermittler ignorieren"
+msgid "Personalvermittler und befristete Stellen ignorieren"
 msgstr ""
 
 #: tfrmsettings.chknewwvl.caption
