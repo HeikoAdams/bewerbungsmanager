@@ -32,6 +32,20 @@ uses
 type
 
   { TfrmMain }
+  TJobApplication = packed record
+    ApplicationID: integer;
+    Vermittler: integer;
+    Befristet: integer;
+    Ignoriert: integer;
+    Feedback: integer;
+    Result: integer;
+    RefNr: string;
+    JobTitel: string;
+    Mail: string;
+    Datum: TDateTime;
+    BisDatum: TDateTime;
+    WVL: TDateTime;
+  end;
 
   TfrmMain = class(TForm)
     actEingang: TAction;
@@ -211,13 +225,14 @@ type
     FUserID: integer;
     {$IFDEF Unix}FLockHandle: integer;{$ENDIF}
     FGridFilter: word;
-
+    FApplication: TJobApplication;
     procedure NotifyWVL;
     {$IFDEF Unix}procedure CreateDesktopFile();{$ENDIF}
   public
     { public declarations }
     property ConfigFile: TIniFile read FConfigFile;
     property UserID: Integer read FUserID write FUserID;
+    property JobApplication: TJobApplication read FApplication write FApplication;
     procedure HandleError;
   end;
 
@@ -260,13 +275,12 @@ begin
     begin
       Add('SELECT NAME');
       Add('FROM BEWERBUNGEN');
-      Add('WHERE ' + rsWHEREWVLSAND);
-      Add('AND UID = :pUserID');
-      //Add('AND IGNORIERT IS 0');
+      Add(Format('WHERE %s', [rsWHEREWVLSAND]));
+      Add('AND (UID = :pUserID)');
       if ConfigFile.ReadBool('GENERAL', 'IGNOREPV', False) then
       begin
-        Add('AND VERMITTLER = 0');
-        Add('AND BEFRISTET = 0');
+        Add('AND (VERMITTLER = 0)');
+        Add('AND (BEFRISTET = 0)');
       end
     end;
 
@@ -487,19 +501,15 @@ var
   sCommand: string;
   sSubject: string;
 begin
-  if (dmBewerbungen.qryBewerbungen.FieldByName('REFNR').AsString <> EmptyStr) then
+  if (JobApplication.RefNr <> EmptyStr) then
     sSubject := Format(rsMeineBewerbu,
-      [FormatDateTime(rsDateFormat, dmBewerbungen.qryBewerbungen.FieldByName(
-      'DATUM').AsDateTime), dmBewerbungen.qryBewerbungen.FieldByName(
-      'JOBTITEL').AsString, dmBewerbungen.qryBewerbungen.FieldByName('REFNR').AsString])
+      [FormatDateTime(rsDateFormat, JobApplication.Datum), JobApplication.JobTitel,
+      JobApplication.RefNr])
   else
     sSubject := Format(rsMeineBewerbu2,
-      [FormatDateTime(rsDateFormat, dmBewerbungen.qryBewerbungen.FieldByName(
-      'DATUM').AsDateTime), dmBewerbungen.qryBewerbungen.FieldByName(
-      'JOBTITEL').AsString]);
+      [FormatDateTime(rsDateFormat, JobApplication.Datum), JobApplication.JobTitel]);
 
-  sCommand := Format(rsMailtoS,
-    [dmBewerbungen.qryBewerbungen.FieldByName('Mail').AsString, sSubject]);
+  sCommand := Format(rsMailtoS, [JobApplication.Mail, sSubject]);
 
   { TODO 1 : Shell-Execute Code zum Erstellen einer Mail unter Windows einfügen }
   {$IFDEF Unix}
@@ -592,7 +602,7 @@ end;
 procedure TfrmMain.edtDatumEditingDone(Sender: TObject);
 begin
   if (dmBewerbungen.dsData.State in [dsInsert, dsEdit]) and (edtWVL.Text <> '  .  .    ')
-    and (edtDatum.Date <> dmBewerbungen.qryBewerbungen.FieldByName('DATUM').AsDateTime) then
+    and (edtDatum.Date <> JobApplication.Datum) then
      if (Application.MessageBox(PChar(rsRecalcWVL), PChar(rsWVL), MB_YESNO or
         MB_DEFBUTTON2 or MB_ICONQUESTION) = ID_YES) then
         if (edtEnde.Text <> '  .  .    ') then
@@ -605,7 +615,7 @@ end;
 procedure TfrmMain.edtEndeEditingDone(Sender: TObject);
 begin
   if (dmBewerbungen.dsData.State in [dsInsert, dsEdit]) and (edtEnde.Text <> '  .  .    ')
-    and (edtEnde.Date <> dmBewerbungen.qryBewerbungen.FieldByName('BISDATUM').AsDateTime) then
+    and (edtEnde.Date <> JobApplication.BisDatum) then
       edtWVL.Date := IncDay(edtEnde.Date, ConfigFile.ReadInteger('DEFAULTS', 'WVL', 14));
   (Sender as TDateEdit).ValidateEdit;
 end;
@@ -729,8 +739,8 @@ begin
     frmExportDate.GetDateRangeTxt(sDateFrom, sDateDue);
     FreeAndNil(frmExportDate);
     AssignFile(ExportFile, sFileName);
-    dmBewerbungen.FetchExportData('WHERE UID = :pUserID AND strftime(''%s'', DATUM)' +
-      ' BETWEEN ' + sDateFrom + ' AND ' + sDateDue);
+    dmBewerbungen.FetchExportData('WHERE (UID = :pUserID) AND (strftime(''%s'', DATUM)' +
+      ' BETWEEN ' + sDateFrom + ' AND ' + sDateDue +')');
     nRecordCount := dmBewerbungen.qryCSVExport.RecordCount;
 
     if (nRecordCount = 0) then
@@ -846,7 +856,7 @@ var
   nDays: integer;
 begin
   nDays := FConfigFile.ReadInteger('DEFAULTS', 'WVL', 14);
-  nID := dmBewerbungen.dsData.DataSet.FieldByName('ID').AsInteger;
+  nID := JobApplication.ApplicationID;
   dmBewerbungen.UpdateWVL(nID, nDays);
 end;
 
@@ -859,25 +869,25 @@ procedure TfrmMain.grdBewerbungenPrepareCanvas(Sender: TObject;
   DataCol: integer; Column: TColumn; AState: TGridDrawState);
 var
   bIgnoriert: boolean;
+  CurrApp: TDataSet;
 begin
   with (Sender as TDBGrid) do
   begin
-    bIgnoriert := ((DataSource.DataSet.FieldByName('IGNORIERT').AsInteger = 1)
-      or (DataSource.DataSet.FieldByName('BEFRISTET').AsInteger = 1));
+    CurrApp := DataSource.DataSet;
+    bIgnoriert := (CurrApp.FieldByName('IGNORIERT').AsInteger = 1);
 
     if not bIgnoriert
       and ConfigFile.ReadBool('GENERAL','IGNOREPV', False) then
-      bIgnoriert := (DataSource.DataSet.FieldByName('VERMITTLER').AsInteger = 1);
+      bIgnoriert := ((CurrApp.FieldByName('VERMITTLER').AsInteger = 1)
+        or (CurrApp.FieldByName('BEFRISTET').AsInteger = 1));
 
     // Ignorierte Bewerbungen
     if bIgnoriert then
-      Canvas.Font.Style := [fsItalic];
-
+      Canvas.Font.Style := [fsItalic]
     // Kein Feedback und WVL-Termin überschritten
-    if (not bIgnoriert) and
-      (DataSource.DataSet.FieldByName('FEEDBACK').AsInteger = 0) and
-      (DataSource.DataSet.FieldByName('RESULT').AsInteger in [0, 4]) and
-      (DataSource.DataSet.FieldByName('WVL').AsDateTime <= Date) then
+    else if (CurrApp.FieldByName('FEEDBACK').AsInteger = 0) and
+      (CurrApp.FieldByName('RESULT').AsInteger in [0, 4]) and
+      (CurrApp.FieldByName('WVL').AsDateTime <= Date) then
     begin
       Canvas.Font.Color := clMaroon;
       Canvas.Font.Style := [fsBold];
@@ -885,40 +895,28 @@ begin
 
     // Bewerbung liegt mehr als 6 Wochen zurück und noch kein Ergebnis
     if FConfigFile.ReadBool('GENERAL', 'HIGHLIGHT OLD APPLICATIONS', False) and
-      (not bIgnoriert) and
-      (DataSource.DataSet.FieldByName('FEEDBACK').AsInteger < 2) and
-      (DataSource.DataSet.FieldByName('RESULT').AsInteger in [0, 4]) and
-      (DataSource.DataSet.FieldByName('DATUM').AsDateTime <= IncWeek(Date, -6)) then
-      Canvas.Font.Style := [fsUnderline];
+      (CurrApp.FieldByName('FEEDBACK').AsInteger in [0, 1]) and
+      (CurrApp.FieldByName('RESULT').AsInteger in [0, 4]) and
+      (CurrApp.FieldByName('DATUM').AsDateTime <= IncWeek(Date, -6)) then
+      Canvas.Font.Style := Canvas.Font.Style + [fsUnderline];
 
-    // Eingangsbestätigung liegt vor und WVL ist noch nicht überschritten
-    if (DataSource.DataSet.FieldByName('FEEDBACK').AsInteger = 1) and
-      (DataSource.DataSet.FieldByName('RESULT').AsInteger = 0) and
-      (DataSource.DataSet.FieldByName('WVL').AsDateTime >= Date) then
-      Canvas.Font.Color := clNavy;
+    case CurrApp.FieldByName('RESULT').AsInteger of
+      0:
+        begin
+          // Eingangsbestätigung liegt vor und WVL ist noch nicht überschritten
+          if (CurrApp.FieldByName('FEEDBACK').AsInteger = 1) and
+            (CurrApp.FieldByName('WVL').AsDateTime >= Date) then
+            Canvas.Font.Color := clNavy;
 
-    // Einladung liegt vor
-    if (DataSource.DataSet.FieldByName('FEEDBACK').AsInteger = 2) and
-      (DataSource.DataSet.FieldByName('RESULT').AsInteger = 0) then
-      Canvas.Font.Color := clPurple;
-
-    // Zusage erhalten
-    if (DataSource.DataSet.FieldByName('RESULT').AsInteger = 1) then
-      Canvas.Font.Color := clGreen;
-
-    // Absage erhalten
-    if (DataSource.DataSet.FieldByName('RESULT').AsInteger = 2) then
-    begin
-      Canvas.Font.Color := clRed;
-    end;
-
-    // Bewerbung zurückgezogen
-    if (DataSource.DataSet.FieldByName('RESULT').AsInteger = 3) then
-      Canvas.Font.Color := clGray;
-
-    // keine Antwort auf Nachfragen
-    if (DataSource.DataSet.FieldByName('RESULT').AsInteger = 4) then
-      Canvas.Font.Color := clTeal;
+          // Einladung liegt vor
+          if (CurrApp.FieldByName('FEEDBACK').AsInteger = 2) then
+            Canvas.Font.Color := clPurple;
+        end;
+      1: Canvas.Font.Color := clGreen; // Zusage erhalten
+      2: Canvas.Font.Color := clRed;   // Absage erhalten
+      3: Canvas.Font.Color := clGray;  // Bewerbung zurückgezogen
+      4: Canvas.Font.Color := clTeal;  // keine Antwort auf Nachfragen
+    end
   end;
 end;
 
@@ -934,8 +932,7 @@ var
   TempItem: TMenuItem;
   bItemEnabled: boolean;
 begin
-  actWriteMail.Enabled := not (Length(dmBewerbungen.qryBewerbungen.FieldByName(
-    'Mail').AsString) = 0);
+  actWriteMail.Enabled := not (Length(JobApplication.Mail) = 0);
   bItemEnabled := (dmBewerbungen.qryBewerbungen.RecordCount > 0);
 
   for nCount := 0 to pmFilter.Items.Count - 1 do

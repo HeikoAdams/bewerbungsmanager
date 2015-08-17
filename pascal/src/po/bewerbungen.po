@@ -1,8 +1,5 @@
-msgid "Bewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzen"
+msgid "Bewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzen"
 msgstr "Content-Type: text/plain; charset=UTF-8"
-
-msgid "Bewerbung auf \"keine Antwort\" setzen"
-msgstr ""
 
 #: bewerbung_strings.rsaction
 msgid "ACTION"
@@ -137,7 +134,7 @@ msgid "(RESULT <> 2)"
 msgstr ""
 
 #: bewerbung_strings.rsresult3
-msgid "RESULT IN (0,4)"
+msgid "(RESULT IN (0,4))"
 msgstr ""
 
 #: bewerbung_strings.rsresultd

@@ -251,7 +251,7 @@ begin
     with SQL do
     begin
       Clear;
-      Add('UPDATE BEWERBUNGEN SET IGNORIERT = NOT IGNORIERT WHERE ID = :pID');
+      Add('UPDATE BEWERBUNGEN SET IGNORIERT = NOT IGNORIERT WHERE (ID = :pID)');
 
       Params.ParamValues['pID'] := aID;
     end;
@@ -278,9 +278,9 @@ begin
       Clear;
 
       if (aWhere = EmptyStr) then
-         Add('SELECT * FROM BEWERBUNGEN WHERE UID = :pUserID ORDER BY Datum DESC, NAME')
+         Add('SELECT * FROM BEWERBUNGEN WHERE (UID = :pUserID) ORDER BY Datum DESC, NAME')
       else
-         Add(Format('SELECT * FROM BEWERBUNGEN WHERE UID = :pUserID AND %s ORDER BY Datum DESC, NAME', [aWhere]));
+         Add(Format('SELECT * FROM BEWERBUNGEN WHERE (UID = :pUserID) AND (%s) ORDER BY Datum DESC, NAME', [aWhere]));
     end;
 
     Open;
@@ -380,7 +380,7 @@ begin
       with SQL do
       begin
         Clear;
-        Add('DELETE FROM BEWERBUNGEN WHERE (UID = :pUserID) AND (DATE(DATUM) < DATE(''now'', ''-1 year'')) AND (RESULT <> 2);');
+        Add('DELETE FROM BEWERBUNGEN WHERE (UID = :pUserID) AND (DATE(DATUM) < DATE(''now'', ''-1 year'')) AND (RESULT <> 1);');
       end;
 
       Params.ParamByName('pUserID').AsInteger:= frmMain.UserID;
@@ -456,7 +456,7 @@ begin
   if (frmMain.ConfigFile.ReadBool('GENERAL', 'MODIFY-APPLICATION-RESULT', True)) then
      sSQL := sSQL + ', RESULT = 4';
 
-  sSQL := sSQL + ' WHERE ID = ' + IntToStr(aID) + ';';
+  sSQL := sSQL + ' WHERE (ID = ' + IntToStr(aID) + ');';
 
   if (sSQL <> EmptyStr) then
   begin
@@ -606,11 +606,27 @@ begin
     if VarIsNull(FieldByName('ID').AsVariant) then
       Exit;
 
-    frmMain.edtDatum.Date := FieldByName('DATUM').AsDateTime;
-    frmMain.edtWVL.Date := FieldByName('WVL').AsDateTime;
-    frmMain.edtEnde.Date := FieldByName('BISDATUM').AsDateTime;
+    with frmMain.JobApplication do
+    begin
+      ApplicationID:=FieldByName('ID').AsInteger;
+      DATUM := FieldByName('DATUM').AsDateTime;
+      WVL := FieldByName('WVL').AsDateTime;
+      BISDATUM := FieldByName('BISDATUM').AsDateTime;
+      Vermittler:=FieldByName('Vermittler').AsInteger;
+      Befristet:=FieldByName('Befristet').AsInteger;
+      Ignoriert:=FieldByName('Ignoriert').AsInteger;
+      Feedback:=FieldByName('Feedback').AsInteger;
+      Result:=FieldByName('Result').AsInteger;
+      RefNr:=FieldByName('RefNr').AsString;
+      JobTitel:=FieldByName('JobTitel').AsString;
+      Mail:=FieldByName('Mail').AsString;
+    end;
+
+    frmMain.edtDatum.Date := frmMain.JobApplication.Datum;
+    frmMain.edtWVL.Date := frmMain.JobApplication.WVL;
+    frmMain.edtEnde.Date := frmMain.JobApplication.BisDatum;
     frmMain.sbInfo.Panels[1].Text := FieldByName('Name').AsString;
-    nID := FieldByName('ID').AsInteger;
+    nID := frmMain.JobApplication.ApplicationID;
   end;
 
   with qryLog do
