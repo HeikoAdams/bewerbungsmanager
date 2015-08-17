@@ -1,4 +1,4 @@
-msgid "Bewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzen"
+msgid "Bewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzen"
 msgstr "Content-Type: text/plain; charset=UTF-8"
 
 #: bewerbung_strings.rsaction
@@ -191,6 +191,10 @@ msgstr ""
 
 #: dunkelrot 
 msgid " Wiedervorlagedatum ohne Reaktion überschritten"
+msgstr ""
+
+#: durchgestrichen 
+msgid " Absage oder Bewerbung zurückgezogen"
 msgstr ""
 
 #: fett 
@@ -780,6 +784,10 @@ msgctxt "TFRMSETTINGS.CAPTION"
 msgid "Einstellungen"
 msgstr ""
 
+#: tfrmsettings.chkignorepv.caption
+msgid "Personalvermittler ignorieren"
+msgstr ""
+
 #: tfrmsettings.chknewwvl.caption
 msgid "Beim Setzen einer neuen Wiedervorlage das Ergebnis der "
 msgstr ""
@@ -828,6 +836,10 @@ msgstr ""
 
 #: türkis 
 msgid " keine Antwort auf Rückfragen "
+msgstr ""
+
+#: unterstrichen 
+msgid " Bewerbung ist älter als 6 Wochen und ohne Ergebnis"
 msgstr ""
 
 #: violet 

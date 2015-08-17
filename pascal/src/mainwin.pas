@@ -263,6 +263,8 @@ begin
       Add('WHERE ' + rsWHEREWVLSAND);
       Add('AND UID = :pUserID');
       Add('AND IGNORIERT IS 0');
+      if ConfigFile.ReadBool('GENERAL', 'IGNOREPV', False) then
+        Add('AND VERMITTLER = 0');
     end;
 
     Params.ParamByName('pUserID').AsInteger:= frmMain.UserID;
@@ -852,31 +854,39 @@ end;
 
 procedure TfrmMain.grdBewerbungenPrepareCanvas(Sender: TObject;
   DataCol: integer; Column: TColumn; AState: TGridDrawState);
+var
+  bIgnoriert: boolean;
 begin
   with (Sender as TDBGrid) do
   begin
+    bIgnoriert := (DataSource.DataSet.FieldByName('IGNORIERT').AsInteger = 1);
+
+    if not bIgnoriert
+      and ConfigFile.ReadBool('GENERAL','IGNOREPV', False) then
+      bIgnoriert := (DataSource.DataSet.FieldByName('VERMITTLER').AsInteger = 1);
+
     // Ignorierte Bewerbungen
-    if (DataSource.DataSet.FieldByName('IGNORIERT').AsInteger = 1) then
+    if bIgnoriert then
       Canvas.Font.Style := [fsItalic];
 
     // Kein Feedback und WVL-Termin überschritten
-    if (DataSource.DataSet.FieldByName('IGNORIERT').AsInteger = 0) and
-      //(DataSource.DataSet.FieldByName('FEEDBACK').AsInteger = 0) and
+    if (not bIgnoriert) and
+      (DataSource.DataSet.FieldByName('FEEDBACK').AsInteger = 0) and
       (DataSource.DataSet.FieldByName('RESULT').AsInteger in [0, 4]) and
       (DataSource.DataSet.FieldByName('WVL').AsDateTime <= Date) then
     begin
       Canvas.Font.Color := clMaroon;
       Canvas.Font.Style := [fsBold];
     end;
-    {
+
     // Bewerbung liegt mehr als 6 Wochen zurück und noch kein Ergebnis
     if FConfigFile.ReadBool('GENERAL', 'HIGHLIGHT OLD APPLICATIONS', False) and
-      (DataSource.DataSet.FieldByName('IGNORIERT').AsInteger = 0) and
+      (not bIgnoriert) and
       (DataSource.DataSet.FieldByName('FEEDBACK').AsInteger < 2) and
       (DataSource.DataSet.FieldByName('RESULT').AsInteger in [0, 4]) and
       (DataSource.DataSet.FieldByName('DATUM').AsDateTime <= IncWeek(Date, -6)) then
-      Canvas.Font.Style := [fsBold, fsItalic];
-    }
+      Canvas.Font.Style := [fsUnderline];
+
     // Eingangsbestätigung liegt vor und WVL ist noch nicht überschritten
     if (DataSource.DataSet.FieldByName('FEEDBACK').AsInteger = 1) and
       (DataSource.DataSet.FieldByName('RESULT').AsInteger = 0) and
@@ -894,7 +904,9 @@ begin
 
     // Absage erhalten
     if (DataSource.DataSet.FieldByName('RESULT').AsInteger = 2) then
+    begin
       Canvas.Font.Color := clRed;
+    end;
 
     // Bewerbung zurückgezogen
     if (DataSource.DataSet.FieldByName('RESULT').AsInteger = 3) then
