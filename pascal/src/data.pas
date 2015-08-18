@@ -380,7 +380,7 @@ begin
       with SQL do
       begin
         Clear;
-        Add('DELETE FROM BEWERBUNGEN WHERE (UID = :pUserID) AND (DATE(DATUM) < DATE(''now'', ''-1 year'')) AND (RESULT <> 1);');
+        Add(rsPurgeSQL);
       end;
 
       Params.ParamByName('pUserID').AsInteger:= frmMain.UserID;
@@ -451,12 +451,12 @@ procedure TdmBewerbungen.UpdateWVL(aID, aDays: Integer);
 var
   sSQL: string;
 begin
-  sSQL := 'UPDATE Bewerbungen SET WVL = DATE(WVL, ''+' + IntToStr(aDays)+ ' days'')';
-
+  sSQL := Format('UPDATE Bewerbungen SET WVL = DATE(WVL, ''+%d days'')', [aDays]);
+  ShowMessage(sSQL);
   if (frmMain.ConfigFile.ReadBool('GENERAL', 'MODIFY-APPLICATION-RESULT', True)) then
      sSQL := sSQL + ', RESULT = 4';
 
-  sSQL := sSQL + ' WHERE (ID = ' + IntToStr(aID) + ');';
+  sSQL := sSQL + Format(' WHERE (ID = %d);', [aID]);
 
   if (sSQL <> EmptyStr) then
   begin

@@ -315,7 +315,7 @@ var
   HomeDir: string;
 begin
   HomeDir := IncludeTrailingPathDelimiter(GetUserDir);
-  DFName := HomeDir + '.local/share/applications/' + Application.Title + '.desktop';
+  DFName :=  Format('%s.local/share/applications/%s.desktop', [HomeDir, Application.Title]);
 
   if not FileExists(DFName) then
   begin
@@ -409,7 +409,6 @@ begin
   FXDGPath := FConfigFile.ReadString('LINUX', 'XDG-PATH', '/usr/bin');
   {$ENDIF}
 
-  //actAllNoAbsage.Execute;
   FGridFilter := FConfigFile.ReadInteger('FILTER', 'LAST FILTER', 15);
 
   for nCounter := 0 to alFilter.ActionCount - 1 do
@@ -428,7 +427,7 @@ end;
 
 procedure TfrmMain.actNoFeedbackExecute(Sender: TObject);
 begin
-  dmBewerbungen.FetchData(Format(rsFEEDBACKD + ' AND (RESULT = 0)', [0]));
+  dmBewerbungen.FetchData(Format(rsFEEDBACKDR, [0, 0]));
 
   FGridFilter := 1;
 end;
@@ -740,7 +739,7 @@ begin
     FreeAndNil(frmExportDate);
     AssignFile(ExportFile, sFileName);
     dmBewerbungen.FetchExportData('WHERE (UID = :pUserID) AND (strftime(''%s'', DATUM)' +
-      ' BETWEEN ' + sDateFrom + ' AND ' + sDateDue +')');
+      Format(' BETWEEN %s AND %s', [sDateFrom, sDateDue]) +')');
     nRecordCount := dmBewerbungen.qryCSVExport.RecordCount;
 
     if (nRecordCount = 0) then
@@ -903,14 +902,11 @@ begin
     case CurrApp.FieldByName('RESULT').AsInteger of
       0:
         begin
-          // Eingangsbestätigung liegt vor und WVL ist noch nicht überschritten
           if (CurrApp.FieldByName('FEEDBACK').AsInteger = 1) and
             (CurrApp.FieldByName('WVL').AsDateTime >= Date) then
-            Canvas.Font.Color := clNavy;
-
-          // Einladung liegt vor
-          if (CurrApp.FieldByName('FEEDBACK').AsInteger = 2) then
-            Canvas.Font.Color := clPurple;
+            Canvas.Font.Color := clNavy    // Eingangsbestätigung liegt vor und WVL ist noch nicht überschritten
+          else if (CurrApp.FieldByName('FEEDBACK').AsInteger = 2) then
+            Canvas.Font.Color := clPurple; // Einladung liegt vor
         end;
       1: Canvas.Font.Color := clGreen; // Zusage erhalten
       2: Canvas.Font.Color := clRed;   // Absage erhalten

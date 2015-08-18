@@ -49,6 +49,7 @@ resourcestring
     'die exportiert werden können';
   rsDateInFuture = 'Der Exportzeitraum darf nicht in der Zukunft liegen';
   rsFEEDBACKD = '(FEEDBACK = %d)';
+  rsFEEDBACKDR = '(FEEDBACK = %d) AND (RESULT = %d)';
   rsFehler = 'Fehler';
   rsDateFormat = 'dd.mm.yyyy';
   rsJOBS = 'JOBS';
@@ -80,6 +81,7 @@ resourcestring
   rsUserExists = 'Der angegbene Benutzer existiert bereits!';
   rsOldDataPurged = '%d alte Bewerbungen wurden aus dem System entfernt';
   rsPurging = 'Datenbank-Bereinigung';
+  rsPurgeSQL = 'DELETE FROM BEWERBUNGEN WHERE (UID = :pUserID) AND (DATE(DATUM) < DATE(''now'', ''-2 year'')) AND (RESULT <> 1);';
 implementation
 
 end.

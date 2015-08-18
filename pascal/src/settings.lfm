@@ -157,8 +157,8 @@ object frmSettings: TfrmSettings
     Left = 8
     Height = 23
     Top = 112
-    Width = 338
-    Caption = 'Bewerbungen nach 12 Monaten automatisch löschen'
+    Width = 403
+    Caption = 'erfolglose Bewerbungen nach 24 Monaten automatisch löschen'
     TabOrder = 3
   end
   object chkIgnorePV: TCheckBox

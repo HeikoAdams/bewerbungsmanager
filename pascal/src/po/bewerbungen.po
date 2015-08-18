@@ -1,4 +1,4 @@
-msgid "Bewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzen"
+msgid "Bewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzen"
 msgstr "Content-Type: text/plain; charset=UTF-8"
 
 #: bewerbung_strings.rsaction
@@ -59,6 +59,10 @@ msgstr ""
 msgid "(FEEDBACK = %d)"
 msgstr ""
 
+#: bewerbung_strings.rsfeedbackdr
+msgid "(FEEDBACK = %d) AND (RESULT = %d)"
+msgstr ""
+
 #: bewerbung_strings.rsfehler
 msgctxt "bewerbung_strings.rsfehler"
 msgid "Fehler"
@@ -115,6 +119,10 @@ msgstr ""
 
 #: bewerbung_strings.rsolddatapurged
 msgid "%d alte Bewerbungen wurden aus dem System entfernt"
+msgstr ""
+
+#: bewerbung_strings.rspurgesql
+msgid "DELETE FROM BEWERBUNGEN WHERE (UID = :pUserID) AND (DATE(DATUM) < DATE('now', '-2 year')) AND (RESULT <> 1);"
 msgstr ""
 
 #: bewerbung_strings.rspurging
@@ -805,7 +813,7 @@ msgid "offene Bewerbungen nach 6 Wochen hervorheben"
 msgstr ""
 
 #: tfrmsettings.chkpurgedata.caption
-msgid "Bewerbungen nach 12 Monaten automatisch löschen"
+msgid "erfolglose Bewerbungen nach 24 Monaten automatisch löschen"
 msgstr ""
 
 #: tfrmsettings.groupbox1.caption
