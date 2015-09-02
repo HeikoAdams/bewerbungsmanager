@@ -43,6 +43,7 @@ object dmBewerbungen: TdmBewerbungen
     AfterOpen = qryBewerbungenAfterOpen
     AfterPost = qryBewerbungenAfterPost
     AfterScroll = qryBewerbungenAfterScroll
+    BeforeInsert = qryBewerbungenBeforeInsert
     BeforeOpen = qryBewerbungenBeforeOpen
     BeforePost = qryBewerbungenBeforePost
     OnNewRecord = qryBewerbungenNewRecord

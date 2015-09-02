@@ -57,6 +57,7 @@ type
     procedure qryBewerbungenAfterOpen(DataSet: TDataSet);
     procedure qryBewerbungenAfterPost(DataSet: TDataSet);
     procedure qryBewerbungenAfterScroll(DataSet: TDataSet);
+    procedure qryBewerbungenBeforeInsert(DataSet: TDataSet);
     procedure qryBewerbungenBeforeOpen(DataSet: TDataSet);
     procedure qryBewerbungenBeforePost(DataSet: TDataSet);
     procedure qryBewerbungenNewRecord(DataSet: TDataSet);
@@ -452,7 +453,7 @@ var
   sSQL: string;
 begin
   sSQL := Format('UPDATE Bewerbungen SET WVL = DATE(WVL, ''+%d days'')', [aDays]);
-  ShowMessage(sSQL);
+
   if (frmMain.ConfigFile.ReadBool('GENERAL', 'MODIFY-APPLICATION-RESULT', True)) then
      sSQL := sSQL + ', RESULT = 4';
 
@@ -644,6 +645,11 @@ begin
   end;
 end;
 
+procedure TdmBewerbungen.qryBewerbungenBeforeInsert(DataSet: TDataSet);
+begin
+
+end;
+
 procedure TdmBewerbungen.qryBewerbungenBeforeOpen(DataSet: TDataSet);
 begin
   qryBewerbungen.Params.ParamByName('pUserID').AsInteger:= frmMain.UserID;
@@ -651,7 +657,7 @@ end;
 
 procedure TdmBewerbungen.qryBewerbungenBeforePost(DataSet: TDataSet);
 begin
-  with qryBewerbungen do
+  with DataSet do
   begin
     FieldByName('DATUM').AsDateTime := frmMain.edtDatum.Date;
     FieldByName('WVL').AsDateTime := frmMain.edtWVL.Date;
@@ -659,6 +665,10 @@ begin
       FieldByName('BISDATUM').AsDateTime := frmMain.edtEnde.Date;
     if (FieldByName('REFNR').AsString <> EmptyStr) then
       FieldByName('REFNR').AsString := trim(FieldByName('REFNR').AsString);
+
+    if (State in [dsInsert]) and frmMain.ConfigFile.ReadBool('GENERAL', 'IGNOREPV', False) then
+      if (FieldByName('VERMITTLER').AsBoolean or FieldByName('BEFRISTET').AsBoolean) then
+        FieldByName('IGNORIERT').AsInteger:=1;
   end;
 end;
 

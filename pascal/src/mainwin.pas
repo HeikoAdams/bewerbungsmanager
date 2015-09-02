@@ -277,11 +277,6 @@ begin
       Add('FROM BEWERBUNGEN');
       Add(Format('WHERE %s', [rsWHEREWVLSAND]));
       Add('AND (UID = :pUserID)');
-      if ConfigFile.ReadBool('GENERAL', 'IGNOREPV', False) then
-      begin
-        Add('AND (VERMITTLER = 0)');
-        Add('AND (BEFRISTET = 0)');
-      end
     end;
 
     Params.ParamByName('pUserID').AsInteger:= frmMain.UserID;
@@ -874,11 +869,6 @@ begin
   begin
     CurrApp := DataSource.DataSet;
     bIgnoriert := (CurrApp.FieldByName('IGNORIERT').AsInteger = 1);
-
-    if not bIgnoriert
-      and ConfigFile.ReadBool('GENERAL','IGNOREPV', False) then
-      bIgnoriert := ((CurrApp.FieldByName('VERMITTLER').AsInteger = 1)
-        or (CurrApp.FieldByName('BEFRISTET').AsInteger = 1));
 
     // Ignorierte Bewerbungen
     if bIgnoriert then
