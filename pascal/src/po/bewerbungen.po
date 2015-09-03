@@ -5,6 +5,10 @@ msgstr "Content-Type: text/plain; charset=UTF-8"
 msgid "ACTION"
 msgstr ""
 
+#: bewerbung_strings.rscleanupsql
+msgid "DELETE FROM DOCUMENTS WHERE (BEWERBUNG = 0);"
+msgstr ""
+
 #: bewerbung_strings.rscompanies
 msgid "COMPANIES"
 msgstr ""

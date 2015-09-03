@@ -82,6 +82,7 @@ resourcestring
   rsOldDataPurged = '%d alte Bewerbungen wurden aus dem System entfernt';
   rsPurging = 'Datenbank-Bereinigung';
   rsPurgeSQL = 'DELETE FROM BEWERBUNGEN WHERE (UID = :pUserID) AND (DATE(DATUM) < DATE(''now'', ''-2 year'')) AND (RESULT <> 1);';
+  rsCleanupSQL = 'DELETE FROM DOCUMENTS WHERE (BEWERBUNG = 0);';
 implementation
 
 end.

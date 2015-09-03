@@ -371,6 +371,23 @@ begin
   qryLog.Close;
   qryDocuments.Close;
 
+  with TSQLQuery.Create(nil) do
+  begin
+    DataBase := conData;
+    Transaction := traData;
+
+    with SQL do
+    begin
+      Clear;
+      Add(rsCleanupSQL);
+    end;
+
+    ExecSQL;
+    Close;
+    Free;
+    traData.Commit;
+  end;
+
   if (frmMain.ConfigFile.ReadBool('GENERAL', 'MODIFY-APPLICATION-RESULT', True)) then
   begin
     with TSQLQuery.Create(nil) do
@@ -397,6 +414,7 @@ begin
     end;
     traData.Commit;
   end;
+
 end;
 
 procedure TdmBewerbungen.UpdateList(aType: string; aList: TStrings);
