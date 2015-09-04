@@ -34,6 +34,8 @@ type
 
   TdmBewerbungen = class(TDataModule)
     conData: TSQLite3Connection;
+    dsCompanies: TDataSource;
+    dsCompany: TDataSource;
     dsData: TDatasource;
     dsFeedback: TDatasource;
     dsLog: TDatasource;
@@ -41,12 +43,32 @@ type
     dsMedium: TDatasource;
     dsResult: TDatasource;
     dsTyp: TDatasource;
-    qryBewerbungen: TSQLQuery;
+    qryBewerbungenANSPRECHPARTNER: TStringField;
+    qryBewerbungenBEFRISTET: TBooleanField;
+    qryBewerbungenBISDATUM: TDateTimeField;
+    qryBewerbungenCOMPANY: TLongintField;
+    qryBewerbungenDATUM: TDateTimeField;
+    qryBewerbungenFEEDBACK: TLongintField;
+    qryBewerbungenID: TLongintField;
+    qryBewerbungenIGNORIERT: TBooleanField;
+    qryBewerbungenJOBTITEL: TStringField;
+    qryBewerbungenMAIL: TStringField;
+    qryBewerbungenMEDIUM: TLongintField;
+    qryBewerbungenNOTES: TStringField;
+    qryBewerbungenREFNR: TStringField;
+    qryBewerbungenRESULT: TLongintField;
+    qryBewerbungenTYP: TLongintField;
+    qryBewerbungenUID: TLongintField;
+    qryBewerbungenVERMITTLER: TBooleanField;
+    qryBewerbungenWVL: TDateTimeField;
+    qryCompanies: TSQLQuery;
     qryCSVExport: TSQLQuery;
     qryLog: TSQLQuery;
     qryDocuments: TSQLQuery;
     scUpdate: TSQLScript;
     qryBenutzer: TSQLQuery;
+    qryBewerbungen: TSQLQuery;
+    StringField1: TStringField;
     traData: TSQLTransaction;
     procedure conDataAfterConnect(Sender: TObject);
     procedure conDataBeforeConnect(Sender: TObject);
@@ -228,6 +250,9 @@ begin
     end;
   end;
 
+  if not qryCompanies.Active then
+    qryCompanies.Open;
+
   if not qryBewerbungen.Active then
     qryBewerbungen.Open;
 
@@ -279,11 +304,23 @@ begin
       Clear;
 
       if (aWhere = EmptyStr) then
-         Add('SELECT * FROM BEWERBUNGEN WHERE (UID = :pUserID) ORDER BY Datum DESC, NAME')
+      begin
+         Add('SELECT BEWERBUNGEN.ID, DATUM, MAIL, JOBTITEL, REFNR, TYP, ');
+         Add('FEEDBACK, RESULT, WVL, BEWERBUNGEN.NOTES, BEWERBUNGEN.VERMITTLER, ');
+         Add('MEDIUM, ANSPRECHPARTNER, BEFRISTET, IGNORIERT, UID, BISDATUM, COMPANY ');
+         Add('FROM BEWERBUNGEN ');
+         Add('WHERE (UID = :pUserID) ORDER BY Datum DESC')
+      end
       else
-         Add(Format('SELECT * FROM BEWERBUNGEN WHERE (UID = :pUserID) AND (%s) ORDER BY Datum DESC, NAME', [aWhere]));
+      begin
+         Add('SELECT BEWERBUNGEN.ID, DATUM, MAIL, JOBTITEL, REFNR, TYP, ');
+         Add('FEEDBACK, RESULT, WVL, BEWERBUNGEN.NOTES, BEWERBUNGEN.VERMITTLER, ');
+         Add('MEDIUM, ANSPRECHPARTNER, BEFRISTET, IGNORIERT, UID, BISDATUM, COMPANY ');
+         Add('FROM BEWERBUNGEN ');
+         Add(Format('WHERE (UID = :pUserID) AND (%s) ORDER BY Datum DESC', [aWhere]));
+      end;
     end;
-
+    Params.ParamByName('pUserID').AsInteger:= frmMain.UserID;
     Open;
   end;
 end;
@@ -298,8 +335,8 @@ begin
     begin
       Clear;
 
-      Add('SELECT DATUM, WVL, BISDATUM, NAME, MAIL, JOBTITEL, REFNR, (RESULT = 1) AS ZUSAGE, (RESULT = 2) AS ABSAGE, (RESULT = 4) AS KEINEANTWORT');
-      Add('FROM BEWERBUNGEN');
+      Add('SELECT DATUM, WVL, BISDATUM, COMPANIES.NAME, MAIL, JOBTITEL, REFNR, (RESULT = 1) AS ZUSAGE, (RESULT = 2) AS ABSAGE, (RESULT = 4) AS KEINEANTWORT');
+      Add('FROM BEWERBUNGEN JOIN COMPANIES ON BEWERBUNGEN.COMPANY = COMPANIES.ID');
 
       if not (aWhere = EmptyStr) then
         Add(Format('%s', [aWhere]));
@@ -316,6 +353,7 @@ function TdmBewerbungen.GetRecordsCount(DataSet: TDataSet): Integer;
 var
   sWhere: string;
   nWherePos: Integer;
+  nOrderPos: Integer;
 begin
   with TSQLQuery.Create(nil) do
   begin
@@ -324,12 +362,15 @@ begin
 
     SQL.Add('SELECT COUNT(*) ANZAHL FROM BEWERBUNGEN');
     nWherePos := Pos('WHERE', qryBewerbungen.SQL.Text);
+    nOrderPos := Pos('ORDER BY', qryBewerbungen.SQL.Text);
+    if (nOrderPos = 0) then
+      nOrderPos := Length(qryBewerbungen.SQL.Text);
 
     if (nWherePos > 0) then
     begin
       sWhere := Copy(qryBewerbungen.SQL.Text,
               nWherePos,
-              Length(qryBewerbungen.SQL.Text) - nWherePos);
+              nOrderPos - nWherePos);
       SQL.Add(sWhere);
     end;
 
@@ -644,8 +685,13 @@ begin
     frmMain.edtDatum.Date := frmMain.JobApplication.Datum;
     frmMain.edtWVL.Date := frmMain.JobApplication.WVL;
     frmMain.edtEnde.Date := frmMain.JobApplication.BisDatum;
-    frmMain.sbInfo.Panels[1].Text := FieldByName('Name').AsString;
     nID := frmMain.JobApplication.ApplicationID;
+  end;
+
+  with qryCompanies do
+  begin
+    if Locate('ID', qryBewerbungen.FieldByName('COMPANY').AsInteger, []) then
+      frmMain.sbInfo.Panels[1].Text := FieldByName('Name').AsString;
   end;
 
   with qryLog do
@@ -684,9 +730,16 @@ begin
     if (FieldByName('REFNR').AsString <> EmptyStr) then
       FieldByName('REFNR').AsString := trim(FieldByName('REFNR').AsString);
 
-    if (State in [dsInsert]) and frmMain.ConfigFile.ReadBool('GENERAL', 'IGNOREPV', False) then
-      if (FieldByName('VERMITTLER').AsBoolean or FieldByName('BEFRISTET').AsBoolean) then
-        FieldByName('IGNORIERT').AsInteger:=1;
+    if (State in dsWriteModes) then
+    begin
+      if qryCompanies.Locate('ID', FieldByName('COMPANY').AsInteger, []) and
+        (FieldByName('VERMITTLER').AsVariant = Null) then
+        FieldByName('VERMITTLER').AsInteger := qryCompanies.FieldByName('VERMITTLER').AsInteger;
+
+      if frmMain.ConfigFile.ReadBool('GENERAL', 'IGNOREPV', False) then
+        if (FieldByName('VERMITTLER').AsBoolean or FieldByName('BEFRISTET').AsBoolean) then
+          FieldByName('IGNORIERT').AsInteger:=1;
+    end;
   end;
 end;
 

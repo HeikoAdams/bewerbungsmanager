@@ -16,10 +16,10 @@ object frmMain: TfrmMain
     Height = 506
     Top = 25
     Width = 658
-    ActivePage = tsDokumente
+    ActivePage = tsBewerbungen
     Align = alClient
     Images = ilIcons
-    TabIndex = 3
+    TabIndex = 0
     TabOrder = 1
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'
@@ -56,9 +56,8 @@ object frmMain: TfrmMain
             DisplayFormat = 'dd.mm.yyyy'
           end        
           item
-            Title.Alignment = taCenter
             Title.Caption = 'Empfänger'
-            Width = 300
+            Width = 250
             FieldName = 'NAME'
           end        
           item
@@ -172,7 +171,7 @@ object frmMain: TfrmMain
           'Stellenangebot'
           'Vermittlungsvorschlag'
         )
-        TabOrder = 11
+        TabOrder = 10
         Values.Strings = (
           '0'
           '1'
@@ -183,7 +182,7 @@ object frmMain: TfrmMain
         Left = 108
         Height = 31
         Top = 8
-        Width = 200
+        Width = 204
         CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
         OKCaption = 'OK'
         CancelCaption = 'Cancel'
@@ -222,7 +221,7 @@ object frmMain: TfrmMain
         DataSource = dmBewerbungen.dsData
         CharCase = ecNormal
         MaxLength = 0
-        TabOrder = 6
+        TabOrder = 5
       end
       object rgFeedback: TDBRadioGroup
         Left = 184
@@ -237,7 +236,7 @@ object frmMain: TfrmMain
           'Eingangsbetätigung'
           'Einladung'
         )
-        TabOrder = 12
+        TabOrder = 11
         Values.Strings = (
           '0'
           '1'
@@ -259,7 +258,7 @@ object frmMain: TfrmMain
           'Zurückgezogen'
           'keine Antwort'
         )
-        TabOrder = 13
+        TabOrder = 12
         Values.Strings = (
           '0'
           '1'
@@ -276,7 +275,7 @@ object frmMain: TfrmMain
         DataField = 'NOTES'
         DataSource = dmBewerbungen.dsData
         ScrollBars = ssAutoBoth
-        TabOrder = 15
+        TabOrder = 14
       end
       object lblNotes: TLabel
         Left = 9
@@ -301,26 +300,13 @@ object frmMain: TfrmMain
           'Telefon'
           'Sonstige'
         )
-        TabOrder = 14
+        TabOrder = 13
         Values.Strings = (
           '0'
           '1'
           '2'
           '3'
         )
-      end
-      object cbbEmpfName: TDBComboBox
-        Left = 108
-        Height = 31
-        Top = 38
-        Width = 200
-        AutoComplete = True
-        DataField = 'NAME'
-        DataSource = dmBewerbungen.dsData
-        ItemHeight = 0
-        MaxLength = 0
-        Sorted = True
-        TabOrder = 2
       end
       object cbbEmpfMail: TDBComboBox
         Left = 424
@@ -333,7 +319,7 @@ object frmMain: TfrmMain
         ItemHeight = 0
         MaxLength = 0
         Sorted = True
-        TabOrder = 3
+        TabOrder = 2
       end
       object cbbJobTitel: TDBComboBox
         Left = 424
@@ -346,7 +332,7 @@ object frmMain: TfrmMain
         ItemHeight = 0
         MaxLength = 0
         Sorted = True
-        TabOrder = 5
+        TabOrder = 4
       end
       object Label1: TLabel
         Left = 9
@@ -367,7 +353,7 @@ object frmMain: TfrmMain
         ItemHeight = 0
         MaxLength = 255
         Sorted = True
-        TabOrder = 4
+        TabOrder = 3
       end
       object edtEnde: TDateEdit
         Left = 424
@@ -383,7 +369,7 @@ object frmMain: TfrmMain
         Flat = True
         MaxLength = 10
         OnEditingDone = edtEndeEditingDone
-        TabOrder = 7
+        TabOrder = 6
         Text = '  .  .    '
       end
       object lblFristEnde: TLabel
@@ -405,7 +391,7 @@ object frmMain: TfrmMain
         DataSource = dmBewerbungen.dsData
         ParentShowHint = False
         ShowHint = True
-        TabOrder = 10
+        TabOrder = 9
         ValueChecked = 'True'
         ValueUnchecked = 'False'
       end
@@ -419,7 +405,7 @@ object frmMain: TfrmMain
         DataSource = dmBewerbungen.dsData
         Font.Color = clRed
         ParentFont = False
-        TabOrder = 9
+        TabOrder = 8
         ValueChecked = 'True'
         ValueUnchecked = 'False'
       end
@@ -433,9 +419,132 @@ object frmMain: TfrmMain
         DataSource = dmBewerbungen.dsData
         Font.Color = clRed
         ParentFont = False
-        TabOrder = 8
+        TabOrder = 7
         ValueChecked = 'True'
         ValueUnchecked = 'False'
+      end
+      object cbbEmpfName: TDBLookupComboBox
+        Left = 108
+        Height = 31
+        Top = 40
+        Width = 200
+        AutoComplete = True
+        DataField = 'COMPANY'
+        DataSource = dmBewerbungen.dsData
+        KeyField = 'ID'
+        ListField = 'NAME'
+        ListFieldIndex = 0
+        ListSource = dmBewerbungen.dsCompanies
+        LookupCache = False
+        OnChange = cbbEmpfNameChange
+        Sorted = True
+        TabOrder = 15
+      end
+    end
+    object Firmen: TTabSheet
+      Caption = 'Firmen'
+      ClientHeight = 473
+      ClientWidth = 648
+      ImageIndex = 13
+      object navDocs1: TDBNavigator
+        Left = 0
+        Height = 25
+        Top = 0
+        Width = 648
+        Align = alTop
+        BevelOuter = bvNone
+        ChildSizing.EnlargeHorizontal = crsScaleChilds
+        ChildSizing.EnlargeVertical = crsScaleChilds
+        ChildSizing.ShrinkHorizontal = crsScaleChilds
+        ChildSizing.ShrinkVertical = crsScaleChilds
+        ChildSizing.Layout = cclLeftToRightThenTopToBottom
+        ChildSizing.ControlsPerLine = 100
+        ClientHeight = 25
+        ClientWidth = 648
+        DataSource = dmBewerbungen.dsCompanies
+        Flat = True
+        Options = []
+        TabOrder = 0
+      end
+      object DBGrid2: TDBGrid
+        Left = 0
+        Height = 311
+        Top = 25
+        Width = 648
+        Align = alClient
+        Color = clWindow
+        Columns = <        
+          item
+            Title.Caption = 'Name'
+            Width = 500
+            FieldName = 'NAME'
+          end        
+          item
+            Title.Caption = 'VERMITTLER'
+            FieldName = 'VERMITTLER'
+          end>
+        DataSource = dmBewerbungen.dsCompanies
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+        TabOrder = 1
+        TitleStyle = tsNative
+      end
+      object pnlDokBottom1: TPanel
+        Left = 0
+        Height = 137
+        Top = 336
+        Width = 648
+        Align = alBottom
+        ClientHeight = 137
+        ClientWidth = 648
+        TabOrder = 2
+        object edtName: TDBEdit
+          Left = 88
+          Height = 31
+          Top = 8
+          Width = 400
+          DataField = 'NAME'
+          DataSource = dmBewerbungen.dsCompanies
+          CharCase = ecNormal
+          MaxLength = 0
+          TabOrder = 0
+        end
+        object chkComVerm: TDBCheckBox
+          Left = 496
+          Height = 23
+          Top = 8
+          Width = 136
+          Caption = 'Personalvermittler'
+          DataField = 'VERMITTLER'
+          DataSource = dmBewerbungen.dsCompanies
+          TabOrder = 1
+          ValueChecked = 'True'
+          ValueUnchecked = 'False'
+        end
+        object Label2: TLabel
+          Left = 8
+          Height = 19
+          Top = 12
+          Width = 35
+          Caption = 'Name'
+          ParentColor = False
+        end
+        object DBMemo1: TDBMemo
+          Left = 88
+          Height = 82
+          Top = 48
+          Width = 550
+          DataField = 'NOTES'
+          DataSource = dmBewerbungen.dsCompanies
+          TabOrder = 2
+        end
+        object Label3: TLabel
+          Left = 8
+          Height = 19
+          Top = 48
+          Width = 66
+          Caption = 'Bemerkung'
+          ParentColor = False
+        end
       end
     end
     object tsActions: TTabSheet
@@ -802,7 +911,7 @@ object frmMain: TfrmMain
     left = 352
     top = 448
     Bitmap = {
-      4C690D0000001000000010000000FFFFFF009E6E4D2B9D6D4CD69D6D4BC59D6C
+      4C690E0000001000000010000000FFFFFF009E6E4D2B9D6D4CD69D6D4BC59D6C
       4BFF9C6C4AFF9C6B49FF9B6A49FF9B6A48FF9A6947FF996846FF986745FF9364
       43FF845D3EDEFFFFFF00FFFFFF00FFFFFF009D6D4C919D6D4BFEBB9778FFAC82
       62FFAC8161FFAB8060FFAB7F5FFFAA7F5EFFA87E5DFFA87C5CFF9D6D4CFF9766
@@ -1217,6 +1326,38 @@ object frmMain: TfrmMain
       B553FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF003F54
       C3233A50C27D3853BEDB3551BDF3304BBCF32E4EB8DB2B4CB77D2748B523FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF002B6DB2062B6DB21A2D70B51A2F73B506FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF002B6DB2062D70B3E52E73B5F73077B7F7327ABAE5347EBA06FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF002C6E
+      B3062E73B5F0488BC2FF6AA6D0FF6EA9D1FF5193C6FF3782BBF03884BB06FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF002E71B5063076
+      B7F04B8DC3FF70AAD2FF71AAD2FF74ACD2FF7AAFD3FF5697C4FF3982B7F0397F
+      B506FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF002F74B5063179B8F14D90
+      C4FF73ABD3FF5294C6FF3B83BAFF3C85B9FF5695C2FF7DACCFFF5591BCFF3879
+      ACF13673A706FFFFFF00FFFFFF00FFFFFF003177B806337ABAF15091C6FF76AD
+      D3FF5495C6FF4189BCFFD2D4D5FFD2D4D5FF4183B4FF558DBBFF77A5C7FF5084
+      B2FF33689EF131609606FFFFFF00327ABA06347EBAF15293C6FF79AED3FF5597
+      C4FF4287BAFFCACBCCFFEDEDEDFFEFEFEFFFD9DBDCFF3D76A6FF4D80AEFF6B9A
+      BDFF4775A2FF2D548BF12A4C8406367FBBC75395C6FF7AAFD3FF5797C4FF4387
+      BAFFCDCFD0FFEEEEEEFFEFEFEFFFEFEFEFFFEFEFEFFFD9DADBFF386497FF4470
+      9FFF5C8CB1FF3C6494FF26417AC73884BB483984BAFD5796C2FF3E80B3FEDCDE
+      E0FFEDEDEDFFEFEFEFFFEFEFEFFFEFEFEFFFEFEFEFFFEFEFEFFFDFE1E3FF2D4B
+      81FF3A5F90FF253E79FD253E7948FFFFFF00397FB548387EB0C38D8F91FEF6F6
+      F6FFEFEFEFFF747474FF767676FF777777FF787878FFEFEFEFFFF4F4F4FF8A8B
+      8DFF2A4177D4253E7948FFFFFF00FFFFFF00FFFFFF00FFFFFF008B8B8BF3F1F1
+      F1FFEFEFEFFF777777FF999999FF9C9C9CFF7C7C7CFFEFEFEFFFF4F4F4FF7676
+      76FF59595927FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00858585F3F0F0
+      F0FFEFEFEFFF7B7B7BFF9E9E9EFFA1A1A1FF818181FFEFEFEFFFF4F4F4FF7171
+      71FF54545427FFFFFF00FFFFFF0061BE6D2E58B1625B4DA156BC508D56FCA2C1
+      A4FFF0F0F0FF7E7E7EFFA4A4A4FFA6A6A6FF858585FFF0F0F0FFA1D6A8FF59AF
+      62FF4D9E56D54191498035803B5058B162E466B470FF72BF7DFF62B46DFF5E91
+      62FFE5E5E5FF828282FFA9A9A9FFACACACFF898989FFE2E2E2FF76BC7EFF84CA
+      8FFF74C180FF55A45EFF2A702FF44DA156BF419149E235803BC73B703FF14B69
+      4DEB686868DD878787FF898989FF8B8B8BFF8C8C8CFF525252DD4E7251EB4383
+      49F8367E3BCA2A702FEC216324BFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00
     }

@@ -38,7 +38,115 @@ object dmBewerbungen: TdmBewerbungen
     top = 80
   end
   object qryBewerbungen: TSQLQuery
-    FieldDefs = <>
+    FieldDefs = <    
+      item
+        Name = 'ID'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'DATUM'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'MAIL'
+        DataType = ftString
+        Precision = -1
+        Size = 255
+      end    
+      item
+        Name = 'JOBTITEL'
+        DataType = ftString
+        Precision = -1
+        Size = 255
+      end    
+      item
+        Name = 'REFNR'
+        DataType = ftString
+        Precision = -1
+        Size = 255
+      end    
+      item
+        Name = 'TYP'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'FEEDBACK'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'RESULT'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'WVL'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'NOTES'
+        DataType = ftString
+        Precision = -1
+        Size = 8000
+      end    
+      item
+        Name = 'VERMITTLER'
+        DataType = ftBoolean
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'MEDIUM'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'ANSPRECHPARTNER'
+        DataType = ftString
+        Precision = -1
+        Size = 255
+      end    
+      item
+        Name = 'BEFRISTET'
+        DataType = ftBoolean
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'IGNORIERT'
+        DataType = ftBoolean
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'UID'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'BISDATUM'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'COMPANY'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end>
     AfterDelete = qryBewerbungenAfterPost
     AfterOpen = qryBewerbungenAfterOpen
     AfterPost = qryBewerbungenAfterPost
@@ -50,7 +158,7 @@ object dmBewerbungen: TdmBewerbungen
     Database = conData
     Transaction = traData
     SQL.Strings = (
-      'SELECT * FROM BEWERBUNGEN WHERE UID = :pUserID ORDER BY Datum DESC, NAME'
+      'SELECT * FROM BEWERBUNGEN WHERE UID = :pUserID ORDER BY Datum DESC'
     )
     Params = <    
       item
@@ -60,6 +168,209 @@ object dmBewerbungen: TdmBewerbungen
       end>
     left = 16
     top = 144
+    object qryBewerbungenID: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ID'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryBewerbungenDATUM: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'DATUM'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryBewerbungenMAIL: TStringField
+      DisplayWidth = 255
+      FieldKind = fkData
+      FieldName = 'MAIL'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 255
+    end
+    object qryBewerbungenJOBTITEL: TStringField
+      DisplayWidth = 255
+      FieldKind = fkData
+      FieldName = 'JOBTITEL'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 255
+    end
+    object qryBewerbungenREFNR: TStringField
+      DisplayWidth = 255
+      FieldKind = fkData
+      FieldName = 'REFNR'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 255
+    end
+    object qryBewerbungenTYP: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'TYP'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryBewerbungenFEEDBACK: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'FEEDBACK'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryBewerbungenRESULT: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'RESULT'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryBewerbungenWVL: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'WVL'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryBewerbungenNOTES: TStringField
+      DisplayWidth = 8000
+      FieldKind = fkData
+      FieldName = 'NOTES'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 8000
+    end
+    object qryBewerbungenVERMITTLER: TBooleanField
+      DisplayWidth = 5
+      FieldKind = fkData
+      FieldName = 'VERMITTLER'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayValues = 'True;False'
+    end
+    object qryBewerbungenMEDIUM: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MEDIUM'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryBewerbungenANSPRECHPARTNER: TStringField
+      DisplayWidth = 255
+      FieldKind = fkData
+      FieldName = 'ANSPRECHPARTNER'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 255
+    end
+    object qryBewerbungenBEFRISTET: TBooleanField
+      DisplayWidth = 5
+      FieldKind = fkData
+      FieldName = 'BEFRISTET'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayValues = 'True;False'
+    end
+    object qryBewerbungenIGNORIERT: TBooleanField
+      DisplayWidth = 5
+      FieldKind = fkData
+      FieldName = 'IGNORIERT'
+      Index = 14
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayValues = 'True;False'
+    end
+    object qryBewerbungenUID: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'UID'
+      Index = 15
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryBewerbungenBISDATUM: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'BISDATUM'
+      Index = 16
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryBewerbungenCOMPANY: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'COMPANY'
+      Index = 17
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object StringField1: TStringField
+      DisplayWidth = 255
+      FieldKind = fkLookup
+      FieldName = 'NAME'
+      Index = 18
+      KeyFields = 'COMPANY'
+      LookupCache = False
+      LookupDataSet = qryCompanies
+      LookupKeyFields = 'ID'
+      LookupResultField = 'NAME'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 255
+    end
   end
   object qryLog: TSQLQuery
     IndexFieldNames = 'ID'
@@ -283,5 +594,46 @@ object dmBewerbungen: TdmBewerbungen
     Params = <>
     left = 25
     top = 210
+  end
+  object dsCompanies: TDataSource
+    DataSet = qryCompanies
+    left = 290
+    top = 16
+  end
+  object qryCompanies: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'ID'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'NAME'
+        DataType = ftString
+        Precision = -1
+        Size = 255
+      end    
+      item
+        Name = 'NOTES'
+        DataType = ftString
+        Precision = -1
+        Size = 8000
+      end    
+      item
+        Name = 'VERMITTLER'
+        DataType = ftBoolean
+        Precision = -1
+        Size = 0
+      end>
+    Database = conData
+    Transaction = traData
+    SQL.Strings = (
+      'SELECT * FROM COMPANIES ORDER BY NAME'
+    )
+    Params = <>
+    left = 96
+    top = 208
   end
 end

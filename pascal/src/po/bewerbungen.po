@@ -490,6 +490,11 @@ msgctxt "TFRMMAIN.CHKBEFRISTET.CAPTION"
 msgid "befristet"
 msgstr ""
 
+#: tfrmmain.chkcomverm.caption
+msgctxt "TFRMMAIN.CHKCOMVERM.CAPTION"
+msgid "Personalvermittler"
+msgstr ""
+
 #: tfrmmain.chkignoriert.caption
 msgid "ignoriert"
 msgstr ""
@@ -511,6 +516,15 @@ msgstr ""
 #: tfrmmain.dbgrid1.columns[1].title.caption
 msgctxt "TFRMMAIN.DBGRID1.COLUMNS[1].TITLE.CAPTION"
 msgid "Datei"
+msgstr ""
+
+#: tfrmmain.dbgrid2.columns[0].title.caption
+msgctxt "tfrmmain.dbgrid2.columns[0].title.caption"
+msgid "Name"
+msgstr ""
+
+#: tfrmmain.dbgrid2.columns[1].title.caption
+msgid "VERMITTLER"
 msgstr ""
 
 #: tfrmmain.dlgfindcompany.title
@@ -575,6 +589,10 @@ msgstr ""
 #: tfrmmain.edtwvl.text
 msgctxt "tfrmmain.edtwvl.text"
 msgid "  .  .    "
+msgstr ""
+
+#: tfrmmain.firmen.caption
+msgid "Firmen"
 msgstr ""
 
 #: tfrmmain.grdbewerbungen.columns[0].title.caption
@@ -643,6 +661,15 @@ msgstr ""
 
 #: tfrmmain.label1.caption
 msgid "Anspr.partner"
+msgstr ""
+
+#: tfrmmain.label2.caption
+msgctxt "TFRMMAIN.LABEL2.CAPTION"
+msgid "Name"
+msgstr ""
+
+#: tfrmmain.label3.caption
+msgid "Bemerkung"
 msgstr ""
 
 #: tfrmmain.lbldatum.caption

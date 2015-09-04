@@ -79,20 +79,26 @@ type
     alFilter: TActionList;
     btnFileOpen: TBitBtn;
     btnBrowse: TBitBtn;
+    cbbEmpfName: TDBLookupComboBox;
     cbFileType: TDBComboBox;
-    cbbEmpfName: TDBComboBox;
     cbbEmpfMail: TDBComboBox;
     cbbJobTitel: TDBComboBox;
     cbbAnspr: TDBComboBox;
     chkBefristet: TDBCheckBox;
+    chkComVerm: TDBCheckBox;
     chkIgnoriert: TDBCheckBox;
     chkVermittler: TDBCheckBox;
+    DBGrid2: TDBGrid;
+    DBMemo1: TDBMemo;
     edtFile: TDBEdit;
     DBGrid1: TDBGrid;
     dlgFindCompany: TFindDialog;
     cbbLogTyp: TDBComboBox;
     edtEnde: TDateEdit;
+    edtName: TDBEdit;
     Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
     lblFristEnde: TLabel;
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
@@ -118,7 +124,9 @@ type
     lblDokFilename: TLabel;
     lblDokDescr: TLabel;
     dlgDocuments: TOpenDialog;
+    navDocs1: TDBNavigator;
     pnlDokBottom: TPanel;
+    pnlDokBottom1: TPanel;
     rgMedium: TDBRadioGroup;
     grdBewerbungen: TDBGrid;
     grdLog: TDBGrid;
@@ -163,6 +171,7 @@ type
     rgTyp: TRadioGroup;
     dlgExport: TSaveDialog;
     sbInfo: TStatusBar;
+    Firmen: TTabSheet;
     tsDokumente: TTabSheet;
     tsActions: TTabSheet;
     tsBewerbungData: TTabSheet;
@@ -197,6 +206,7 @@ type
     procedure actZusageExecute(Sender: TObject);
     procedure btnBrowseClick(Sender: TObject);
     procedure btnFileOpenClick(Sender: TObject);
+    procedure cbbEmpfNameChange(Sender: TObject);
     procedure DBGrid1PrepareCanvas(Sender: TObject; DataCol: integer;
       Column: TColumn; AState: TGridDrawState);
     procedure dlgFindCompanyFind(Sender: TObject);
@@ -274,7 +284,7 @@ begin
     with SQL do
     begin
       Add('SELECT NAME');
-      Add('FROM BEWERBUNGEN');
+      Add('FROM COMPANIES JOIN BEWERBUNGEN ON COMPANIES.ID = BEWERBUNGEN.COMPANY');
       Add(Format('WHERE %s', [rsWHEREWVLSAND]));
       Add('AND (UID = :pUserID)');
     end;
@@ -556,6 +566,18 @@ begin
   end;
 end;
 
+procedure TfrmMain.cbbEmpfNameChange(Sender: TObject);
+var
+  sNote: string;
+begin
+  if (dmBewerbungen.qryBewerbungen.State in dsWriteModes) then
+  begin
+    if dmBewerbungen.qryCompanies.Locate('ID', (Sender as TDBLookupComboBox).KeyValue, []) then
+      sNote := dmBewerbungen.qryCompanies.FieldByName('NOTES').AsString;
+      if (sNote <> EmptyStr) then
+        Application.MessageBox(PChar(sNote), PChar(rsWarnung), MB_ICONWARNING + MB_OK);
+  end;
+end;
 {$endif}
 
 procedure TfrmMain.DBGrid1PrepareCanvas(Sender: TObject; DataCol: integer;
@@ -595,7 +617,7 @@ end;
 
 procedure TfrmMain.edtDatumEditingDone(Sender: TObject);
 begin
-  if (dmBewerbungen.dsData.State in [dsInsert, dsEdit]) and (edtWVL.Text <> '  .  .    ')
+  if (dmBewerbungen.dsData.State in dsWriteModes) and (edtWVL.Text <> '  .  .    ')
     and (edtDatum.Date <> JobApplication.Datum) then
      if (Application.MessageBox(PChar(rsRecalcWVL), PChar(rsWVL), MB_YESNO or
         MB_DEFBUTTON2 or MB_ICONQUESTION) = ID_YES) then
