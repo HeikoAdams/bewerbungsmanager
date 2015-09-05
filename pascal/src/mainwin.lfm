@@ -1,7 +1,7 @@
 object frmMain: TfrmMain
-  Left = 244
+  Left = 242
   Height = 552
-  Top = 132
+  Top = 141
   Width = 658
   Caption = 'Bewerbungsmanager'
   ClientHeight = 552
@@ -57,15 +57,79 @@ object frmMain: TfrmMain
             DisplayFormat = 'dd.mm.yyyy'
           end        
           item
-            Title.Caption = 'Empfänger'
-            Width = 250
-            FieldName = 'NAME'
-          end        
-          item
+            PickList.Strings = (
+              'Anwendungsentwickler'
+              'Applikationsingenieur IT Produktionssoftware'
+              'Bürosachbearbeiter/innen IT'
+              'Fachinformatiker'
+              'Fachinformatiker (w/m) für Anwendungsentwicklung'
+              'Fachinformatiker Anwendungsentwicklung'
+              'Fachinformatiker Systemintegration'
+              'Fachinformatiker mit Schwerpunkt Systemintegration'
+              'IT Support Spezialist'
+              'IT-Administrator'
+              'IT-Administrator/in'
+              'IT-Spezialist'
+              'Informatiker'
+              'Junior IT-Systemadministrator'
+              'Mitarbeiter Customer Care & Operations'
+              'Mitarbeiter IT'
+              'Mitarbeiter IT Support'
+              'Mitarbeiter/in für die EDV '
+              'Netzwerkadministrator'
+              'SW-Entwickler (m/w) MS .NET/ C-Sharp'
+              'Service-Techniker'
+              'Softwareentwickler'
+              'Softwareentwickler Java/C#'
+              'Softwareentwickler Microsoft C# / .NET'
+              'Softwareentwickler/in C#'
+              'Webentwickler'
+              'e-Commerce / Shopbetreuung'
+            )
             Title.Alignment = taCenter
             Title.Caption = 'Job-Titel'
             Width = 250
             FieldName = 'JOBTITEL'
+          end        
+          item
+            PickList.Strings = (
+              'AllatNet Recruiting GmbH & Co. KG'
+              'Bauer GmbH & Co. KG'
+              'Brose Fahrzeugteile GmbH & Co. Kommanditgesellschaft'
+              'Bundesamt für Migration und Flüchtlinge'
+              'ComWer GmbH'
+              'DELIFE GmbH'
+              'EICHNER Organisation GmbH & Co. KG'
+              'ELAXY GmbH'
+              'Edwork GmbH & Co. KG'
+              'Giesecke & Devrient GmbH'
+              'Götz Puppenmanufaktur Int. GmbH'
+              'HSD Händschke Software & Datentechnik'
+              'HUK-COBURG-Allgemeine Versicherung AG'
+              'Habermaaß GmbH'
+              'Hochschule für angewandte Wissenschaften Coburg'
+              'IT-Networks'
+              'Josef Dechant Ingenieurbüro'
+              'L&P Personal Petra Lang'
+              'LEONI Fiber Optics GmbH'
+              'Max Schultz GmbH & Co. KG'
+              'NEA Engineering GmbH'
+              'OE GmbH'
+              'Oschmann Comfortbetten GmbH'
+              'RADAS Jobbörse & Personalvermittlung GmbH'
+              'SYSTEAM GmbH'
+              'Schreiner Coburg GmbH'
+              'Stadtwerke Rödental'
+              'United Gameserver GmbH'
+              'VSB Solutions GmbH'
+              'VWA'
+              'roba Baumann GmbH'
+              'saaroluna.de'
+            )
+            Title.Alignment = taCenter
+            Title.Caption = 'Empfänger'
+            Width = 250
+            FieldName = 'NAME'
           end        
           item
             Title.Alignment = taCenter
@@ -159,7 +223,7 @@ object frmMain: TfrmMain
           'Stellenangebot'
           'Vermittlungsvorschlag'
         )
-        TabOrder = 10
+        TabOrder = 9
         Values.Strings = (
           '0'
           '1'
@@ -209,7 +273,7 @@ object frmMain: TfrmMain
         DataSource = dmBewerbungen.dsData
         CharCase = ecNormal
         MaxLength = 0
-        TabOrder = 5
+        TabOrder = 4
       end
       object rgFeedback: TDBRadioGroup
         Left = 184
@@ -224,7 +288,7 @@ object frmMain: TfrmMain
           'Eingangsbetätigung'
           'Einladung'
         )
-        TabOrder = 11
+        TabOrder = 10
         Values.Strings = (
           '0'
           '1'
@@ -246,7 +310,7 @@ object frmMain: TfrmMain
           'Zurückgezogen'
           'keine Antwort'
         )
-        TabOrder = 12
+        TabOrder = 11
         Values.Strings = (
           '0'
           '1'
@@ -263,7 +327,7 @@ object frmMain: TfrmMain
         DataField = 'NOTES'
         DataSource = dmBewerbungen.dsData
         ScrollBars = ssAutoBoth
-        TabOrder = 14
+        TabOrder = 13
       end
       object lblNotes: TLabel
         Left = 9
@@ -288,7 +352,7 @@ object frmMain: TfrmMain
           'Telefon'
           'Sonstige'
         )
-        TabOrder = 13
+        TabOrder = 12
         Values.Strings = (
           '0'
           '1'
@@ -308,19 +372,6 @@ object frmMain: TfrmMain
         MaxLength = 0
         Sorted = True
         TabOrder = 2
-      end
-      object cbbJobTitel: TDBComboBox
-        Left = 424
-        Height = 31
-        Top = 72
-        Width = 200
-        AutoComplete = True
-        DataField = 'JOBTITEL'
-        DataSource = dmBewerbungen.dsData
-        ItemHeight = 0
-        MaxLength = 0
-        Sorted = True
-        TabOrder = 4
       end
       object Label1: TLabel
         Left = 9
@@ -357,7 +408,7 @@ object frmMain: TfrmMain
         Flat = True
         MaxLength = 10
         OnEditingDone = edtEndeEditingDone
-        TabOrder = 6
+        TabOrder = 5
         Text = '  .  .    '
       end
       object lblFristEnde: TLabel
@@ -379,7 +430,7 @@ object frmMain: TfrmMain
         DataSource = dmBewerbungen.dsData
         ParentShowHint = False
         ShowHint = True
-        TabOrder = 9
+        TabOrder = 8
         ValueChecked = 'True'
         ValueUnchecked = 'False'
       end
@@ -393,7 +444,7 @@ object frmMain: TfrmMain
         DataSource = dmBewerbungen.dsData
         Font.Color = clRed
         ParentFont = False
-        TabOrder = 8
+        TabOrder = 7
         ValueChecked = 'True'
         ValueUnchecked = 'False'
       end
@@ -407,7 +458,7 @@ object frmMain: TfrmMain
         DataSource = dmBewerbungen.dsData
         Font.Color = clRed
         ParentFont = False
-        TabOrder = 7
+        TabOrder = 6
         ValueChecked = 'True'
         ValueUnchecked = 'False'
       end
@@ -425,6 +476,22 @@ object frmMain: TfrmMain
         ListSource = dmBewerbungen.dsCompanies
         LookupCache = False
         OnChange = cbbEmpfNameChange
+        Sorted = True
+        TabOrder = 14
+      end
+      object cbbJobTitel: TDBLookupComboBox
+        Left = 424
+        Height = 31
+        Top = 72
+        Width = 200
+        AutoComplete = True
+        DataField = 'JOB'
+        DataSource = dmBewerbungen.dsData
+        KeyField = 'ID'
+        ListField = 'NAME'
+        ListFieldIndex = 0
+        ListSource = dmBewerbungen.dsJobs
+        LookupCache = False
         Sorted = True
         TabOrder = 15
       end
@@ -789,11 +856,13 @@ object frmMain: TfrmMain
         Color = clWindow
         Columns = <        
           item
+            Title.Alignment = taCenter
             Title.Caption = 'Name'
             Width = 450
             FieldName = 'NAME'
           end        
           item
+            Title.Alignment = taCenter
             Title.Caption = 'Personalvermittler'
             Width = 125
             FieldName = 'VERMITTLER'
@@ -875,6 +944,81 @@ object frmMain: TfrmMain
         end
       end
     end
+    object tsJobs: TTabSheet
+      Caption = 'Jobs'
+      ClientHeight = 473
+      ClientWidth = 648
+      ImageIndex = 15
+      object navJobs: TDBNavigator
+        Left = 0
+        Height = 25
+        Top = 0
+        Width = 648
+        Align = alTop
+        BevelOuter = bvNone
+        ChildSizing.EnlargeHorizontal = crsScaleChilds
+        ChildSizing.EnlargeVertical = crsScaleChilds
+        ChildSizing.ShrinkHorizontal = crsScaleChilds
+        ChildSizing.ShrinkVertical = crsScaleChilds
+        ChildSizing.Layout = cclLeftToRightThenTopToBottom
+        ChildSizing.ControlsPerLine = 100
+        ClientHeight = 25
+        ClientWidth = 648
+        DataSource = dmBewerbungen.dsJobs
+        Flat = True
+        Options = []
+        TabOrder = 0
+        VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbInsert, nbEdit, nbPost, nbCancel, nbRefresh]
+      end
+      object DBGrid3: TDBGrid
+        Left = 0
+        Height = 405
+        Top = 25
+        Width = 648
+        Align = alClient
+        Color = clWindow
+        Columns = <        
+          item
+            Title.Alignment = taCenter
+            Title.Caption = 'Job-Titel'
+            Width = 500
+            FieldName = 'NAME'
+          end>
+        DataSource = dmBewerbungen.dsJobs
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+        TabOrder = 1
+        TitleStyle = tsNative
+      end
+      object pnlJobData: TPanel
+        Left = 0
+        Height = 43
+        Top = 430
+        Width = 648
+        Align = alBottom
+        ClientHeight = 43
+        ClientWidth = 648
+        TabOrder = 2
+        object edtName1: TDBEdit
+          Left = 88
+          Height = 31
+          Top = 8
+          Width = 552
+          DataField = 'NAME'
+          DataSource = dmBewerbungen.dsJobs
+          CharCase = ecNormal
+          MaxLength = 0
+          TabOrder = 0
+        end
+        object Label4: TLabel
+          Left = 8
+          Height = 19
+          Top = 12
+          Width = 52
+          Caption = 'Job-Titel'
+          ParentColor = False
+        end
+      end
+    end
   end
   object navData: TDBNavigator
     Left = 0
@@ -915,7 +1059,7 @@ object frmMain: TfrmMain
     left = 352
     top = 448
     Bitmap = {
-      4C690F0000001000000010000000FFFFFF009E6E4D2B9D6D4CD69D6D4BC59D6C
+      4C69100000001000000010000000FFFFFF009E6E4D2B9D6D4CD69D6D4BC59D6C
       4BFF9C6C4AFF9C6B49FF9B6A49FF9B6A48FF9A6947FF996846FF986745FF9364
       43FF845D3EDEFFFFFF00FFFFFF00FFFFFF009D6D4C919D6D4BFEBB9778FFAC82
       62FFAC8161FFAB8060FFAB7F5FFFAA7F5EFFA87E5DFFA87C5CFF9D6D4CFF9766
@@ -1394,6 +1538,38 @@ object frmMain: TfrmMain
       53FFA97151FFA97151A9FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00EFC2A37EEFC1A2E3EDC09FFFEBBE
+      9DFFEBBC9AFFE9BA96FFE7B793FFE6B590FFE4B28CFFE2AF88FFE0AC84FFDDA9
+      80FFDCA57DFFDAA37ACAFFFFFF00FFFFFF00EEC1A1EBFBF7F4FFFBF7F4FFFBF7
+      F4FFFBF7F4FFFBF7F4FFFBF7F4FFFBF7F4FFFBF7F4FFFBF7F4FFFBF7F4FFFBF7
+      F4FFFBF7F4FFD7A074F8FFFFFF00FFFFFF00ECBF9EFFFBF7F4FF9CD5A5FF98D3
+      A1FF94D09DFF90CE98FF8BCB93FF87C98EFF82C689FF7EC384FF7AC180FF76BE
+      7CFFFBF7F4FFD49B6FFFFFFFFF00FFFFFF00EBBD9BFFFBF7F4FFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFBF7F4FFD1976AFFFFFFFF00FFFFFF00E9BA98FFFBF7F4FFE9C3A6FFE9C3
+      A6FFE9C3A6FFE9C3A6FFE9C3A6FFE9C3A6FFE9C3A6FFE9C3A6FFE9C3A6FFE9C3
+      A6FFFBF7F4FFCE9364FFFFFFFF00FFFFFF00E7B794FFFBF7F4FFE9C3A6FFFFFF
+      FFFFE8C4A9FFFFFFFFFFFFFFFFFFFFFFFFFFE8C7ACFFFFFFFFFFFFFFFFFFFFFF
+      FFFFF7F1EBFFCB8F5FFFFFFFFF00FFFFFF00E5B48FFFFAF6F2FFE9C6AAFFE9C6
+      ACFFEAC7ACFFE9C7ADFFE9C9AEFFE9C9B0FFE8C7ACFFE9C9B0FFE8C8B0FFE8CC
+      B5FFF2E7DEFFC88A59FFFFFFFF00FFFFFF00E3B18CFFFAF6F1FFEAC9AEFFFFFF
+      FFFFEAC9B0FFFFFFFFFFFFFFFFFFFFFFFFFFE8C7ACFFFFFFFFFFFFFFFFFFFFFF
+      FFFFF1E5DBFFC68655FFFFFFFF00FFFFFF00E1AE87FFFAF4F0FFEACBB2FFEACC
+      B3FFEACCB3FFEACCB3FFEACCB3FFEACEB7FFE8C7ACFFE8C7ACFFE8C8B0FFE8C8
+      AEFFF0E2D8FFC48654FFFFFFFF00FFFFFF00DFAA82FFF9F3EFFFEACEB7FFFFFF
+      FFFFEBD0BBFFFFFFFFFFFFFFFFFFFFFFFFFFEACFBAFFFBF6F2FFFFFFFFFFFFFF
+      FFFFF0E2D8FFC88D5FFFFFFFFF00FFFFFF00DDA87EFFF9F3EFFFEBD0BAFFEBD0
+      BBFFEBD0BBFFEBD0BBFFEBD0BBFFEBD1BDFFEACDB5FFEACDB5FFEACDB5FFEACD
+      B5FFF0E2D8FFC68A5CFFFFFFFF00FFFFFF00D9A47AFFF9F3EEFFEBD2BEFFFFFF
+      FFFFEBD3BFFFFFFFFFFFFFFFFFFFFFFFFFFFEAC7ADFFFFFFFFFFFFFFFFFFFFFF
+      FFFFF0E2D8FFC68C5FFFFFFFFF00FFFFFF00D7A175FFF8F2EDFFF7F0EAFFF6ED
+      E6FFF4EAE2FFF3E7DEFFF1E4DBFFF0E2D8FFF0E2D8FFF0E2D8FFF0E2D8FFF0E2
+      D8FFF0E2D8FFC58A5DFDFFFFFF00FFFFFF00D69E72C4D3996EF4D19668FFCE92
+      63FFCB8E5EFFC98A5BFFC78756FFC38452FFC38452FFC38452FFC38452FFC384
+      52FFC38452FFBB7742B0FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00
     }

@@ -74,6 +74,7 @@ begin
     begin
       Inc(FLoginError);
       Application.MessageBox(PChar(rsUnknowUser), PChar(rsFehler), MB_ICONWARNING + MB_OK);
+      lePassword.Clear;
     end;
   end
   else

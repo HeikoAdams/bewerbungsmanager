@@ -45,6 +45,10 @@ msgstr ""
 msgid "UPDATE COMPANIES SET AKTIV = 0 WHERE ID NOT IN (SELECT COMPANY FROM BEWERBUNGEN);"
 msgstr ""
 
+#: bewerbung_strings.rsdeletejobs
+msgid "DELETE FROM JOBS WHERE ID NOT IN (SELECT DISTINCT JOB FROM BEWERBUNGEN);"
+msgstr ""
+
 #: bewerbung_strings.rsdienderungen
 msgid "Die Änderungen werden zum Teil erst nach einem Neustart wirksam!"
 msgstr ""
@@ -545,6 +549,11 @@ msgctxt "tfrmmain.dbgrid2.columns[1].title.caption"
 msgid "Personalvermittler"
 msgstr ""
 
+#: tfrmmain.dbgrid3.columns[0].title.caption
+msgctxt "TFRMMAIN.DBGRID3.COLUMNS[0].TITLE.CAPTION"
+msgid "Job-Titel"
+msgstr ""
+
 #: tfrmmain.dlgfindcompany.title
 msgid "Empfänger suchen"
 msgstr ""
@@ -626,12 +635,12 @@ msgstr ""
 
 #: tfrmmain.grdbewerbungen.columns[3].title.caption
 msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[3].TITLE.CAPTION"
-msgid "Empfänger"
+msgid "Job-Titel"
 msgstr ""
 
 #: tfrmmain.grdbewerbungen.columns[4].title.caption
 msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[4].TITLE.CAPTION"
-msgid "Job-Titel"
+msgid "Empfänger"
 msgstr ""
 
 #: tfrmmain.grdbewerbungen.columns[5].title.caption
@@ -674,6 +683,11 @@ msgstr ""
 
 #: tfrmmain.label3.caption
 msgid "Bemerkung"
+msgstr ""
+
+#: tfrmmain.label4.caption
+msgctxt "TFRMMAIN.LABEL4.CAPTION"
+msgid "Job-Titel"
 msgstr ""
 
 #: tfrmmain.lbldatum.caption
@@ -798,6 +812,10 @@ msgstr ""
 #: tfrmmain.tsfirmen.caption
 msgctxt "TFRMMAIN.TSFIRMEN.CAPTION"
 msgid "Firmen"
+msgstr ""
+
+#: tfrmmain.tsjobs.caption
+msgid "Jobs"
 msgstr ""
 
 #: tfrmnewuser.caption

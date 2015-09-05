@@ -84,6 +84,7 @@ resourcestring
   rsPurgeSQL = 'DELETE FROM BEWERBUNGEN WHERE (UID = :pUserID) AND (DATE(DATUM) < DATE(''now'', ''-2 year'')) AND (RESULT <> 1);';
   rsCleanupSQL = 'DELETE FROM DOCUMENTS WHERE (BEWERBUNG = 0);';
   rsDeactiveComp = 'UPDATE COMPANIES SET AKTIV = 0 WHERE ID NOT IN (SELECT COMPANY FROM BEWERBUNGEN);';
+  rsDeleteJobs = 'DELETE FROM JOBS WHERE ID NOT IN (SELECT DISTINCT JOB FROM BEWERBUNGEN);';
   rsInaktiveFirma = 'Der gewählte Empfänger ist als inaktiv gekennzeichnet!';
   rsPersonalvermittler = 'Personalvermittler!';
 implementation

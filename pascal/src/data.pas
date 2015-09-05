@@ -35,6 +35,7 @@ type
   TdmBewerbungen = class(TDataModule)
     conData: TSQLite3Connection;
     dsCompanies: TDataSource;
+    dsJobs: TDataSource;
     dsCompany: TDataSource;
     dsData: TDatasource;
     dsFeedback: TDatasource;
@@ -51,7 +52,7 @@ type
     qryBewerbungenFEEDBACK: TLongintField;
     qryBewerbungenID: TLongintField;
     qryBewerbungenIGNORIERT: TBooleanField;
-    qryBewerbungenJOBTITEL: TStringField;
+    qryBewerbungenJOB: TLongintField;
     qryBewerbungenMAIL: TStringField;
     qryBewerbungenMEDIUM: TLongintField;
     qryBewerbungenNOTES: TStringField;
@@ -62,6 +63,7 @@ type
     qryBewerbungenVERMITTLER: TBooleanField;
     qryBewerbungenWVL: TDateTimeField;
     qryCompanies: TSQLQuery;
+    qryJobs: TSQLQuery;
     qryCSVExport: TSQLQuery;
     qryLog: TSQLQuery;
     qryDocuments: TSQLQuery;
@@ -69,6 +71,7 @@ type
     qryBenutzer: TSQLQuery;
     qryBewerbungen: TSQLQuery;
     StringField1: TStringField;
+    StringField2: TStringField;
     traData: TSQLTransaction;
     procedure conDataAfterConnect(Sender: TObject);
     procedure conDataBeforeConnect(Sender: TObject);
@@ -76,6 +79,7 @@ type
     procedure dsCompaniesStateChange(Sender: TObject);
     procedure dsDataStateChange(Sender: TObject);
     procedure dsDocsStateChange(Sender: TObject);
+    procedure dsJobsStateChange(Sender: TObject);
     procedure dsLogStateChange(Sender: TObject);
     procedure qryBewerbungenAfterOpen(DataSet: TDataSet);
     procedure qryBewerbungenAfterPost(DataSet: TDataSet);
@@ -254,6 +258,9 @@ begin
   if not qryCompanies.Active then
     qryCompanies.Open;
 
+  if not qryJobs.Active then
+    qryJobs.Open;
+
   if not qryBewerbungen.Active then
     qryBewerbungen.Open;
 
@@ -306,17 +313,17 @@ begin
 
       if (aWhere = EmptyStr) then
       begin
-         Add('SELECT BEWERBUNGEN.ID, DATUM, MAIL, JOBTITEL, REFNR, TYP, ');
+         Add('SELECT BEWERBUNGEN.ID, DATUM, MAIL, REFNR, TYP, ');
          Add('FEEDBACK, RESULT, WVL, BEWERBUNGEN.NOTES, BEWERBUNGEN.VERMITTLER, ');
-         Add('MEDIUM, ANSPRECHPARTNER, BEFRISTET, IGNORIERT, UID, BISDATUM, COMPANY ');
+         Add('MEDIUM, ANSPRECHPARTNER, BEFRISTET, IGNORIERT, UID, BISDATUM, COMPANY, JOB ');
          Add('FROM BEWERBUNGEN ');
          Add('WHERE (UID = :pUserID) ORDER BY Datum DESC')
       end
       else
       begin
-         Add('SELECT BEWERBUNGEN.ID, DATUM, MAIL, JOBTITEL, REFNR, TYP, ');
+         Add('SELECT BEWERBUNGEN.ID, DATUM, MAIL, REFNR, TYP, ');
          Add('FEEDBACK, RESULT, WVL, BEWERBUNGEN.NOTES, BEWERBUNGEN.VERMITTLER, ');
-         Add('MEDIUM, ANSPRECHPARTNER, BEFRISTET, IGNORIERT, UID, BISDATUM, COMPANY ');
+         Add('MEDIUM, ANSPRECHPARTNER, BEFRISTET, IGNORIERT, UID, BISDATUM, COMPANY, JOB ');
          Add('FROM BEWERBUNGEN ');
          Add(Format('WHERE (UID = :pUserID) AND (%s) ORDER BY Datum DESC', [aWhere]));
       end;
@@ -336,8 +343,9 @@ begin
     begin
       Clear;
 
-      Add('SELECT DATUM, WVL, BISDATUM, COMPANIES.NAME, MAIL, JOBTITEL, REFNR, (RESULT = 1) AS ZUSAGE, (RESULT = 2) AS ABSAGE, (RESULT = 4) AS KEINEANTWORT');
+      Add('SELECT DATUM, WVL, BISDATUM, COMPANIES.NAME, MAIL, JOB.NAME JOBTITEL, REFNR, (RESULT = 1) AS ZUSAGE, (RESULT = 2) AS ABSAGE, (RESULT = 4) AS KEINEANTWORT');
       Add('FROM BEWERBUNGEN JOIN COMPANIES ON BEWERBUNGEN.COMPANY = COMPANIES.ID');
+      Add('JOIN JOBS ON BEWERBUNGEN.JOB = JOBS.ID');
 
       if not (aWhere = EmptyStr) then
         Add(Format('%s', [aWhere]));
@@ -439,6 +447,23 @@ begin
     begin
       Clear;
       Add(rsDeactiveComp);
+    end;
+
+    ExecSQL;
+    Close;
+    Free;
+    traData.Commit;
+  end;
+
+  with TSQLQuery.Create(nil) do
+  begin
+    DataBase := conData;
+    Transaction := traData;
+
+    with SQL do
+    begin
+      Clear;
+      Add(rsDeleteJobs);
     end;
 
     ExecSQL;
@@ -623,6 +648,12 @@ begin
   end;
 end;
 
+procedure TdmBewerbungen.dsJobsStateChange(Sender: TObject);
+begin
+  FEditMode := ((Sender as TDatasource).State in dsWriteModes);
+  frmMain.pnlJobData.Enabled := FEditMode;
+end;
+
 procedure TdmBewerbungen.dsLogStateChange(Sender: TObject);
 var
   bEditMode: boolean;
@@ -702,7 +733,7 @@ begin
       Feedback:=FieldByName('Feedback').AsInteger;
       Result:=FieldByName('Result').AsInteger;
       RefNr:=FieldByName('RefNr').AsString;
-      JobTitel:=FieldByName('JobTitel').AsString;
+      //JobTitel:=FieldByName('JobTitel').AsString;
       Mail:=FieldByName('Mail').AsString;
     end;
 

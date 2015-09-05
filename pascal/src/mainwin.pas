@@ -80,9 +80,9 @@ type
     btnFileOpen: TBitBtn;
     btnBrowse: TBitBtn;
     cbbEmpfName: TDBLookupComboBox;
+    cbbJobTitel: TDBLookupComboBox;
     cbFileType: TDBComboBox;
     cbbEmpfMail: TDBComboBox;
-    cbbJobTitel: TDBComboBox;
     cbbAnspr: TDBComboBox;
     chkBefristet: TDBCheckBox;
     chkComVerm: TDBCheckBox;
@@ -90,6 +90,7 @@ type
     chkVermittler: TDBCheckBox;
     chkAktiv: TDBCheckBox;
     DBGrid2: TDBGrid;
+    DBGrid3: TDBGrid;
     DBMemo1: TDBMemo;
     edtFile: TDBEdit;
     DBGrid1: TDBGrid;
@@ -97,9 +98,11 @@ type
     cbbLogTyp: TDBComboBox;
     edtEnde: TDateEdit;
     edtName: TDBEdit;
+    edtName1: TDBEdit;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
+    Label4: TLabel;
     lblFristEnde: TLabel;
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
@@ -126,8 +129,10 @@ type
     lblDokDescr: TLabel;
     dlgDocuments: TOpenDialog;
     navFirmen: TDBNavigator;
+    navJobs: TDBNavigator;
     pnlDokBottom: TPanel;
     pnlCompanyData: TPanel;
+    pnlJobData: TPanel;
     rgMedium: TDBRadioGroup;
     grdBewerbungen: TDBGrid;
     grdLog: TDBGrid;
@@ -172,6 +177,7 @@ type
     rgTyp: TRadioGroup;
     dlgExport: TSaveDialog;
     sbInfo: TStatusBar;
+    tsJobs: TTabSheet;
     tsFirmen: TTabSheet;
     tsDokumente: TTabSheet;
     tsActions: TTabSheet;
