@@ -635,12 +635,12 @@ msgstr ""
 
 #: tfrmmain.grdbewerbungen.columns[3].title.caption
 msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[3].TITLE.CAPTION"
-msgid "Job-Titel"
+msgid "Empfänger"
 msgstr ""
 
 #: tfrmmain.grdbewerbungen.columns[4].title.caption
 msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[4].TITLE.CAPTION"
-msgid "Empfänger"
+msgid "Job-Titel"
 msgstr ""
 
 #: tfrmmain.grdbewerbungen.columns[5].title.caption

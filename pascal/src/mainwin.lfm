@@ -58,41 +58,6 @@ object frmMain: TfrmMain
           end        
           item
             PickList.Strings = (
-              'Anwendungsentwickler'
-              'Applikationsingenieur IT Produktionssoftware'
-              'Bürosachbearbeiter/innen IT'
-              'Fachinformatiker'
-              'Fachinformatiker (w/m) für Anwendungsentwicklung'
-              'Fachinformatiker Anwendungsentwicklung'
-              'Fachinformatiker Systemintegration'
-              'Fachinformatiker mit Schwerpunkt Systemintegration'
-              'IT Support Spezialist'
-              'IT-Administrator'
-              'IT-Administrator/in'
-              'IT-Spezialist'
-              'Informatiker'
-              'Junior IT-Systemadministrator'
-              'Mitarbeiter Customer Care & Operations'
-              'Mitarbeiter IT'
-              'Mitarbeiter IT Support'
-              'Mitarbeiter/in für die EDV '
-              'Netzwerkadministrator'
-              'SW-Entwickler (m/w) MS .NET/ C-Sharp'
-              'Service-Techniker'
-              'Softwareentwickler'
-              'Softwareentwickler Java/C#'
-              'Softwareentwickler Microsoft C# / .NET'
-              'Softwareentwickler/in C#'
-              'Webentwickler'
-              'e-Commerce / Shopbetreuung'
-            )
-            Title.Alignment = taCenter
-            Title.Caption = 'Job-Titel'
-            Width = 250
-            FieldName = 'JOBTITEL'
-          end        
-          item
-            PickList.Strings = (
               'AllatNet Recruiting GmbH & Co. KG'
               'Bauer GmbH & Co. KG'
               'Brose Fahrzeugteile GmbH & Co. Kommanditgesellschaft'
@@ -130,6 +95,41 @@ object frmMain: TfrmMain
             Title.Caption = 'Empfänger'
             Width = 250
             FieldName = 'NAME'
+          end        
+          item
+            PickList.Strings = (
+              'Anwendungsentwickler'
+              'Applikationsingenieur IT Produktionssoftware'
+              'Bürosachbearbeiter/innen IT'
+              'Fachinformatiker'
+              'Fachinformatiker (w/m) für Anwendungsentwicklung'
+              'Fachinformatiker Anwendungsentwicklung'
+              'Fachinformatiker Systemintegration'
+              'Fachinformatiker mit Schwerpunkt Systemintegration'
+              'IT Support Spezialist'
+              'IT-Administrator'
+              'IT-Administrator/in'
+              'IT-Spezialist'
+              'Informatiker'
+              'Junior IT-Systemadministrator'
+              'Mitarbeiter Customer Care & Operations'
+              'Mitarbeiter IT'
+              'Mitarbeiter IT Support'
+              'Mitarbeiter/in für die EDV '
+              'Netzwerkadministrator'
+              'SW-Entwickler (m/w) MS .NET/ C-Sharp'
+              'Service-Techniker'
+              'Softwareentwickler'
+              'Softwareentwickler Java/C#'
+              'Softwareentwickler Microsoft C# / .NET'
+              'Softwareentwickler/in C#'
+              'Webentwickler'
+              'e-Commerce / Shopbetreuung'
+            )
+            Title.Alignment = taCenter
+            Title.Caption = 'Job-Titel'
+            Width = 250
+            FieldName = 'JOBTITEL'
           end        
           item
             Title.Alignment = taCenter
