@@ -584,8 +584,10 @@ begin
         Exit;
       end;
 
-    if dmBewerbungen.qryCompanies.FieldByName('VERMITTLER').AsBoolean then
-      Application.MessageBox(PChar(rsPersonalvermittler), PChar(rsWarnung), MB_ICONWARNING + MB_OK);
+      if dmBewerbungen.qryCompanies.FieldByName('VERMITTLER').AsBoolean then
+        Application.MessageBox(PChar(rsPersonalvermittler), PChar(rsWarnung), MB_ICONWARNING + MB_OK);
+
+      dmBewerbungen.qryBewerbungen.FieldByName('VERMITTLER').AsInteger:=dmBewerbungen.qryCompanies.FieldByName('VERMITTLER').AsInteger;
 
       sNote := dmBewerbungen.qryCompanies.FieldByName('NOTES').AsString;
       if (sNote <> EmptyStr) then
@@ -638,12 +640,15 @@ end;
 
 procedure TfrmMain.dlgFindCompanyFind(Sender: TObject);
 begin
-  if not dmBewerbungen.qryBewerbungen.Locate('NAME',
+  if not dmBewerbungen.qryCompanies.Locate('NAME',
     VarArrayOf([dlgFindCompany.FindText]), [loCaseInsensitive, loPartialKey]) then
     Application.MessageBox(PChar(rsKeineBereins), PChar(rsSuche),
       MB_OK + MB_ICONWARNING)
   else
+  begin
+    dmBewerbungen.qryBewerbungen.Locate('COMPANY', dmBewerbungen.qryCompanies.FieldByName('ID').AsInteger,[]);
     dlgFindCompany.CloseDialog;
+  end;
 end;
 
 procedure TfrmMain.edtDatumEditingDone(Sender: TObject);

@@ -636,26 +636,16 @@ msgstr ""
 
 #: tfrmmain.grdbewerbungen.columns[5].title.caption
 msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[5].TITLE.CAPTION"
-msgid "Mail"
+msgid "Personalvermittler"
 msgstr ""
 
 #: tfrmmain.grdbewerbungen.columns[6].title.caption
 msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[6].TITLE.CAPTION"
-msgid "Ref.Nr"
+msgid "befristet"
 msgstr ""
 
 #: tfrmmain.grdbewerbungen.columns[7].title.caption
 msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[7].TITLE.CAPTION"
-msgid "Personalvermittler"
-msgstr ""
-
-#: tfrmmain.grdbewerbungen.columns[8].title.caption
-msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[8].TITLE.CAPTION"
-msgid "befristet"
-msgstr ""
-
-#: tfrmmain.grdbewerbungen.columns[9].title.caption
-msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[9].TITLE.CAPTION"
 msgid "Ignoriert"
 msgstr ""
 

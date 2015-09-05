@@ -756,10 +756,6 @@ begin
 
     if (State in dsWriteModes) then
     begin
-      if qryCompanies.Locate('ID', FieldByName('COMPANY').AsInteger, []) and
-        (FieldByName('VERMITTLER').AsVariant = Null) then
-        FieldByName('VERMITTLER').AsInteger := qryCompanies.FieldByName('VERMITTLER').AsInteger;
-
       if frmMain.ConfigFile.ReadBool('GENERAL', 'IGNOREPV', False) then
         if (FieldByName('VERMITTLER').AsBoolean or FieldByName('BEFRISTET').AsBoolean) then
           FieldByName('IGNORIERT').AsInteger:=1;
