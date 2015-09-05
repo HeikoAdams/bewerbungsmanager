@@ -25,6 +25,7 @@ object frmMain: TfrmMain
       Caption = 'Bewerbungen'
       ClientHeight = 473
       ClientWidth = 648
+      ImageIndex = 14
       object grdBewerbungen: TDBGrid
         Left = 0
         Height = 473
@@ -441,12 +442,12 @@ object frmMain: TfrmMain
         TabOrder = 15
       end
     end
-    object Firmen: TTabSheet
+    object tsFirmen: TTabSheet
       Caption = 'Firmen'
       ClientHeight = 473
       ClientWidth = 648
       ImageIndex = 13
-      object navDocs1: TDBNavigator
+      object navFirmen: TDBNavigator
         Left = 0
         Height = 25
         Top = 0
@@ -465,6 +466,7 @@ object frmMain: TfrmMain
         Flat = True
         Options = []
         TabOrder = 0
+        VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbInsert, nbEdit, nbPost, nbCancel, nbRefresh]
       end
       object DBGrid2: TDBGrid
         Left = 0
@@ -476,19 +478,21 @@ object frmMain: TfrmMain
         Columns = <        
           item
             Title.Caption = 'Name'
-            Width = 500
+            Width = 450
             FieldName = 'NAME'
           end        
           item
-            Title.Caption = 'VERMITTLER'
+            Title.Caption = 'Personalvermittler'
+            Width = 125
             FieldName = 'VERMITTLER'
           end>
         DataSource = dmBewerbungen.dsCompanies
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
         TabOrder = 1
         TitleStyle = tsNative
+        OnPrepareCanvas = DBGrid2PrepareCanvas
       end
-      object pnlDokBottom1: TPanel
+      object pnlCompanyData: TPanel
         Left = 0
         Height = 137
         Top = 336
@@ -501,7 +505,7 @@ object frmMain: TfrmMain
           Left = 88
           Height = 31
           Top = 8
-          Width = 400
+          Width = 312
           DataField = 'NAME'
           DataSource = dmBewerbungen.dsCompanies
           CharCase = ecNormal
@@ -509,7 +513,7 @@ object frmMain: TfrmMain
           TabOrder = 0
         end
         object chkComVerm: TDBCheckBox
-          Left = 496
+          Left = 502
           Height = 23
           Top = 8
           Width = 136
@@ -545,6 +549,18 @@ object frmMain: TfrmMain
           Caption = 'Bemerkung'
           ParentColor = False
         end
+        object chkAktiv: TDBCheckBox
+          Left = 408
+          Height = 23
+          Top = 8
+          Width = 90
+          Caption = 'Aktiv'
+          DataField = 'AKTIV'
+          DataSource = dmBewerbungen.dsCompanies
+          TabOrder = 3
+          ValueChecked = 'True'
+          ValueUnchecked = 'False'
+        end
       end
     end
     object tsActions: TTabSheet
@@ -554,9 +570,9 @@ object frmMain: TfrmMain
       ImageIndex = 2
       object grdLog: TDBGrid
         Left = 0
-        Height = 305
+        Height = 311
         Top = 25
-        Width = 652
+        Width = 648
         Align = alClient
         Color = clWindow
         Columns = <        
@@ -583,7 +599,7 @@ object frmMain: TfrmMain
         Left = 0
         Height = 25
         Top = 0
-        Width = 652
+        Width = 648
         Align = alTop
         BevelOuter = bvNone
         ChildSizing.EnlargeHorizontal = crsScaleChilds
@@ -593,7 +609,7 @@ object frmMain: TfrmMain
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 100
         ClientHeight = 25
-        ClientWidth = 652
+        ClientWidth = 648
         DataSource = dmBewerbungen.dsLog
         Flat = True
         Options = []
@@ -602,15 +618,15 @@ object frmMain: TfrmMain
       object pnlBottom: TPanel
         Left = 0
         Height = 137
-        Top = 330
-        Width = 652
+        Top = 336
+        Width = 648
         Align = alBottom
         ClientHeight = 137
-        ClientWidth = 652
+        ClientWidth = 648
         TabOrder = 2
         object edtLogDatum: TDateEdit
           Left = 86
-          Height = 29
+          Height = 31
           Top = 8
           Width = 168
           CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
@@ -629,7 +645,7 @@ object frmMain: TfrmMain
           Left = 13
           Height = 19
           Top = 17
-          Width = 40
+          Width = 39
           Caption = 'Datum'
           ParentColor = False
         end
@@ -645,7 +661,7 @@ object frmMain: TfrmMain
           Left = 293
           Height = 19
           Top = 16
-          Width = 24
+          Width = 27
           Caption = 'Text'
           ParentColor = False
         end
@@ -661,7 +677,7 @@ object frmMain: TfrmMain
         end
         object cbbLogTyp: TDBComboBox
           Left = 86
-          Height = 29
+          Height = 31
           Top = 41
           Width = 191
           DataField = 'TYP'
@@ -890,6 +906,7 @@ object frmMain: TfrmMain
     ClientWidth = 658
     DataSource = dmBewerbungen.dsData
     Flat = True
+    OnClick = navDataClick
     Options = []
     TabOrder = 0
   end
@@ -911,7 +928,7 @@ object frmMain: TfrmMain
     left = 352
     top = 448
     Bitmap = {
-      4C690E0000001000000010000000FFFFFF009E6E4D2B9D6D4CD69D6D4BC59D6C
+      4C690F0000001000000010000000FFFFFF009E6E4D2B9D6D4CD69D6D4BC59D6C
       4BFF9C6C4AFF9C6B49FF9B6A49FF9B6A48FF9A6947FF996846FF986745FF9364
       43FF845D3EDEFFFFFF00FFFFFF00FFFFFF009D6D4C919D6D4BFEBB9778FFAC82
       62FFAC8161FFAB8060FFAB7F5FFFAA7F5EFFA87E5DFFA87C5CFF9D6D4CFF9766
@@ -1358,6 +1375,38 @@ object frmMain: TfrmMain
       8FFF74C180FF55A45EFF2A702FF44DA156BF419149E235803BC73B703FF14B69
       4DEB686868DD878787FF898989FF8B8B8BFF8C8C8CFF525252DD4E7251EB4383
       49F8367E3BCA2A702FEC216324BFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00A971516BDDB18DF4DCA77BFFDCA67AFFDAA4
+      7AFFD8A279FFD5A076FFD49E75FFD29D73FFCF9A72FFCE9970FFCB966FFFC994
+      6CFFC49A7AF4A971516BFFFFFF00DDAC85FDE8B992FFE8B992FFE8B992FFE8B9
+      92FFE8B992FFE8B992FFE8B992FFE8B992FFE8B992FFE8B992FFE8B992FFE8B9
+      92FFE8B992FFC1906FFDFFFFFF00DCA77BFFDCA77BFFDCA77BFFDCA77BFFDCA7
+      7BFFDCA77BFFDCA77BFFDCA77BFFDCA77BFFDCA77BFFDCA77BFFDCA77BFFDCA7
+      7BFFDCA77BFFC08B66FFFFFFFF00DBA47AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFBD8763FFFFFFFF00D9A379FFFFFFFFFFF6B965FFFFFFFFFFBDBD
+      BDFFBBBBBBFFB7B7B7FFFEFAF7FFB5B5B5FFFCF3EDFFB1B1B1FFB0B0B0FFADAD
+      ADFFFFFFFFFFBA8560FFFFFFFF00D8A279FFFFFFFFFFFEFAF8FFFEFAF7FFFEFA
+      F6FFFDF8F6FFFCF7F2FFFEFAF7FFFCF6F0FFFCF5EFFFFBF3ECFFFAF1EAFFFAF0
+      E8FFFFFFFFFFB7815EFFFFFFFF00D5A076FFFFFFFFFFF3B663FFFFFFFFFFBABA
+      BAFFB8B8B8FFB2B2B2FFFEFAF7FFAFAFAFFFFCF6F0FFA9A9A9FFA7A7A7FFA5A5
+      A5FFFFFFFFFFB57E5CFFFFFFFF00D49E75FFFFFFFFFFFEFCFAFFFEFBF9FFFEFA
+      F8FFFEFAF8FFFEFAF6FFFEFAF7FFFCF7F4FFFCF7F2FFFCF6F0FFFCF5EFFFFCF4
+      EEFFFFFFFFFFB27C5AFFFFFFFF00D19C73FFFFFFFFFFEFB462FFFFFFFFFFB5B5
+      B5FFB3B3B3FFABABABFFFEFAF7FFA8A8A8FFFDF8F5FFA2A2A2FF9E9E9EFF9B9B
+      9BFFFFFFFFFFB07A58FFFFFFFF00CC976FFFFFFFFFFFFEFDFBFFFEFCFBFFFEFB
+      F9FFFEFBF9FFFEFAF7FFFEFAF7FFFEFAF7FFFEFAF7FFFDF8F4FFFCF6F3FFFCF6
+      F3FFFFFFFFFFAC7554FFFFFFFF00CA946EFFFFFFFFFFEBB060FFFFFFFFFFB2B2
+      B2FFAEAEAEFFA5A5A5FFFEFAF7FFA2A2A2FFFEFAF7FF989898FF959595FF9191
+      91FFFFFFFFFFAA7353FFFFFFFF00C8926CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFA97251FFFFFFFF00A97151A9C38E68FFC08B66FFBE8864FFBB85
+      61FFB9835FFFB47E5CFFB27C5AFFB17B58FFAE7957FFAD7656FFAB7554FFA973
+      53FFA97151FFA97151A9FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00
     }

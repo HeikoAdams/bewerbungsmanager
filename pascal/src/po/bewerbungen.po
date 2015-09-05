@@ -41,6 +41,10 @@ msgctxt "bewerbung_strings.rsddatenstze"
 msgid "%d Datensätze in der Datenbank"
 msgstr ""
 
+#: bewerbung_strings.rsdeactivecomp
+msgid "UPDATE COMPANIES SET AKTIV = 0 WHERE ID NOT IN (SELECT COMPANY FROM BEWERBUNGEN);"
+msgstr ""
+
 #: bewerbung_strings.rsdienderungen
 msgid "Die Änderungen werden zum Teil erst nach einem Neustart wirksam!"
 msgstr ""
@@ -79,6 +83,10 @@ msgstr ""
 
 #: bewerbung_strings.rsignoredtxt
 msgid "Status der Bewerbung auf \"Ignoriert\" geändert"
+msgstr ""
+
+#: bewerbung_strings.rsinaktivefirma
+msgid "Der gewählte Empfänger ist als inaktiv gekennzeichnet!"
 msgstr ""
 
 #: bewerbung_strings.rsjobs
@@ -123,6 +131,10 @@ msgstr ""
 
 #: bewerbung_strings.rsolddatapurged
 msgid "%d alte Bewerbungen wurden aus dem System entfernt"
+msgstr ""
+
+#: bewerbung_strings.rspersonalvermittler
+msgid "Personalvermittler!"
 msgstr ""
 
 #: bewerbung_strings.rspurgesql
@@ -485,6 +497,11 @@ msgctxt "TFRMMAIN.CAPTION"
 msgid "Bewerbungsmanager"
 msgstr ""
 
+#: tfrmmain.chkaktiv.caption
+msgctxt "tfrmmain.chkaktiv.caption"
+msgid "Aktiv"
+msgstr ""
+
 #: tfrmmain.chkbefristet.caption
 msgctxt "TFRMMAIN.CHKBEFRISTET.CAPTION"
 msgid "befristet"
@@ -524,7 +541,8 @@ msgid "Name"
 msgstr ""
 
 #: tfrmmain.dbgrid2.columns[1].title.caption
-msgid "VERMITTLER"
+msgctxt "tfrmmain.dbgrid2.columns[1].title.caption"
+msgid "Personalvermittler"
 msgstr ""
 
 #: tfrmmain.dlgfindcompany.title
@@ -589,10 +607,6 @@ msgstr ""
 #: tfrmmain.edtwvl.text
 msgctxt "tfrmmain.edtwvl.text"
 msgid "  .  .    "
-msgstr ""
-
-#: tfrmmain.firmen.caption
-msgid "Firmen"
 msgstr ""
 
 #: tfrmmain.grdbewerbungen.columns[0].title.caption
@@ -789,6 +803,11 @@ msgstr ""
 
 #: tfrmmain.tsdokumente.caption
 msgid "Dokumente"
+msgstr ""
+
+#: tfrmmain.tsfirmen.caption
+msgctxt "TFRMMAIN.TSFIRMEN.CAPTION"
+msgid "Firmen"
 msgstr ""
 
 #: tfrmnewuser.caption

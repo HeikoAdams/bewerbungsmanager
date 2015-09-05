@@ -597,6 +597,7 @@ object dmBewerbungen: TdmBewerbungen
   end
   object dsCompanies: TDataSource
     DataSet = qryCompanies
+    OnStateChange = dsCompaniesStateChange
     left = 290
     top = 16
   end
@@ -626,14 +627,21 @@ object dmBewerbungen: TdmBewerbungen
         DataType = ftBoolean
         Precision = -1
         Size = 0
+      end    
+      item
+        Name = 'AKTIV'
+        DataType = ftBoolean
+        Precision = -1
+        Size = 0
       end>
+    AfterPost = qryBewerbungenAfterPost
     Database = conData
     Transaction = traData
     SQL.Strings = (
       'SELECT * FROM COMPANIES ORDER BY NAME'
     )
     Params = <>
-    left = 96
+    left = 104
     top = 208
   end
 end

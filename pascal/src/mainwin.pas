@@ -88,6 +88,7 @@ type
     chkComVerm: TDBCheckBox;
     chkIgnoriert: TDBCheckBox;
     chkVermittler: TDBCheckBox;
+    chkAktiv: TDBCheckBox;
     DBGrid2: TDBGrid;
     DBMemo1: TDBMemo;
     edtFile: TDBEdit;
@@ -124,9 +125,9 @@ type
     lblDokFilename: TLabel;
     lblDokDescr: TLabel;
     dlgDocuments: TOpenDialog;
-    navDocs1: TDBNavigator;
+    navFirmen: TDBNavigator;
     pnlDokBottom: TPanel;
-    pnlDokBottom1: TPanel;
+    pnlCompanyData: TPanel;
     rgMedium: TDBRadioGroup;
     grdBewerbungen: TDBGrid;
     grdLog: TDBGrid;
@@ -171,7 +172,7 @@ type
     rgTyp: TRadioGroup;
     dlgExport: TSaveDialog;
     sbInfo: TStatusBar;
-    Firmen: TTabSheet;
+    tsFirmen: TTabSheet;
     tsDokumente: TTabSheet;
     tsActions: TTabSheet;
     tsBewerbungData: TTabSheet;
@@ -209,6 +210,8 @@ type
     procedure cbbEmpfNameChange(Sender: TObject);
     procedure DBGrid1PrepareCanvas(Sender: TObject; DataCol: integer;
       Column: TColumn; AState: TGridDrawState);
+    procedure DBGrid2PrepareCanvas(sender: TObject; DataCol: Integer;
+      Column: TColumn; AState: TGridDrawState);
     procedure dlgFindCompanyFind(Sender: TObject);
     procedure edtDatumEditingDone(Sender: TObject);
     procedure edtEndeEditingDone(Sender: TObject);
@@ -218,6 +221,7 @@ type
       Column: TColumn; AState: TGridDrawState);
     procedure FormCreate(Sender: TObject);
     procedure grdLogDblClick(Sender: TObject);
+    procedure navDataClick(Sender: TObject; Button: TDBNavButtonType);
     procedure pmFilterPopup(Sender: TObject);
   private
     { private declarations }
@@ -573,6 +577,16 @@ begin
   if (dmBewerbungen.qryBewerbungen.State in dsWriteModes) then
   begin
     if dmBewerbungen.qryCompanies.Locate('ID', (Sender as TDBLookupComboBox).KeyValue, []) then
+      if not dmBewerbungen.qryCompanies.FieldByName('AKTIV').AsBoolean then
+      begin
+        Application.MessageBox(PChar(rsInaktiveFirma), PChar(rsWarnung), MB_ICONWARNING + MB_OK);
+        (Sender as TDBLookupComboBox).KeyValue := 0;
+        Exit;
+      end;
+
+    if dmBewerbungen.qryCompanies.FieldByName('VERMITTLER').AsBoolean then
+      Application.MessageBox(PChar(rsPersonalvermittler), PChar(rsWarnung), MB_ICONWARNING + MB_OK);
+
       sNote := dmBewerbungen.qryCompanies.FieldByName('NOTES').AsString;
       if (sNote <> EmptyStr) then
         Application.MessageBox(PChar(sNote), PChar(rsWarnung), MB_ICONWARNING + MB_OK);
@@ -593,6 +607,23 @@ begin
       Canvas.Font.Color := clMaroon;
       Canvas.Font.Style := [fsBold];
     end;
+  end;
+end;
+
+procedure TfrmMain.DBGrid2PrepareCanvas(sender: TObject; DataCol: Integer;
+  Column: TColumn; AState: TGridDrawState);
+begin
+  with (Sender as TDBGrid) do
+  begin
+    if DataSource.DataSet.FieldByName('VERMITTLER').AsBoolean then
+      Canvas.Font.Color := clMaroon;
+
+    if not DataSource.DataSet.FieldByName('AKTIV').AsBoolean then
+      Canvas.Font.Style := [fsItalic];
+
+    if (DataSource.DataSet.FieldByName('NOTES').AsString <> EmptyStr) or
+      DataSource.DataSet.FieldByName('VERMITTLER').AsBoolean then
+      Canvas.Font.Style := [fsBold];
   end;
 end;
 
@@ -932,6 +963,11 @@ procedure TfrmMain.grdLogDblClick(Sender: TObject);
 begin
   if (dmBewerbungen.qryBewerbungen.State = dsEdit) then
     dmBewerbungen.qryLog.Edit;
+end;
+
+procedure TfrmMain.navDataClick(Sender: TObject; Button: TDBNavButtonType);
+begin
+  frmMain.PageControl1.ActivePageIndex := 1;
 end;
 
 procedure TfrmMain.pmFilterPopup(Sender: TObject);

@@ -73,6 +73,7 @@ type
     procedure conDataAfterConnect(Sender: TObject);
     procedure conDataBeforeConnect(Sender: TObject);
     procedure conDataBeforeDisconnect(Sender: TObject);
+    procedure dsCompaniesStateChange(Sender: TObject);
     procedure dsDataStateChange(Sender: TObject);
     procedure dsDocsStateChange(Sender: TObject);
     procedure dsLogStateChange(Sender: TObject);
@@ -429,6 +430,23 @@ begin
     traData.Commit;
   end;
 
+  with TSQLQuery.Create(nil) do
+  begin
+    DataBase := conData;
+    Transaction := traData;
+
+    with SQL do
+    begin
+      Clear;
+      Add(rsDeactiveComp);
+    end;
+
+    ExecSQL;
+    Close;
+    Free;
+    traData.Commit;
+  end;
+
   if (frmMain.ConfigFile.ReadBool('GENERAL', 'MODIFY-APPLICATION-RESULT', True)) then
   begin
     with TSQLQuery.Create(nil) do
@@ -456,6 +474,12 @@ begin
     traData.Commit;
   end;
 
+end;
+
+procedure TdmBewerbungen.dsCompaniesStateChange(Sender: TObject);
+begin
+  FEditMode := ((Sender as TDatasource).State in dsWriteModes);
+  frmMain.pnlCompanyData.Enabled := FEditMode;
 end;
 
 procedure TdmBewerbungen.UpdateList(aType: string; aList: TStrings);
