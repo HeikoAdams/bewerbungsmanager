@@ -648,8 +648,10 @@ procedure TfrmMain.dlgFindCompanyFind(Sender: TObject);
 begin
   if not dmBewerbungen.qryCompanies.Locate('NAME',
     VarArrayOf([dlgFindCompany.FindText]), [loCaseInsensitive, loPartialKey]) then
-    Application.MessageBox(PChar(rsKeineBereins), PChar(rsSuche),
-      MB_OK + MB_ICONWARNING)
+    if not dmBewerbungen.qryBewerbungen.Locate('REFNR',
+      VarArrayOf([dlgFindCompany.FindText]), [loPartialKey]) then
+        Application.MessageBox(PChar(rsKeineBereins), PChar(rsSuche),
+          MB_OK + MB_ICONWARNING)
   else
   begin
     dmBewerbungen.qryBewerbungen.Locate('COMPANY', dmBewerbungen.qryCompanies.FieldByName('ID').AsInteger,[]);

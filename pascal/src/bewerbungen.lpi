@@ -76,8 +76,9 @@
         <ComponentName Value="frmMain"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <TopLine Value="34"/>
-        <CursorPos X="77" Y="37"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="646"/>
+        <CursorPos X="56" Y="651"/>
         <UsageCount Value="146"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -197,10 +198,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="Data"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="6"/>
-        <TopLine Value="320"/>
-        <CursorPos X="67" Y="346"/>
+        <TopLine Value="329"/>
+        <CursorPos X="44" Y="334"/>
         <UsageCount Value="117"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -698,11 +698,11 @@
       </Position28>
       <Position29>
         <Filename Value="data.pas"/>
-        <Caret Line="304" Column="35" TopLine="309"/>
+        <Caret Line="111" Column="30" TopLine="102"/>
       </Position29>
       <Position30>
-        <Filename Value="data.pas"/>
-        <Caret Line="111" Column="30" TopLine="102"/>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="221" Column="33" TopLine="215"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>
@@ -751,7 +751,7 @@
         <WatchScope Value="wpsGlobal"/>
         <WatchKind Value="wpkWrite"/>
         <Source Value="mainwin.pas"/>
-        <Line Value="1047"/>
+        <Line Value="1049"/>
       </Item1>
     </BreakPoints>
     <Exceptions Count="3">
