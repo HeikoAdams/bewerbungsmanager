@@ -38,6 +38,7 @@ object dmBewerbungen: TdmBewerbungen
     top = 80
   end
   object qryBewerbungen: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'ID'
@@ -174,7 +175,7 @@ object dmBewerbungen: TdmBewerbungen
       FieldName = 'ID'
       Index = 0
       LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       ReadOnly = False
       Required = False
     end
@@ -187,6 +188,7 @@ object dmBewerbungen: TdmBewerbungen
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      DisplayFormat = 'dd.mm.yyyy'
     end
     object qryBewerbungenMAIL: TStringField
       DisplayWidth = 255
@@ -260,6 +262,7 @@ object dmBewerbungen: TdmBewerbungen
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      DisplayFormat = 'dd.mm.yyyy'
     end
     object qryBewerbungenNOTES: TStringField
       DisplayWidth = 8000
@@ -345,6 +348,7 @@ object dmBewerbungen: TdmBewerbungen
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      DisplayFormat = 'dd.mm.yyyy'
     end
     object qryBewerbungenCOMPANY: TLongintField
       DisplayWidth = 10
@@ -366,8 +370,8 @@ object dmBewerbungen: TdmBewerbungen
       LookupDataSet = qryCompanies
       LookupKeyFields = 'ID'
       LookupResultField = 'NAME'
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
+      ProviderFlags = []
+      ReadOnly = True
       Required = False
       Size = 255
     end
@@ -602,6 +606,7 @@ object dmBewerbungen: TdmBewerbungen
     top = 16
   end
   object qryCompanies: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'ID'
