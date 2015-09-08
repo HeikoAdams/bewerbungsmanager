@@ -87,6 +87,7 @@ resourcestring
   rsDeleteJobs = 'DELETE FROM JOBS WHERE ID NOT IN (SELECT DISTINCT JOB FROM BEWERBUNGEN);';
   rsInaktiveFirma = 'Der gewählte Empfänger ist als inaktiv gekennzeichnet!';
   rsPersonalvermittler = 'Personalvermittler!';
+  rsNoReaction = 'Firma reagiert nicht auf Rückfragen!';
 implementation
 
 end.

@@ -1,7 +1,7 @@
 object frmMain: TfrmMain
-  Left = 242
+  Left = 272
   Height = 552
-  Top = 141
+  Top = 130
   Width = 658
   Caption = 'Bewerbungsmanager'
   ClientHeight = 552
@@ -16,10 +16,10 @@ object frmMain: TfrmMain
     Height = 506
     Top = 25
     Width = 658
-    ActivePage = tsBewerbungen
+    ActivePage = tsFirmen
     Align = alClient
     Images = ilIcons
-    TabIndex = 0
+    TabIndex = 4
     TabOrder = 1
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'
@@ -866,6 +866,11 @@ object frmMain: TfrmMain
             Title.Caption = 'Personalvermittler'
             Width = 125
             FieldName = 'VERMITTLER'
+          end        
+          item
+            Title.Alignment = taCenter
+            Title.Caption = 'Reagiert nicht'
+            FieldName = 'NOREACTION'
           end>
         DataSource = dmBewerbungen.dsCompanies
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
@@ -894,14 +899,14 @@ object frmMain: TfrmMain
           TabOrder = 0
         end
         object chkComVerm: TDBCheckBox
-          Left = 502
+          Left = 504
           Height = 23
-          Top = 8
+          Top = 40
           Width = 136
           Caption = 'Personalvermittler'
           DataField = 'VERMITTLER'
           DataSource = dmBewerbungen.dsCompanies
-          TabOrder = 1
+          TabOrder = 2
           ValueChecked = 'True'
           ValueUnchecked = 'False'
         end
@@ -913,14 +918,14 @@ object frmMain: TfrmMain
           Caption = 'Name'
           ParentColor = False
         end
-        object DBMemo1: TDBMemo
+        object memNotes: TDBMemo
           Left = 88
           Height = 82
           Top = 48
-          Width = 550
+          Width = 398
           DataField = 'NOTES'
           DataSource = dmBewerbungen.dsCompanies
-          TabOrder = 2
+          TabOrder = 4
         end
         object Label3: TLabel
           Left = 8
@@ -931,12 +936,24 @@ object frmMain: TfrmMain
           ParentColor = False
         end
         object chkAktiv: TDBCheckBox
-          Left = 408
+          Left = 504
           Height = 23
           Top = 8
           Width = 90
           Caption = 'Aktiv'
           DataField = 'AKTIV'
+          DataSource = dmBewerbungen.dsCompanies
+          TabOrder = 1
+          ValueChecked = 'True'
+          ValueUnchecked = 'False'
+        end
+        object chkNoReaction: TDBCheckBox
+          Left = 504
+          Height = 23
+          Top = 72
+          Width = 112
+          Caption = 'reagiert nicht'
+          DataField = 'NOREACTION'
           DataSource = dmBewerbungen.dsCompanies
           TabOrder = 3
           ValueChecked = 'True'

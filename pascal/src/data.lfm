@@ -619,6 +619,7 @@ object dmBewerbungen: TdmBewerbungen
     top = 16
   end
   object qryCompanies: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'ID'
@@ -646,6 +647,12 @@ object dmBewerbungen: TdmBewerbungen
       end    
       item
         Name = 'AKTIV'
+        DataType = ftBoolean
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'NOREACTION'
         DataType = ftBoolean
         Precision = -1
         Size = 0

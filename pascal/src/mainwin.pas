@@ -89,9 +89,10 @@ type
     chkIgnoriert: TDBCheckBox;
     chkVermittler: TDBCheckBox;
     chkAktiv: TDBCheckBox;
+    chkNoReaction: TDBCheckBox;
     DBGrid2: TDBGrid;
     DBGrid3: TDBGrid;
-    DBMemo1: TDBMemo;
+    memNotes: TDBMemo;
     edtFile: TDBEdit;
     DBGrid1: TDBGrid;
     dlgFindCompany: TFindDialog;
@@ -593,6 +594,9 @@ begin
       if dmBewerbungen.qryCompanies.FieldByName('VERMITTLER').AsBoolean then
         Application.MessageBox(PChar(rsPersonalvermittler), PChar(rsWarnung), MB_ICONWARNING + MB_OK);
 
+      if dmBewerbungen.qryCompanies.FieldByName('NOREACTION').AsBoolean then
+        Application.MessageBox(PChar(rsNoReaction), PChar(rsWarnung), MB_ICONWARNING + MB_OK);
+
       dmBewerbungen.qryBewerbungen.FieldByName('VERMITTLER').AsInteger:=dmBewerbungen.qryCompanies.FieldByName('VERMITTLER').AsInteger;
 
       sNote := dmBewerbungen.qryCompanies.FieldByName('NOTES').AsString;
@@ -625,6 +629,9 @@ begin
   begin
     if DataSource.DataSet.FieldByName('VERMITTLER').AsBoolean then
       Canvas.Font.Color := clMaroon;
+
+    if DataSource.DataSet.FieldByName('NOREACTION').AsBoolean then
+      Canvas.Font.Color := clRed;
 
     if not DataSource.DataSet.FieldByName('AKTIV').AsBoolean then
       Canvas.Font.Style := [fsItalic];

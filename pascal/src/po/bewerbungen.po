@@ -133,6 +133,10 @@ msgstr ""
 msgid "In dem angegebenen Zeitraum existieren keine Daten, die exportiert werden können"
 msgstr ""
 
+#: bewerbung_strings.rsnoreaction
+msgid "Firma reagiert nicht auf Rückfragen!"
+msgstr ""
+
 #: bewerbung_strings.rsolddatapurged
 msgid "%d alte Bewerbungen wurden aus dem System entfernt"
 msgstr ""
@@ -524,6 +528,11 @@ msgstr ""
 msgid "Ignorierte Bewerbungen werden von der Wiedervorlage nicht berücksichtigt"
 msgstr ""
 
+#: tfrmmain.chknoreaction.caption
+msgctxt "TFRMMAIN.CHKNOREACTION.CAPTION"
+msgid "reagiert nicht"
+msgstr ""
+
 #: tfrmmain.chkvermittler.caption
 msgctxt "TFRMMAIN.CHKVERMITTLER.CAPTION"
 msgid "Personalvermittler"
@@ -547,6 +556,10 @@ msgstr ""
 #: tfrmmain.dbgrid2.columns[1].title.caption
 msgctxt "tfrmmain.dbgrid2.columns[1].title.caption"
 msgid "Personalvermittler"
+msgstr ""
+
+#: tfrmmain.dbgrid2.columns[2].title.caption
+msgid "Reagiert nicht"
 msgstr ""
 
 #: tfrmmain.dbgrid3.columns[0].title.caption
