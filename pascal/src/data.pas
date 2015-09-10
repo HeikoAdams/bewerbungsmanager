@@ -63,6 +63,12 @@ type
     qryBewerbungenVERMITTLER: TBooleanField;
     qryBewerbungenWVL: TDateTimeField;
     qryCompanies: TSQLQuery;
+    qryCompaniesAKTIV: TBooleanField;
+    qryCompaniesID: TLongintField;
+    qryCompaniesNAME: TStringField;
+    qryCompaniesNOREACTION: TBooleanField;
+    qryCompaniesNOTES: TStringField;
+    qryCompaniesVERMITTLER: TBooleanField;
     qryJobs: TSQLQuery;
     qryCSVExport: TSQLQuery;
     qryLog: TSQLQuery;
@@ -790,7 +796,7 @@ begin
     if (State in [dsInsert]) then
     begin
       if frmMain.ConfigFile.ReadBool('GENERAL', 'IGNOREPV', False) then
-        if (FieldByName('VERMITTLER').AsBoolean or FieldByName('BEFRISTET').AsBoolean) then
+        if FieldByName('BEFRISTET').AsBoolean then
           FieldByName('IGNORIERT').AsInteger:=1;
     end;
   end;

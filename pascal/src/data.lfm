@@ -619,7 +619,6 @@ object dmBewerbungen: TdmBewerbungen
     top = 16
   end
   object qryCompanies: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'ID'
@@ -666,6 +665,71 @@ object dmBewerbungen: TdmBewerbungen
     Params = <>
     left = 104
     top = 208
+    object qryCompaniesID: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ID'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = False
+      Required = False
+    end
+    object qryCompaniesNAME: TStringField
+      DisplayWidth = 255
+      FieldKind = fkData
+      FieldName = 'NAME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 255
+    end
+    object qryCompaniesNOTES: TStringField
+      DisplayWidth = 8000
+      FieldKind = fkData
+      FieldName = 'NOTES'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 8000
+    end
+    object qryCompaniesVERMITTLER: TBooleanField
+      DisplayWidth = 5
+      FieldKind = fkData
+      FieldName = 'VERMITTLER'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayValues = 'True;False'
+    end
+    object qryCompaniesAKTIV: TBooleanField
+      DisplayWidth = 5
+      FieldKind = fkData
+      FieldName = 'AKTIV'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayValues = 'True;False'
+    end
+    object qryCompaniesNOREACTION: TBooleanField
+      DisplayWidth = 5
+      FieldKind = fkData
+      FieldName = 'NOREACTION'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayValues = 'True;False'
+    end
   end
   object qryJobs: TSQLQuery
     FieldDefs = <    

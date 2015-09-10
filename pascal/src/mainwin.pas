@@ -592,12 +592,16 @@ begin
       end;
 
       if dmBewerbungen.qryCompanies.FieldByName('VERMITTLER').AsBoolean then
+      begin
+        dmBewerbungen.qryBewerbungen.FieldByName('VERMITTLER').AsInteger:=
+          dmBewerbungen.qryCompanies.FieldByName('VERMITTLER').AsInteger;
         Application.MessageBox(PChar(rsPersonalvermittler), PChar(rsWarnung), MB_ICONWARNING + MB_OK);
+        if frmMain.ConfigFile.ReadBool('GENERAL', 'IGNOREPV', False) then
+          dmBewerbungen.qryBewerbungen.FieldByName('IGNORIERT').AsInteger:=1;
+      end;
 
       if dmBewerbungen.qryCompanies.FieldByName('NOREACTION').AsBoolean then
         Application.MessageBox(PChar(rsNoReaction), PChar(rsWarnung), MB_ICONWARNING + MB_OK);
-
-      dmBewerbungen.qryBewerbungen.FieldByName('VERMITTLER').AsInteger:=dmBewerbungen.qryCompanies.FieldByName('VERMITTLER').AsInteger;
 
       sNote := dmBewerbungen.qryCompanies.FieldByName('NOTES').AsString;
       if (sNote <> EmptyStr) then
