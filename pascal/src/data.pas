@@ -792,13 +792,6 @@ begin
       FieldByName('BISDATUM').AsDateTime := frmMain.edtEnde.Date;
     if (FieldByName('REFNR').AsString <> EmptyStr) then
       FieldByName('REFNR').AsString := trim(FieldByName('REFNR').AsString);
-
-    if (State in [dsInsert]) then
-    begin
-      if frmMain.ConfigFile.ReadBool('GENERAL', 'IGNOREPV', False) then
-        if FieldByName('BEFRISTET').AsBoolean then
-          FieldByName('IGNORIERT').AsInteger:=1;
-    end;
   end;
 end;
 

@@ -443,6 +443,7 @@ object frmMain: TfrmMain
         DataField = 'BEFRISTET'
         DataSource = dmBewerbungen.dsData
         Font.Color = clRed
+        OnChange = chkBefristetChange
         ParentFont = False
         TabOrder = 7
         ValueChecked = 'True'
@@ -475,7 +476,7 @@ object frmMain: TfrmMain
         ListFieldIndex = 0
         ListSource = dmBewerbungen.dsCompanies
         LookupCache = False
-        OnChange = cbbEmpfNameChange
+        OnEditingDone = cbbEmpfNameEditingDone
         Sorted = True
         TabOrder = 14
       end

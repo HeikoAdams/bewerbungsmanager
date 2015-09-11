@@ -214,7 +214,8 @@ type
     procedure actZusageExecute(Sender: TObject);
     procedure btnBrowseClick(Sender: TObject);
     procedure btnFileOpenClick(Sender: TObject);
-    procedure cbbEmpfNameChange(Sender: TObject);
+    procedure cbbEmpfNameEditingDone(Sender: TObject);
+    procedure chkBefristetChange(Sender: TObject);
     procedure DBGrid1PrepareCanvas(Sender: TObject; DataCol: integer;
       Column: TColumn; AState: TGridDrawState);
     procedure DBGrid2PrepareCanvas(sender: TObject; DataCol: Integer;
@@ -563,11 +564,10 @@ begin
     dmBewerbungen.qryDocuments.FieldByName('FILENAME').AsString := dlgDocuments.FileName;
 end;
 
-{$IFDEF Unix}
 procedure TfrmMain.btnFileOpenClick(Sender: TObject);
 begin
   { TODO 1 : Shell-Execute Code zum Öffnen der Dokumente unter Windows einfügen }
-
+  {$IFDEF Unix}
   with TProcess.Create(nil) do
   begin
     CommandLine := Format(FLinuxLaunch, [edtFile.Text]);
@@ -575,40 +575,59 @@ begin
     Execute;
     Free;
   end;
+  {$endif}
 end;
 
-procedure TfrmMain.cbbEmpfNameChange(Sender: TObject);
+procedure TfrmMain.cbbEmpfNameEditingDone(Sender: TObject);
 var
   sNote: string;
+  bewerbungen: TSQLQuery;
+  companies: TSQLQuery;
 begin
-  if (dmBewerbungen.qryBewerbungen.State in dsWriteModes) then
+  bewerbungen := dmBewerbungen.qryBewerbungen;
+  companies := dmBewerbungen.qryCompanies;
+
+  if (bewerbungen.State in dsWriteModes) then
   begin
-    if dmBewerbungen.qryCompanies.Locate('ID', (Sender as TDBLookupComboBox).KeyValue, []) then
-      if not dmBewerbungen.qryCompanies.FieldByName('AKTIV').AsBoolean then
+    if companies.Locate('ID', (Sender as TDBLookupComboBox).KeyValue, []) then
+      if not companies.FieldByName('AKTIV').AsBoolean then
       begin
         Application.MessageBox(PChar(rsInaktiveFirma), PChar(rsWarnung), MB_ICONWARNING + MB_OK);
         (Sender as TDBLookupComboBox).KeyValue := 0;
         Exit;
       end;
 
-      if dmBewerbungen.qryCompanies.FieldByName('VERMITTLER').AsBoolean then
+      if companies.FieldByName('VERMITTLER').AsBoolean then
       begin
-        dmBewerbungen.qryBewerbungen.FieldByName('VERMITTLER').AsInteger:=
-          dmBewerbungen.qryCompanies.FieldByName('VERMITTLER').AsInteger;
+        bewerbungen.FieldByName('VERMITTLER').AsInteger:= companies.FieldByName('VERMITTLER').AsInteger;
         Application.MessageBox(PChar(rsPersonalvermittler), PChar(rsWarnung), MB_ICONWARNING + MB_OK);
         if frmMain.ConfigFile.ReadBool('GENERAL', 'IGNOREPV', False) then
-          dmBewerbungen.qryBewerbungen.FieldByName('IGNORIERT').AsInteger:=1;
+          bewerbungen.FieldByName('IGNORIERT').AsInteger:=1;
+      end
+      else
+      begin
+        bewerbungen.FieldByName('VERMITTLER').AsInteger:= 0;
+        bewerbungen.FieldByName('IGNORIERT').AsInteger:=0;
       end;
 
-      if dmBewerbungen.qryCompanies.FieldByName('NOREACTION').AsBoolean then
+      if companies.FieldByName('NOREACTION').AsBoolean then
         Application.MessageBox(PChar(rsNoReaction), PChar(rsWarnung), MB_ICONWARNING + MB_OK);
 
-      sNote := dmBewerbungen.qryCompanies.FieldByName('NOTES').AsString;
+      sNote := companies.FieldByName('NOTES').AsString;
       if (sNote <> EmptyStr) then
         Application.MessageBox(PChar(sNote), PChar(rsWarnung), MB_ICONWARNING + MB_OK);
   end;
 end;
-{$endif}
+
+procedure TfrmMain.chkBefristetChange(Sender: TObject);
+begin
+  if (dmBewerbungen.qryBewerbungen.State in dsWriteModes) then
+  begin
+    if frmMain.ConfigFile.ReadBool('GENERAL', 'IGNOREPV', False) then
+      if dmBewerbungen.qryBewerbungen.FieldByName('BEFRISTET').AsBoolean then
+        dmBewerbungen.qryBewerbungen.FieldByName('IGNORIERT').AsInteger:=1;
+  end;
+end;
 
 procedure TfrmMain.DBGrid1PrepareCanvas(Sender: TObject; DataCol: integer;
   Column: TColumn; AState: TGridDrawState);
