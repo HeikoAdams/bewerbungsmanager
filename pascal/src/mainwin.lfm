@@ -16,10 +16,10 @@ object frmMain: TfrmMain
     Height = 506
     Top = 25
     Width = 658
-    ActivePage = tsBewerbungData
+    ActivePage = tsFirmen
     Align = alClient
     Images = ilIcons
-    TabIndex = 1
+    TabIndex = 4
     TabOrder = 1
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'

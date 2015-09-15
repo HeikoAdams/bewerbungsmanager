@@ -351,7 +351,7 @@ begin
 
       Add('SELECT DATUM, WVL, BISDATUM, COMPANIES.NAME NAME, MAIL, ');
       Add('JOBS.NAME JOBTITEL, REFNR, (RESULT = 1) AS ZUSAGE, (RESULT = 2) AS ABSAGE, ');
-      Add('(RESULT = 4) AS KEINEANTWORT');
+      Add('(RESULT = 4) AS KEINEANTWORT, COMPANIES.NOREACTION AS REAGIERTNICHT ');
       Add('FROM BEWERBUNGEN JOIN COMPANIES ON BEWERBUNGEN.COMPANY = COMPANIES.ID');
       Add('JOIN JOBS ON BEWERBUNGEN.JOB = JOBS.ID');
 
@@ -723,11 +723,18 @@ end;
 procedure TdmBewerbungen.qryBewerbungenAfterScroll(DataSet: TDataSet);
 var
   nID: integer;
+  sJob: string;
 begin
   with qryBewerbungen do
   begin
     if VarIsNull(FieldByName('ID').AsVariant) then
       Exit;
+
+    with qryJobs do
+    begin
+      if Locate('ID', qryBewerbungen.FieldByName('JOB').AsInteger, []) then
+        sJob := FieldByName('Name').AsString;
+    end;
 
     with frmMain.JobApplication do
     begin
@@ -741,7 +748,7 @@ begin
       Feedback:=FieldByName('Feedback').AsInteger;
       Result:=FieldByName('Result').AsInteger;
       RefNr:=FieldByName('RefNr').AsString;
-      //JobTitel:=FieldByName('JobTitel').AsString;
+      JobTitel:=sJob;
       Mail:=FieldByName('Mail').AsString;
     end;
 
