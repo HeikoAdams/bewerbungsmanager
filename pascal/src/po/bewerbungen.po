@@ -643,31 +643,36 @@ msgstr ""
 
 #: tfrmmain.grdbewerbungen.columns[2].title.caption
 msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[2].TITLE.CAPTION"
-msgid "Bewerb. bis"
+msgid "Stufe"
 msgstr ""
 
 #: tfrmmain.grdbewerbungen.columns[3].title.caption
 msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[3].TITLE.CAPTION"
-msgid "Empfänger"
+msgid "Bewerb. bis"
 msgstr ""
 
 #: tfrmmain.grdbewerbungen.columns[4].title.caption
 msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[4].TITLE.CAPTION"
-msgid "Job-Titel"
+msgid "Empfänger"
 msgstr ""
 
 #: tfrmmain.grdbewerbungen.columns[5].title.caption
 msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[5].TITLE.CAPTION"
-msgid "Personalvermittler"
+msgid "Job-Titel"
 msgstr ""
 
 #: tfrmmain.grdbewerbungen.columns[6].title.caption
 msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[6].TITLE.CAPTION"
-msgid "befristet"
+msgid "Personalvermittler"
 msgstr ""
 
 #: tfrmmain.grdbewerbungen.columns[7].title.caption
 msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[7].TITLE.CAPTION"
+msgid "befristet"
+msgstr ""
+
+#: tfrmmain.grdbewerbungen.columns[8].title.caption
+msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[8].TITLE.CAPTION"
 msgid "Ignoriert"
 msgstr ""
 
@@ -701,6 +706,10 @@ msgstr ""
 #: tfrmmain.label4.caption
 msgctxt "TFRMMAIN.LABEL4.CAPTION"
 msgid "Job-Titel"
+msgstr ""
+
+#: tfrmmain.label5.caption
+msgid "WVL-Stufe:"
 msgstr ""
 
 #: tfrmmain.lbldatum.caption

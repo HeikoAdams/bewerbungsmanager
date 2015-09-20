@@ -92,6 +92,8 @@ type
     chkNoReaction: TDBCheckBox;
     DBGrid2: TDBGrid;
     DBGrid3: TDBGrid;
+    DBText1: TDBText;
+    Label5: TLabel;
     memNotes: TDBMemo;
     edtFile: TDBEdit;
     DBGrid1: TDBGrid;
@@ -615,7 +617,7 @@ begin
 
       sNote := companies.FieldByName('NOTES').AsString;
       if (sNote <> EmptyStr) then
-        Application.MessageBox(PChar(sNote), PChar(rsWarnung), MB_ICONWARNING + MB_OK);
+        Application.MessageBox(PChar(sNote), PChar(rsWarnung), MB_ICONASTERISK + MB_OK);
   end;
 end;
 

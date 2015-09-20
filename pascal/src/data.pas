@@ -62,6 +62,7 @@ type
     qryBewerbungenUID: TLongintField;
     qryBewerbungenVERMITTLER: TBooleanField;
     qryBewerbungenWVL: TDateTimeField;
+    qryBewerbungenWVLSTUFE: TLongintField;
     qryCompanies: TSQLQuery;
     qryCompaniesAKTIV: TBooleanField;
     qryCompaniesID: TLongintField;
@@ -319,7 +320,7 @@ begin
 
       if (aWhere = EmptyStr) then
       begin
-         Add('SELECT BEWERBUNGEN.ID, DATUM, MAIL, REFNR, TYP, ');
+         Add('SELECT BEWERBUNGEN.ID, DATUM, MAIL, REFNR, TYP, WVLSTUFE, ');
          Add('FEEDBACK, RESULT, WVL, BEWERBUNGEN.NOTES, BEWERBUNGEN.VERMITTLER, ');
          Add('MEDIUM, ANSPRECHPARTNER, BEFRISTET, IGNORIERT, UID, BISDATUM, COMPANY, JOB ');
          Add('FROM BEWERBUNGEN ');
@@ -327,7 +328,7 @@ begin
       end
       else
       begin
-         Add('SELECT BEWERBUNGEN.ID, DATUM, MAIL, REFNR, TYP, ');
+         Add('SELECT BEWERBUNGEN.ID, DATUM, MAIL, REFNR, TYP, WVLSTUFE, ');
          Add('FEEDBACK, RESULT, WVL, BEWERBUNGEN.NOTES, BEWERBUNGEN.VERMITTLER, ');
          Add('MEDIUM, ANSPRECHPARTNER, BEFRISTET, IGNORIERT, UID, BISDATUM, COMPANY, JOB ');
          Add('FROM BEWERBUNGEN ');
@@ -349,7 +350,7 @@ begin
     begin
       Clear;
 
-      Add('SELECT DATUM, WVL, BISDATUM, COMPANIES.NAME NAME, MAIL, ');
+      Add('SELECT DATUM, WVL, WVLSTUFE, BISDATUM, COMPANIES.NAME NAME, MAIL, ');
       Add('JOBS.NAME JOBTITEL, REFNR, (RESULT = 1) AS ZUSAGE, (RESULT = 2) AS ABSAGE, ');
       Add('(RESULT = 4) AS KEINEANTWORT, COMPANIES.NOREACTION AS REAGIERTNICHT ');
       Add('FROM BEWERBUNGEN JOIN COMPANIES ON BEWERBUNGEN.COMPANY = COMPANIES.ID');
@@ -799,6 +800,9 @@ begin
       FieldByName('BISDATUM').AsDateTime := frmMain.edtEnde.Date;
     if (FieldByName('REFNR').AsString <> EmptyStr) then
       FieldByName('REFNR').AsString := trim(FieldByName('REFNR').AsString);
+
+    FieldByName('WVLSTUFE').AsInteger:= trunc(DaysBetween(FieldByName('WVL').AsDateTime,
+      FieldByName('DATUM').AsDateTime) / frmMain.ConfigFile.ReadInteger('DEFAULTS', 'WVL', 28) -1);
   end;
 end;
 

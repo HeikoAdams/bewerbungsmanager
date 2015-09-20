@@ -38,6 +38,7 @@ object dmBewerbungen: TdmBewerbungen
     top = 80
   end
   object qryBewerbungen: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'ID'
@@ -143,6 +144,12 @@ object dmBewerbungen: TdmBewerbungen
       end    
       item
         Name = 'JOB'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'WVLSTUFE'
         DataType = ftInteger
         Precision = -1
         Size = 0
@@ -388,6 +395,16 @@ object dmBewerbungen: TdmBewerbungen
       Required = False
       Size = 255
     end
+    object qryBewerbungenWVLSTUFE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'WVLSTUFE'
+      Index = 20
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
   end
   object qryLog: TSQLQuery
     IndexFieldNames = 'ID'
@@ -619,6 +636,7 @@ object dmBewerbungen: TdmBewerbungen
     top = 16
   end
   object qryCompanies: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'ID'
@@ -660,7 +678,7 @@ object dmBewerbungen: TdmBewerbungen
     Database = conData
     Transaction = traData
     SQL.Strings = (
-      'SELECT * FROM COMPANIES ORDER BY NAME'
+      'SELECT * FROM COMPANIES ORDER BY NAME COLLATE NOCASE'
     )
     Params = <>
     left = 104
@@ -732,6 +750,7 @@ object dmBewerbungen: TdmBewerbungen
     end
   end
   object qryJobs: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'ID'
