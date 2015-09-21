@@ -350,7 +350,7 @@ begin
     begin
       Clear;
 
-      Add('SELECT DATUM, WVL, WVLSTUFE, BISDATUM, COMPANIES.NAME NAME, MAIL, ');
+      Add('SELECT DATUM, WVL, WVLSTUFE AS STUFE, BISDATUM, COMPANIES.NAME NAME, MAIL, ');
       Add('JOBS.NAME JOBTITEL, REFNR, (RESULT = 1) AS ZUSAGE, (RESULT = 2) AS ABSAGE, ');
       Add('(RESULT = 4) AS KEINEANTWORT, COMPANIES.NOREACTION AS REAGIERTNICHT ');
       Add('FROM BEWERBUNGEN JOIN COMPANIES ON BEWERBUNGEN.COMPANY = COMPANIES.ID');
@@ -713,6 +713,27 @@ begin
     traData.Rollback;
   end;
 
+  with TSQLQuery.Create(nil) do
+  begin
+    DataBase := conData;
+    Transaction := traData;
+    with SQL do
+    begin
+      Add('UPDATE BEWERBUNGEN');
+      Add('SET WVLSTUFE = CAST((JULIANDAY(WVL) - JULIANDAY(DATUM)) / 28 - 1 AS INT)');
+      Add('WHERE (BISDATUM IS NULL)');
+      Add('AND (JULIANDAY(WVL) - JULIANDAY(DATUM) >= 28);');
+
+      Add('UPDATE BEWERBUNGEN');
+      Add('SET WVLSTUFE = CAST((JULIANDAY(WVL) - JULIANDAY(BISDATUM)) / 28 - 1 AS INT)');
+      Add('WHERE (NOT BISDATUM IS NULL)');
+      Add('AND (JULIANDAY(WVL) - JULIANDAY(BISDATUM) >= 28);');
+    end;
+    ExecSQL;
+    Free;
+  end;
+  traData.Commit;
+
   UpdateList(rsCOMPANIES, frmMain.cbbEmpfName.Items);
   UpdateList(rsMAILS, frmMain.cbbEmpfMail.Items);
   UpdateList(rsJOBS, frmMain.cbbJobTitel.Items);
@@ -801,8 +822,8 @@ begin
     if (FieldByName('REFNR').AsString <> EmptyStr) then
       FieldByName('REFNR').AsString := trim(FieldByName('REFNR').AsString);
 
-    FieldByName('WVLSTUFE').AsInteger:= trunc(DaysBetween(FieldByName('WVL').AsDateTime,
-      FieldByName('DATUM').AsDateTime) / frmMain.ConfigFile.ReadInteger('DEFAULTS', 'WVL', 28) -1);
+    //FieldByName('WVLSTUFE').AsInteger:= trunc(DaysBetween(FieldByName('WVL').AsDateTime,
+    //  FieldByName('DATUM').AsDateTime) / frmMain.ConfigFile.ReadInteger('DEFAULTS', 'WVL', 28) -1);
   end;
 end;
 
