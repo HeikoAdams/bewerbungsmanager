@@ -692,6 +692,7 @@ end;
 procedure TdmBewerbungen.qryBewerbungenAfterPost(DataSet: TDataSet);
 var
   nID: Integer;
+  nDays: Integer;
 begin
   try
     if Assigned(DataSet.Fields.FindField('ID')) then
@@ -713,6 +714,7 @@ begin
     traData.Rollback;
   end;
 
+  nDays := frmMain.ConfigFile.ReadInteger('DEFAULTS', 'WVL', 28);
   with TSQLQuery.Create(nil) do
   begin
     DataBase := conData;
@@ -720,20 +722,21 @@ begin
     with SQL do
     begin
       Add('UPDATE BEWERBUNGEN');
-      Add('SET WVLSTUFE = CAST((JULIANDAY(WVL) - JULIANDAY(DATUM)) / 28 - 1 AS INT)');
+      Add(Format('SET WVLSTUFE = CAST((JULIANDAY(WVL) - JULIANDAY(DATUM)) / %d - 1 AS INT)', [nDays]));
       Add('WHERE (BISDATUM IS NULL)');
-      Add('AND (JULIANDAY(WVL) - JULIANDAY(DATUM) >= 28);');
+      Add(Format('AND (JULIANDAY(WVL) - JULIANDAY(DATUM) >= %d);', [nDays]));
 
       Add('UPDATE BEWERBUNGEN');
-      Add('SET WVLSTUFE = CAST((JULIANDAY(WVL) - JULIANDAY(BISDATUM)) / 28 - 1 AS INT)');
+      Add(Format('SET WVLSTUFE = CAST((JULIANDAY(WVL) - JULIANDAY(BISDATUM)) / %d - 1 AS INT)', [nDays]));
       Add('WHERE (NOT BISDATUM IS NULL)');
-      Add('AND (JULIANDAY(WVL) - JULIANDAY(BISDATUM) >= 28);');
+      Add(Format('AND (JULIANDAY(WVL) - JULIANDAY(BISDATUM) >= %d);', [nDays]));
     end;
+
     ExecSQL;
     Free;
   end;
   traData.Commit;
-
+  OpenDataSources;
   UpdateList(rsCOMPANIES, frmMain.cbbEmpfName.Items);
   UpdateList(rsMAILS, frmMain.cbbEmpfMail.Items);
   UpdateList(rsJOBS, frmMain.cbbJobTitel.Items);
