@@ -1,4 +1,4 @@
-msgid "Bewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzen"
+msgid "Bewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenJobCenter"
 msgstr "Content-Type: text/plain; charset=UTF-8"
 
 #: bewerbung_strings.rsaction
@@ -109,6 +109,10 @@ msgstr ""
 msgid "mailto:%s?subject=%s"
 msgstr ""
 
+#: bewerbung_strings.rsmarkcompanies
+msgid "UPDATE COMPANIES SET NOREACTION = -1 WHERE ID IN (SELECT DISTINCT COMPANY FROM BEWERBUNGEN WHERE UID = :pUserID AND WVLSTUFE >= 3)"
+msgstr ""
+
 #: bewerbung_strings.rsmediumd
 msgid "(MEDIUM = %d)"
 msgstr ""
@@ -127,6 +131,10 @@ msgstr ""
 
 #: bewerbung_strings.rsnewwvltxt
 msgid "Datum der Wiedervorlage neu gesetzt"
+msgstr ""
+
+#: bewerbung_strings.rsno
+msgid "Nein"
 msgstr ""
 
 #: bewerbung_strings.rsnoexportdata
@@ -215,6 +223,10 @@ msgstr ""
 
 #: bewerbung_strings.rswvl
 msgid "Wiedervolage"
+msgstr ""
+
+#: bewerbung_strings.rsyes
+msgid "Ja"
 msgstr ""
 
 #: dunkelblau 
@@ -349,6 +361,10 @@ msgstr ""
 #: tfrmexportdate.caption
 msgctxt "TFRMEXPORTDATE.CAPTION"
 msgid "Export-Zeitraum"
+msgstr ""
+
+#: tfrmexportdate.cbxnachweis.caption
+msgid "Nachweis für Arbeitsagentur/"
 msgstr ""
 
 #: tfrmfilterdate.frmfilterdate.caption

@@ -25,14 +25,19 @@ unit exportdate;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, filterdate; 
+  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, EditBtn,
+  StdCtrls, filterdate;
 
 type
+
+  { TfrmExportDate }
+
   TfrmExportDate = class(TfrmDateFilter)
+    cbxNachweis: TCheckBox;
   private
     { private declarations }
   public
-    { public declarations }
+    function isNachweis: boolean;
   end; 
 
 var
@@ -41,6 +46,11 @@ var
 implementation
 
 {$R *.lfm}
+
+function TfrmExportDate.isNachweis: boolean;
+begin
+  Result := cbxNachweis.Checked;
+end;
 
 end.
 

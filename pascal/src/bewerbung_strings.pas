@@ -88,6 +88,9 @@ resourcestring
   rsInaktiveFirma = 'Der gewählte Empfänger ist als inaktiv gekennzeichnet!';
   rsPersonalvermittler = 'Personalvermittler!';
   rsNoReaction = 'Firma reagiert nicht auf Rückfragen!';
+  rsMarkCompanies = 'UPDATE COMPANIES SET NOREACTION = -1 WHERE ID IN (SELECT DISTINCT COMPANY FROM BEWERBUNGEN WHERE UID = :pUserID AND WVLSTUFE >= 3)';
+  rsYes = 'Ja';
+  rsNo = 'Nein';
 implementation
 
 end.

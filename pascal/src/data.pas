@@ -115,7 +115,7 @@ type
   public
     { public declarations }
     procedure FetchData(aWhere: string);
-    procedure FetchExportData(aWhere: string);
+    procedure FetchExportData(aWhere: string; isNachweis: boolean);
     procedure SetIgnoreState(const aID: Integer);
     procedure UpdateWVL(aID, aDays: Integer);
     procedure WriteToLog(aID: Integer; aAction, aText: string);
@@ -340,7 +340,7 @@ begin
   end;
 end;
 
-procedure TdmBewerbungen.FetchExportData(aWhere: string);
+procedure TdmBewerbungen.FetchExportData(aWhere: string; isNachweis: boolean);
 begin
   with qryCSVExport do
   begin
@@ -350,9 +350,17 @@ begin
     begin
       Clear;
 
-      Add('SELECT DATUM, WVL, WVLSTUFE AS STUFE, BISDATUM, COMPANIES.NAME NAME, MAIL, ');
-      Add('JOBS.NAME JOBTITEL, REFNR, (RESULT = 1) AS ZUSAGE, (RESULT = 2) AS ABSAGE, ');
-      Add('(RESULT = 4) AS KEINEANTWORT, COMPANIES.NOREACTION AS REAGIERTNICHT ');
+      if isNachweis then
+      begin
+        Add('SELECT DATUM, COMPANIES.NAME NAME, JOBS.NAME JOBTITEL, ');
+        Add('(RESULT = 1) AS ZUSAGE, (RESULT = 2) AS ABSAGE ');
+      end
+      else
+      begin
+        Add('SELECT DATUM, WVL, WVLSTUFE AS STUFE, BISDATUM, COMPANIES.NAME NAME, MAIL, ');
+        Add('JOBS.NAME JOBTITEL, REFNR, (RESULT = 1) AS ZUSAGE, (RESULT = 2) AS ABSAGE, ');
+        Add('(RESULT = 4) AS KEINEANTWORT, COMPANIES.NOREACTION AS REAGIERTNICHT ');
+      end;
       Add('FROM BEWERBUNGEN JOIN COMPANIES ON BEWERBUNGEN.COMPANY = COMPANIES.ID');
       Add('JOIN JOBS ON BEWERBUNGEN.JOB = JOBS.ID');
 
@@ -480,6 +488,25 @@ begin
     Free;
     traData.Commit;
   end;
+
+  with TSQLQuery.Create(nil) do
+  begin
+    DataBase := conData;
+    Transaction := traData;
+
+    with SQL do
+    begin
+      Clear;
+      Add(rsMarkCompanies);
+    end;
+
+    Params.ParamByName('pUserID').AsInteger:= frmMain.UserID;
+
+    ExecSQL;
+    Close;
+    Free;
+  end;
+  traData.Commit;
 
   if (frmMain.ConfigFile.ReadBool('GENERAL', 'MODIFY-APPLICATION-RESULT', True)) then
   begin
@@ -731,7 +758,6 @@ begin
       Add('WHERE (NOT BISDATUM IS NULL)');
       Add(Format('AND (JULIANDAY(WVL) - JULIANDAY(BISDATUM) >= %d);', [nDays]));
     end;
-
     ExecSQL;
     Free;
   end;

@@ -800,6 +800,7 @@ var
   sDateFrom, sDateDue: string;
   dtDateFrom, dtDateDue: TDateTime;
   nRecordCount: integer;
+  isNachweis: boolean;
 begin
   dtDateFrom := date;
   dtDateDue := date;
@@ -829,10 +830,11 @@ begin
     sFileName := dlgExport.FileName;
 
     frmExportDate.GetDateRangeTxt(sDateFrom, sDateDue);
+    isNachweis := frmExportDate.isNachweis;
     FreeAndNil(frmExportDate);
     AssignFile(ExportFile, sFileName);
     dmBewerbungen.FetchExportData('WHERE (UID = :pUserID) AND (strftime(''%s'', DATUM)' +
-      Format(' BETWEEN %s AND %s', [sDateFrom, sDateDue]) +')');
+      Format(' BETWEEN %s AND %s', [sDateFrom, sDateDue]) +')', isNachweis);
     nRecordCount := dmBewerbungen.qryCSVExport.RecordCount;
 
     if (nRecordCount = 0) then
@@ -867,6 +869,8 @@ begin
               sLine := sLine + FormatDateTime('dd.mm.yyyy', Fields[nCount].Value) + ';'
             else
               sLine := sLine + ';'
+          else if (Fields[nCount].DataType = ftBoolean) then
+            sLine := sLine + BoolToStr(Fields[nCount].Value, rsYes, rsNo) + ';'
           else
             sLine := sLine + Fields[nCount].DisplayText + ';';
 
