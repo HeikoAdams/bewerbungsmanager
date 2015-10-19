@@ -216,7 +216,7 @@ type
     procedure actZusageExecute(Sender: TObject);
     procedure btnBrowseClick(Sender: TObject);
     procedure btnFileOpenClick(Sender: TObject);
-    procedure cbbEmpfNameEditingDone(Sender: TObject);
+    procedure cbbEmpfNameExit(Sender: TObject);
     procedure chkBefristetChange(Sender: TObject);
     procedure DBGrid1PrepareCanvas(Sender: TObject; DataCol: integer;
       Column: TColumn; AState: TGridDrawState);
@@ -580,7 +580,7 @@ begin
   {$endif}
 end;
 
-procedure TfrmMain.cbbEmpfNameEditingDone(Sender: TObject);
+procedure TfrmMain.cbbEmpfNameExit(Sender: TObject);
 var
   sNote: string;
   bewerbungen: TSQLQuery;
@@ -589,7 +589,8 @@ begin
   bewerbungen := dmBewerbungen.qryBewerbungen;
   companies := dmBewerbungen.qryCompanies;
 
-  if (bewerbungen.State in dsWriteModes) then
+  if (bewerbungen.State in dsWriteModes)
+    and ((Sender as TDBLookupComboBox).Field.OldValue <> (Sender as TDBLookupComboBox).Field.NewValue) then
   begin
     if companies.Locate('ID', (Sender as TDBLookupComboBox).KeyValue, []) then
       if not companies.FieldByName('AKTIV').AsBoolean then
@@ -976,7 +977,7 @@ begin
     if bIgnoriert then
       Canvas.Font.Style := [fsItalic]
     // Kein Feedback und WVL-Termin überschritten
-    else if (CurrApp.FieldByName('FEEDBACK').AsInteger = 0) and
+    else if (CurrApp.FieldByName('FEEDBACK').AsInteger in [0, 1]) and
       (CurrApp.FieldByName('RESULT').AsInteger in [0, 4]) and
       (CurrApp.FieldByName('WVL').AsDateTime <= Date) then
     begin
@@ -989,11 +990,11 @@ begin
       (CurrApp.FieldByName('FEEDBACK').AsInteger in [0, 1]) and
       (CurrApp.FieldByName('RESULT').AsInteger in [0, 4]) and
       (CurrApp.FieldByName('DATUM').AsDateTime <= IncWeek(Date, -6)) then
-      Canvas.Font.Style := Canvas.Font.Style + [fsUnderline];
+        Canvas.Font.Style := Canvas.Font.Style + [fsUnderline];
 
     case CurrApp.FieldByName('RESULT').AsInteger of
       0:
-        begin
+       begin
           if (CurrApp.FieldByName('FEEDBACK').AsInteger = 1) and
             (CurrApp.FieldByName('WVL').AsDateTime >= Date) then
             Canvas.Font.Color := clNavy    // Eingangsbestätigung liegt vor und WVL ist noch nicht überschritten
@@ -1004,7 +1005,7 @@ begin
       2: Canvas.Font.Color := clRed;   // Absage erhalten
       3: Canvas.Font.Color := clGray;  // Bewerbung zurückgezogen
       4: Canvas.Font.Color := clTeal;  // keine Antwort auf Nachfragen
-    end
+    end;
   end;
 end;
 

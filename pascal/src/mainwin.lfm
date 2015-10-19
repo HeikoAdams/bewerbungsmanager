@@ -13,7 +13,7 @@ object frmMain: TfrmMain
   LCLVersion = '1.4.2.0'
   object PageControl1: TPageControl
     Left = 0
-    Height = 506
+    Height = 508
     Top = 25
     Width = 658
     ActivePage = tsBewerbungen
@@ -23,12 +23,12 @@ object frmMain: TfrmMain
     TabOrder = 1
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'
-      ClientHeight = 473
+      ClientHeight = 477
       ClientWidth = 648
       ImageIndex = 14
       object grdBewerbungen: TDBGrid
         Left = 0
-        Height = 473
+        Height = 477
         Hint = 'dunkelblau = Eingang bestätigt'#10'dunkelrot = Wiedervorlagedatum ohne Reaktion überschritten'#10'türkis = keine Antwort auf Rückfragen '#10'grün = Zusage erhalten'#10'rot = Absage erhalten'#10'schwarz = noch keine Reaktion und erste Wiedervorlage ist noch nicht fällig'#10'violet = Einladung liegt vor'#10'grau = Bewerbung zurückgezogen'#10#10'fett = Wiedervorlage ist fällig'#10'kursiv = ignorierte Bewerbung'#10'unterstrichen = Bewerbung ist älter als 6 Wochen und ohne Ergebnis'
         Top = 0
         Width = 648
@@ -172,12 +172,12 @@ object frmMain: TfrmMain
     end
     object tsBewerbungData: TTabSheet
       Caption = 'Daten'
-      ClientHeight = 473
+      ClientHeight = 477
       ClientWidth = 648
       ImageIndex = 1
       object lblDatum: TLabel
         Left = 9
-        Height = 19
+        Height = 17
         Top = 16
         Width = 39
         Caption = 'Datum'
@@ -185,7 +185,7 @@ object frmMain: TfrmMain
       end
       object lblWo: TLabel
         Left = 9
-        Height = 19
+        Height = 17
         Top = 49
         Width = 63
         Caption = 'Empfänger'
@@ -193,7 +193,7 @@ object frmMain: TfrmMain
       end
       object lblWVL: TLabel
         Left = 329
-        Height = 19
+        Height = 17
         Top = 16
         Width = 87
         Caption = 'Wiedervorlage'
@@ -201,7 +201,7 @@ object frmMain: TfrmMain
       end
       object lblEmpfMail: TLabel
         Left = 329
-        Height = 19
+        Height = 17
         Top = 49
         Width = 76
         Caption = 'Mail-Adresse'
@@ -209,7 +209,7 @@ object frmMain: TfrmMain
       end
       object lblJobTitel: TLabel
         Left = 329
-        Height = 19
+        Height = 17
         Top = 81
         Width = 52
         Caption = 'Job-Titel'
@@ -217,7 +217,7 @@ object frmMain: TfrmMain
       end
       object lblRefNr: TLabel
         Left = 9
-        Height = 19
+        Height = 17
         Top = 113
         Width = 44
         Caption = 'Ref.-Nr'
@@ -245,7 +245,7 @@ object frmMain: TfrmMain
       end
       object edtDatum: TDateEdit
         Left = 108
-        Height = 31
+        Height = 29
         Top = 8
         Width = 204
         CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
@@ -263,7 +263,7 @@ object frmMain: TfrmMain
       end
       object edtWVL: TDateEdit
         Left = 424
-        Height = 31
+        Height = 29
         Top = 8
         Width = 200
         CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
@@ -279,7 +279,7 @@ object frmMain: TfrmMain
       end
       object edtRefNr: TDBEdit
         Left = 108
-        Height = 31
+        Height = 29
         Top = 104
         Width = 200
         DataField = 'REFNR'
@@ -344,7 +344,7 @@ object frmMain: TfrmMain
       end
       object lblNotes: TLabel
         Left = 9
-        Height = 19
+        Height = 17
         Top = 312
         Width = 80
         Caption = 'Bemerkungen'
@@ -375,7 +375,7 @@ object frmMain: TfrmMain
       end
       object cbbEmpfMail: TDBComboBox
         Left = 424
-        Height = 31
+        Height = 29
         Top = 38
         Width = 200
         AutoComplete = True
@@ -388,7 +388,7 @@ object frmMain: TfrmMain
       end
       object Label1: TLabel
         Left = 9
-        Height = 19
+        Height = 17
         Top = 81
         Width = 80
         Caption = 'Anspr.partner'
@@ -396,7 +396,7 @@ object frmMain: TfrmMain
       end
       object cbbAnspr: TDBComboBox
         Left = 108
-        Height = 31
+        Height = 29
         Top = 72
         Width = 200
         AutoComplete = True
@@ -409,7 +409,7 @@ object frmMain: TfrmMain
       end
       object edtEnde: TDateEdit
         Left = 424
-        Height = 31
+        Height = 29
         Top = 104
         Width = 200
         CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
@@ -426,7 +426,7 @@ object frmMain: TfrmMain
       end
       object lblFristEnde: TLabel
         Left = 329
-        Height = 19
+        Height = 17
         Top = 113
         Width = 86
         Caption = 'Bewerbung bis'
@@ -478,7 +478,7 @@ object frmMain: TfrmMain
       end
       object cbbEmpfName: TDBLookupComboBox
         Left = 108
-        Height = 31
+        Height = 29
         Top = 40
         Width = 200
         AutoComplete = True
@@ -489,13 +489,13 @@ object frmMain: TfrmMain
         ListFieldIndex = 0
         ListSource = dmBewerbungen.dsCompanies
         LookupCache = False
-        OnEditingDone = cbbEmpfNameEditingDone
+        OnEditingDone = cbbEmpfNameExit
         Sorted = True
         TabOrder = 2
       end
       object cbbJobTitel: TDBLookupComboBox
         Left = 424
-        Height = 31
+        Height = 29
         Top = 72
         Width = 200
         AutoComplete = True
@@ -511,7 +511,7 @@ object frmMain: TfrmMain
       end
       object DBText1: TDBText
         Left = 572
-        Height = 19
+        Height = 17
         Top = 144
         Width = 52
         DataField = 'WVLSTUFE'
@@ -520,7 +520,7 @@ object frmMain: TfrmMain
       end
       object Label5: TLabel
         Left = 496
-        Height = 19
+        Height = 17
         Top = 144
         Width = 69
         Caption = 'WVL-Stufe:'
@@ -529,7 +529,7 @@ object frmMain: TfrmMain
     end
     object tsActions: TTabSheet
       Caption = 'Aktivitäten'
-      ClientHeight = 473
+      ClientHeight = 477
       ClientWidth = 648
       ImageIndex = 2
       object grdLog: TDBGrid
@@ -655,7 +655,7 @@ object frmMain: TfrmMain
     end
     object tsDokumente: TTabSheet
       Caption = 'Dokumente'
-      ClientHeight = 473
+      ClientHeight = 477
       ClientWidth = 648
       ImageIndex = 7
       object navDocs: TDBNavigator
@@ -854,7 +854,7 @@ object frmMain: TfrmMain
     end
     object tsFirmen: TTabSheet
       Caption = 'Firmen'
-      ClientHeight = 473
+      ClientHeight = 477
       ClientWidth = 648
       ImageIndex = 13
       object navFirmen: TDBNavigator
@@ -994,7 +994,7 @@ object frmMain: TfrmMain
     end
     object tsJobs: TTabSheet
       Caption = 'Jobs'
-      ClientHeight = 473
+      ClientHeight = 477
       ClientWidth = 648
       ImageIndex = 15
       object navJobs: TDBNavigator
@@ -1091,8 +1091,8 @@ object frmMain: TfrmMain
   end
   object sbInfo: TStatusBar
     Left = 0
-    Height = 21
-    Top = 531
+    Height = 19
+    Top = 533
     Width = 658
     Panels = <    
       item
