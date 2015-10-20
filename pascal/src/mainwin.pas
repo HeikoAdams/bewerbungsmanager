@@ -694,11 +694,12 @@ end;
 
 procedure TfrmMain.edtDatumEditingDone(Sender: TObject);
 begin
-  if (dmBewerbungen.dsData.State in dsWriteModes) and (edtWVL.Text <> '  .  .    ')
+  if (dmBewerbungen.dsData.State in dsWriteModes)
+    and (edtWVL.Text <> rsEmptyDate)
     and (edtDatum.Date <> JobApplication.Datum) then
      if (Application.MessageBox(PChar(rsRecalcWVL), PChar(rsWVL), MB_YESNO or
         MB_DEFBUTTON2 or MB_ICONQUESTION) = ID_YES) then
-        if (edtEnde.Text <> '  .  .    ') then
+        if (edtEnde.Text <> rsEmptyDate) then
           edtWVL.Date := IncDay(edtEnde.Date, ConfigFile.ReadInteger('DEFAULTS', 'WVL', 14))
         else
           edtWVL.Date := IncDay(edtWVL.Date, ConfigFile.ReadInteger('DEFAULTS', 'WVL', 14));

@@ -846,7 +846,7 @@ begin
   begin
     FieldByName('DATUM').AsDateTime := frmMain.edtDatum.Date;
     FieldByName('WVL').AsDateTime := frmMain.edtWVL.Date;
-    if (frmMain.edtEnde.Text <> '  .  .    ') then
+    if (frmMain.edtEnde.Text <> rsEmptyDate) then
       FieldByName('BISDATUM').AsDateTime := frmMain.edtEnde.Date;
     if (FieldByName('REFNR').AsString <> EmptyStr) then
       FieldByName('REFNR').AsString := trim(FieldByName('REFNR').AsString);
@@ -891,6 +891,7 @@ begin
   begin
     edtDatum.Date := Date;
     edtWVL.Date := IncDay(Date, nDays);
+    edtEnde.Text:= rsEmptyDate;
   end;
 end;
 

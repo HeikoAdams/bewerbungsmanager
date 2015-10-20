@@ -58,6 +58,11 @@ msgctxt "bewerbung_strings.rseinstellunge"
 msgid "Einstellungen"
 msgstr ""
 
+#: bewerbung_strings.rsemptydate
+msgctxt "bewerbung_strings.rsemptydate"
+msgid "  .  .    "
+msgstr ""
+
 #: bewerbung_strings.rsesbefindensi
 msgid "Es befinden sich aktuell %d Bewerbung(en) in der Wiedervorlage: %s"
 msgstr ""
