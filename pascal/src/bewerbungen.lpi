@@ -76,9 +76,8 @@
         <ComponentName Value="frmMain"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
-        <TopLine Value="189"/>
-        <CursorPos X="40" Y="702"/>
+        <TopLine Value="683"/>
+        <CursorPos X="37" Y="690"/>
         <UsageCount Value="153"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -200,7 +199,8 @@
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="Data"/>
         <EditorIndex Value="6"/>
-        <CursorPos X="31" Y="894"/>
+        <TopLine Value="528"/>
+        <CursorPos X="3" Y="437"/>
         <UsageCount Value="124"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -239,8 +239,9 @@
       <Unit25>
         <Filename Value="bewerbung_strings.pas"/>
         <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="5"/>
-        <TopLine Value="79"/>
+        <TopLine Value="76"/>
         <CursorPos X="14" Y="94"/>
         <UsageCount Value="121"/>
         <Loaded Value="True"/>
@@ -705,7 +706,7 @@
       </Position29>
       <Position30>
         <Filename Value="data.pas"/>
-        <Caret Line="894" Column="24" TopLine="880"/>
+        <Caret Line="894" Column="31" TopLine="877"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>
