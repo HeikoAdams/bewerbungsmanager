@@ -175,7 +175,7 @@ msgid "RECEIPENTS"
 msgstr ""
 
 #: bewerbung_strings.rsresult2
-msgid "(RESULT <> 2)"
+msgid "(RESULT IN (0,4)) AND (IGNORIERT = 0)"
 msgstr ""
 
 #: bewerbung_strings.rsresult3
