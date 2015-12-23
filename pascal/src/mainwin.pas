@@ -39,6 +39,8 @@ type
     Ignoriert: integer;
     Feedback: integer;
     Result: integer;
+    Typ: integer;
+    Medium: integer;
     RefNr: string;
     JobTitel: string;
     Mail: string;
@@ -77,36 +79,52 @@ type
     actNoResult: TAction;
     actNoFeedback: TAction;
     alFilter: TActionList;
-    btnFileOpen: TBitBtn;
     btnBrowse: TBitBtn;
+    btnFileOpen: TBitBtn;
+    cbbAnspr: TDBComboBox;
+    cbbEmpfMail: TDBComboBox;
     cbbEmpfName: TDBLookupComboBox;
     cbbJobTitel: TDBLookupComboBox;
+    cbbLogTyp: TDBComboBox;
     cbFileType: TDBComboBox;
-    cbbEmpfMail: TDBComboBox;
-    cbbAnspr: TDBComboBox;
     chkBefristet: TDBCheckBox;
     chkComVerm: TDBCheckBox;
-    chkIgnoriert: TDBCheckBox;
-    chkVermittler: TDBCheckBox;
     chkAktiv: TDBCheckBox;
+    chkIgnoriert: TDBCheckBox;
     chkNoReaction: TDBCheckBox;
+    chkVermittler: TDBCheckBox;
+    DBGrid1: TDBGrid;
     DBGrid2: TDBGrid;
     DBGrid3: TDBGrid;
     DBText1: TDBText;
-    Label5: TLabel;
-    memNotes: TDBMemo;
-    edtFile: TDBEdit;
-    DBGrid1: TDBGrid;
-    dlgFindCompany: TFindDialog;
-    cbbLogTyp: TDBComboBox;
+    edtDatum: TDateEdit;
     edtEnde: TDateEdit;
+    edtFile: TDBEdit;
+    edtLogDatum: TDateEdit;
+    edtRefNr: TDBEdit;
+    edtWVL: TDateEdit;
+    grdLog: TDBGrid;
+    Label1: TLabel;
+    Label5: TLabel;
+    lblDatum: TLabel;
+    lblDokDescr: TLabel;
+    lblDokFilename: TLabel;
+    lblEmpfMail: TLabel;
+    lblFristEnde: TLabel;
+    lblJobTitel: TLabel;
+    lblLogDatum: TLabel;
+    lblLogText: TLabel;
+    lblLogTyp: TLabel;
+    lblRefNr: TLabel;
+    lblWo: TLabel;
+    lblWVL: TLabel;
+    memNotes: TDBMemo;
+    dlgFindCompany: TFindDialog;
     edtName: TDBEdit;
     edtName1: TDBEdit;
-    Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
-    lblFristEnde: TLabel;
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
     MenuItem5: TMenuItem;
@@ -127,43 +145,28 @@ type
     miPost: TMenuItem;
     miMail: TMenuItem;
     miMedium: TMenuItem;
-    navDocs: TDBNavigator;
-    lblDokFilename: TLabel;
-    lblDokDescr: TLabel;
+    mmoNotes: TDBMemo;
+    mmoText: TDBMemo;
+    navActions: TDBNavigator;
     dlgDocuments: TOpenDialog;
+    navDocs: TDBNavigator;
     navFirmen: TDBNavigator;
     navJobs: TDBNavigator;
-    pnlDokBottom: TPanel;
+    PageControl2: TPageControl;
+    pnlBewerbungInfo: TPanel;
+    pnlBottom: TPanel;
     pnlCompanyData: TPanel;
+    pnlDokBottom: TPanel;
     pnlJobData: TPanel;
-    rgMedium: TDBRadioGroup;
     grdBewerbungen: TDBGrid;
-    grdLog: TDBGrid;
-    lblNotes: TLabel;
     MenuItem1: TMenuItem;
     MenuItem2: TMenuItem;
     miVorschlag: TMenuItem;
     miAngebot: TMenuItem;
     miTyp: TMenuItem;
     miExport: TMenuItem;
-    mmoNotes: TDBMemo;
     navData: TDBNavigator;
-    mmoText: TDBMemo;
-    navActions: TDBNavigator;
-    edtDatum: TDateEdit;
-    edtLogDatum: TDateEdit;
-    edtRefNr: TDBEdit;
-    edtWVL: TDateEdit;
     ilIcons: TImageList;
-    lblDatum: TLabel;
-    lblEmpfMail: TLabel;
-    lblJobTitel: TLabel;
-    lblLogDatum: TLabel;
-    lblLogText: TLabel;
-    lblLogTyp: TLabel;
-    lblRefNr: TLabel;
-    lblWo: TLabel;
-    lblWVL: TLabel;
     miAbsage: TMenuItem;
     miZusage: TMenuItem;
     miNoResult: TMenuItem;
@@ -173,17 +176,19 @@ type
     miNoFeedback: TMenuItem;
     miFeedback: TMenuItem;
     PageControl1: TPageControl;
-    pnlBottom: TPanel;
     pmFilter: TPopupMenu;
+    dlgExport: TSaveDialog;
     rgErgebnis: TDBRadioGroup;
     rgFeedback: TDBRadioGroup;
-    rgTyp: TRadioGroup;
-    dlgExport: TSaveDialog;
+    rgMedium: TDBRadioGroup;
+    rgTyp: TDBRadioGroup;
     sbInfo: TStatusBar;
+    tsStatus: TTabSheet;
+    tsNotes: TTabSheet;
+    tsActivities: TTabSheet;
+    tsDokumente: TTabSheet;
     tsJobs: TTabSheet;
     tsFirmen: TTabSheet;
-    tsDokumente: TTabSheet;
-    tsActions: TTabSheet;
     tsBewerbungData: TTabSheet;
     tsBewerbungen: TTabSheet;
     procedure actAbsageExecute(Sender: TObject);
@@ -438,6 +443,7 @@ begin
     end;
 
   PageControl1.ActivePageIndex := 0;
+  PageControl2.ActivePageIndex := 0;
 
   {$IFDEF Unix}
   CreateDesktopFile;
@@ -588,9 +594,10 @@ var
 begin
   bewerbungen := dmBewerbungen.qryBewerbungen;
   companies := dmBewerbungen.qryCompanies;
+  sNote := EmptyStr;
 
-  if (bewerbungen.State in dsWriteModes)
-    and ((Sender as TDBLookupComboBox).Field.OldValue <> (Sender as TDBLookupComboBox).Field.NewValue) then
+  if (bewerbungen.State in dsWriteModes) then
+//    and ((Sender as TDBLookupComboBox).Field.OldValue <> (Sender as TDBLookupComboBox).Field.NewValue) then
   begin
     if companies.Locate('ID', (Sender as TDBLookupComboBox).KeyValue, []) then
       if not companies.FieldByName('AKTIV').AsBoolean then
@@ -603,7 +610,7 @@ begin
       if companies.FieldByName('VERMITTLER').AsBoolean then
       begin
         bewerbungen.FieldByName('VERMITTLER').AsInteger:= companies.FieldByName('VERMITTLER').AsInteger;
-        Application.MessageBox(PChar(rsPersonalvermittler), PChar(rsWarnung), MB_ICONWARNING + MB_OK);
+        sNote := rsPersonalvermittler;
         if frmMain.ConfigFile.ReadBool('GENERAL', 'IGNOREPV', False) then
           bewerbungen.FieldByName('IGNORIERT').AsInteger:=1;
       end
@@ -614,11 +621,24 @@ begin
       end;
 
       if companies.FieldByName('NOREACTION').AsBoolean then
-        Application.MessageBox(PChar(rsNoReaction), PChar(rsWarnung), MB_ICONWARNING + MB_OK);
+      begin
+        if (sNote <> EmptyStr) then
+          sNote := sNote + CRLF;
+        sNote := sNote + rsNoReaction;
+      end;
 
-      sNote := companies.FieldByName('NOTES').AsString;
+      if (companies.FieldByName('NOTES').AsString <> EmptyStr) then
+      begin
+        if (sNote <> EmptyStr) then
+          sNote := sNote + CRLF;
+
+        sNote := sNote + companies.FieldByName('NOTES').AsString;
+      end;
+
       if (sNote <> EmptyStr) then
-        Application.MessageBox(PChar(sNote), PChar(rsWarnung), MB_ICONASTERISK + MB_OK);
+        Application.MessageBox(PChar(sNote), PChar(rsWarnung), MB_ICONWARNING + MB_OK);
+
+      bewerbungen.FieldByName('NOTES').AsString := sNote;
   end;
 end;
 
@@ -1019,6 +1039,7 @@ end;
 procedure TfrmMain.navDataClick(Sender: TObject; Button: TDBNavButtonType);
 begin
   frmMain.PageControl1.ActivePageIndex := 1;
+  frmMain.PageControl2.ActivePageIndex := 0;
 end;
 
 procedure TfrmMain.pmFilterPopup(Sender: TObject);

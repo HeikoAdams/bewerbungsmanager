@@ -653,7 +653,11 @@ begin
       nbPost, nbCancel, nbRefresh];
   ReadOnlyButtons := [nbFirst, nbPrior, nbNext, nbLast, nbRefresh];
 
-  frmMain.tsBewerbungData.Enabled := FEditMode;
+  frmMain.pnlBewerbungInfo.Enabled := FEditMode;
+  frmMain.tsStatus.Enabled := FEditMode;
+  frmMain.tsNotes.Enabled := FEditMode;
+  frmMain.tsActivities.Enabled := FEditMode;
+  frmMain.tsDokumente.Enabled := FEditMode;
 
   if FEditMode then
   begin

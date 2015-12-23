@@ -574,15 +574,6 @@ msgctxt "tfrmmain.dbgrid2.columns[0].title.caption"
 msgid "Name"
 msgstr ""
 
-#: tfrmmain.dbgrid2.columns[1].title.caption
-msgctxt "tfrmmain.dbgrid2.columns[1].title.caption"
-msgid "Personalvermittler"
-msgstr ""
-
-#: tfrmmain.dbgrid2.columns[2].title.caption
-msgid "Reagiert nicht"
-msgstr ""
-
 #: tfrmmain.dbgrid3.columns[0].title.caption
 msgctxt "TFRMMAIN.DBGRID3.COLUMNS[0].TITLE.CAPTION"
 msgid "Job-Titel"
@@ -773,10 +764,6 @@ msgctxt "TFRMMAIN.LBLLOGTYP.CAPTION"
 msgid "Art"
 msgstr ""
 
-#: tfrmmain.lblnotes.caption
-msgid "Bemerkungen"
-msgstr ""
-
 #: tfrmmain.lblrefnr.caption
 msgid "Ref.-Nr"
 msgstr ""
@@ -833,10 +820,11 @@ msgstr ""
 
 #: tfrmmain.rgtyp.caption
 msgctxt "TFRMMAIN.RGTYP.CAPTION"
-msgid "Bewerbungstyp"
+msgid "Art der Bewerbung"
 msgstr ""
 
-#: tfrmmain.tsactions.caption
+#: tfrmmain.tsactivities.caption
+msgctxt "TFRMMAIN.TSACTIVITIES.CAPTION"
 msgid "Aktivitäten"
 msgstr ""
 
@@ -849,6 +837,7 @@ msgid "Bewerbungen"
 msgstr ""
 
 #: tfrmmain.tsdokumente.caption
+msgctxt "TFRMMAIN.TSDOKUMENTE.CAPTION"
 msgid "Dokumente"
 msgstr ""
 
@@ -859,6 +848,16 @@ msgstr ""
 
 #: tfrmmain.tsjobs.caption
 msgid "Jobs"
+msgstr ""
+
+#: tfrmmain.tsnotes.caption
+msgctxt "TFRMMAIN.TSNOTES.CAPTION"
+msgid "Bemerkungen"
+msgstr ""
+
+#: tfrmmain.tsstatus.caption
+msgctxt "TFRMMAIN.TSSTATUS.CAPTION"
+msgid "Status-Informationen"
 msgstr ""
 
 #: tfrmnewuser.caption
