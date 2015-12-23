@@ -27,11 +27,10 @@ inherited frmExportDate: TfrmExportDate
   end
   object cbxNachweis: TCheckBox[6]
     Left = 8
-    Height = 40
+    Height = 44
     Top = 80
-    Width = 198
-    AutoSize = False
-    Caption = 'Nachweis für Arbeitsagentur/'#10'JobCenter'
+    Width = 167
+    Caption = 'Nachweis für Arbeits-'#10'agentur/JobCenter'
     TabOrder = 2
   end
 end

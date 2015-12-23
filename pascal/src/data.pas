@@ -126,7 +126,7 @@ var
 
 implementation
 
-uses mainwin, bewerbung_strings, Forms, Dialogs, login, LCLType;
+uses mainwin, bewerbung_strings, Forms, Dialogs, login, LCLType, Controls;
 
 {$R *.lfm}
 
@@ -646,6 +646,7 @@ procedure TdmBewerbungen.dsDataStateChange(Sender: TObject);
 var
    ReadOnlyButtons: TDBNavButtonSet;
    WriteModeButtons: TDBNavButtonSet;
+   count: Integer;
 begin
   FEditMode := ((Sender as TDatasource).State in dsWriteModes);
   FInsertMode := ((Sender as TDatasource).State = dsInsert);
@@ -653,11 +654,12 @@ begin
       nbPost, nbCancel, nbRefresh];
   ReadOnlyButtons := [nbFirst, nbPrior, nbNext, nbLast, nbRefresh];
 
-  frmMain.pnlBewerbungInfo.Enabled := FEditMode;
-  frmMain.tsStatus.Enabled := FEditMode;
-  frmMain.tsNotes.Enabled := FEditMode;
-  frmMain.tsActivities.Enabled := FEditMode;
-  frmMain.tsDokumente.Enabled := FEditMode;
+  with frmMain do
+  begin
+    pnlBewerbungInfo.Enabled := FEditMode;
+    tsStatus.Enabled := FEditMode;
+    tsNotes.Enabled := FEditMode;
+   end;
 
   if FEditMode then
   begin

@@ -535,6 +535,8 @@ begin
 
   sCommand := Format(rsMailtoS, [JobApplication.Mail, sSubject]);
 
+  dmBewerbungen.WriteToLog(JobApplication.ApplicationID, rsWriteMail, rsContactMail);
+
   { TODO 1 : Shell-Execute Code zum Erstellen einer Mail unter Windows einfügen }
   {$IFDEF Unix}
   with TProcess.Create(nil) do

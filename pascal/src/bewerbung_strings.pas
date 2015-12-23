@@ -93,6 +93,8 @@ resourcestring
   rsYes = 'Ja';
   rsNo = 'Nein';
   rsEmptyDate = '  .  .    ';
+  rsWriteMail = 'Mail geschrieben';
+  rsContactMail = 'Per Mail Kontakt zum Arbeitgeber aufgenommen';
 implementation
 
 end.

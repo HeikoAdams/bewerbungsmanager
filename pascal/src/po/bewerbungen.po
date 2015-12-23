@@ -1,4 +1,4 @@
-msgid "Bewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenJobCenter"
+msgid "Bewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenJobCenteragentur/JobCenter"
 msgstr "Content-Type: text/plain; charset=UTF-8"
 
 #: bewerbung_strings.rsaction
@@ -11,6 +11,10 @@ msgstr ""
 
 #: bewerbung_strings.rscompanies
 msgid "COMPANIES"
+msgstr ""
+
+#: bewerbung_strings.rscontactmail
+msgid "Per Mail Kontakt zum Arbeitgeber aufgenommen"
 msgstr ""
 
 #: bewerbung_strings.rscsvexport
@@ -226,6 +230,10 @@ msgstr ""
 msgid "(((Date(WVL) <= Date('now')) AND (RESULT IN (0,4)))) AND (IGNORIERT = 0)"
 msgstr ""
 
+#: bewerbung_strings.rswritemail
+msgid "Mail geschrieben"
+msgstr ""
+
 #: bewerbung_strings.rswvl
 msgid "Wiedervolage"
 msgstr ""
@@ -369,7 +377,7 @@ msgid "Export-Zeitraum"
 msgstr ""
 
 #: tfrmexportdate.cbxnachweis.caption
-msgid "Nachweis für Arbeitsagentur/"
+msgid "Nachweis für Arbeits-"
 msgstr ""
 
 #: tfrmfilterdate.frmfilterdate.caption

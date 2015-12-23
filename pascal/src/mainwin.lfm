@@ -180,10 +180,10 @@ object frmMain: TfrmMain
         Height = 296
         Top = 168
         Width = 650
-        ActivePage = tsStatus
+        ActivePage = tsActivities
         Anchors = [akLeft, akRight, akBottom]
         Images = ilIcons
-        TabIndex = 0
+        TabIndex = 2
         TabOrder = 0
         object tsStatus: TTabSheet
           Caption = 'Status-Informationen'
