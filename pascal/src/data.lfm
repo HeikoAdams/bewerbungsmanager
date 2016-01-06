@@ -38,6 +38,7 @@ object dmBewerbungen: TdmBewerbungen
     top = 80
   end
   object qryBewerbungen: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'ID'
@@ -150,6 +151,18 @@ object dmBewerbungen: TdmBewerbungen
       item
         Name = 'WVLSTUFE'
         DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'CDATE'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'EMPFANGBEST'
+        DataType = ftBoolean
         Precision = -1
         Size = 0
       end>
@@ -404,6 +417,27 @@ object dmBewerbungen: TdmBewerbungen
       ReadOnly = False
       Required = False
     end
+    object qryBewerbungenCDATE: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CDATE'
+      Index = 21
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryBewerbungenEMPFANGBEST: TBooleanField
+      DisplayWidth = 5
+      FieldKind = fkData
+      FieldName = 'EMPFANGBEST'
+      Index = 22
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayValues = 'True;False'
+    end
   end
   object qryLog: TSQLQuery
     IndexFieldNames = 'ID'
@@ -635,6 +669,7 @@ object dmBewerbungen: TdmBewerbungen
     top = 16
   end
   object qryCompanies: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'ID'
@@ -748,6 +783,7 @@ object dmBewerbungen: TdmBewerbungen
     end
   end
   object qryJobs: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'ID'

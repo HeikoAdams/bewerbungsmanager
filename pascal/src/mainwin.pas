@@ -93,6 +93,7 @@ type
     chkIgnoriert: TDBCheckBox;
     chkNoReaction: TDBCheckBox;
     chkVermittler: TDBCheckBox;
+    chkEmpfBest: TDBCheckBox;
     DBGrid1: TDBGrid;
     DBGrid2: TDBGrid;
     DBGrid3: TDBGrid;
@@ -625,14 +626,14 @@ begin
       if companies.FieldByName('NOREACTION').AsBoolean then
       begin
         if (sNote <> EmptyStr) then
-          sNote := sNote + CRLF;
+          sNote := sNote + 2CRLF;
         sNote := sNote + rsNoReaction;
       end;
 
       if (companies.FieldByName('NOTES').AsString <> EmptyStr) then
       begin
         if (sNote <> EmptyStr) then
-          sNote := sNote + CRLF;
+          sNote := sNote + 2CRLF;
 
         sNote := sNote + companies.FieldByName('NOTES').AsString;
       end;
@@ -768,7 +769,7 @@ end;
 
 procedure TfrmMain.actEingangExecute(Sender: TObject);
 begin
-  dmBewerbungen.FetchData(Format(rsFEEDBACKD, [1]));
+  dmBewerbungen.FetchData(rsEmpfangBest);
 
   FGridFilter := 2;
 end;
@@ -1000,7 +1001,7 @@ begin
     if bIgnoriert then
       Canvas.Font.Style := [fsItalic]
     // Kein Feedback und WVL-Termin überschritten
-    else if (CurrApp.FieldByName('FEEDBACK').AsInteger in [0, 1]) and
+    else if (CurrApp.FieldByName('FEEDBACK').AsInteger = 0) and
       (CurrApp.FieldByName('RESULT').AsInteger in [0, 4]) and
       (CurrApp.FieldByName('WVL').AsDateTime <= Date) then
     begin
@@ -1010,7 +1011,7 @@ begin
 
     // Bewerbung liegt mehr als 6 Wochen zurück und noch kein Ergebnis
     if FConfigFile.ReadBool('GENERAL', 'HIGHLIGHT OLD APPLICATIONS', False) and
-      (CurrApp.FieldByName('FEEDBACK').AsInteger in [0, 1]) and
+      (CurrApp.FieldByName('FEEDBACK').AsInteger = 0) and
       (CurrApp.FieldByName('RESULT').AsInteger in [0, 4]) and
       (CurrApp.FieldByName('DATUM').AsDateTime <= IncWeek(Date, -6)) then
         Canvas.Font.Style := Canvas.Font.Style + [fsUnderline];
@@ -1018,10 +1019,10 @@ begin
     case CurrApp.FieldByName('RESULT').AsInteger of
       0:
        begin
-          if (CurrApp.FieldByName('FEEDBACK').AsInteger = 1) and
+          if (CurrApp.FieldByName('EMPFANGBEST').AsBoolean = True) and
             (CurrApp.FieldByName('WVL').AsDateTime >= Date) then
             Canvas.Font.Color := clNavy    // Eingangsbestätigung liegt vor und WVL ist noch nicht überschritten
-          else if (CurrApp.FieldByName('FEEDBACK').AsInteger = 2) then
+          else if (CurrApp.FieldByName('FEEDBACK').AsInteger = 1) then
             Canvas.Font.Color := clPurple; // Einladung liegt vor
         end;
       1: Canvas.Font.Color := clGreen; // Zusage erhalten

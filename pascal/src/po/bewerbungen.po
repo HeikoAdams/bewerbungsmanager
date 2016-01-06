@@ -62,6 +62,10 @@ msgctxt "bewerbung_strings.rseinstellunge"
 msgid "Einstellungen"
 msgstr ""
 
+#: bewerbung_strings.rsempfangbest
+msgid "EMPFANGBEST = -1"
+msgstr ""
+
 #: bewerbung_strings.rsemptydate
 msgctxt "bewerbung_strings.rsemptydate"
 msgid "  .  .    "
@@ -547,6 +551,10 @@ msgstr ""
 #: tfrmmain.chkcomverm.caption
 msgctxt "TFRMMAIN.CHKCOMVERM.CAPTION"
 msgid "Personalvermittler"
+msgstr ""
+
+#: tfrmmain.chkempfbest.caption
+msgid "Empfang bestätigt"
 msgstr ""
 
 #: tfrmmain.chkignoriert.caption

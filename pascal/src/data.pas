@@ -47,8 +47,10 @@ type
     qryBewerbungenANSPRECHPARTNER: TStringField;
     qryBewerbungenBEFRISTET: TBooleanField;
     qryBewerbungenBISDATUM: TDateTimeField;
+    qryBewerbungenCDATE: TDateTimeField;
     qryBewerbungenCOMPANY: TLongintField;
     qryBewerbungenDATUM: TDateTimeField;
+    qryBewerbungenEMPFANGBEST: TBooleanField;
     qryBewerbungenFEEDBACK: TLongintField;
     qryBewerbungenID: TLongintField;
     qryBewerbungenIGNORIERT: TBooleanField;
@@ -321,16 +323,16 @@ begin
       if (aWhere = EmptyStr) then
       begin
          Add('SELECT BEWERBUNGEN.ID, DATUM, MAIL, REFNR, TYP, WVLSTUFE, ');
-         Add('FEEDBACK, RESULT, WVL, BEWERBUNGEN.NOTES, BEWERBUNGEN.VERMITTLER, ');
-         Add('MEDIUM, ANSPRECHPARTNER, BEFRISTET, IGNORIERT, UID, BISDATUM, COMPANY, JOB ');
+         Add('FEEDBACK, EMPFANGBEST, RESULT, WVL, BEWERBUNGEN.NOTES, BEWERBUNGEN.VERMITTLER, ');
+         Add('MEDIUM, ANSPRECHPARTNER, BEFRISTET, IGNORIERT, UID, BISDATUM, COMPANY, JOB, CDATE ');
          Add('FROM BEWERBUNGEN ');
          Add('WHERE (UID = :pUserID) ORDER BY Datum DESC')
       end
       else
       begin
          Add('SELECT BEWERBUNGEN.ID, DATUM, MAIL, REFNR, TYP, WVLSTUFE, ');
-         Add('FEEDBACK, RESULT, WVL, BEWERBUNGEN.NOTES, BEWERBUNGEN.VERMITTLER, ');
-         Add('MEDIUM, ANSPRECHPARTNER, BEFRISTET, IGNORIERT, UID, BISDATUM, COMPANY, JOB ');
+         Add('FEEDBACK, EMPFANGBEST, RESULT, WVL, BEWERBUNGEN.NOTES, BEWERBUNGEN.VERMITTLER, ');
+         Add('MEDIUM, ANSPRECHPARTNER, BEFRISTET, IGNORIERT, UID, BISDATUM, COMPANY, JOB, CDATE ');
          Add('FROM BEWERBUNGEN ');
          Add(Format('WHERE (UID = :pUserID) AND (%s) ORDER BY Datum DESC', [aWhere]));
       end;

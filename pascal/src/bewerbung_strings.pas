@@ -30,8 +30,14 @@ uses
 const
   nVersion = 190;
   nInitVer = 100; //Konstante für die Initialisierung der Datenbank. NICHT ÄNDERN!
-  {$IFDEF Windows}CRLF = #13#10;{$endif}
-  {$IFDEF Unix}CRLF = #10;{$endif}
+  {$IFDEF Windows}
+  CRLF = #13#10;
+  2CRLF = #13#10#13#10;
+  {$endif}
+  {$IFDEF Unix}
+  CRLF = #10;
+  2CRLF = #10#10;
+  {$endif}
 
 resourcestring
   rsACTION = 'ACTION';
@@ -95,6 +101,7 @@ resourcestring
   rsEmptyDate = '  .  .    ';
   rsWriteMail = 'Mail geschrieben';
   rsContactMail = 'Per Mail Kontakt zum Arbeitgeber aufgenommen';
+  rsEmpfangBest = 'EMPFANGBEST = -1';
 implementation
 
 end.

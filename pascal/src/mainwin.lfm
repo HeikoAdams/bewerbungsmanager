@@ -16,10 +16,10 @@ object frmMain: TfrmMain
     Height = 512
     Top = 25
     Width = 659
-    ActivePage = tsBewerbungen
+    ActivePage = tsBewerbungData
     Align = alClient
     Images = ilIcons
-    TabIndex = 0
+    TabIndex = 1
     TabOrder = 1
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'
@@ -177,17 +177,17 @@ object frmMain: TfrmMain
       ImageIndex = 1
       object PageControl2: TPageControl
         Left = 0
-        Height = 296
+        Height = 304
         Top = 168
         Width = 650
-        ActivePage = tsActivities
+        ActivePage = tsStatus
         Anchors = [akLeft, akRight, akBottom]
         Images = ilIcons
-        TabIndex = 2
+        TabIndex = 0
         TabOrder = 0
         object tsStatus: TTabSheet
           Caption = 'Status-Informationen'
-          ClientHeight = 262
+          ClientHeight = 270
           ClientWidth = 640
           ImageIndex = 16
           object rgTyp: TDBRadioGroup
@@ -213,7 +213,7 @@ object frmMain: TfrmMain
           end
           object rgFeedback: TDBRadioGroup
             Left = 8
-            Height = 112
+            Height = 65
             Top = 144
             Width = 320
             Caption = 'Rückmeldung'
@@ -222,14 +222,12 @@ object frmMain: TfrmMain
             DataSource = dmBewerbungen.dsData
             Items.Strings = (
               'keine'
-              'Eingangsbetätigung'
               'Einladung'
             )
-            TabOrder = 1
+            TabOrder = 2
             Values.Strings = (
               '0'
               '1'
-              '2'
             )
           end
           object rgMedium: TDBRadioGroup
@@ -272,7 +270,7 @@ object frmMain: TfrmMain
               'Zurückgezogen'
               'keine Antwort'
             )
-            TabOrder = 2
+            TabOrder = 1
             Values.Strings = (
               '0'
               '1'
@@ -281,10 +279,37 @@ object frmMain: TfrmMain
               '4'
             )
           end
+          object chkEmpfBest: TDBCheckBox
+            Left = 8
+            Height = 23
+            Top = 224
+            Width = 146
+            Caption = 'Empfang bestätigt'
+            DataField = 'EMPFANGBEST'
+            DataSource = dmBewerbungen.dsData
+            TabOrder = 4
+            ValueChecked = 'True'
+            ValueUnchecked = 'False'
+          end
+          object chkIgnoriert: TDBCheckBox
+            Left = 184
+            Height = 23
+            Hint = 'Ignorierte Bewerbungen werden von der Wiedervorlage nicht berücksichtigt'
+            Top = 224
+            Width = 154
+            Caption = 'ignoriert'
+            DataField = 'IGNORIERT'
+            DataSource = dmBewerbungen.dsData
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 5
+            ValueChecked = 'True'
+            ValueUnchecked = 'False'
+          end
         end
         object tsNotes: TTabSheet
           Caption = 'Bemerkungen'
-          ClientHeight = 262
+          ClientHeight = 270
           ClientWidth = 640
           ImageIndex = 0
           object mmoNotes: TDBMemo
@@ -301,7 +326,7 @@ object frmMain: TfrmMain
         end
         object tsActivities: TTabSheet
           Caption = 'Aktivitäten'
-          ClientHeight = 262
+          ClientHeight = 270
           ClientWidth = 640
           ImageIndex = 6
           object navActions: TDBNavigator
@@ -428,7 +453,7 @@ object frmMain: TfrmMain
         end
         object tsDokumente: TTabSheet
           Caption = 'Dokumente'
-          ClientHeight = 262
+          ClientHeight = 270
           ClientWidth = 640
           ImageIndex = 2
           object navDocs: TDBNavigator
@@ -789,23 +814,8 @@ object frmMain: TfrmMain
           Caption = 'Bewerbung bis'
           ParentColor = False
         end
-        object chkIgnoriert: TDBCheckBox
-          Left = 312
-          Height = 23
-          Hint = 'Ignorierte Bewerbungen werden von der Wiedervorlage nicht berücksichtigt'
-          Top = 144
-          Width = 154
-          Caption = 'ignoriert'
-          DataField = 'IGNORIERT'
-          DataSource = dmBewerbungen.dsData
-          ParentShowHint = False
-          ShowHint = True
-          TabOrder = 6
-          ValueChecked = 'True'
-          ValueUnchecked = 'False'
-        end
         object chkBefristet: TDBCheckBox
-          Left = 176
+          Left = 184
           Height = 23
           Top = 144
           Width = 128
@@ -815,7 +825,7 @@ object frmMain: TfrmMain
           Font.Color = clRed
           OnChange = chkBefristetChange
           ParentFont = False
-          TabOrder = 7
+          TabOrder = 6
           ValueChecked = 'True'
           ValueUnchecked = 'False'
         end
@@ -829,7 +839,7 @@ object frmMain: TfrmMain
           DataSource = dmBewerbungen.dsData
           Font.Color = clRed
           ParentFont = False
-          TabOrder = 8
+          TabOrder = 7
           ValueChecked = 'True'
           ValueUnchecked = 'False'
         end
@@ -848,7 +858,7 @@ object frmMain: TfrmMain
           OnSelect = cbbEmpfNameExit
           ReadOnly = True
           Sorted = True
-          TabOrder = 9
+          TabOrder = 8
         end
         object cbbJobTitel: TDBLookupComboBox
           Left = 432
@@ -864,10 +874,10 @@ object frmMain: TfrmMain
           LookupCache = False
           ReadOnly = True
           Sorted = True
-          TabOrder = 10
+          TabOrder = 9
         end
         object DBText1: TDBText
-          Left = 572
+          Left = 432
           Height = 20
           Top = 144
           Width = 58
@@ -876,7 +886,7 @@ object frmMain: TfrmMain
           ParentColor = False
         end
         object Label5: TLabel
-          Left = 496
+          Left = 329
           Height = 20
           Top = 144
           Width = 76
