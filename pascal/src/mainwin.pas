@@ -63,6 +63,7 @@ type
     actBefristet: TAction;
     actIgnoriert: TAction;
     actFilter: TAction;
+    actErl: TAction;
     actOpen: TAction;
     actNewWVL: TAction;
     actSilent: TAction;
@@ -94,6 +95,7 @@ type
     chkNoReaction: TDBCheckBox;
     chkVermittler: TDBCheckBox;
     chkEmpfBest: TDBCheckBox;
+    chkManuellErledigt: TDBCheckBox;
     DBGrid1: TDBGrid;
     DBGrid2: TDBGrid;
     DBGrid3: TDBGrid;
@@ -130,6 +132,9 @@ type
     MenuItem4: TMenuItem;
     MenuItem5: TMenuItem;
     MenuItem6: TMenuItem;
+    miErledigt: TMenuItem;
+    MenuItem8: TMenuItem;
+    MenuItem9: TMenuItem;
     miNewWVL: TMenuItem;
     miFilter: TMenuItem;
     miBefristet: TMenuItem;
@@ -199,6 +204,7 @@ type
     procedure actBefristetExecute(Sender: TObject);
     procedure actEingangExecute(Sender: TObject);
     procedure actEinladungExecute(Sender: TObject);
+    procedure actErlExecute(Sender: TObject);
     procedure actExportExecute(Sender: TObject);
     procedure actFilterExecute(Sender: TObject);
     procedure actFindExecute(Sender: TObject);
@@ -626,14 +632,14 @@ begin
       if companies.FieldByName('NOREACTION').AsBoolean then
       begin
         if (sNote <> EmptyStr) then
-          sNote := sNote + 2CRLF;
+          sNote := sNote + CRLF2;
         sNote := sNote + rsNoReaction;
       end;
 
       if (companies.FieldByName('NOTES').AsString <> EmptyStr) then
       begin
         if (sNote <> EmptyStr) then
-          sNote := sNote + 2CRLF;
+          sNote := sNote + CRLF2;
 
         sNote := sNote + companies.FieldByName('NOTES').AsString;
       end;
@@ -816,6 +822,12 @@ begin
   FGridFilter := 3;
 end;
 
+procedure TfrmMain.actErlExecute(Sender: TObject);
+begin
+  dmBewerbungen.SetManErlState(grdBewerbungen.DataSource.DataSet.FieldByName(
+    'ID').AsInteger);
+end;
+
 procedure TfrmMain.actExportExecute(Sender: TObject);
 var
   ExportFile: TextFile;
@@ -990,12 +1002,15 @@ procedure TfrmMain.grdBewerbungenPrepareCanvas(Sender: TObject;
   DataCol: integer; Column: TColumn; AState: TGridDrawState);
 var
   bIgnoriert: boolean;
+  bManErl: boolean;
   CurrApp: TDataSet;
+  cErl: TColor;
 begin
   with (Sender as TDBGrid) do
   begin
     CurrApp := DataSource.DataSet;
-    bIgnoriert := (CurrApp.FieldByName('IGNORIERT').AsInteger = 1);
+    bIgnoriert := (CurrApp.FieldByName('IGNORIERT').AsBoolean);
+    bManErl := (CurrApp.FieldByName('MAN_ERL').AsBoolean);
 
     // Ignorierte Bewerbungen
     if bIgnoriert then
@@ -1003,7 +1018,8 @@ begin
     // Kein Feedback und WVL-Termin überschritten
     else if (CurrApp.FieldByName('FEEDBACK').AsInteger = 0) and
       (CurrApp.FieldByName('RESULT').AsInteger in [0, 4]) and
-      (CurrApp.FieldByName('WVL').AsDateTime <= Date) then
+      (CurrApp.FieldByName('WVL').AsDateTime <= Date) and
+      not bManErl then
     begin
       Canvas.Font.Color := clMaroon;
       Canvas.Font.Style := [fsBold];
@@ -1013,7 +1029,8 @@ begin
     if FConfigFile.ReadBool('GENERAL', 'HIGHLIGHT OLD APPLICATIONS', False) and
       (CurrApp.FieldByName('FEEDBACK').AsInteger = 0) and
       (CurrApp.FieldByName('RESULT').AsInteger in [0, 4]) and
-      (CurrApp.FieldByName('DATUM').AsDateTime <= IncWeek(Date, -6)) then
+      (CurrApp.FieldByName('DATUM').AsDateTime <= IncWeek(Date, -6)) and
+      not bManErl then
         Canvas.Font.Style := Canvas.Font.Style + [fsUnderline];
 
     case CurrApp.FieldByName('RESULT').AsInteger of
@@ -1030,6 +1047,9 @@ begin
       3: Canvas.Font.Color := clGray;  // Bewerbung zurückgezogen
       4: Canvas.Font.Color := clTeal;  // keine Antwort auf Nachfragen
     end;
+
+    if bManErl then
+      Canvas.Font.Color:= RGBToColor(55,101,148);
   end;
 end;
 

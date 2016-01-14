@@ -32,11 +32,11 @@ const
   nInitVer = 100; //Konstante für die Initialisierung der Datenbank. NICHT ÄNDERN!
   {$IFDEF Windows}
   CRLF = #13#10;
-  2CRLF = #13#10#13#10;
+  CRLF2 = #13#10#13#10;
   {$endif}
   {$IFDEF Unix}
   CRLF = #10;
-  2CRLF = #10#10;
+  CRLF2 = #10#10;
   {$endif}
 
 resourcestring
@@ -67,15 +67,15 @@ resourcestring
   rsMeineBewerbu = 'Meine Bewerbung vom %s als %s (Ref.Nr. %s)';
   rsMeineBewerbu2 = 'Meine Bewerbung vom %s als %s';
   rsRECEIPENTS = 'RECEIPENTS';
-  rsRESULT2 = '(RESULT IN (0,4)) AND (IGNORIERT = 0)';
+  rsRESULT2 = '(RESULT IN (0,4)) AND (IGNORIERT = 0) AND (MAN_ERL = 0)';
   rsRESULTD = '(RESULT = %d)';
-  rsRESULT3 = '(RESULT IN (0,4))';
+  rsRESULT3 = '(RESULT IN (0,4)) AND (MAN_ERL = 0)';
   rsSuche = 'Suche';
   rsTYPD = '(TYP = %d)';
   {$IFDEF Unix}rsUsrBinXdgOpe = '%s/xdg-open "%s"';{$ENDIF}
   rsWarnung = 'Warnung';
   rsWERT = 'WERT';
-  rsWHEREWVLSAND = '(((Date(WVL) <= Date(''now'')) AND (RESULT IN (0,4)))) AND (IGNORIERT = 0)';
+  rsWHEREWVLSAND = '(((Date(WVL) <= Date(''now'')) AND (RESULT IN (0,4)))) AND (IGNORIERT = 0) AND (MAN_ERL = 0)';
   rsNewWVL = 'WVL verlängert';
   rsNewWVLTxt = 'Datum der Wiedervorlage neu gesetzt';
   rsIgnored = 'Ignoriert';
@@ -88,7 +88,7 @@ resourcestring
   rsUserExists = 'Der angegbene Benutzer existiert bereits!';
   rsOldDataPurged = '%d alte Bewerbungen wurden aus dem System entfernt';
   rsPurging = 'Datenbank-Bereinigung';
-  rsPurgeSQL = 'DELETE FROM BEWERBUNGEN WHERE (UID = :pUserID) AND (DATE(DATUM) < DATE(''now'', ''-2 year'')) AND (RESULT <> 1);';
+  rsPurgeSQL = 'UPDATE BEWERBUNGEN SET MAN_ERL = -1 WHERE (UID = :pUserID) AND (DATE(DATUM) < DATE(''now'', ''-1 year'')) AND (RESULT <> 1);';
   rsCleanupSQL = 'DELETE FROM DOCUMENTS WHERE (BEWERBUNG = 0);';
   rsDeactiveComp = 'UPDATE COMPANIES SET AKTIV = 0 WHERE ID NOT IN (SELECT COMPANY FROM BEWERBUNGEN);';
   rsDeleteJobs = 'DELETE FROM JOBS WHERE ID NOT IN (SELECT DISTINCT JOB FROM BEWERBUNGEN);';
@@ -102,6 +102,8 @@ resourcestring
   rsWriteMail = 'Mail geschrieben';
   rsContactMail = 'Per Mail Kontakt zum Arbeitgeber aufgenommen';
   rsEmpfangBest = 'EMPFANGBEST = -1';
+  rsManErl = 'manuell erledigt';
+  rsManErlTxt = 'Status der Bewerbung auf "manuell erledigt" geändert';
 implementation
 
 end.

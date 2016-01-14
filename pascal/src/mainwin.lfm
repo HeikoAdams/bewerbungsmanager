@@ -29,7 +29,7 @@ object frmMain: TfrmMain
       object grdBewerbungen: TDBGrid
         Left = 0
         Height = 478
-        Hint = 'dunkelblau = Eingang bestätigt'#10'dunkelrot = Wiedervorlagedatum ohne Reaktion überschritten'#10'türkis = keine Antwort auf Rückfragen '#10'grün = Zusage erhalten'#10'rot = Absage erhalten'#10'schwarz = noch keine Reaktion und erste Wiedervorlage ist noch nicht fällig'#10'violet = Einladung liegt vor'#10'grau = Bewerbung zurückgezogen'#10#10'fett = Wiedervorlage ist fällig'#10'kursiv = ignorierte Bewerbung'#10'unterstrichen = Bewerbung ist älter als 6 Wochen und ohne Ergebnis'
+        Hint = 'dunkelblau = Eingang bestätigt'#10'dunkelrot = Wiedervorlagedatum ohne Reaktion überschritten'#10'türkis = keine Antwort auf Rückfragen '#10'grün = Zusage erhalten'#10'rot = Absage erhalten'#10'schwarz = noch keine Reaktion und erste Wiedervorlage ist noch nicht fällig'#10'violet = Einladung liegt vor'#10'grau = Bewerbung zurückgezogen'#10'hellblau = manuell erledigt'#10#10'fett = Wiedervorlage ist fällig'#10'kursiv = ignorierte Bewerbung'#10'unterstrichen = Bewerbung ist älter als 6 Wochen und ohne Ergebnis'
         Top = 0
         Width = 649
         Align = alClient
@@ -159,9 +159,14 @@ object frmMain: TfrmMain
             Title.Alignment = taCenter
             Title.Caption = 'Ignoriert'
             FieldName = 'IGNORIERT'
+          end        
+          item
+            Title.Caption = 'man.erl.'
+            FieldName = 'MAN_ERL'
           end>
         DataSource = dmBewerbungen.dsData
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+        ParentFont = False
         PopupMenu = pmFilter
         ShowHint = True
         TabOrder = 0
@@ -282,6 +287,7 @@ object frmMain: TfrmMain
           object chkEmpfBest: TDBCheckBox
             Left = 8
             Height = 23
+            Hint = 'Der potentielle Arbeitgeber hat den Eingang der Bewerbung bestätigt'
             Top = 224
             Width = 146
             Caption = 'Empfang bestätigt'
@@ -303,6 +309,18 @@ object frmMain: TfrmMain
             ParentShowHint = False
             ShowHint = True
             TabOrder = 5
+            ValueChecked = 'True'
+            ValueUnchecked = 'False'
+          end
+          object chkManuellErledigt: TDBCheckBox
+            Left = 8
+            Height = 23
+            Top = 248
+            Width = 136
+            Caption = 'manuell erledigt'
+            DataField = 'MAN_ERL'
+            DataSource = dmBewerbungen.dsData
+            TabOrder = 6
             ValueChecked = 'True'
             ValueUnchecked = 'False'
           end
@@ -1139,7 +1157,7 @@ object frmMain: TfrmMain
     left = 352
     top = 448
     Bitmap = {
-      4C69110000001000000010000000FFFFFF009E6E4D2B9D6D4CD69D6D4BC59D6C
+      4C69120000001000000010000000FFFFFF009E6E4D2B9D6D4CD69D6D4BC59D6C
       4BFF9C6C4AFF9C6B49FF9B6A49FF9B6A48FF9A6947FF996846FF986745FF9364
       43FF845D3EDEFFFFFF00FFFFFF00FFFFFF009D6D4C919D6D4BFEBB9778FFAC82
       62FFAC8161FFAB8060FFAB7F5FFFAA7F5EFFA87E5DFFA87C5CFF9D6D4CFF9766
@@ -1683,7 +1701,39 @@ object frmMain: TfrmMain
       1F231B7E1F7D1B7A1FDB1A731EF31A701EF31B711FDB1B711F7D1B6C1F23FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-      FF00FFFFFF00FFFFFF00FFFFFF00
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00A5A5
+      A50CA3A3A381A0A0A0BA9D9D9DCC9A9A9ACC979797BA949494819090900CFFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00A4A4A430A2A2
+      A2DEBCBCBCFFCACACAFFCCCCCCFFCACACAFFC2C2C2FFADADADFF8C8C8CDE8989
+      8930FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00A4A4A40CA1A1A1DBC4C4
+      C4FFBEBEBEFFA1A1A1FF969696FF939393FF979797FFAEAEAEFFAEAEAEFF8484
+      84DB81818109FFFFFF00FFFFFF00FFFFFF00FFFFFF00A1A1A175BABABAFFBFBF
+      BFFF989898DD9494941F919191058E8E8E058A8A8A1F878787E5A8A8A8FF9E9E
+      9EFF7D7D7D75FFFFFF00FFFFFF00FFFFFF00FFFFFF009D9D9DAEC4C4C4FFA1A1
+      A1FF93939329FFFFFF00FFFFFF00FFFFFF00FFFFFF0082828229898989FFA9A9
+      A9FF797979AEFFFFFF00FFFFFF00FFFFFF00FFFFFF00999999C3C6C6C6FF9494
+      94FF8F8F8F08FFFFFF00FFFFFF00FFFFFF00FFFFFF007E7E7E087D7D7DFFABAB
+      ABFF767676C3FFFFFF00FFFFFF00FFFFFF0061C3E1FF88A0A8FF919191FF8E8E
+      8EFF5AB9DCFF55B8DFFF51B5DEFF4DB1DDFF49ADDCFF46A8D7FF787878FF7676
+      76FF657E8DFF3199D8FFFFFFFF00FFFFFF0060C2E1FFC9F3FCFFCBF3FDFFD4F6
+      FEFFD7F6FFFFD8F4FFFFE0F8FFFFDFF8FFFFDAF5FFFFCDF1FCFFC2EDFAFFBDEB
+      FAFFBDEBFAFF2B93D6FFFFFFFF00FFFFFF005CBFE0FFC8F3FCFF75DFF9FF89E6
+      FDFF95E7FFFF9AE5FFFFAAEEFFFFA8EDFFFF99E3FFFF74D5F9FF59CCF3FF4FC8
+      F1FFBBE9FAFF248DD5FFFFFFFF00FFFFFF0058BBDFFFC7F1FCFF6FDCF9FF56BB
+      EDFF61BDEFFF9BE7FFFF35A6E2FF4BA4E1FF90E2FFFF49ADE9FF38A4E3FF49C4
+      F0FFB8E8F9FF1E88D4FFFFFFFF00FFFFFF0053B7DEFFC6F0FCFF6AD9F8FF7CE2
+      FDFF90E8FFFF99E9FFFF329FDFFF548BB2FF8AE2FFFF6AD0F9FF50C5F1FF46C1
+      F0FFB6E7F9FF1883D3FFFFFFFF00FFFFFF004EB2DDFFC3EFFBFF65D6F8FF4CB6
+      ECFF5ABDEFFF95EBFFFF3097DDFF4D82ABFF84E1FFFF41A9E9FF329FE1FF42BE
+      EFFFB4E5F9FF137ED2FFFFFFFF00FFFFFF0049ADDCFFC1EEFBFF5FD3F7FF6CDB
+      FCFF7FE5FFFF8FEDFFFF97F2FFFF93EDFFFF7CDFFFFF5BCCF8FF46BEEFFF3CBA
+      EEFFB3E3F9FF0E79D1FFFFFFFF00FFFFFF0043A8DBFFBFECFBFF59CFF5FF41B0
+      ECFF4EBAEFFF5AC2EFFF60C6EFFF5CC4EFFF4CB6EFFF37A5E6FF2A9AE1FF38B8
+      EEFFB1E3F8FF0975D0FFFFFFFF00FFFFFF003DA3DAFFBCEBFAFFBCEBFCFFBFEE
+      FEFFC6F4FFFFCEF8FFFFD3FAFFFFD0F8FFFFC7F2FFFFBAE9FCFFB3E4F9FFB0E2
+      F8FFB0E2F8FF0571CFFFFFFFFF00FFFFFF00369DD9FF3199D8FF2C94D7FF2890
+      D6FF238CD5FF1E88D4FF1A84D3FF1580D2FF117CD1FF0E79D1FF0A76D0FF0773
+      CFFF0470CFFF016ECEFFFFFFFF00
     }
   end
   object alFilter: TActionList
@@ -1848,6 +1898,11 @@ object frmMain: TfrmMain
       Tag = 19
       Caption = 'alle offenen Bewerbungen'
       OnExecute = actOpenExecute
+    end
+    object actErl: TAction
+      Caption = 'man. erledigt'
+      ImageIndex = 17
+      OnExecute = actErlExecute
     end
   end
   object pmFilter: TPopupMenu
@@ -2228,9 +2283,15 @@ object frmMain: TfrmMain
         C9FBC4C4C4FFC0C0C0FFBBBBBBFFB6B6B6FFB0B0B0FFABABABA7
       }
     end
+    object MenuItem8: TMenuItem
+      Caption = '-'
+    end
     object miNewWVL: TMenuItem
       Tag = 107
       Action = actNewWVL
+    end
+    object miErledigt: TMenuItem
+      Action = actErl
     end
     object miIgnorieren: TMenuItem
       Tag = 105
@@ -2271,6 +2332,9 @@ object frmMain: TfrmMain
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
       }
+    end
+    object MenuItem9: TMenuItem
+      Caption = '-'
     end
     object miSettings: TMenuItem
       Tag = 102

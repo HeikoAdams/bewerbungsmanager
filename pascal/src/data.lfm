@@ -165,6 +165,12 @@ object dmBewerbungen: TdmBewerbungen
         DataType = ftBoolean
         Precision = -1
         Size = 0
+      end    
+      item
+        Name = 'MAN_ERL'
+        DataType = ftBoolean
+        Precision = -1
+        Size = 0
       end>
     AfterDelete = qryBewerbungenAfterPost
     AfterOpen = qryBewerbungenAfterOpen
@@ -432,6 +438,17 @@ object dmBewerbungen: TdmBewerbungen
       FieldKind = fkData
       FieldName = 'EMPFANGBEST'
       Index = 22
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayValues = 'True;False'
+    end
+    object qryBewerbungenMAN_ERL: TBooleanField
+      DisplayWidth = 5
+      FieldKind = fkData
+      FieldName = 'MAN_ERL'
+      Index = 23
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False

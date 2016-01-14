@@ -1,5 +1,8 @@
-msgid "Bewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenJobCenteragentur/JobCenter"
+msgid "Bewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenBewerbung auf \"keine Antwort\" setzenJobCenteragentur/JobCenterautomatisch erledigen"
 msgstr "Content-Type: text/plain; charset=UTF-8"
+
+msgid "automatisch erledigen"
+msgstr ""
 
 #: bewerbung_strings.rsaction
 msgid "ACTION"
@@ -122,6 +125,15 @@ msgstr ""
 msgid "mailto:%s?subject=%s"
 msgstr ""
 
+#: bewerbung_strings.rsmanerl
+msgctxt "bewerbung_strings.rsmanerl"
+msgid "manuell erledigt"
+msgstr ""
+
+#: bewerbung_strings.rsmanerltxt
+msgid "Status der Bewerbung auf \"manuell erledigt\" geändert"
+msgstr ""
+
 #: bewerbung_strings.rsmarkcompanies
 msgid "UPDATE COMPANIES SET NOREACTION = -1 WHERE ID IN (SELECT DISTINCT COMPANY FROM BEWERBUNGEN WHERE UID = :pUserID AND WVLSTUFE >= 3)"
 msgstr ""
@@ -167,7 +179,7 @@ msgid "Personalvermittler!"
 msgstr ""
 
 #: bewerbung_strings.rspurgesql
-msgid "DELETE FROM BEWERBUNGEN WHERE (UID = :pUserID) AND (DATE(DATUM) < DATE('now', '-2 year')) AND (RESULT <> 1);"
+msgid "UPDATE BEWERBUNGEN SET MAN_ERL = -1 WHERE (UID = :pUserID) AND (DATE(DATUM) < DATE('now', '-1 year')) AND (RESULT <> 1);"
 msgstr ""
 
 #: bewerbung_strings.rspurging
@@ -183,11 +195,11 @@ msgid "RECEIPENTS"
 msgstr ""
 
 #: bewerbung_strings.rsresult2
-msgid "(RESULT IN (0,4)) AND (IGNORIERT = 0)"
+msgid "(RESULT IN (0,4)) AND (IGNORIERT = 0) AND (MAN_ERL = 0)"
 msgstr ""
 
 #: bewerbung_strings.rsresult3
-msgid "(RESULT IN (0,4))"
+msgid "(RESULT IN (0,4)) AND (MAN_ERL = 0)"
 msgstr ""
 
 #: bewerbung_strings.rsresultd
@@ -231,7 +243,7 @@ msgid "WERT"
 msgstr ""
 
 #: bewerbung_strings.rswherewvlsand
-msgid "(((Date(WVL) <= Date('now')) AND (RESULT IN (0,4)))) AND (IGNORIERT = 0)"
+msgid "(((Date(WVL) <= Date('now')) AND (RESULT IN (0,4)))) AND (IGNORIERT = 0) AND (MAN_ERL = 0)"
 msgstr ""
 
 #: bewerbung_strings.rswritemail
@@ -275,7 +287,7 @@ msgid " Zusage erhalten"
 msgstr ""
 
 #: hellblau 
-msgid " keine Antwort auf Rückfragen etc."
+msgid " manuell erledigt"
 msgstr ""
 
 #: kursiv 
@@ -441,6 +453,10 @@ msgstr ""
 msgid "&Einladung"
 msgstr ""
 
+#: tfrmmain.acterl.caption
+msgid "man. erledigt"
+msgstr ""
+
 #: tfrmmain.actexport.caption
 msgid "&CSV-Export"
 msgstr ""
@@ -557,12 +573,21 @@ msgstr ""
 msgid "Empfang bestätigt"
 msgstr ""
 
+#: tfrmmain.chkempfbest.hint
+msgid "Der potentielle Arbeitgeber hat den Eingang der Bewerbung bestätigt"
+msgstr ""
+
 #: tfrmmain.chkignoriert.caption
 msgid "ignoriert"
 msgstr ""
 
 #: tfrmmain.chkignoriert.hint
 msgid "Ignorierte Bewerbungen werden von der Wiedervorlage nicht berücksichtigt"
+msgstr ""
+
+#: tfrmmain.chkmanuellerledigt.caption
+msgctxt "TFRMMAIN.CHKMANUELLERLEDIGT.CAPTION"
+msgid "manuell erledigt"
 msgstr ""
 
 #: tfrmmain.chknoreaction.caption
@@ -704,6 +729,10 @@ msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[8].TITLE.CAPTION"
 msgid "Ignoriert"
 msgstr ""
 
+#: tfrmmain.grdbewerbungen.columns[9].title.caption
+msgid "man.erl."
+msgstr ""
+
 #: tfrmmain.grdbewerbungen.hint
 msgid "dunkelblau = Eingang bestätigt"
 msgstr ""
@@ -801,6 +830,16 @@ msgstr ""
 
 #: tfrmmain.menuitem3.caption
 msgid "&Ansicht"
+msgstr ""
+
+#: tfrmmain.menuitem8.caption
+msgctxt "TFRMMAIN.MENUITEM8.CAPTION"
+msgid "-"
+msgstr ""
+
+#: tfrmmain.menuitem9.caption
+msgctxt "TFRMMAIN.MENUITEM9.CAPTION"
+msgid "-"
 msgstr ""
 
 #: tfrmmain.mifeedback.caption
@@ -929,7 +968,7 @@ msgid "offene Bewerbungen nach 6 Wochen hervorheben"
 msgstr ""
 
 #: tfrmsettings.chkpurgedata.caption
-msgid "erfolglose Bewerbungen nach 24 Monaten automatisch löschen"
+msgid "erfolglose Bewerbungen nach 12 Monaten "
 msgstr ""
 
 #: tfrmsettings.groupbox1.caption

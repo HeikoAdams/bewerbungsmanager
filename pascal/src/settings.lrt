@@ -11,5 +11,6 @@ TFRMSETTINGS.BITBTN2.CAPTION=Abbrechen
 TFRMSETTINGS.CHKNEWWVL.CAPTION=Beim Setzen einer neuen Wiedervorlage das Ergebnis der 
 Bewerbung auf "keine Antwort" setzen
 TFRMSETTINGS.CHKOLDAPPLICATIONS.CAPTION=offene Bewerbungen nach 6 Wochen hervorheben
-TFRMSETTINGS.CHKPURGEDATA.CAPTION=erfolglose Bewerbungen nach 24 Monaten automatisch löschen
+TFRMSETTINGS.CHKPURGEDATA.CAPTION=erfolglose Bewerbungen nach 12 Monaten 
+automatisch erledigen
 TFRMSETTINGS.CHKIGNOREPV.CAPTION=Personalvermittler und befristete Stellen ignorieren

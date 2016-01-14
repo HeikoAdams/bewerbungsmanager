@@ -56,6 +56,7 @@ type
     qryBewerbungenIGNORIERT: TBooleanField;
     qryBewerbungenJOB: TLongintField;
     qryBewerbungenMAIL: TStringField;
+    qryBewerbungenMAN_ERL: TBooleanField;
     qryBewerbungenMEDIUM: TLongintField;
     qryBewerbungenNOTES: TStringField;
     qryBewerbungenREFNR: TStringField;
@@ -119,6 +120,7 @@ type
     procedure FetchData(aWhere: string);
     procedure FetchExportData(aWhere: string; isNachweis: boolean);
     procedure SetIgnoreState(const aID: Integer);
+    procedure SetManErlState(const aID: Integer);
     procedure UpdateWVL(aID, aDays: Integer);
     procedure WriteToLog(aID: Integer; aAction, aText: string);
   end;
@@ -294,7 +296,7 @@ begin
     with SQL do
     begin
       Clear;
-      Add('UPDATE BEWERBUNGEN SET IGNORIERT = NOT IGNORIERT WHERE (ID = :pID)');
+      Add('UPDATE BEWERBUNGEN SET IGNORIERT = -1 WHERE (ID = :pID)');
 
       Params.ParamValues['pID'] := aID;
     end;
@@ -324,7 +326,8 @@ begin
       begin
          Add('SELECT BEWERBUNGEN.ID, DATUM, MAIL, REFNR, TYP, WVLSTUFE, ');
          Add('FEEDBACK, EMPFANGBEST, RESULT, WVL, BEWERBUNGEN.NOTES, BEWERBUNGEN.VERMITTLER, ');
-         Add('MEDIUM, ANSPRECHPARTNER, BEFRISTET, IGNORIERT, UID, BISDATUM, COMPANY, JOB, CDATE ');
+         Add('MEDIUM, ANSPRECHPARTNER, BEFRISTET, IGNORIERT, UID, BISDATUM, COMPANY, JOB, ');
+         Add('CDATE, MAN_ERL ');
          Add('FROM BEWERBUNGEN ');
          Add('WHERE (UID = :pUserID) ORDER BY Datum DESC')
       end
@@ -332,7 +335,8 @@ begin
       begin
          Add('SELECT BEWERBUNGEN.ID, DATUM, MAIL, REFNR, TYP, WVLSTUFE, ');
          Add('FEEDBACK, EMPFANGBEST, RESULT, WVL, BEWERBUNGEN.NOTES, BEWERBUNGEN.VERMITTLER, ');
-         Add('MEDIUM, ANSPRECHPARTNER, BEFRISTET, IGNORIERT, UID, BISDATUM, COMPANY, JOB, CDATE ');
+         Add('MEDIUM, ANSPRECHPARTNER, BEFRISTET, IGNORIERT, UID, BISDATUM, COMPANY, JOB, ');
+         Add('CDATE, MAN_ERL ');
          Add('FROM BEWERBUNGEN ');
          Add(Format('WHERE (UID = :pUserID) AND (%s) ORDER BY Datum DESC', [aWhere]));
       end;
@@ -859,8 +863,8 @@ begin
     if (FieldByName('REFNR').AsString <> EmptyStr) then
       FieldByName('REFNR').AsString := trim(FieldByName('REFNR').AsString);
 
-    //FieldByName('WVLSTUFE').AsInteger:= trunc(DaysBetween(FieldByName('WVL').AsDateTime,
-    //  FieldByName('DATUM').AsDateTime) / frmMain.ConfigFile.ReadInteger('DEFAULTS', 'WVL', 28) -1);
+    if (FieldByName('MAN_ERL').AsBoolean) and (FieldByName('IGNORIERT').AsBoolean) then
+      FieldByName('IGNORIERT').AsBoolean := False;
   end;
 end;
 
@@ -922,6 +926,36 @@ begin
   DataSet.FieldByName('BEWERBUNG').AsInteger :=
     qryBewerbungen.FieldByName('ID').AsInteger;
   DataSet.FieldByName('DATUM').AsDateTime := frmMain.edtLogDatum.Date;
+end;
+
+procedure TdmBewerbungen.SetManErlState(const aID: Integer);
+var
+  nID: Integer;
+begin
+  nID := qryBewerbungen.FieldByName('ID').AsInteger;
+
+  with TSQLQuery.Create(nil) do
+  begin
+    DataBase := conData;
+    Transaction := traData;
+
+    with SQL do
+    begin
+      Clear;
+      Add('UPDATE BEWERBUNGEN SET MAN_ERL = -1 WHERE (ID = :pID)');
+
+      Params.ParamValues['pID'] := aID;
+    end;
+
+    ExecSQL;
+    Free;
+    WriteToLog(aID, rsManErl, rsManErlTxt);
+  end;
+
+  traData.Commit;
+  OpenDataSources;
+
+  qryBewerbungen.Locate('ID', nID, []);
 end;
 
 end.
