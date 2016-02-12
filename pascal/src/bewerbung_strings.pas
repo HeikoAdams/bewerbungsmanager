@@ -88,7 +88,7 @@ resourcestring
   rsUserExists = 'Der angegbene Benutzer existiert bereits!';
   rsOldDataPurged = '%d alte Bewerbungen wurden aus dem System entfernt';
   rsPurging = 'Datenbank-Bereinigung';
-  rsPurgeSQL = 'UPDATE BEWERBUNGEN SET MAN_ERL = -1 WHERE (UID = :pUserID) AND (DATE(DATUM) < DATE(''now'', ''-1 year'')) AND (RESULT <> 1);';
+  rsPurgeSQL = 'UPDATE BEWERBUNGEN SET MAN_ERL = -1 WHERE (UID = :pUserID) AND (DATE(DATUM) < DATE(''now'', ''-1 year'')) AND (RESULT <> 1) AND (MAN_ERL = 0);';
   rsCleanupSQL = 'DELETE FROM DOCUMENTS WHERE (BEWERBUNG = 0);';
   rsDeactiveComp = 'UPDATE COMPANIES SET AKTIV = 0 WHERE ID NOT IN (SELECT COMPANY FROM BEWERBUNGEN);';
   rsDeleteJobs = 'DELETE FROM JOBS WHERE ID NOT IN (SELECT DISTINCT JOB FROM BEWERBUNGEN);';

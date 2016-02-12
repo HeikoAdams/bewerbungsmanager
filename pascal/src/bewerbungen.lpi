@@ -76,8 +76,8 @@
         <ComponentName Value="frmMain"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <TopLine Value="825"/>
-        <CursorPos X="79" Y="838"/>
+        <TopLine Value="1075"/>
+        <CursorPos X="45" Y="1081"/>
         <UsageCount Value="162"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -199,7 +199,7 @@
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="Data"/>
         <EditorIndex Value="8"/>
-        <TopLine Value="512"/>
+        <TopLine Value="515"/>
         <CursorPos X="23" Y="527"/>
         <UsageCount Value="133"/>
         <Loaded Value="True"/>
@@ -241,7 +241,7 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="6"/>
         <TopLine Value="83"/>
-        <CursorPos X="113" Y="91"/>
+        <CursorPos X="158" Y="91"/>
         <UsageCount Value="130"/>
         <Loaded Value="True"/>
       </Unit25>
@@ -608,7 +608,7 @@
         <Loaded Value="True"/>
       </Unit79>
     </Units>
-    <JumpHistory Count="28" HistoryIndex="27">
+    <JumpHistory Count="29" HistoryIndex="28">
       <Position1>
         <Filename Value="mainwin.pas"/>
         <Caret Line="640" Column="79" TopLine="636"/>
@@ -718,9 +718,13 @@
         <Caret Line="930" Column="53" TopLine="925"/>
       </Position27>
       <Position28>
-        <Filename Value="data.pas"/>
-        <Caret Line="443" Column="3" TopLine="445"/>
+        <Filename Value="mainwin.pas"/>
+        <Caret Line="838" Column="79" TopLine="825"/>
       </Position28>
+      <Position29>
+        <Filename Value="bewerbung_strings.pas"/>
+        <Caret Line="89" Column="87" TopLine="83"/>
+      </Position29>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
