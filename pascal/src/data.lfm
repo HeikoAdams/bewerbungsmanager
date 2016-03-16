@@ -38,7 +38,6 @@ object dmBewerbungen: TdmBewerbungen
     top = 80
   end
   object qryBewerbungen: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'ID'
@@ -686,7 +685,6 @@ object dmBewerbungen: TdmBewerbungen
     top = 16
   end
   object qryCompanies: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'ID'
@@ -800,7 +798,6 @@ object dmBewerbungen: TdmBewerbungen
     end
   end
   object qryJobs: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'ID'

@@ -11,27 +11,27 @@ object frmMain: TfrmMain
   OnCreate = FormCreate
   Position = poDesktopCenter
   LCLVersion = '1.4.4.0'
-  object PageControl1: TPageControl
+  object pcApplications: TPageControl
     Left = 0
     Height = 512
     Top = 25
     Width = 659
-    ActivePage = tsBewerbungen
+    ActivePage = tsBewerbungData
     Align = alClient
     Images = ilIcons
-    TabIndex = 0
+    TabIndex = 1
     TabOrder = 1
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'
-      ClientHeight = 478
-      ClientWidth = 649
+      ClientHeight = 470
+      ClientWidth = 651
       ImageIndex = 14
       object grdBewerbungen: TDBGrid
         Left = 0
-        Height = 478
+        Height = 470
         Hint = 'dunkelblau = Eingang bestätigt'#10'dunkelrot = Wiedervorlagedatum ohne Reaktion überschritten'#10'türkis = keine Antwort auf Rückfragen '#10'grün = Zusage erhalten'#10'rot = Absage erhalten'#10'schwarz = noch keine Reaktion und erste Wiedervorlage ist noch nicht fällig'#10'violet = Einladung liegt vor'#10'grau = Bewerbung zurückgezogen'#10'hellblau = manuell erledigt'#10#10'fett = Wiedervorlage ist fällig'#10'kursiv = ignorierte Bewerbung'#10'unterstrichen = Bewerbung ist älter als 6 Wochen und ohne Ergebnis'
         Top = 0
-        Width = 649
+        Width = 651
         Align = alClient
         Color = clWindow
         Columns = <        
@@ -177,23 +177,23 @@ object frmMain: TfrmMain
     end
     object tsBewerbungData: TTabSheet
       Caption = 'Daten'
-      ClientHeight = 478
-      ClientWidth = 649
+      ClientHeight = 470
+      ClientWidth = 651
       ImageIndex = 1
-      object PageControl2: TPageControl
+      object pcData: TPageControl
         Left = 0
-        Height = 304
-        Top = 168
-        Width = 650
-        ActivePage = tsStatus
+        Height = 312
+        Top = 160
+        Width = 652
+        ActivePage = tsDokumente
         Anchors = [akLeft, akRight, akBottom]
         Images = ilIcons
-        TabIndex = 0
+        TabIndex = 1
         TabOrder = 0
         object tsStatus: TTabSheet
           Caption = 'Status-Informationen'
           ClientHeight = 270
-          ClientWidth = 640
+          ClientWidth = 644
           ImageIndex = 16
           object rgTyp: TDBRadioGroup
             Left = 8
@@ -325,16 +325,216 @@ object frmMain: TfrmMain
             ValueUnchecked = 'False'
           end
         end
+        object tsDokumente: TTabSheet
+          Caption = 'Dokumente'
+          ClientHeight = 270
+          ClientWidth = 644
+          ImageIndex = 2
+          object navDocs: TDBNavigator
+            Left = 0
+            Height = 25
+            Top = 0
+            Width = 644
+            Align = alTop
+            BevelOuter = bvNone
+            ChildSizing.EnlargeHorizontal = crsScaleChilds
+            ChildSizing.EnlargeVertical = crsScaleChilds
+            ChildSizing.ShrinkHorizontal = crsScaleChilds
+            ChildSizing.ShrinkVertical = crsScaleChilds
+            ChildSizing.Layout = cclLeftToRightThenTopToBottom
+            ChildSizing.ControlsPerLine = 100
+            ClientHeight = 25
+            ClientWidth = 644
+            DataSource = dmBewerbungen.dsDocs
+            Flat = True
+            Options = []
+            TabOrder = 0
+          end
+          object pnlDokBottom: TPanel
+            Left = 0
+            Height = 88
+            Top = 182
+            Width = 644
+            Align = alBottom
+            BevelOuter = bvNone
+            ClientHeight = 88
+            ClientWidth = 644
+            TabOrder = 1
+            object edtFile: TDBEdit
+              Left = 117
+              Height = 36
+              Top = 48
+              Width = 328
+              DataField = 'FILENAME'
+              DataSource = dmBewerbungen.dsDocs
+              CharCase = ecNormal
+              MaxLength = 0
+              TabOrder = 1
+            end
+            object lblDokDescr: TLabel
+              Left = 13
+              Height = 20
+              Top = 19
+              Width = 82
+              Caption = 'Bezeichnung'
+              ParentColor = False
+            end
+            object cbFileType: TDBComboBox
+              Left = 117
+              Height = 36
+              Top = 8
+              Width = 328
+              AutoComplete = True
+              DataField = 'TYPE'
+              DataSource = dmBewerbungen.dsDocs
+              ItemHeight = 0
+              Items.Strings = (
+                'Anschreiben'
+                'Lebenslauf'
+                'Zeugnisse'
+                'Sonstiges'
+              )
+              MaxLength = 0
+              TabOrder = 0
+            end
+            object lblDokFilename: TLabel
+              Left = 13
+              Height = 20
+              Top = 57
+              Width = 69
+              Caption = 'Dateiname'
+              ParentColor = False
+            end
+            object btnBrowse: TBitBtn
+              Left = 453
+              Height = 30
+              Hint = 'Datei suchen'
+              Top = 47
+              Width = 27
+              Glyph.Data = {
+                36040000424D3604000000000000360000002800000010000000100000000100
+                2000000000000004000064000000640000000000000000000000905B3114905B
+                3184905B31A3905B31B6905B31C9905B31DA905B31EB905B31FA956139FF9A69
+                41FF596F42FF216C39FF196B37FF1A6B37F5196B3788FFFFFF00945F3368B890
+                6DFFD6BAA3FFDFC6B3FFE7D4C3FFEEDFD3FFF5EAE2FFFBF4EFFFFDFAF6FF88B2
+                97FF288C53FF64BA8DFF95D2B2FF64BA8DFF288C53FF196B378C99643689C7A4
+                85FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFCFFFEFBF7FFFEF7F1FF2270
+                3FFF62BA8BFF60BA87FFFFFFFFFF60B987FF67BC8FFF196B37F79E6939579E69
+                39F6B48559FFD9A57BFFD89E6FFFD79B6AFFD89663FFD6925DFFD48F59FF317B
+                4CFF9CD4B6FFFFFFFFFFFFFFFFFFFFFFFFFF95D2B2FF196B37FFA46F3C14A46F
+                3CABD5AE8CFFFDF0E5FFF7C7A2FFF7CFADFFF9D5B5FFF8DABDFFF8DEC2FF4A8A
+                60FF90D3B1FF92D6B1FFFFFFFFFF65BC8CFF67BC8FFF196B37F7FFFFFF00AA75
+                4028B78656FFFEFEFDFFFADEC2FFFADCBFFFF9DBC0FFF9DBC0FFF9DDC1FFA5B5
+                94FF61AB81FF95D4B4FFBAE6D0FF6ABB8FFF2D8F57FF196B378CFFFFFF00B17B
+                431EB98652FFFEFCF9FFF9DCBFFFF8DBBFFFF8DCC0FFF9DBC2FFF9DCC1FFF9DD
+                C2FFACBA9AFF609873FF4F8E66FF458458FE2E78497CFFFFFF00FFFFFF00B782
+                4709B9854BFFFEFBF7FFF9DCC1FFF8DCBFFFF8DCBFFFF8DBC0FFF9DDC0FFF9DD
+                C0FFF9DDC3FFFBE2CBFFFCF9F5FFB78247FBB7824701FFFFFF00FFFFFF00FFFF
+                FF00BD884BF9FCF6F0FFF9DFC7FFF9DCBDFFFADCBFFFFADBC1FFFADDC3FFFADD
+                C2FFF9DDC4FFFBE0C9FFFFFCFAFFC18D53FFBD884B0FFFFFFF00FFFFFF00FFFF
+                FF00C48E4EDAF5E7D8FFFAE5D2FFF9DABCFFF9DBBCFFFADBBFFFFADDC1FFFADD
+                C1FFF9DDC4FFFBE1C8FFFFFDFBFFC89457FFC48E4E12FFFFFF00FFFFFF00FFFF
+                FF00CA9452BBF0D9C1FFFBEDE1FFF9DAC0FFF9DCC2FFF9DEC5FFFAE0C7FFFAE2
+                CAFFFAE2CDFFFAE5D0FFFFFEFDFFCB8F5AFFCA9452F1CA945245FFFFFF00FFFF
+                FF00D09A55A4EDD0B2FFFFF6F0FFFAE1CAFFFBE3CCFFFBE3D0FFFBE6D3FFFBE9
+                D5FFFCE9D8FFFCEADBFFFFFFFDFFD29D71FFEED9C1FFD09A55E5FFFFFF00FFFF
+                FF00D59F5892EBCAA5FFFFFDFBFFFDE9D5FFFDEBD8FFFDEADBFFFDEDDFFFFDF0
+                E2FFFDF1E4FFFCF0E4FFFFFFFFFFE0A070FFFFFBF9FFDFB887FFFFFFFF00FFFF
+                FF00DAA45B84EBC69AFFFFFFFFFFFCEFE2FFFDF0E7FFFDF1EBFFFDF5EEFFFDF8
+                F1FFFDFAF7FFFFFCFAFFFFFFFFFFFEFBF7FFF4DAC0FFDAA45BEAFFFFFF00FFFF
+                FF00DEA85D6DEAC08CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDF9F4FFFBF3
+                EAFFF8EBD9FFF8E6D3FFF5DFC6FFE9CBA6FFDEA85DEDDEA85D5DFFFFFF00FFFF
+                FF00E2AC5F36E2AC5FC6EABC81FFE8B777FFE6B26DFFE4B068FFE2AC5FF0E2AC
+                5FE3E2AC5FCFE2AC5FCCE2AC5FBBE2AC5FA8E2AC5F4BE2AC5F05
+              }
+              OnClick = btnBrowseClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 2
+            end
+            object btnFileOpen: TBitBtn
+              Left = 488
+              Height = 30
+              Hint = 'Datei öffnen'
+              Top = 47
+              Width = 28
+              Glyph.Data = {
+                36040000424D3604000000000000360000002800000010000000100000000100
+                2000000000000004000064000000640000000000000000000000905B3114905B
+                3184905B31A3905B31B6905B31C9905B31DA905B31EB905B31FA956139FF9A69
+                41FF067D23FF037B1EFF7B5F2DDE905B3134FFFFFF00FFFFFF00945F3368B890
+                6DFFD6BAA3FFDFC6B3FFE7D4C3FFEEDFD3FFF5EAE2FFFBF4EFFFFDFAF6FFFFFE
+                FDFF0B8732FF43A15FFF147F29FF68672B85FFFFFF00FFFFFF0099643689C7A4
+                85FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF229752FF1C914AFF168F44FF108B
+                3CFF3A9F5EFF80C196FF46A362FF087C20F40079192AFFFFFF009E6939579E69
+                39F6B48559FFD9A57BFFD89E6FFFD79B6AFF299B5BFF90CAA9FF8DC8A5FF8AC6
+                A1FF88C59EFF6AB685FF82C297FF48A566FF007D21EA00791B30A46F3C14A46F
+                3CABD5AE8CFFFDF0E5FFF7C7A2FFF7CFADFF319F63FF94CDADFF6FBA8EFF6BB8
+                89FF66B685FF61B380FF67B582FF83C298FF3CA05CFF007F25FCFFFFFF00AA75
+                4028B78656FFFEFEFDFFFADEC2FFFADCBFFF37A36BFF96CEB0FF94CDADFF91CB
+                AAFF90CBA8FF74BC90FF8AC7A1FF46A568FF078735FD01832D0FFFFFFF00B17B
+                431EB98652FFFEFCF9FFF9DCBFFFF8DBBFFF3DA56FFF39A36EFF35A168FF319E
+                62FF55AF7CFF91CBAAFF4FAB74FF188F45FF118B3D0CFFFFFF00FFFFFF00B782
+                4709B9854BFFFEFBF7FFF9DCC1FFF8DCBFFFF8DCBFFFF8DBC0FFF9DDC0FFF9DD
+                C0FF39A167FF5AB381FF289857FFB28347FBB7824701FFFFFF00FFFFFF00FFFF
+                FF00BD884BF9FCF6F0FFF9DFC7FFF9DCBDFFFADCBFFFFADBC1FFFADDC3FFFADD
+                C2FF3FA56EFF319F65FFF8F9F5FFC18D53FFBD884B0FFFFFFF00FFFFFF00FFFF
+                FF00C48E4EDAF5E7D8FFFAE5D2FFF9DABCFFF9DBBCFFFADBBFFFFADDC1FFFADD
+                C1FFF9DDC4FFFBE1C8FFFFFDFBFFC89457FFC48E4E12FFFFFF00FFFFFF00FFFF
+                FF00CA9452BBF0D9C1FFFBEDE1FFF9DAC0FFF9DCC2FFF9DEC5FFFAE0C7FFFAE2
+                CAFFFAE2CDFFFAE5D0FFFFFEFDFFCB8F5AFFCA9452F1CA945245FFFFFF00FFFF
+                FF00D09A55A4EDD0B2FFFFF6F0FFFAE1CAFFFBE3CCFFFBE3D0FFFBE6D3FFFBE9
+                D5FFFCE9D8FFFCEADBFFFFFFFDFFD29D71FFEED9C1FFD09A55E5FFFFFF00FFFF
+                FF00D59F5892EBCAA5FFFFFDFBFFFDE9D5FFFDEBD8FFFDEADBFFFDEDDFFFFDF0
+                E2FFFDF1E4FFFCF0E4FFFFFFFFFFE0A070FFFFFBF9FFDFB887FFFFFFFF00FFFF
+                FF00DAA45B84EBC69AFFFFFFFFFFFCEFE2FFFDF0E7FFFDF1EBFFFDF5EEFFFDF8
+                F1FFFDFAF7FFFFFCFAFFFFFFFFFFFEFBF7FFF4DAC0FFDAA45BEAFFFFFF00FFFF
+                FF00DEA85D6DEAC08CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDF9F4FFFBF3
+                EAFFF8EBD9FFF8E6D3FFF5DFC6FFE9CBA6FFDEA85DEDDEA85D5DFFFFFF00FFFF
+                FF00E2AC5F36E2AC5FC6EABC81FFE8B777FFE6B26DFFE4B068FFE2AC5FF0E2AC
+                5FE3E2AC5FCFE2AC5FCCE2AC5FBBE2AC5FA8E2AC5F4BE2AC5F05
+              }
+              OnClick = btnFileOpenClick
+              TabOrder = 3
+            end
+          end
+          object DBGrid1: TDBGrid
+            Left = 0
+            Height = 157
+            Top = 25
+            Width = 644
+            Align = alClient
+            Color = clWindow
+            Columns = <            
+              item
+                Title.Alignment = taCenter
+                Title.Caption = 'Art'
+                Width = 150
+                FieldName = 'TYPE'
+              end            
+              item
+                Title.Alignment = taCenter
+                Title.Caption = 'Datei'
+                Width = 450
+                FieldName = 'FILENAME'
+              end>
+            DataSource = dmBewerbungen.dsDocs
+            Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+            TabOrder = 2
+            TitleStyle = tsNative
+            OnPrepareCanvas = DBGrid1PrepareCanvas
+          end
+        end
         object tsNotes: TTabSheet
           Caption = 'Bemerkungen'
           ClientHeight = 270
-          ClientWidth = 640
+          ClientWidth = 644
           ImageIndex = 0
           object mmoNotes: TDBMemo
             Left = 0
-            Height = 262
+            Height = 270
             Top = 0
-            Width = 640
+            Width = 644
             Align = alClient
             DataField = 'NOTES'
             DataSource = dmBewerbungen.dsData
@@ -345,13 +545,13 @@ object frmMain: TfrmMain
         object tsActivities: TTabSheet
           Caption = 'Aktivitäten'
           ClientHeight = 270
-          ClientWidth = 640
+          ClientWidth = 644
           ImageIndex = 6
           object navActions: TDBNavigator
             Left = 0
             Height = 25
             Top = 0
-            Width = 640
+            Width = 644
             Align = alTop
             BevelOuter = bvNone
             ChildSizing.EnlargeHorizontal = crsScaleChilds
@@ -361,7 +561,7 @@ object frmMain: TfrmMain
             ChildSizing.Layout = cclLeftToRightThenTopToBottom
             ChildSizing.ControlsPerLine = 100
             ClientHeight = 25
-            ClientWidth = 640
+            ClientWidth = 644
             DataSource = dmBewerbungen.dsLog
             Flat = True
             Options = []
@@ -370,16 +570,16 @@ object frmMain: TfrmMain
           object pnlBottom: TPanel
             Left = 0
             Height = 81
-            Top = 181
-            Width = 640
+            Top = 189
+            Width = 644
             Align = alBottom
             BevelOuter = bvNone
             ClientHeight = 81
-            ClientWidth = 640
+            ClientWidth = 644
             TabOrder = 1
             object edtLogDatum: TDateEdit
               Left = 86
-              Height = 32
+              Height = 36
               Top = 8
               Width = 168
               CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
@@ -430,7 +630,7 @@ object frmMain: TfrmMain
             end
             object cbbLogTyp: TDBComboBox
               Left = 86
-              Height = 32
+              Height = 36
               Top = 41
               Width = 191
               DataField = 'TYP'
@@ -443,9 +643,9 @@ object frmMain: TfrmMain
           end
           object grdLog: TDBGrid
             Left = 0
-            Height = 156
+            Height = 164
             Top = 25
-            Width = 640
+            Width = 644
             Align = alClient
             Color = clWindow
             Columns = <            
@@ -469,216 +669,16 @@ object frmMain: TfrmMain
             OnDblClick = grdLogDblClick
           end
         end
-        object tsDokumente: TTabSheet
-          Caption = 'Dokumente'
-          ClientHeight = 270
-          ClientWidth = 640
-          ImageIndex = 2
-          object navDocs: TDBNavigator
-            Left = 0
-            Height = 25
-            Top = 0
-            Width = 640
-            Align = alTop
-            BevelOuter = bvNone
-            ChildSizing.EnlargeHorizontal = crsScaleChilds
-            ChildSizing.EnlargeVertical = crsScaleChilds
-            ChildSizing.ShrinkHorizontal = crsScaleChilds
-            ChildSizing.ShrinkVertical = crsScaleChilds
-            ChildSizing.Layout = cclLeftToRightThenTopToBottom
-            ChildSizing.ControlsPerLine = 100
-            ClientHeight = 25
-            ClientWidth = 640
-            DataSource = dmBewerbungen.dsDocs
-            Flat = True
-            Options = []
-            TabOrder = 0
-          end
-          object pnlDokBottom: TPanel
-            Left = 0
-            Height = 88
-            Top = 174
-            Width = 640
-            Align = alBottom
-            BevelOuter = bvNone
-            ClientHeight = 88
-            ClientWidth = 640
-            TabOrder = 1
-            object edtFile: TDBEdit
-              Left = 117
-              Height = 32
-              Top = 48
-              Width = 328
-              DataField = 'FILENAME'
-              DataSource = dmBewerbungen.dsDocs
-              CharCase = ecNormal
-              MaxLength = 0
-              TabOrder = 1
-            end
-            object lblDokDescr: TLabel
-              Left = 13
-              Height = 20
-              Top = 19
-              Width = 82
-              Caption = 'Bezeichnung'
-              ParentColor = False
-            end
-            object cbFileType: TDBComboBox
-              Left = 117
-              Height = 32
-              Top = 8
-              Width = 328
-              DataField = 'TYPE'
-              DataSource = dmBewerbungen.dsDocs
-              ItemHeight = 0
-              Items.Strings = (
-                'Anschreiben'
-                'Lebenslauf'
-                'Zeugnisse'
-                'Sonstiges'
-              )
-              MaxLength = 0
-              ReadOnly = True
-              TabOrder = 0
-            end
-            object lblDokFilename: TLabel
-              Left = 13
-              Height = 20
-              Top = 57
-              Width = 69
-              Caption = 'Dateiname'
-              ParentColor = False
-            end
-            object btnBrowse: TBitBtn
-              Left = 453
-              Height = 30
-              Hint = 'Datei suchen'
-              Top = 44
-              Width = 27
-              Glyph.Data = {
-                36040000424D3604000000000000360000002800000010000000100000000100
-                2000000000000004000064000000640000000000000000000000905B3114905B
-                3184905B31A3905B31B6905B31C9905B31DA905B31EB905B31FA956139FF9A69
-                41FF596F42FF216C39FF196B37FF1A6B37F5196B3788FFFFFF00945F3368B890
-                6DFFD6BAA3FFDFC6B3FFE7D4C3FFEEDFD3FFF5EAE2FFFBF4EFFFFDFAF6FF88B2
-                97FF288C53FF64BA8DFF95D2B2FF64BA8DFF288C53FF196B378C99643689C7A4
-                85FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFCFFFEFBF7FFFEF7F1FF2270
-                3FFF62BA8BFF60BA87FFFFFFFFFF60B987FF67BC8FFF196B37F79E6939579E69
-                39F6B48559FFD9A57BFFD89E6FFFD79B6AFFD89663FFD6925DFFD48F59FF317B
-                4CFF9CD4B6FFFFFFFFFFFFFFFFFFFFFFFFFF95D2B2FF196B37FFA46F3C14A46F
-                3CABD5AE8CFFFDF0E5FFF7C7A2FFF7CFADFFF9D5B5FFF8DABDFFF8DEC2FF4A8A
-                60FF90D3B1FF92D6B1FFFFFFFFFF65BC8CFF67BC8FFF196B37F7FFFFFF00AA75
-                4028B78656FFFEFEFDFFFADEC2FFFADCBFFFF9DBC0FFF9DBC0FFF9DDC1FFA5B5
-                94FF61AB81FF95D4B4FFBAE6D0FF6ABB8FFF2D8F57FF196B378CFFFFFF00B17B
-                431EB98652FFFEFCF9FFF9DCBFFFF8DBBFFFF8DCC0FFF9DBC2FFF9DCC1FFF9DD
-                C2FFACBA9AFF609873FF4F8E66FF458458FE2E78497CFFFFFF00FFFFFF00B782
-                4709B9854BFFFEFBF7FFF9DCC1FFF8DCBFFFF8DCBFFFF8DBC0FFF9DDC0FFF9DD
-                C0FFF9DDC3FFFBE2CBFFFCF9F5FFB78247FBB7824701FFFFFF00FFFFFF00FFFF
-                FF00BD884BF9FCF6F0FFF9DFC7FFF9DCBDFFFADCBFFFFADBC1FFFADDC3FFFADD
-                C2FFF9DDC4FFFBE0C9FFFFFCFAFFC18D53FFBD884B0FFFFFFF00FFFFFF00FFFF
-                FF00C48E4EDAF5E7D8FFFAE5D2FFF9DABCFFF9DBBCFFFADBBFFFFADDC1FFFADD
-                C1FFF9DDC4FFFBE1C8FFFFFDFBFFC89457FFC48E4E12FFFFFF00FFFFFF00FFFF
-                FF00CA9452BBF0D9C1FFFBEDE1FFF9DAC0FFF9DCC2FFF9DEC5FFFAE0C7FFFAE2
-                CAFFFAE2CDFFFAE5D0FFFFFEFDFFCB8F5AFFCA9452F1CA945245FFFFFF00FFFF
-                FF00D09A55A4EDD0B2FFFFF6F0FFFAE1CAFFFBE3CCFFFBE3D0FFFBE6D3FFFBE9
-                D5FFFCE9D8FFFCEADBFFFFFFFDFFD29D71FFEED9C1FFD09A55E5FFFFFF00FFFF
-                FF00D59F5892EBCAA5FFFFFDFBFFFDE9D5FFFDEBD8FFFDEADBFFFDEDDFFFFDF0
-                E2FFFDF1E4FFFCF0E4FFFFFFFFFFE0A070FFFFFBF9FFDFB887FFFFFFFF00FFFF
-                FF00DAA45B84EBC69AFFFFFFFFFFFCEFE2FFFDF0E7FFFDF1EBFFFDF5EEFFFDF8
-                F1FFFDFAF7FFFFFCFAFFFFFFFFFFFEFBF7FFF4DAC0FFDAA45BEAFFFFFF00FFFF
-                FF00DEA85D6DEAC08CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDF9F4FFFBF3
-                EAFFF8EBD9FFF8E6D3FFF5DFC6FFE9CBA6FFDEA85DEDDEA85D5DFFFFFF00FFFF
-                FF00E2AC5F36E2AC5FC6EABC81FFE8B777FFE6B26DFFE4B068FFE2AC5FF0E2AC
-                5FE3E2AC5FCFE2AC5FCCE2AC5FBBE2AC5FA8E2AC5F4BE2AC5F05
-              }
-              OnClick = btnBrowseClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 2
-            end
-            object btnFileOpen: TBitBtn
-              Left = 489
-              Height = 30
-              Hint = 'Datei öffnen'
-              Top = 44
-              Width = 28
-              Glyph.Data = {
-                36040000424D3604000000000000360000002800000010000000100000000100
-                2000000000000004000064000000640000000000000000000000905B3114905B
-                3184905B31A3905B31B6905B31C9905B31DA905B31EB905B31FA956139FF9A69
-                41FF067D23FF037B1EFF7B5F2DDE905B3134FFFFFF00FFFFFF00945F3368B890
-                6DFFD6BAA3FFDFC6B3FFE7D4C3FFEEDFD3FFF5EAE2FFFBF4EFFFFDFAF6FFFFFE
-                FDFF0B8732FF43A15FFF147F29FF68672B85FFFFFF00FFFFFF0099643689C7A4
-                85FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF229752FF1C914AFF168F44FF108B
-                3CFF3A9F5EFF80C196FF46A362FF087C20F40079192AFFFFFF009E6939579E69
-                39F6B48559FFD9A57BFFD89E6FFFD79B6AFF299B5BFF90CAA9FF8DC8A5FF8AC6
-                A1FF88C59EFF6AB685FF82C297FF48A566FF007D21EA00791B30A46F3C14A46F
-                3CABD5AE8CFFFDF0E5FFF7C7A2FFF7CFADFF319F63FF94CDADFF6FBA8EFF6BB8
-                89FF66B685FF61B380FF67B582FF83C298FF3CA05CFF007F25FCFFFFFF00AA75
-                4028B78656FFFEFEFDFFFADEC2FFFADCBFFF37A36BFF96CEB0FF94CDADFF91CB
-                AAFF90CBA8FF74BC90FF8AC7A1FF46A568FF078735FD01832D0FFFFFFF00B17B
-                431EB98652FFFEFCF9FFF9DCBFFFF8DBBFFF3DA56FFF39A36EFF35A168FF319E
-                62FF55AF7CFF91CBAAFF4FAB74FF188F45FF118B3D0CFFFFFF00FFFFFF00B782
-                4709B9854BFFFEFBF7FFF9DCC1FFF8DCBFFFF8DCBFFFF8DBC0FFF9DDC0FFF9DD
-                C0FF39A167FF5AB381FF289857FFB28347FBB7824701FFFFFF00FFFFFF00FFFF
-                FF00BD884BF9FCF6F0FFF9DFC7FFF9DCBDFFFADCBFFFFADBC1FFFADDC3FFFADD
-                C2FF3FA56EFF319F65FFF8F9F5FFC18D53FFBD884B0FFFFFFF00FFFFFF00FFFF
-                FF00C48E4EDAF5E7D8FFFAE5D2FFF9DABCFFF9DBBCFFFADBBFFFFADDC1FFFADD
-                C1FFF9DDC4FFFBE1C8FFFFFDFBFFC89457FFC48E4E12FFFFFF00FFFFFF00FFFF
-                FF00CA9452BBF0D9C1FFFBEDE1FFF9DAC0FFF9DCC2FFF9DEC5FFFAE0C7FFFAE2
-                CAFFFAE2CDFFFAE5D0FFFFFEFDFFCB8F5AFFCA9452F1CA945245FFFFFF00FFFF
-                FF00D09A55A4EDD0B2FFFFF6F0FFFAE1CAFFFBE3CCFFFBE3D0FFFBE6D3FFFBE9
-                D5FFFCE9D8FFFCEADBFFFFFFFDFFD29D71FFEED9C1FFD09A55E5FFFFFF00FFFF
-                FF00D59F5892EBCAA5FFFFFDFBFFFDE9D5FFFDEBD8FFFDEADBFFFDEDDFFFFDF0
-                E2FFFDF1E4FFFCF0E4FFFFFFFFFFE0A070FFFFFBF9FFDFB887FFFFFFFF00FFFF
-                FF00DAA45B84EBC69AFFFFFFFFFFFCEFE2FFFDF0E7FFFDF1EBFFFDF5EEFFFDF8
-                F1FFFDFAF7FFFFFCFAFFFFFFFFFFFEFBF7FFF4DAC0FFDAA45BEAFFFFFF00FFFF
-                FF00DEA85D6DEAC08CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDF9F4FFFBF3
-                EAFFF8EBD9FFF8E6D3FFF5DFC6FFE9CBA6FFDEA85DEDDEA85D5DFFFFFF00FFFF
-                FF00E2AC5F36E2AC5FC6EABC81FFE8B777FFE6B26DFFE4B068FFE2AC5FF0E2AC
-                5FE3E2AC5FCFE2AC5FCCE2AC5FBBE2AC5FA8E2AC5F4BE2AC5F05
-              }
-              OnClick = btnFileOpenClick
-              TabOrder = 3
-            end
-          end
-          object DBGrid1: TDBGrid
-            Left = 0
-            Height = 149
-            Top = 25
-            Width = 640
-            Align = alClient
-            Color = clWindow
-            Columns = <            
-              item
-                Title.Alignment = taCenter
-                Title.Caption = 'Art'
-                Width = 150
-                FieldName = 'TYPE'
-              end            
-              item
-                Title.Alignment = taCenter
-                Title.Caption = 'Datei'
-                Width = 450
-                FieldName = 'FILENAME'
-              end>
-            DataSource = dmBewerbungen.dsDocs
-            Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
-            TabOrder = 2
-            TitleStyle = tsNative
-            OnPrepareCanvas = DBGrid1PrepareCanvas
-          end
-        end
       end
       object pnlBewerbungInfo: TPanel
         Left = 0
         Height = 176
         Top = 0
-        Width = 654
+        Width = 656
         Anchors = [akTop, akLeft, akRight]
         BevelOuter = bvNone
         ClientHeight = 176
-        ClientWidth = 654
+        ClientWidth = 656
         TabOrder = 1
         object lblDatum: TLabel
           Left = 9
@@ -730,7 +730,7 @@ object frmMain: TfrmMain
         end
         object edtDatum: TDateEdit
           Left = 108
-          Height = 32
+          Height = 36
           Top = 8
           Width = 204
           CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
@@ -748,7 +748,7 @@ object frmMain: TfrmMain
         end
         object edtWVL: TDateEdit
           Left = 432
-          Height = 32
+          Height = 36
           Top = 8
           Width = 209
           CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
@@ -764,18 +764,18 @@ object frmMain: TfrmMain
         end
         object edtRefNr: TDBEdit
           Left = 108
-          Height = 32
+          Height = 36
           Top = 104
           Width = 200
           DataField = 'REFNR'
           DataSource = dmBewerbungen.dsData
           CharCase = ecNormal
           MaxLength = 0
-          TabOrder = 2
+          TabOrder = 6
         end
         object cbbEmpfMail: TDBComboBox
           Left = 432
-          Height = 32
+          Height = 36
           Top = 40
           Width = 209
           AutoComplete = True
@@ -796,7 +796,7 @@ object frmMain: TfrmMain
         end
         object cbbAnspr: TDBComboBox
           Left = 108
-          Height = 32
+          Height = 36
           Top = 72
           Width = 200
           AutoComplete = True
@@ -809,7 +809,7 @@ object frmMain: TfrmMain
         end
         object edtEnde: TDateEdit
           Left = 432
-          Height = 32
+          Height = 36
           Top = 104
           Width = 209
           CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
@@ -821,7 +821,7 @@ object frmMain: TfrmMain
           Flat = True
           MaxLength = 10
           OnEditingDone = edtEndeEditingDone
-          TabOrder = 5
+          TabOrder = 7
           Text = '  .  .    '
         end
         object lblFristEnde: TLabel
@@ -843,7 +843,7 @@ object frmMain: TfrmMain
           Font.Color = clRed
           OnChange = chkBefristetChange
           ParentFont = False
-          TabOrder = 6
+          TabOrder = 9
           ValueChecked = 'True'
           ValueUnchecked = 'False'
         end
@@ -857,13 +857,13 @@ object frmMain: TfrmMain
           DataSource = dmBewerbungen.dsData
           Font.Color = clRed
           ParentFont = False
-          TabOrder = 7
+          TabOrder = 8
           ValueChecked = 'True'
           ValueUnchecked = 'False'
         end
         object cbbEmpfName: TDBLookupComboBox
           Left = 108
-          Height = 32
+          Height = 36
           Top = 40
           Width = 200
           DataField = 'COMPANY'
@@ -876,11 +876,11 @@ object frmMain: TfrmMain
           OnSelect = cbbEmpfNameExit
           ReadOnly = True
           Sorted = True
-          TabOrder = 8
+          TabOrder = 2
         end
         object cbbJobTitel: TDBLookupComboBox
           Left = 432
-          Height = 32
+          Height = 36
           Top = 72
           Width = 209
           DataField = 'JOB'
@@ -892,7 +892,7 @@ object frmMain: TfrmMain
           LookupCache = False
           ReadOnly = True
           Sorted = True
-          TabOrder = 9
+          TabOrder = 5
         end
         object DBText1: TDBText
           Left = 432
@@ -915,8 +915,8 @@ object frmMain: TfrmMain
     end
     object tsFirmen: TTabSheet
       Caption = 'Firmen'
-      ClientHeight = 478
-      ClientWidth = 649
+      ClientHeight = 470
+      ClientWidth = 651
       ImageIndex = 13
       object navFirmen: TDBNavigator
         Left = 0
@@ -1044,8 +1044,8 @@ object frmMain: TfrmMain
     end
     object tsJobs: TTabSheet
       Caption = 'Jobs'
-      ClientHeight = 478
-      ClientWidth = 649
+      ClientHeight = 470
+      ClientWidth = 651
       ImageIndex = 15
       object navJobs: TDBNavigator
         Left = 0

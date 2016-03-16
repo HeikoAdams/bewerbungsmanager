@@ -158,7 +158,7 @@ type
     navDocs: TDBNavigator;
     navFirmen: TDBNavigator;
     navJobs: TDBNavigator;
-    PageControl2: TPageControl;
+    pcData: TPageControl;
     pnlBewerbungInfo: TPanel;
     pnlBottom: TPanel;
     pnlCompanyData: TPanel;
@@ -181,7 +181,7 @@ type
     miEingang: TMenuItem;
     miNoFeedback: TMenuItem;
     miFeedback: TMenuItem;
-    PageControl1: TPageControl;
+    pcApplications: TPageControl;
     pmFilter: TPopupMenu;
     dlgExport: TSaveDialog;
     rgErgebnis: TDBRadioGroup;
@@ -449,8 +449,8 @@ begin
       Break;
     end;
 
-  PageControl1.ActivePageIndex := 0;
-  PageControl2.ActivePageIndex := 0;
+  pcApplications.ActivePageIndex := 0;
+  pcData.ActivePageIndex := 0;
 
   {$IFDEF Unix}
   CreateDesktopFile;
@@ -1061,8 +1061,11 @@ end;
 
 procedure TfrmMain.navDataClick(Sender: TObject; Button: TDBNavButtonType);
 begin
-  frmMain.PageControl1.ActivePageIndex := 1;
-  frmMain.PageControl2.ActivePageIndex := 0;
+  if (Button in [nbInsert]) then
+  begin
+    frmMain.pcApplications.ActivePageIndex := 1;
+    frmMain.pcData.ActivePageIndex := 0;
+  end;
 end;
 
 procedure TfrmMain.pmFilterPopup(Sender: TObject);
