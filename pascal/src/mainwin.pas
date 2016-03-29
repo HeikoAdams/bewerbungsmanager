@@ -35,6 +35,7 @@ type
   TJobApplication = packed record
     ApplicationID: integer;
     Vermittler: integer;
+    Zeitarbeit: integer;
     Befristet: integer;
     Ignoriert: integer;
     Feedback: integer;
@@ -96,6 +97,8 @@ type
     chkVermittler: TDBCheckBox;
     chkEmpfBest: TDBCheckBox;
     chkManuellErledigt: TDBCheckBox;
+    chkComZeit: TDBCheckBox;
+    chkZeitarbeit: TDBCheckBox;
     DBGrid1: TDBGrid;
     DBGrid2: TDBGrid;
     DBGrid3: TDBGrid;
@@ -616,16 +619,30 @@ begin
         Exit;
       end;
 
-      if companies.FieldByName('VERMITTLER').AsBoolean then
+      if companies.FieldByName('VERMITTLER').AsBoolean
+        or companies.FieldByName('ZEITARBEIT').AsBoolean then
       begin
-        bewerbungen.FieldByName('VERMITTLER').AsInteger:= companies.FieldByName('VERMITTLER').AsInteger;
-        sNote := rsPersonalvermittler;
+        if companies.FieldByName('VERMITTLER').AsBoolean then
+        begin
+          bewerbungen.FieldByName('VERMITTLER').AsInteger:= companies.FieldByName('VERMITTLER').AsInteger;
+          sNote := rsPersonalvermittler;
+        end;
+
+        if companies.FieldByName('ZEITARBEIT').AsBoolean then
+        begin
+          bewerbungen.FieldByName('ZEITARBEIT').AsInteger:= companies.FieldByName('ZEITARBEIT').AsInteger;
+          if (sNote <> EmptyStr) then
+            sNote := sNote + CRLF2;
+          sNote := sNote + rsZeitarbeit;
+        end;
+
         if frmMain.ConfigFile.ReadBool('GENERAL', 'IGNOREPV', False) then
           bewerbungen.FieldByName('IGNORIERT').AsInteger:=1;
       end
       else
       begin
         bewerbungen.FieldByName('VERMITTLER').AsInteger:= 0;
+        bewerbungen.FieldByName('ZEITARBEIT').AsInteger:= 0;
         bewerbungen.FieldByName('IGNORIERT').AsInteger:=0;
       end;
 
@@ -682,7 +699,8 @@ procedure TfrmMain.DBGrid2PrepareCanvas(sender: TObject; DataCol: Integer;
 begin
   with (Sender as TDBGrid) do
   begin
-    if DataSource.DataSet.FieldByName('VERMITTLER').AsBoolean then
+    if DataSource.DataSet.FieldByName('VERMITTLER').AsBoolean
+      or DataSource.DataSet.FieldByName('ZEITARBEIT').AsBoolean then
       Canvas.Font.Color := clMaroon;
 
     if DataSource.DataSet.FieldByName('NOREACTION').AsBoolean then

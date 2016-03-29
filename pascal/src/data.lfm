@@ -20,6 +20,7 @@ object dmBewerbungen: TdmBewerbungen
     Active = False
     Action = caNone
     Database = conData
+    Options = []
     left = 152
     top = 80
   end
@@ -31,6 +32,7 @@ object dmBewerbungen: TdmBewerbungen
     BeforeDisconnect = conDataBeforeDisconnect
     DatabaseName = '/home/heiko/.config/Bewerbungsmanager/bewerbungen.db'
     KeepConnection = True
+    Password = 'Password'
     Transaction = traData
     LogEvents = []
     Options = []
@@ -43,13 +45,11 @@ object dmBewerbungen: TdmBewerbungen
         Name = 'ID'
         DataType = ftInteger
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'DATUM'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'MAIL'
@@ -67,25 +67,21 @@ object dmBewerbungen: TdmBewerbungen
         Name = 'TYP'
         DataType = ftInteger
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'FEEDBACK'
         DataType = ftInteger
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'RESULT'
         DataType = ftInteger
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'WVL'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'NOTES'
@@ -97,13 +93,11 @@ object dmBewerbungen: TdmBewerbungen
         Name = 'VERMITTLER'
         DataType = ftBoolean
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'MEDIUM'
         DataType = ftInteger
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'ANSPRECHPARTNER'
@@ -115,61 +109,56 @@ object dmBewerbungen: TdmBewerbungen
         Name = 'BEFRISTET'
         DataType = ftBoolean
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'IGNORIERT'
         DataType = ftBoolean
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'UID'
         DataType = ftInteger
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'BISDATUM'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'COMPANY'
         DataType = ftInteger
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'JOB'
         DataType = ftInteger
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'WVLSTUFE'
         DataType = ftInteger
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'CDATE'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'EMPFANGBEST'
         DataType = ftBoolean
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'MAN_ERL'
         DataType = ftBoolean
         Precision = -1
-        Size = 0
+      end    
+      item
+        Name = 'ZEITARBEIT'
+        DataType = ftBoolean
+        Precision = -1
       end>
     AfterDelete = qryBewerbungenAfterPost
     AfterOpen = qryBewerbungenAfterOpen
@@ -184,6 +173,7 @@ object dmBewerbungen: TdmBewerbungen
     SQL.Strings = (
       'SELECT * FROM BEWERBUNGEN WHERE UID = :pUserID ORDER BY Datum DESC'
     )
+    Options = []
     Params = <    
       item
         DataType = ftUnknown
@@ -454,27 +444,35 @@ object dmBewerbungen: TdmBewerbungen
       Required = False
       DisplayValues = 'True;False'
     end
+    object qryBewerbungenZEITARBEIT: TBooleanField
+      FieldKind = fkData
+      FieldName = 'ZEITARBEIT'
+      Index = 24
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayValues = 'True;False'
+    end
   end
   object qryLog: TSQLQuery
+    PacketRecords = -1
     IndexFieldNames = 'ID'
     FieldDefs = <    
       item
         Name = 'ID'
         DataType = ftInteger
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'DATUM'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'BEWERBUNG'
         DataType = ftInteger
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'TYP'
@@ -497,6 +495,7 @@ object dmBewerbungen: TdmBewerbungen
     SQL.Strings = (
       'SELECT * FROM LOG WHERE (BEWERBUNG = :ID) ORDER BY Datum DESC'
     )
+    Options = []
     Params = <    
       item
         DataType = ftUnknown
@@ -512,19 +511,16 @@ object dmBewerbungen: TdmBewerbungen
         Name = 'DATUM'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'WVL'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'BISDATUM'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'NAME'
@@ -554,19 +550,16 @@ object dmBewerbungen: TdmBewerbungen
         Name = 'ZUSAGE'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'ABSAGE'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'IGNORIERT'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end>
     Database = conData
     Transaction = traData
@@ -576,6 +569,7 @@ object dmBewerbungen: TdmBewerbungen
       'FROM BEWERBUNGEN'
       'ORDER BY DATUM DESC, NAME'
     )
+    Options = []
     Params = <>
     left = 152
     top = 144
@@ -586,7 +580,6 @@ object dmBewerbungen: TdmBewerbungen
         Name = 'ID'
         DataType = ftInteger
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'TYPE'
@@ -604,7 +597,6 @@ object dmBewerbungen: TdmBewerbungen
         Name = 'BEWERBUNG'
         DataType = ftInteger
         Precision = -1
-        Size = 0
       end>
     AfterDelete = qryBewerbungenAfterPost
     AfterPost = qryBewerbungenAfterPost
@@ -614,6 +606,7 @@ object dmBewerbungen: TdmBewerbungen
     SQL.Strings = (
       'SELECT * FROM DOCUMENTS WHERE BEWERBUNG = :ID;'
     )
+    Options = []
     Params = <    
       item
         DataType = ftUnknown
@@ -674,6 +667,7 @@ object dmBewerbungen: TdmBewerbungen
     SQL.Strings = (
       'SELECT * FROM BENUTZER ORDER BY UID'
     )
+    Options = []
     Params = <>
     left = 25
     top = 210
@@ -690,7 +684,6 @@ object dmBewerbungen: TdmBewerbungen
         Name = 'ID'
         DataType = ftInteger
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'NAME'
@@ -708,19 +701,21 @@ object dmBewerbungen: TdmBewerbungen
         Name = 'VERMITTLER'
         DataType = ftBoolean
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'AKTIV'
         DataType = ftBoolean
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'NOREACTION'
         DataType = ftBoolean
         Precision = -1
-        Size = 0
+      end    
+      item
+        Name = 'ZEITARBEIT'
+        DataType = ftBoolean
+        Precision = -1
       end>
     AfterPost = qryBewerbungenAfterPost
     Database = conData
@@ -728,6 +723,7 @@ object dmBewerbungen: TdmBewerbungen
     SQL.Strings = (
       'SELECT * FROM COMPANIES ORDER BY NAME COLLATE NOCASE'
     )
+    Options = []
     Params = <>
     left = 104
     top = 208
@@ -796,6 +792,16 @@ object dmBewerbungen: TdmBewerbungen
       Required = False
       DisplayValues = 'True;False'
     end
+    object qryCompaniesZEITARBEIT: TBooleanField
+      FieldKind = fkData
+      FieldName = 'ZEITARBEIT'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayValues = 'True;False'
+    end
   end
   object qryJobs: TSQLQuery
     FieldDefs = <    
@@ -803,7 +809,6 @@ object dmBewerbungen: TdmBewerbungen
         Name = 'ID'
         DataType = ftInteger
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'NAME'
@@ -817,6 +822,7 @@ object dmBewerbungen: TdmBewerbungen
     SQL.Strings = (
       'SELECT * FROM JOBS ORDER BY NAME'
     )
+    Options = []
     Params = <>
     left = 184
     top = 208

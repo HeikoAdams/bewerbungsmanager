@@ -66,6 +66,7 @@ type
     qryBewerbungenVERMITTLER: TBooleanField;
     qryBewerbungenWVL: TDateTimeField;
     qryBewerbungenWVLSTUFE: TLongintField;
+    qryBewerbungenZEITARBEIT: TBooleanField;
     qryCompanies: TSQLQuery;
     qryCompaniesAKTIV: TBooleanField;
     qryCompaniesID: TLongintField;
@@ -73,6 +74,7 @@ type
     qryCompaniesNOREACTION: TBooleanField;
     qryCompaniesNOTES: TStringField;
     qryCompaniesVERMITTLER: TBooleanField;
+    qryCompaniesZEITARBEIT: TBooleanField;
     qryJobs: TSQLQuery;
     qryCSVExport: TSQLQuery;
     qryLog: TSQLQuery;
@@ -327,7 +329,7 @@ begin
          Add('SELECT BEWERBUNGEN.ID, DATUM, MAIL, REFNR, TYP, WVLSTUFE, ');
          Add('FEEDBACK, EMPFANGBEST, RESULT, WVL, BEWERBUNGEN.NOTES, BEWERBUNGEN.VERMITTLER, ');
          Add('MEDIUM, ANSPRECHPARTNER, BEFRISTET, IGNORIERT, UID, BISDATUM, COMPANY, JOB, ');
-         Add('CDATE, MAN_ERL ');
+         Add('CDATE, MAN_ERL, ZEITARBEIT ');
          Add('FROM BEWERBUNGEN ');
          Add('WHERE (UID = :pUserID) ORDER BY Datum DESC')
       end
@@ -336,7 +338,7 @@ begin
          Add('SELECT BEWERBUNGEN.ID, DATUM, MAIL, REFNR, TYP, WVLSTUFE, ');
          Add('FEEDBACK, EMPFANGBEST, RESULT, WVL, BEWERBUNGEN.NOTES, BEWERBUNGEN.VERMITTLER, ');
          Add('MEDIUM, ANSPRECHPARTNER, BEFRISTET, IGNORIERT, UID, BISDATUM, COMPANY, JOB, ');
-         Add('CDATE, MAN_ERL ');
+         Add('CDATE, MAN_ERL, ZEITARBEIT ');
          Add('FROM BEWERBUNGEN ');
          Add(Format('WHERE (UID = :pUserID) AND (%s) ORDER BY Datum DESC', [aWhere]));
       end;
@@ -811,6 +813,7 @@ begin
       Feedback:=FieldByName('Feedback').AsInteger;
       Result:=FieldByName('Result').AsInteger;
       RefNr:=FieldByName('RefNr').AsString;
+      Zeitarbeit:=FieldByName('Zeitarbeit').AsInteger;
       JobTitel:=sJob;
       Mail:=FieldByName('Mail').AsString;
     end;

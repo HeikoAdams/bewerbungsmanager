@@ -566,6 +566,11 @@ msgctxt "TFRMMAIN.CHKCOMVERM.CAPTION"
 msgid "Personalvermittler"
 msgstr ""
 
+#: tfrmmain.chkcomzeit.caption
+msgctxt "TFRMMAIN.CHKCOMZEIT.CAPTION"
+msgid "Zeitarbeit"
+msgstr ""
+
 #: tfrmmain.chkempfbest.caption
 msgid "Empfang bestätigt"
 msgstr ""
@@ -597,24 +602,9 @@ msgctxt "TFRMMAIN.CHKVERMITTLER.CAPTION"
 msgid "Personalvermittler"
 msgstr ""
 
-#: tfrmmain.dbgrid1.columns[0].title.caption
-msgctxt "TFRMMAIN.DBGRID1.COLUMNS[0].TITLE.CAPTION"
-msgid "Art"
-msgstr ""
-
-#: tfrmmain.dbgrid1.columns[1].title.caption
-msgctxt "TFRMMAIN.DBGRID1.COLUMNS[1].TITLE.CAPTION"
-msgid "Datei"
-msgstr ""
-
-#: tfrmmain.dbgrid2.columns[0].title.caption
-msgctxt "tfrmmain.dbgrid2.columns[0].title.caption"
-msgid "Name"
-msgstr ""
-
-#: tfrmmain.dbgrid3.columns[0].title.caption
-msgctxt "TFRMMAIN.DBGRID3.COLUMNS[0].TITLE.CAPTION"
-msgid "Job-Titel"
+#: tfrmmain.chkzeitarbeit.caption
+msgctxt "tfrmmain.chkzeitarbeit.caption"
+msgid "Zeitarbeit"
 msgstr ""
 
 #: tfrmmain.dlgfindcompany.title
@@ -681,67 +671,8 @@ msgctxt "tfrmmain.edtwvl.text"
 msgid "  .  .    "
 msgstr ""
 
-#: tfrmmain.grdbewerbungen.columns[0].title.caption
-msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[0].TITLE.CAPTION"
-msgid "Datum"
-msgstr ""
-
-#: tfrmmain.grdbewerbungen.columns[1].title.caption
-msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[1].TITLE.CAPTION"
-msgid "Wiedervorlage"
-msgstr ""
-
-#: tfrmmain.grdbewerbungen.columns[2].title.caption
-msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[2].TITLE.CAPTION"
-msgid "Stufe"
-msgstr ""
-
-#: tfrmmain.grdbewerbungen.columns[3].title.caption
-msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[3].TITLE.CAPTION"
-msgid "Bewerb. bis"
-msgstr ""
-
-#: tfrmmain.grdbewerbungen.columns[4].title.caption
-msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[4].TITLE.CAPTION"
-msgid "Empfänger"
-msgstr ""
-
-#: tfrmmain.grdbewerbungen.columns[5].title.caption
-msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[5].TITLE.CAPTION"
-msgid "Job-Titel"
-msgstr ""
-
-#: tfrmmain.grdbewerbungen.columns[6].title.caption
-msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[6].TITLE.CAPTION"
-msgid "Personalvermittler"
-msgstr ""
-
-#: tfrmmain.grdbewerbungen.columns[7].title.caption
-msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[7].TITLE.CAPTION"
-msgid "befristet"
-msgstr ""
-
-#: tfrmmain.grdbewerbungen.columns[8].title.caption
-msgctxt "TFRMMAIN.GRDBEWERBUNGEN.COLUMNS[8].TITLE.CAPTION"
-msgid "Ignoriert"
-msgstr ""
-
-#: tfrmmain.grdbewerbungen.columns[9].title.caption
-msgid "erledigt"
-msgstr ""
-
 #: tfrmmain.grdbewerbungen.hint
 msgid "dunkelblau = Eingang bestätigt"
-msgstr ""
-
-#: tfrmmain.grdlog.columns[0].title.caption
-msgctxt "TFRMMAIN.GRDLOG.COLUMNS[0].TITLE.CAPTION"
-msgid "Datum"
-msgstr ""
-
-#: tfrmmain.grdlog.columns[1].title.caption
-msgctxt "TFRMMAIN.GRDLOG.COLUMNS[1].TITLE.CAPTION"
-msgid "Art"
 msgstr ""
 
 #: tfrmmain.label1.caption
