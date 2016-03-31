@@ -255,6 +255,10 @@ msgstr ""
 msgid "Ja"
 msgstr ""
 
+#: bewerbung_strings.rszeitarbeit
+msgid "Zeitarbeit!"
+msgstr ""
+
 #: dunkelblau 
 msgid " Eingang bestätigt"
 msgstr ""
