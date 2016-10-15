@@ -159,6 +159,11 @@ object dmBewerbungen: TdmBewerbungen
         Name = 'ZEITARBEIT'
         DataType = ftBoolean
         Precision = -1
+      end    
+      item
+        Name = 'NoResponse'
+        DataType = ftBoolean
+        Precision = -1
       end>
     AfterDelete = qryBewerbungenAfterPost
     AfterOpen = qryBewerbungenAfterOpen
@@ -448,6 +453,16 @@ object dmBewerbungen: TdmBewerbungen
       FieldKind = fkData
       FieldName = 'ZEITARBEIT'
       Index = 24
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayValues = 'True;False'
+    end
+    object qryBewerbungenNoResponse: TBooleanField
+      FieldKind = fkData
+      FieldName = 'NoResponse'
+      Index = 25
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False

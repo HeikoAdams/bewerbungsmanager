@@ -16,10 +16,10 @@ object frmMain: TfrmMain
     Height = 512
     Top = 25
     Width = 659
-    ActivePage = tsBewerbungen
+    ActivePage = tsFirmen
     Align = alClient
     Images = ilIcons
-    TabIndex = 0
+    TabIndex = 2
     TabOrder = 1
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'
@@ -44,7 +44,7 @@ object frmMain: TfrmMain
           end        
           item
             Title.Alignment = taCenter
-            Title.Caption = 'Wiedervorlage'
+            Title.Caption = 'WVL am'
             Width = 100
             FieldName = 'WVL'
             DisplayFormat = 'dd.mm.yyyy'
@@ -55,13 +55,6 @@ object frmMain: TfrmMain
             Title.Caption = 'Stufe'
             Width = 65
             FieldName = 'WVLSTUFE'
-          end        
-          item
-            Title.Alignment = taCenter
-            Title.Caption = 'Bewerb. bis'
-            Width = 100
-            FieldName = 'BISDATUM'
-            DisplayFormat = 'dd.mm.yyyy'
           end        
           item
             PickList.Strings = (
@@ -146,28 +139,16 @@ object frmMain: TfrmMain
           end        
           item
             Title.Alignment = taCenter
-            Title.Caption = 'Personalvermittler'
-            Width = 150
-            FieldName = 'VERMITTLER'
-          end        
-          item
-            Title.Caption = 'ZEITARBEIT'
-            Width = 150
-            FieldName = 'ZEITARBEIT'
+            Title.Caption = 'Bewerb. bis'
+            Width = 100
+            FieldName = 'BISDATUM'
+            DisplayFormat = 'dd.mm.yyyy'
           end        
           item
             Title.Alignment = taCenter
-            Title.Caption = 'befristet'
-            FieldName = 'BEFRISTET'
-          end        
-          item
-            Title.Alignment = taCenter
-            Title.Caption = 'Ignoriert'
-            FieldName = 'IGNORIERT'
-          end        
-          item
-            Title.Caption = 'erledigt'
-            FieldName = 'MAN_ERL'
+            Title.Caption = 'Ref.Nr'
+            Width = 250
+            FieldName = 'REFNR'
           end>
         DataSource = dmBewerbungen.dsData
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
@@ -190,10 +171,10 @@ object frmMain: TfrmMain
         Height = 312
         Top = 168
         Width = 650
-        ActivePage = tsDokumente
+        ActivePage = tsStatus
         Anchors = [akLeft, akRight, akBottom]
         Images = ilIcons
-        TabIndex = 1
+        TabIndex = 0
         TabOrder = 0
         object tsStatus: TTabSheet
           Caption = 'Status-Informationen'
@@ -242,7 +223,7 @@ object frmMain: TfrmMain
           end
           object rgMedium: TDBRadioGroup
             Left = 352
-            Height = 112
+            Height = 128
             Top = 144
             Width = 260
             Caption = 'Medium'
@@ -278,7 +259,6 @@ object frmMain: TfrmMain
               'Zusage'
               'Absage'
               'Zurückgezogen'
-              'keine Antwort'
             )
             TabOrder = 1
             Values.Strings = (
@@ -286,7 +266,6 @@ object frmMain: TfrmMain
               '1'
               '2'
               '3'
-              '4'
             )
           end
           object chkEmpfBest: TDBCheckBox
@@ -329,6 +308,18 @@ object frmMain: TfrmMain
             ValueChecked = 'True'
             ValueUnchecked = 'False'
           end
+          object DBCheckBox1: TDBCheckBox
+            Left = 184
+            Height = 23
+            Top = 248
+            Width = 144
+            Caption = 'keine Antwort'
+            DataField = 'NoResponse'
+            DataSource = dmBewerbungen.dsData
+            TabOrder = 7
+            ValueChecked = 'True'
+            ValueUnchecked = 'False'
+          end
         end
         object tsDokumente: TTabSheet
           Caption = 'Dokumente'
@@ -339,7 +330,7 @@ object frmMain: TfrmMain
             Left = 0
             Height = 25
             Top = 0
-            Width = 640
+            Width = 644
             Align = alTop
             BevelOuter = bvNone
             ChildSizing.EnlargeHorizontal = crsScaleChilds
@@ -349,7 +340,7 @@ object frmMain: TfrmMain
             ChildSizing.Layout = cclLeftToRightThenTopToBottom
             ChildSizing.ControlsPerLine = 100
             ClientHeight = 25
-            ClientWidth = 640
+            ClientWidth = 644
             DataSource = dmBewerbungen.dsDocs
             Flat = True
             Options = []
@@ -358,16 +349,16 @@ object frmMain: TfrmMain
           object pnlDokBottom: TPanel
             Left = 0
             Height = 88
-            Top = 190
-            Width = 640
+            Top = 182
+            Width = 644
             Align = alBottom
             BevelOuter = bvNone
             ClientHeight = 88
-            ClientWidth = 640
+            ClientWidth = 644
             TabOrder = 1
             object edtFile: TDBEdit
               Left = 117
-              Height = 32
+              Height = 36
               Top = 48
               Width = 328
               DataField = 'FILENAME'
@@ -386,7 +377,7 @@ object frmMain: TfrmMain
             end
             object cbFileType: TDBComboBox
               Left = 117
-              Height = 32
+              Height = 38
               Top = 8
               Width = 328
               AutoComplete = True
@@ -505,9 +496,9 @@ object frmMain: TfrmMain
           end
           object DBGrid1: TDBGrid
             Left = 0
-            Height = 165
+            Height = 157
             Top = 25
-            Width = 640
+            Width = 644
             Align = alClient
             Color = clWindow
             Columns = <            
@@ -735,7 +726,7 @@ object frmMain: TfrmMain
         end
         object edtDatum: TDateEdit
           Left = 108
-          Height = 32
+          Height = 37
           Top = 8
           Width = 204
           CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
@@ -753,7 +744,7 @@ object frmMain: TfrmMain
         end
         object edtWVL: TDateEdit
           Left = 432
-          Height = 32
+          Height = 37
           Top = 8
           Width = 209
           CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
@@ -769,7 +760,7 @@ object frmMain: TfrmMain
         end
         object edtRefNr: TDBEdit
           Left = 108
-          Height = 32
+          Height = 37
           Top = 104
           Width = 200
           DataField = 'REFNR'
@@ -780,7 +771,7 @@ object frmMain: TfrmMain
         end
         object cbbEmpfMail: TDBComboBox
           Left = 432
-          Height = 32
+          Height = 37
           Top = 40
           Width = 209
           AutoComplete = True
@@ -801,7 +792,7 @@ object frmMain: TfrmMain
         end
         object cbbAnspr: TDBComboBox
           Left = 108
-          Height = 32
+          Height = 37
           Top = 72
           Width = 200
           AutoComplete = True
@@ -814,7 +805,7 @@ object frmMain: TfrmMain
         end
         object edtEnde: TDateEdit
           Left = 432
-          Height = 32
+          Height = 37
           Top = 104
           Width = 209
           CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
@@ -833,7 +824,7 @@ object frmMain: TfrmMain
           Left = 329
           Height = 20
           Top = 113
-          Width = 96
+          Width = 95
           Caption = 'Bewerbung bis'
           ParentColor = False
         end
@@ -868,7 +859,7 @@ object frmMain: TfrmMain
         end
         object cbbEmpfName: TDBLookupComboBox
           Left = 108
-          Height = 32
+          Height = 37
           Top = 40
           Width = 200
           DataField = 'COMPANY'
@@ -885,7 +876,7 @@ object frmMain: TfrmMain
         end
         object cbbJobTitel: TDBLookupComboBox
           Left = 432
-          Height = 32
+          Height = 37
           Top = 72
           Width = 209
           DataField = 'JOB'
@@ -903,7 +894,7 @@ object frmMain: TfrmMain
           Left = 560
           Height = 20
           Top = 144
-          Width = 56
+          Width = 55
           DataField = 'WVLSTUFE'
           DataSource = dmBewerbungen.dsData
           ParentColor = False
@@ -958,7 +949,7 @@ object frmMain: TfrmMain
         TabOrder = 0
         VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbInsert, nbEdit, nbPost, nbCancel, nbRefresh]
       end
-      object DBGrid2: TDBGrid
+      object grdCompanies: TDBGrid
         Left = 0
         Height = 316
         Top = 25
@@ -976,7 +967,7 @@ object frmMain: TfrmMain
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
         TabOrder = 1
         TitleStyle = tsNative
-        OnPrepareCanvas = DBGrid2PrepareCanvas
+        OnPrepareCanvas = grdCompaniesPrepareCanvas
       end
       object pnlCompanyData: TPanel
         Left = 0
@@ -989,7 +980,7 @@ object frmMain: TfrmMain
         TabOrder = 2
         object edtName: TDBEdit
           Left = 88
-          Height = 32
+          Height = 37
           Top = 8
           Width = 312
           DataField = 'NAME'
@@ -1082,7 +1073,7 @@ object frmMain: TfrmMain
         Left = 0
         Height = 25
         Top = 0
-        Width = 748
+        Width = 649
         Align = alTop
         BevelOuter = bvNone
         ChildSizing.EnlargeHorizontal = crsScaleChilds
@@ -1092,7 +1083,7 @@ object frmMain: TfrmMain
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 100
         ClientHeight = 25
-        ClientWidth = 748
+        ClientWidth = 649
         DataSource = dmBewerbungen.dsJobs
         Flat = True
         Options = []
@@ -1103,7 +1094,7 @@ object frmMain: TfrmMain
         Left = 0
         Height = 410
         Top = 25
-        Width = 748
+        Width = 649
         Align = alClient
         Color = clWindow
         Columns = <        
@@ -1122,14 +1113,14 @@ object frmMain: TfrmMain
         Left = 0
         Height = 43
         Top = 435
-        Width = 748
+        Width = 649
         Align = alBottom
         ClientHeight = 43
-        ClientWidth = 748
+        ClientWidth = 649
         TabOrder = 2
         object edtName1: TDBEdit
           Left = 88
-          Height = 32
+          Height = 37
           Top = 8
           Width = 552
           DataField = 'NAME'
@@ -1142,7 +1133,7 @@ object frmMain: TfrmMain
           Left = 8
           Height = 20
           Top = 12
-          Width = 57
+          Width = 56
           Caption = 'Job-Titel'
           ParentColor = False
         end
@@ -1931,9 +1922,15 @@ object frmMain: TfrmMain
       OnExecute = actOpenExecute
     end
     object actErl: TAction
+      Tag = 107
       Caption = 'man. erledigt'
       ImageIndex = 17
       OnExecute = actErlExecute
+    end
+    object actManErl: TAction
+      Tag = 20
+      Caption = '&manuell erledigte'
+      OnExecute = actManErlExecute
     end
   end
   object pmFilter: TPopupMenu
@@ -2174,6 +2171,10 @@ object frmMain: TfrmMain
       object miWVL: TMenuItem
         Tag = 7
         Action = actWVL
+      end
+      object miManErl: TMenuItem
+        Tag = 20
+        Action = actManErl
       end
       object miAlleNoAbs: TMenuItem
         Tag = 15
@@ -2455,11 +2456,18 @@ object frmMain: TfrmMain
     left = 40
     top = 448
   end
+  object dlgFindApplication: TFindDialog
+    Title = 'Bewerbung suchen'
+    Options = [frDown, frHideMatchCase, frHideWholeWord, frHideUpDown, frMatchCase, frDisableMatchCase, frDisableUpDown, frDisableWholeWord]
+    OnFind = dlgFindApplicationFind
+    left = 448
+    top = 448
+  end
   object dlgFindCompany: TFindDialog
     Title = 'Empfänger suchen'
     Options = [frDown, frHideMatchCase, frHideWholeWord, frHideUpDown, frMatchCase, frDisableMatchCase, frDisableUpDown, frDisableWholeWord]
     OnFind = dlgFindCompanyFind
-    left = 448
-    top = 448
+    left = 40
+    top = 368
   end
 end

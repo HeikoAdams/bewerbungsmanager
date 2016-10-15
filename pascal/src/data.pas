@@ -25,8 +25,7 @@ unit Data;
 interface
 
 uses
-  Classes, SysUtils, sqldb, sqlite3conn, DB, FileUtil, DBCtrls, DateUtils,
-  Variants;
+  Classes, SysUtils, sqldb, sqlite3conn, DB, FileUtil, DBCtrls, DateUtils, Variants;
 
 type
 
@@ -58,6 +57,7 @@ type
     qryBewerbungenMAIL: TStringField;
     qryBewerbungenMAN_ERL: TBooleanField;
     qryBewerbungenMEDIUM: TLongintField;
+    qryBewerbungenNoResponse: TBooleanField;
     qryBewerbungenNOTES: TStringField;
     qryBewerbungenREFNR: TStringField;
     qryBewerbungenRESULT: TLongintField;
@@ -329,7 +329,7 @@ begin
          Add('SELECT BEWERBUNGEN.ID, DATUM, MAIL, REFNR, TYP, WVLSTUFE, ');
          Add('FEEDBACK, EMPFANGBEST, RESULT, WVL, BEWERBUNGEN.NOTES, BEWERBUNGEN.VERMITTLER, ');
          Add('MEDIUM, ANSPRECHPARTNER, BEFRISTET, IGNORIERT, UID, BISDATUM, COMPANY, JOB, ');
-         Add('CDATE, MAN_ERL, ZEITARBEIT ');
+         Add('CDATE, MAN_ERL, ZEITARBEIT, NoResponse ');
          Add('FROM BEWERBUNGEN ');
          Add('WHERE (UID = :pUserID) ORDER BY Datum DESC')
       end
@@ -338,7 +338,7 @@ begin
          Add('SELECT BEWERBUNGEN.ID, DATUM, MAIL, REFNR, TYP, WVLSTUFE, ');
          Add('FEEDBACK, EMPFANGBEST, RESULT, WVL, BEWERBUNGEN.NOTES, BEWERBUNGEN.VERMITTLER, ');
          Add('MEDIUM, ANSPRECHPARTNER, BEFRISTET, IGNORIERT, UID, BISDATUM, COMPANY, JOB, ');
-         Add('CDATE, MAN_ERL, ZEITARBEIT ');
+         Add('CDATE, MAN_ERL, ZEITARBEIT, NoResponse ');
          Add('FROM BEWERBUNGEN ');
          Add(Format('WHERE (UID = :pUserID) AND (%s) ORDER BY Datum DESC', [aWhere]));
       end;
@@ -361,13 +361,14 @@ begin
       if isNachweis then
       begin
         Add('SELECT DATUM, COMPANIES.NAME NAME, JOBS.NAME JOBTITEL, ');
-        Add('(RESULT = 1) AS ZUSAGE, (RESULT = 2) AS ABSAGE ');
+        Add('REFNR, (RESULT = 1) AS ZUSAGE, (RESULT = 2) AS ABSAGE, ');
+        Add('NoResponse AS KEINEANTWORT ');
       end
       else
       begin
         Add('SELECT DATUM, WVL, WVLSTUFE AS STUFE, BISDATUM, COMPANIES.NAME NAME, MAIL, ');
         Add('JOBS.NAME JOBTITEL, REFNR, (RESULT = 1) AS ZUSAGE, (RESULT = 2) AS ABSAGE, ');
-        Add('(RESULT = 4) AS KEINEANTWORT, COMPANIES.NOREACTION AS REAGIERTNICHT ');
+        Add('NoResponse AS KEINEANTWORT, COMPANIES.NOREACTION AS REAGIERTNICHT ');
       end;
       Add('FROM BEWERBUNGEN JOIN COMPANIES ON BEWERBUNGEN.COMPANY = COMPANIES.ID');
       Add('JOIN JOBS ON BEWERBUNGEN.JOB = JOBS.ID');
@@ -604,10 +605,10 @@ procedure TdmBewerbungen.UpdateWVL(aID, aDays: Integer);
 var
   sSQL: string;
 begin
-  sSQL := Format('UPDATE Bewerbungen SET WVL = DATE(WVL, ''+%d days'')', [aDays]);
+  sSQL := Format('UPDATE Bewerbungen SET WVL = DATE(''now'', ''+%d days'')', [aDays]);
 
   if (frmMain.ConfigFile.ReadBool('GENERAL', 'MODIFY-APPLICATION-RESULT', True)) then
-     sSQL := sSQL + ', RESULT = 4';
+     sSQL := sSQL + ', NoResponse = -1';
 
   sSQL := sSQL + Format(' WHERE (ID = %d);', [aID]);
 
@@ -747,9 +748,6 @@ begin
     begin
       traData.Commit;
       OpenDataSources;
-
-      if (nID > 0) then
-        DataSet.Locate('ID', nID, []);
     end;
   except
     traData.Rollback;
@@ -771,12 +769,24 @@ begin
       Add(Format('SET WVLSTUFE = CAST((JULIANDAY(WVL) - JULIANDAY(BISDATUM)) / %d - 1 AS INT)', [nDays]));
       Add('WHERE (NOT BISDATUM IS NULL)');
       Add(Format('AND (JULIANDAY(WVL) - JULIANDAY(BISDATUM) >= %d);', [nDays]));
+
+      Add('UPDATE BEWERBUNGEN');
+      Add('SET NoResponse = -1');
+      Add('WHERE (WVLSTUFE > 0) AND (RESULT = 0)');
+
+      Add('UPDATE BEWERBUNGEN');
+      Add('SET NoResponse = -1');
+      Add('WHERE (WVLSTUFE = 0) AND (date(WVL) < date(''now'')) AND (RESULT = 0)');
     end;
     ExecSQL;
     Free;
   end;
   traData.Commit;
   OpenDataSources;
+
+  if (nID > 0) then
+    DataSet.Locate('ID', nID, []);
+
   UpdateList(rsCOMPANIES, frmMain.cbbEmpfName.Items);
   UpdateList(rsMAILS, frmMain.cbbEmpfMail.Items);
   UpdateList(rsJOBS, frmMain.cbbJobTitel.Items);
@@ -868,6 +878,9 @@ begin
 
     if (FieldByName('MAN_ERL').AsBoolean) and (FieldByName('IGNORIERT').AsBoolean) then
       FieldByName('IGNORIERT').AsBoolean := False;
+
+    if (FieldByName('RESULT').AsInteger = 3) then
+      FieldByName('MAN_ERL').AsBoolean := True;
   end;
 end;
 

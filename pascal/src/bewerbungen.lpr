@@ -27,8 +27,8 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, datetimectrls, bewerbung_strings, Data, mainwin, settings, filterdate,
-  exportdate, viewfilter, login, newuser;
+  Forms, datetimectrls, tachartlazaruspkg, bewerbung_strings, Data, mainwin,
+  settings, filterdate, exportdate, viewfilter, login, newuser;
 
 {$R *.res}
 

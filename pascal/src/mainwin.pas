@@ -25,8 +25,8 @@ unit mainwin;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, DBDateTimePicker, Forms, Controls,
-  Graphics, Dialogs, Grids, ComCtrls, ExtCtrls, StdCtrls, EditBtn,
+  Classes, SysUtils, FileUtil, DBDateTimePicker, TADbSource, TAGraph, Forms,
+  Controls, Graphics, Dialogs, Grids, ComCtrls, ExtCtrls, StdCtrls, EditBtn,
   DBGrids, Menus, ActnList, IniFiles, DBCtrls, Buttons, CheckLst;
 
 type
@@ -65,6 +65,7 @@ type
     actIgnoriert: TAction;
     actFilter: TAction;
     actErl: TAction;
+    actManErl: TAction;
     actOpen: TAction;
     actNewWVL: TAction;
     actSilent: TAction;
@@ -99,10 +100,12 @@ type
     chkManuellErledigt: TDBCheckBox;
     chkComZeit: TDBCheckBox;
     chkZeitarbeit: TDBCheckBox;
+    DBCheckBox1: TDBCheckBox;
     DBGrid1: TDBGrid;
-    DBGrid2: TDBGrid;
+    grdCompanies: TDBGrid;
     DBGrid3: TDBGrid;
     DBText1: TDBText;
+    dlgFindCompany: TFindDialog;
     edtDatum: TDateEdit;
     edtEnde: TDateEdit;
     edtFile: TDBEdit;
@@ -125,7 +128,7 @@ type
     lblWo: TLabel;
     lblWVL: TLabel;
     memNotes: TDBMemo;
-    dlgFindCompany: TFindDialog;
+    dlgFindApplication: TFindDialog;
     edtName: TDBEdit;
     edtName1: TDBEdit;
     Label2: TLabel;
@@ -135,6 +138,7 @@ type
     MenuItem4: TMenuItem;
     MenuItem5: TMenuItem;
     MenuItem6: TMenuItem;
+    miManErl: TMenuItem;
     miErledigt: TMenuItem;
     MenuItem8: TMenuItem;
     MenuItem9: TMenuItem;
@@ -215,6 +219,7 @@ type
     procedure actIgnoriertExecute(Sender: TObject);
     procedure actInitiativExecute(Sender: TObject);
     procedure actMailExecute(Sender: TObject);
+    procedure actManErlExecute(Sender: TObject);
     procedure actNewWVLExecute(Sender: TObject);
     procedure actNoFeedbackExecute(Sender: TObject);
     procedure actNoResultExecute(Sender: TObject);
@@ -235,8 +240,9 @@ type
     procedure chkBefristetChange(Sender: TObject);
     procedure DBGrid1PrepareCanvas(Sender: TObject; DataCol: integer;
       Column: TColumn; AState: TGridDrawState);
-    procedure DBGrid2PrepareCanvas(sender: TObject; DataCol: Integer;
+    procedure grdCompaniesPrepareCanvas(sender: TObject; DataCol: Integer;
       Column: TColumn; AState: TGridDrawState);
+    procedure dlgFindApplicationFind(Sender: TObject);
     procedure dlgFindCompanyFind(Sender: TObject);
     procedure edtDatumEditingDone(Sender: TObject);
     procedure edtEndeEditingDone(Sender: TObject);
@@ -443,7 +449,7 @@ begin
   FXDGPath := FConfigFile.ReadString('LINUX', 'XDG-PATH', '/usr/bin');
   {$ENDIF}
 
-  FGridFilter := FConfigFile.ReadInteger('FILTER', 'LAST FILTER', 15);
+  FGridFilter := FConfigFile.ReadInteger('FILTER', 'LAST FILTER', 0);
 
   for nCounter := 0 to alFilter.ActionCount - 1 do
     if alFilter.Actions[nCounter].Tag = FGridFilter then
@@ -511,7 +517,7 @@ end;
 
 procedure TfrmMain.actSilentExecute(Sender: TObject);
 begin
-  dmBewerbungen.FetchData(Format(rsRESULTD, [4]));
+  dmBewerbungen.FetchData('NoResponse = -1');
 
   FGridFilter := 106;
 end;
@@ -694,7 +700,7 @@ begin
   end;
 end;
 
-procedure TfrmMain.DBGrid2PrepareCanvas(sender: TObject; DataCol: Integer;
+procedure TfrmMain.grdCompaniesPrepareCanvas(sender: TObject; DataCol: Integer;
   Column: TColumn; AState: TGridDrawState);
 begin
   with (Sender as TDBGrid) do
@@ -724,19 +730,29 @@ end;
 
 {$endif}
 
-procedure TfrmMain.dlgFindCompanyFind(Sender: TObject);
+procedure TfrmMain.dlgFindApplicationFind(Sender: TObject);
 begin
   if not dmBewerbungen.qryCompanies.Locate('NAME',
-    VarArrayOf([dlgFindCompany.FindText]), [loCaseInsensitive, loPartialKey]) then
+    VarArrayOf([dlgFindApplication.FindText]), [loCaseInsensitive, loPartialKey]) then
     if not dmBewerbungen.qryBewerbungen.Locate('REFNR',
-      VarArrayOf([dlgFindCompany.FindText]), [loPartialKey]) then
+      VarArrayOf([dlgFindApplication.FindText]), [loPartialKey]) then
         Application.MessageBox(PChar(rsKeineBereins), PChar(rsSuche),
           MB_OK + MB_ICONWARNING)
   else
   begin
     dmBewerbungen.qryBewerbungen.Locate('COMPANY', dmBewerbungen.qryCompanies.FieldByName('ID').AsInteger,[]);
-    dlgFindCompany.CloseDialog;
+    dlgFindApplication.CloseDialog;
   end;
+end;
+
+procedure TfrmMain.dlgFindCompanyFind(Sender: TObject);
+begin
+  if not dmBewerbungen.qryCompanies.Locate('NAME',
+    VarArrayOf([dlgFindCompany.FindText]), [loCaseInsensitive, loPartialKey]) then
+    Application.MessageBox(PChar(rsKeineBereins), PChar(rsSuche),
+      MB_OK + MB_ICONWARNING)
+  else
+    dlgFindCompany.CloseDialog;
 end;
 
 procedure TfrmMain.edtDatumEditingDone(Sender: TObject);
@@ -970,8 +986,14 @@ end;
 
 procedure TfrmMain.actFindExecute(Sender: TObject);
 begin
-  actAlle.Execute;
-  dlgFindCompany.Execute;
+  case pcApplications.ActivePageIndex of
+    0:
+      begin
+        actAlle.Execute;
+        dlgFindApplication.Execute;
+      end;
+    2: dlgFindCompany.Execute;
+  end;
 end;
 
 procedure TfrmMain.actIgnoreExecute(Sender: TObject);
@@ -1001,6 +1023,13 @@ begin
   FGridFilter := 12;
 end;
 
+procedure TfrmMain.actManErlExecute(Sender: TObject);
+begin
+  dmBewerbungen.FetchData('(MAN_ERL = -1)');
+
+  FGridFilter := 20;
+end;
+
 procedure TfrmMain.actNewWVLExecute(Sender: TObject);
 var
   nID: integer;
@@ -1021,6 +1050,7 @@ procedure TfrmMain.grdBewerbungenPrepareCanvas(Sender: TObject;
 var
   bIgnoriert: boolean;
   bManErl: boolean;
+  bNoResp: boolean;
   CurrApp: TDataSet;
   cErl: TColor;
 begin
@@ -1029,13 +1059,14 @@ begin
     CurrApp := DataSource.DataSet;
     bIgnoriert := (CurrApp.FieldByName('IGNORIERT').AsBoolean);
     bManErl := (CurrApp.FieldByName('MAN_ERL').AsBoolean);
+    bNoResp := (CurrApp.FieldByName('NoResponse').AsBoolean);
 
     // Ignorierte Bewerbungen
     if bIgnoriert then
       Canvas.Font.Style := [fsItalic]
     // Kein Feedback und WVL-Termin überschritten
     else if (CurrApp.FieldByName('FEEDBACK').AsInteger = 0) and
-      (CurrApp.FieldByName('RESULT').AsInteger in [0, 4]) and
+      ((CurrApp.FieldByName('RESULT').AsInteger = 0) and bNoResp) and
       (CurrApp.FieldByName('WVL').AsDateTime <= Date) and
       not bManErl then
     begin
@@ -1046,7 +1077,7 @@ begin
     // Bewerbung liegt mehr als 6 Wochen zurück und noch kein Ergebnis
     if FConfigFile.ReadBool('GENERAL', 'HIGHLIGHT OLD APPLICATIONS', False) and
       (CurrApp.FieldByName('FEEDBACK').AsInteger = 0) and
-      (CurrApp.FieldByName('RESULT').AsInteger in [0, 4]) and
+      ((CurrApp.FieldByName('RESULT').AsInteger = 0) and bNoResp) and
       (CurrApp.FieldByName('DATUM').AsDateTime <= IncWeek(Date, -6)) and
       not bManErl then
         Canvas.Font.Style := Canvas.Font.Style + [fsUnderline];
@@ -1063,9 +1094,13 @@ begin
       1: Canvas.Font.Color := clGreen; // Zusage erhalten
       2: Canvas.Font.Color := clRed;   // Absage erhalten
       3: Canvas.Font.Color := clGray;  // Bewerbung zurückgezogen
-      4: Canvas.Font.Color := clTeal;  // keine Antwort auf Nachfragen
     end;
 
+    // keine Antwort auf Nachfragen
+    if ((CurrApp.FieldByName('RESULT').AsInteger = 0) and bNoResp) then
+      Canvas.Font.Color := clTeal;
+
+    // manuell erledigt
     if bManErl then
       Canvas.Font.Color:= RGBToColor(55,101,148);
   end;

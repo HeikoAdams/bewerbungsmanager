@@ -176,7 +176,7 @@ msgid "Personalvermittler!"
 msgstr ""
 
 #: bewerbung_strings.rspurgesql
-msgid "UPDATE BEWERBUNGEN SET MAN_ERL = -1 WHERE (UID = :pUserID) AND (DATE(DATUM) < DATE('now', '-1 year')) AND (RESULT <> 1) AND (MAN_ERL = 0);"
+msgid "UPDATE BEWERBUNGEN SET MAN_ERL = -1 WHERE (UID = :pUserID) AND (DATE(DATUM) < DATE('now', '-1 year')) AND (RESULT NOT IN (1,2)) AND (MAN_ERL = 0);"
 msgstr ""
 
 #: bewerbung_strings.rspurging
@@ -192,11 +192,11 @@ msgid "RECEIPENTS"
 msgstr ""
 
 #: bewerbung_strings.rsresult2
-msgid "(RESULT IN (0,4)) AND (IGNORIERT = 0) AND (MAN_ERL = 0)"
+msgid "((RESULT =0) OR (NoResponse = -1)) AND (IGNORIERT = 0) AND (MAN_ERL = 0)"
 msgstr ""
 
 #: bewerbung_strings.rsresult3
-msgid "(RESULT IN (0,4)) AND (MAN_ERL = 0)"
+msgid "((RESULT =0) OR (NoResponse = -1)) AND (MAN_ERL = 0)"
 msgstr ""
 
 #: bewerbung_strings.rsresultd
@@ -240,7 +240,7 @@ msgid "WERT"
 msgstr ""
 
 #: bewerbung_strings.rswherewvlsand
-msgid "(((Date(WVL) <= Date('now')) AND (RESULT IN (0,4)))) AND (IGNORIERT = 0) AND (MAN_ERL = 0)"
+msgid "(((Date(WVL) <= Date('now')) AND ((RESULT =0) OR (NoResponse = -1)))) AND (IGNORIERT = 0) AND (MAN_ERL = 0)"
 msgstr ""
 
 #: bewerbung_strings.rswritemail
@@ -486,6 +486,10 @@ msgstr ""
 msgid "&Mail"
 msgstr ""
 
+#: tfrmmain.actmanerl.caption
+msgid "&manuell erledigte"
+msgstr ""
+
 #: tfrmmain.actnewwvl.caption
 msgid "neue WVL"
 msgstr ""
@@ -611,7 +615,17 @@ msgctxt "tfrmmain.chkzeitarbeit.caption"
 msgid "Zeitarbeit"
 msgstr ""
 
+#: tfrmmain.dbcheckbox1.caption
+msgid "keine Antwort"
+msgstr ""
+
+#: tfrmmain.dlgfindapplication.title
+msgctxt "TFRMMAIN.DLGFINDAPPLICATION.TITLE"
+msgid "Bewerbung suchen"
+msgstr ""
+
 #: tfrmmain.dlgfindcompany.title
+msgctxt "TFRMMAIN.DLGFINDCOMPANY.TITLE"
 msgid "Empfänger suchen"
 msgstr ""
 
