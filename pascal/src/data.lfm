@@ -176,7 +176,12 @@ object dmBewerbungen: TdmBewerbungen
     Database = conData
     Transaction = traData
     SQL.Strings = (
-      'SELECT * FROM BEWERBUNGEN WHERE UID = :pUserID ORDER BY Datum DESC'
+      'SELECT BEWERBUNGEN.*, COMPANIES.NAME'
+      'FROM BEWERBUNGEN'
+      'INNER JOIN COMPANIES'
+      'ON BEWERBUNGEN.COMPANY = COMPANIES.ID'
+      'WHERE UID = :pUserID'
+      'ORDER BY Datum DESC, COMPANIES.NAME'
     )
     Options = []
     Params = <    

@@ -80,9 +80,8 @@
         <ComponentName Value="frmMain"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
-        <TopLine Value="981"/>
-        <CursorPos Y="995"/>
+        <TopLine Value="982"/>
+        <CursorPos X="79" Y="983"/>
         <UsageCount Value="170"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -203,8 +202,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="Data"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="6"/>
-        <TopLine Value="523"/>
+        <TopLine Value="446"/>
         <CursorPos X="3" Y="446"/>
         <UsageCount Value="141"/>
         <Loaded Value="True"/>

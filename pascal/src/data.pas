@@ -329,18 +329,22 @@ begin
          Add('SELECT BEWERBUNGEN.ID, DATUM, MAIL, REFNR, TYP, WVLSTUFE, ');
          Add('FEEDBACK, EMPFANGBEST, RESULT, WVL, BEWERBUNGEN.NOTES, BEWERBUNGEN.VERMITTLER, ');
          Add('MEDIUM, ANSPRECHPARTNER, BEFRISTET, IGNORIERT, UID, BISDATUM, COMPANY, JOB, ');
-         Add('CDATE, MAN_ERL, ZEITARBEIT, NoResponse ');
+         Add('CDATE, MAN_ERL, BEWERBUNGEN.ZEITARBEIT, NoResponse ');
          Add('FROM BEWERBUNGEN ');
-         Add('WHERE (UID = :pUserID) ORDER BY Datum DESC')
+         Add('INNER JOIN COMPANIES ');
+         Add('ON BEWERBUNGEN.COMPANY = COMPANIES.ID ');
+         Add('WHERE (UID = :pUserID) ORDER BY Datum DESC, COMPANIES.NAME')
       end
       else
       begin
          Add('SELECT BEWERBUNGEN.ID, DATUM, MAIL, REFNR, TYP, WVLSTUFE, ');
          Add('FEEDBACK, EMPFANGBEST, RESULT, WVL, BEWERBUNGEN.NOTES, BEWERBUNGEN.VERMITTLER, ');
          Add('MEDIUM, ANSPRECHPARTNER, BEFRISTET, IGNORIERT, UID, BISDATUM, COMPANY, JOB, ');
-         Add('CDATE, MAN_ERL, ZEITARBEIT, NoResponse ');
+         Add('CDATE, MAN_ERL, BEWERBUNGEN.ZEITARBEIT, NoResponse ');
          Add('FROM BEWERBUNGEN ');
-         Add(Format('WHERE (UID = :pUserID) AND (%s) ORDER BY Datum DESC', [aWhere]));
+         Add('INNER JOIN COMPANIES ');
+         Add('ON BEWERBUNGEN.COMPANY = COMPANIES.ID ');
+         Add(Format('WHERE (UID = :pUserID) AND (%s) ORDER BY Datum DESC, COMPANIES.NAME', [aWhere]));
       end;
     end;
     Params.ParamByName('pUserID').AsInteger:= frmMain.UserID;

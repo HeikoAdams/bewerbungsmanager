@@ -16,22 +16,22 @@ object frmMain: TfrmMain
     Height = 512
     Top = 25
     Width = 659
-    ActivePage = tsFirmen
+    ActivePage = tsBewerbungen
     Align = alClient
     Images = ilIcons
-    TabIndex = 2
+    TabIndex = 0
     TabOrder = 1
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'
-      ClientHeight = 478
-      ClientWidth = 649
+      ClientHeight = 476
+      ClientWidth = 653
       ImageIndex = 14
       object grdBewerbungen: TDBGrid
         Left = 0
-        Height = 478
+        Height = 476
         Hint = 'dunkelblau = Eingang bestätigt'#10'dunkelrot = Wiedervorlagedatum ohne Reaktion überschritten'#10'türkis = keine Antwort auf Rückfragen '#10'grün = Zusage erhalten'#10'rot = Absage erhalten'#10'schwarz = noch keine Reaktion und erste Wiedervorlage ist noch nicht fällig'#10'violet = Einladung liegt vor'#10'grau = Bewerbung zurückgezogen'#10'hellblau = manuell erledigt'#10#10'fett = Wiedervorlage ist fällig'#10'kursiv = ignorierte Bewerbung'#10'unterstrichen = Bewerbung ist älter als 6 Wochen und ohne Ergebnis'
         Top = 0
-        Width = 649
+        Width = 653
         Align = alClient
         Color = clWindow
         Columns = <        
@@ -163,8 +163,8 @@ object frmMain: TfrmMain
     end
     object tsBewerbungData: TTabSheet
       Caption = 'Daten'
-      ClientHeight = 478
-      ClientWidth = 649
+      ClientHeight = 476
+      ClientWidth = 653
       ImageIndex = 1
       object pcData: TPageControl
         Left = 0
@@ -178,8 +178,8 @@ object frmMain: TfrmMain
         TabOrder = 0
         object tsStatus: TTabSheet
           Caption = 'Status-Informationen'
-          ClientHeight = 278
-          ClientWidth = 640
+          ClientHeight = 308
+          ClientWidth = 646
           ImageIndex = 16
           object rgTyp: TDBRadioGroup
             Left = 8
@@ -323,8 +323,8 @@ object frmMain: TfrmMain
         end
         object tsDokumente: TTabSheet
           Caption = 'Dokumente'
-          ClientHeight = 278
-          ClientWidth = 640
+          ClientHeight = 308
+          ClientWidth = 646
           ImageIndex = 2
           object navDocs: TDBNavigator
             Left = 0
@@ -339,8 +339,8 @@ object frmMain: TfrmMain
             ChildSizing.ShrinkVertical = crsScaleChilds
             ChildSizing.Layout = cclLeftToRightThenTopToBottom
             ChildSizing.ControlsPerLine = 100
-            ClientHeight = 25
-            ClientWidth = 644
+            ClientHeight = 21
+            ClientWidth = 640
             DataSource = dmBewerbungen.dsDocs
             Flat = True
             Options = []
@@ -353,8 +353,8 @@ object frmMain: TfrmMain
             Width = 644
             Align = alBottom
             BevelOuter = bvNone
-            ClientHeight = 88
-            ClientWidth = 644
+            ClientHeight = 84
+            ClientWidth = 640
             TabOrder = 1
             object edtFile: TDBEdit
               Left = 117
@@ -523,8 +523,8 @@ object frmMain: TfrmMain
         end
         object tsNotes: TTabSheet
           Caption = 'Bemerkungen'
-          ClientHeight = 278
-          ClientWidth = 640
+          ClientHeight = 308
+          ClientWidth = 646
           ImageIndex = 0
           object mmoNotes: TDBMemo
             Left = 0
@@ -540,8 +540,8 @@ object frmMain: TfrmMain
         end
         object tsActivities: TTabSheet
           Caption = 'Aktivitäten'
-          ClientHeight = 278
-          ClientWidth = 640
+          ClientHeight = 308
+          ClientWidth = 646
           ImageIndex = 6
           object navActions: TDBNavigator
             Left = 0
@@ -556,8 +556,8 @@ object frmMain: TfrmMain
             ChildSizing.ShrinkVertical = crsScaleChilds
             ChildSizing.Layout = cclLeftToRightThenTopToBottom
             ChildSizing.ControlsPerLine = 100
-            ClientHeight = 25
-            ClientWidth = 644
+            ClientHeight = 21
+            ClientWidth = 640
             DataSource = dmBewerbungen.dsLog
             Flat = True
             Options = []
@@ -570,8 +570,8 @@ object frmMain: TfrmMain
             Width = 644
             Align = alBottom
             BevelOuter = bvNone
-            ClientHeight = 81
-            ClientWidth = 644
+            ClientHeight = 77
+            ClientWidth = 640
             TabOrder = 1
             object edtLogDatum: TDateEdit
               Left = 86
@@ -925,14 +925,14 @@ object frmMain: TfrmMain
     end
     object tsFirmen: TTabSheet
       Caption = 'Firmen'
-      ClientHeight = 478
-      ClientWidth = 649
+      ClientHeight = 476
+      ClientWidth = 653
       ImageIndex = 13
       object navFirmen: TDBNavigator
         Left = 0
         Height = 25
         Top = 0
-        Width = 649
+        Width = 653
         Align = alTop
         BevelOuter = bvNone
         ChildSizing.EnlargeHorizontal = crsScaleChilds
@@ -942,7 +942,7 @@ object frmMain: TfrmMain
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 100
         ClientHeight = 25
-        ClientWidth = 649
+        ClientWidth = 653
         DataSource = dmBewerbungen.dsCompanies
         Flat = True
         Options = []
@@ -951,9 +951,9 @@ object frmMain: TfrmMain
       end
       object grdCompanies: TDBGrid
         Left = 0
-        Height = 316
+        Height = 314
         Top = 25
-        Width = 649
+        Width = 653
         Align = alClient
         Color = clWindow
         Columns = <        
@@ -972,15 +972,15 @@ object frmMain: TfrmMain
       object pnlCompanyData: TPanel
         Left = 0
         Height = 137
-        Top = 341
-        Width = 649
+        Top = 339
+        Width = 653
         Align = alBottom
         ClientHeight = 137
-        ClientWidth = 649
+        ClientWidth = 653
         TabOrder = 2
         object edtName: TDBEdit
           Left = 88
-          Height = 37
+          Height = 28
           Top = 8
           Width = 312
           DataField = 'NAME'
@@ -1003,9 +1003,9 @@ object frmMain: TfrmMain
         end
         object Label2: TLabel
           Left = 8
-          Height = 20
+          Height = 18
           Top = 12
-          Width = 38
+          Width = 36
           Caption = 'Name'
           ParentColor = False
         end
@@ -1020,9 +1020,9 @@ object frmMain: TfrmMain
         end
         object Label3: TLabel
           Left = 8
-          Height = 20
+          Height = 18
           Top = 48
-          Width = 73
+          Width = 70
           Caption = 'Bemerkung'
           ParentColor = False
         end
@@ -1066,8 +1066,8 @@ object frmMain: TfrmMain
     end
     object tsJobs: TTabSheet
       Caption = 'Jobs'
-      ClientHeight = 478
-      ClientWidth = 649
+      ClientHeight = 476
+      ClientWidth = 653
       ImageIndex = 15
       object navJobs: TDBNavigator
         Left = 0
