@@ -331,9 +331,7 @@ begin
          Add('MEDIUM, ANSPRECHPARTNER, BEFRISTET, IGNORIERT, UID, BISDATUM, COMPANY, JOB, ');
          Add('CDATE, MAN_ERL, BEWERBUNGEN.ZEITARBEIT, NoResponse ');
          Add('FROM BEWERBUNGEN ');
-         Add('INNER JOIN COMPANIES ');
-         Add('ON BEWERBUNGEN.COMPANY = COMPANIES.ID ');
-         Add('WHERE (UID = :pUserID) ORDER BY Datum DESC, COMPANIES.NAME')
+         Add('WHERE (UID = :pUserID) ORDER BY Datum DESC');
       end
       else
       begin
@@ -342,9 +340,7 @@ begin
          Add('MEDIUM, ANSPRECHPARTNER, BEFRISTET, IGNORIERT, UID, BISDATUM, COMPANY, JOB, ');
          Add('CDATE, MAN_ERL, BEWERBUNGEN.ZEITARBEIT, NoResponse ');
          Add('FROM BEWERBUNGEN ');
-         Add('INNER JOIN COMPANIES ');
-         Add('ON BEWERBUNGEN.COMPANY = COMPANIES.ID ');
-         Add(Format('WHERE (UID = :pUserID) AND (%s) ORDER BY Datum DESC, COMPANIES.NAME', [aWhere]));
+         Add(Format('WHERE (UID = :pUserID) AND (%s) ORDER BY Datum DESC', [aWhere]));
       end;
     end;
     Params.ParamByName('pUserID').AsInteger:= frmMain.UserID;
