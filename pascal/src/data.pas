@@ -25,7 +25,7 @@ unit Data;
 interface
 
 uses
-  Classes, SysUtils, sqldb, sqlite3conn, DB, FileUtil, DBCtrls, DateUtils, Variants;
+  Classes, SysUtils, sqldb, sqlite3conn, DB, FileUtil, DBCtrls, DateUtils;
 
 type
 
@@ -132,7 +132,8 @@ var
 
 implementation
 
-uses mainwin, bewerbung_strings, Forms, Dialogs, login, LCLType, Controls;
+uses mainwin, bewerbung_strings, Forms, Dialogs, login, LCLType, Controls,
+  variants;
 
 {$R *.lfm}
 
@@ -360,18 +361,19 @@ begin
 
       if isNachweis then
       begin
-        Add('SELECT DATUM, COMPANIES.NAME NAME, JOBS.NAME JOBTITEL, ');
-        Add('REFNR, (RESULT = 1) AS ZUSAGE, (RESULT = 2) AS ABSAGE, ');
-        Add('NoResponse AS KEINEANTWORT ');
+        Add('SELECT DATUM, NAME, JOBTITEL, ');
+        Add('REFNR, CAST(ZUSAGE AS BOOLEAN) AS ZUSAGE, ');
+        Add('CAST(ABSAGE AS BOOLEAN) AS ABSAGE, ');
+        Add('KEINEANTWORT ');
       end
       else
       begin
-        Add('SELECT DATUM, WVL, WVLSTUFE AS STUFE, BISDATUM, COMPANIES.NAME NAME, MAIL, ');
-        Add('JOBS.NAME JOBTITEL, REFNR, (RESULT = 1) AS ZUSAGE, (RESULT = 2) AS ABSAGE, ');
-        Add('NoResponse AS KEINEANTWORT, COMPANIES.NOREACTION AS REAGIERTNICHT ');
+        Add('SELECT DATUM, WVL, STUFE, BISDATUM, NAME, MAIL, ');
+        Add('JOBTITEL, REFNR, CAST(ZUSAGE AS BOOLEAN) AS ZUSAGE, ');
+        Add('CAST(ABSAGE AS BOOLEAN) AS ABSAGE, ');
+        Add('KEINEANTWORT, REAGIERTNICHT ');
       end;
-      Add('FROM BEWERBUNGEN JOIN COMPANIES ON BEWERBUNGEN.COMPANY = COMPANIES.ID');
-      Add('JOIN JOBS ON BEWERBUNGEN.JOB = JOBS.ID');
+      Add('FROM V_EXPORT');
 
       if not (aWhere = EmptyStr) then
         Add(Format('%s', [aWhere]));

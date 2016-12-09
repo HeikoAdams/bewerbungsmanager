@@ -526,6 +526,7 @@ object dmBewerbungen: TdmBewerbungen
     top = 144
   end
   object qryCSVExport: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'DATUM'
@@ -535,6 +536,11 @@ object dmBewerbungen: TdmBewerbungen
       item
         Name = 'WVL'
         DataType = ftDateTime
+        Precision = -1
+      end    
+      item
+        Name = 'STUFE'
+        DataType = ftInteger
         Precision = -1
       end    
       item
@@ -577,17 +583,24 @@ object dmBewerbungen: TdmBewerbungen
         Precision = -1
       end    
       item
-        Name = 'IGNORIERT'
-        DataType = ftLargeint
+        Name = 'KEINEANTWORT'
+        DataType = ftBoolean
+        Precision = -1
+      end    
+      item
+        Name = 'REAGIERTNICHT'
+        DataType = ftBoolean
         Precision = -1
       end>
     Database = conData
     Transaction = traData
     ReadOnly = True
     SQL.Strings = (
-      'SELECT DATUM, WVL, BISDATUM, NAME, MAIL, JOBTITEL, REFNR, (RESULT = 1) AS ZUSAGE, (RESULT = 2) AS ABSAGE, (RESULT = 4) AS KEINEANTWORT'
-      'FROM BEWERBUNGEN'
-      'ORDER BY DATUM DESC, NAME'
+      'SELECT DATUM, WVL, STUFE, BISDATUM, NAME, MAIL,'
+      'JOBTITEL, REFNR, CAST(ZUSAGE AS BOOLEAN) AS ZUSAGE,'
+      'CAST(ABSAGE AS BOOLEAN) AS ABSAGE,'
+      'KEINEANTWORT, REAGIERTNICHT'
+      'FROM V_EXPORT'
     )
     Options = []
     Params = <>

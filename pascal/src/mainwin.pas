@@ -405,18 +405,18 @@ begin
   FLockFile := IncludeTrailingPathDelimiter(FConfigDir) + '.lock';
 
   {$IFDEF Unix}
-  FLockHandle := 0;
+  //FLockHandle := 0;
 
   // If a lock-file exists, abort start. Otherwise create it
-  if FileExists(FLockFile) then
-  begin
-    Application.MessageBox(PChar(rsDasProgrammW),
-      PChar(rsWarnung), MB_ICONWARNING + MB_OK);
-    Application.Terminate;
-    Exit;
-  end
-  else
-    FLockHandle := FileCreate(FLockFile);
+  //if FileExists(FLockFile) then
+  //begin
+  //  Application.MessageBox(PChar(rsDasProgrammW),
+  //    PChar(rsWarnung), MB_ICONWARNING + MB_OK);
+  //  Application.Terminate;
+  //  Exit;
+  //end
+  //else
+  //  FLockHandle := FileCreate(FLockFile);
   {$ENDiF}
 
   if FileExists(FConfigFile.FileName) then
@@ -942,6 +942,8 @@ begin
               sLine := sLine + ';'
           else if (Fields[nCount].DataType = ftBoolean) then
             sLine := sLine + BoolToStr(Fields[nCount].Value, rsYes, rsNo) + ';'
+          else if ((Fields[nCount].DataType = ftLargeint) and (Fields[nCount].AsInteger <= 0)) then
+            sLine := sLine + BoolToStr((Fields[nCount].Value = -1), rsYes, rsNo) + ';'
           else
             sLine := sLine + Fields[nCount].DisplayText + ';';
 
