@@ -10,28 +10,28 @@ object frmMain: TfrmMain
   OnClose = FormClose
   OnCreate = FormCreate
   Position = poDesktopCenter
-  LCLVersion = '1.6.0.1'
+  LCLVersion = '2.0.6.0'
   object pcApplications: TPageControl
     Left = 0
-    Height = 512
-    Top = 25
+    Height = 539
+    Top = 0
     Width = 659
     ActivePage = tsBewerbungen
     Align = alClient
     Images = ilIcons
     TabIndex = 0
-    TabOrder = 1
+    TabOrder = 0
     object tsBewerbungen: TTabSheet
       Caption = 'Bewerbungen'
-      ClientHeight = 476
-      ClientWidth = 653
+      ClientHeight = 507
+      ClientWidth = 649
       ImageIndex = 14
       object grdBewerbungen: TDBGrid
         Left = 0
-        Height = 476
+        Height = 482
         Hint = 'dunkelblau = Eingang bestätigt'#10'dunkelrot = Wiedervorlagedatum ohne Reaktion überschritten'#10'türkis = keine Antwort auf Rückfragen '#10'grün = Zusage erhalten'#10'rot = Absage erhalten'#10'schwarz = noch keine Reaktion und erste Wiedervorlage ist noch nicht fällig'#10'violet = Einladung liegt vor'#10'grau = Bewerbung zurückgezogen'#10'hellblau = manuell erledigt'#10#10'fett = Wiedervorlage ist fällig'#10'kursiv = ignorierte Bewerbung'#10'unterstrichen = Bewerbung ist älter als 6 Wochen und ohne Ergebnis'
-        Top = 0
-        Width = 653
+        Top = 25
+        Width = 649
         Align = alClient
         Color = clWindow
         Columns = <        
@@ -58,42 +58,124 @@ object frmMain: TfrmMain
           end        
           item
             PickList.Strings = (
+              'A7-24 Aumann GmbH'
+              'ADB Solutions GmbH'
               'All@Net Recruiting GmbH & Co. KG'
+              'amo-Asphalt GmbH & Co. KG'
+              'arbeit am markt GmbH'
               'Bauer GmbH & Co. KG'
+              'Bezirksklinikum Obermain'
+              'BFI Informationssysteme GmbH'
               'Brose Fahrzeugteile GmbH & Co. Kommanditgesellschaft'
               'Bundesamt für Migration und Flüchtlinge'
+              'CLICKSPORTS'
+              'Coburger Kartonagenfabrik'
               'ComputerFutures'
               'ComWer GmbH'
+              'Concept Laser'
+              'CreativeInk Coburg GmbH'
+              'DATA-NG GmbH'
               'DELIFE GmbH'
+              'ecsec GmbH'
               'Edwork GmbH & Co. KG'
               'EICHNER Organisation GmbH & Co. KG'
               'ELAXY GmbH'
+              'ELPAS Aktiengesellschaft International'
+              'empiriecom GmbH & Co. KG'
+              'euro engineering AG'
+              'EWC-EasyWareComputer GmbH & Co. KG'
+              'Feintechnik GmbH Eisfeld'
+              'FERCHAU Engineering GmbH'
+              'Fertigungsgerätebau Adolf Steinbach GmbH & Co.KG'
+              'Fischer & Funke Gesellschaft für Personaldienstleistungen mbH'
+              'FISHBULL Franz Fischer Qualitätswerkzeuge GmbH'
               'ganss personal GmbH '
               'Giesecke & Devrient GmbH'
               'Götz Puppenmanufaktur Int. GmbH'
               'Habermaaß GmbH'
+              'HAMUEL Maschinenbau GmbH & Co. KG'
+              'Hans Weber Maschinenfabrik GmbH'
+              'Hanseatisches Personalkontor Nürnberg'
+              'Hauck GmbH & Co. KG Kinderausstattung'
+              'HERE IT GmbH'
               'Hochschule für angewandte Wissenschaften Coburg'
+              'homeway GmbH'
               'HSD Händschke Software & Datentechnik'
               'HUK-COBURG-Allgemeine Versicherung AG'
+              'IBC Solar AG'
+              'Inno-Logic Software Development Jörg Pfister'
+              'ISK Industrie-Service Krebs KG NL CO '
+              'iT-config GmbH'
               'IT-Networks'
+              'ITson'
+              'Job AG'
               'Josef Dechant Ingenieurbüro'
+              'KAESER KOMPRESSOREN SE'
+              'KAPP GmbH & Co. KG'
+              'KNORRTOYS.COM GmbH'
+              'Kupek GmbH'
               'Kupek GmbH Material - Prozesse - Logistik '
               'L&P Personal Petra Lang'
+              'Landratsamt Bamberg'
+              'Lennerts & Partner GmbH'
               'LEONI Fiber Optics GmbH'
+              'M Plan GmbH'
+              'Manpower GmbH & Co. KG Personaldienstleistungen'
+              'marcapo GmbH '
+              'markatus | markantes marketing'
+              'Martin Metallverarbeitung GmbH'
               'Max Schultz GmbH & Co. KG'
+              'Medical Park Bad Rodach GmbH & Co. KG'
               'NEA Engineering GmbH'
-              'OE GmbH'
+              'Neumüller Personalberatung'
+              'Nigel Frank International Ltd'
+              'Notes IT'
+              'OSB AG - Nürnberg'
               'Oschmann Comfortbetten GmbH'
+              'Perim Personalberatung im Mittelstand GmbH'
+              'PERNOVIS GmbH'
+              'Pro-fekt e.K.'
+              'PRODINGER Verpackung'
+              'Profilrollen-Werkzeugbau GmbH'
+              'Psc-Tec Jens Schobert'
               'RADAS Jobbörse & Personalvermittlung GmbH'
+              'Ratbacher'
+              'REGIOMED-KLINIKEN GmbH'
               'roba Baumann GmbH'
+              'Robert Hofmann GmbH'
+              'RSW Personal'
+              'Rösler Oberflächentechnik GmbH'
+              'S&H Personal'
               'saaroluna.de'
+              'Sagasser-Vertriebs GmbH'
+              'salierdruck Nicole Salier'
+              'Samvardhana Motherson Innovative Autosystems'
               'Schreiner Coburg GmbH'
+              'Schumacher Packaging GmbH'
               'Schwesternschaft Coburg vom BRK - Marienhaus - e.V.'
+              'Short Way Solution eK'
+              'Sitzdesign GmbH'
+              'Softspace GmbH'
+              'Software Engineering GmbH'
+              'Stadt Coburg'
+              'Stadtverwaltung Sonneberg'
               'Stadtwerke Rödental'
+              'Sven Gärtner G-Media'
               'SYSTEAM GmbH'
+              'SÜC'
+              'TOPTELCO'
               'United Gameserver GmbH'
+              'VaD Consulting'
+              'VR-Bank Coburg eG'
               'VSB Solutions GmbH'
               'VWA'
+              'waaf.net'
+              'Walter-Fach-Kraft GmbH & Co.KG'
+              'Wann Interior GmbH'
+              'Webspace-Verkauf.de ISP e.K.'
+              'Wefa GmbH'
+              'Z.I.E.L GmbH'
+              'Zeit & Haben Annette Mauer KG'
             )
             Title.Alignment = taCenter
             Title.Caption = 'Empfänger'
@@ -102,35 +184,103 @@ object frmMain: TfrmMain
           end        
           item
             PickList.Strings = (
+              '.net Softwareentwickler'
               '2nd Level IT-Supporter'
+              'AIX/Linux-Systemadministrator'
               'Anwendungsentwickler'
+              'Anwendungssystemadministrator'
+              'App- und Web-Entwickler'
               'Applikationsingenieur IT Produktionssoftware'
+              'Assistent - Technische Kommunikation und Dokumentation '
               'Bürosachbearbeiter/innen IT'
+              'Call Center Agent Inbound'
+              'Datenbankadministrator'
+              'Datenbankadministrator MS SQL-Server'
+              'ERP Anwendungsentwickler'
+              'ERP-Systemadministrator'
+              'Entwickler digitale Medien'
+              'Entwicklungskoordinator für Netzwerktechnik'
+              'Externer Support Gameserver/Voiceserver'
               'Fachinformatiker'
               'Fachinformatiker Anwendungsentwicklung'
               'Fachinformatiker Systemintegration'
+              'Fachinformatiker für IT-Infrastruktur und IT-Netzwerke'
               'Fachinformatiker mit Schwerpunkt Systemintegration'
+              'IT Administrator E-Commerce'
+              'IT Produktionsmitarbeiter'
+              'IT Prozessler'
+              'IT Spezialist für den technischen Support '
               'IT Support Spezialist'
+              'IT – Service / PC Support'
               'IT-Administrator'
+              'IT-Anwendungsbetreuer'
+              'IT-Anwendungsentwickler'
+              'IT-Betreuer'
               'IT-Fachkraft'
+              'IT-Koordinator'
+              'IT-Manager'
+              'IT-Mitarbeiter'
+              'IT-Mitarbeiter für medizinische Anbindungen'
               'IT-Spezialist'
+              'IT-Supporter 2nd Level'
+              'IT-Systemadministrator'
+              'IT-Systemadministrator im Bereich First Level Support '
+              'IT-Systembetreuer'
+              'IT-Systemkaufmann'
+              'IT-Systemtechniker'
               'IT-Techniker'
               'Informatiker'
+              'Ingenieur Softwareentwicklung Automotive '
+              'Initiativberwerbung'
+              'Junior IT-Consultant'
               'Junior IT-Systemadministrator'
+              'Junior PHP-Entwickler'
+              'Junior Softwareentwickler'
+              'Juniorentwickler'
+              'MS Dynamics AX Developer'
+              'MS Dynamics AX Entwickler'
+              'MVVM Softwareentwickler'
+              'Mitarbeiter Abteilung Informatik/Anwendungsentwicklung'
               'Mitarbeiter Customer Care & Operations'
+              'Mitarbeiter EDV'
               'Mitarbeiter IT'
               'Mitarbeiter IT Support'
+              'Mitarbeiter IT Technical Support'
+              'Mitarbeiter IT-Abteilung'
+              'Mitarbeiter Service Operations Support'
+              'Mitarbeiter Windows und Service Produkte'
+              'Mitarbeiter für die Softwareentwicklung'
+              'Mitarbeiter im Bereich IT'
+              'Mitarbeiter im Team IT-Anwendungen '
+              'Mitarbeiter in der technischen Dokumentation'
+              'Mitarbeiter/-in Support / Accounting / Vertrieb / Buchhaltung'
               'Mitarbeiter/in für die EDV '
+              'Netzwerk-/Systemadministrator'
               'Netzwerkadministrator'
+              'Netzwerkadministrator - Security Spezialist'
+              'SQL Datenbank Administrator'
               'SW-Entwickler (m/w) MS .NET/ C-Sharp'
               'Service-Techniker'
               'Softwareentwickler'
+              'Softwareentwickler C#/SQL'
+              'Softwareentwickler JAVA'
               'Softwareentwickler Java/C#'
               'Softwareentwickler Microsoft C# / .NET'
+              'Softwareentwickler Middleware-Komponenten'
+              'Softwareentwickler Steuerungs- und Autom.technik'
               'Softwareentwickler/in C#'
               'Softwareingenieur C#, .Net'
+              'Softwareingenieur für IT-Applikationen'
+              'System- und Netzwerkadministrator'
+              'Systemadministrator'
+              'Teamleiter First Level Support'
+              'Teamleiter IT-Support / IT-Endgeräte'
+              'Web Entwickler E-Commerce'
+              'Webadministrator'
+              'Webdesigner'
               'Webentwickler'
               'e-Commerce / Shopbetreuung'
+              'kaufmännischer Angestellter'
             )
             Title.Alignment = taCenter
             Title.Caption = 'Job-Titel'
@@ -160,25 +310,47 @@ object frmMain: TfrmMain
         OnDblClick = grdBewerbungenDblClick
         OnPrepareCanvas = grdBewerbungenPrepareCanvas
       end
+      object navData1: TDBNavigator
+        Left = 0
+        Height = 25
+        Top = 0
+        Width = 649
+        Align = alTop
+        BevelOuter = bvNone
+        ChildSizing.EnlargeHorizontal = crsScaleChilds
+        ChildSizing.EnlargeVertical = crsScaleChilds
+        ChildSizing.ShrinkHorizontal = crsScaleChilds
+        ChildSizing.ShrinkVertical = crsScaleChilds
+        ChildSizing.Layout = cclLeftToRightThenTopToBottom
+        ChildSizing.ControlsPerLine = 100
+        ClientHeight = 25
+        ClientWidth = 649
+        DataSource = dmBewerbungen.dsData
+        Flat = True
+        OnClick = navDataClick
+        Options = []
+        TabOrder = 1
+        VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbInsert, nbDelete, nbEdit, nbRefresh]
+      end
     end
     object tsBewerbungData: TTabSheet
       Caption = 'Daten'
-      ClientHeight = 476
-      ClientWidth = 653
+      ClientHeight = 507
+      ClientWidth = 649
       ImageIndex = 1
       object pcData: TPageControl
         Left = 0
-        Height = 312
-        Top = 168
+        Height = 313
+        Top = 192
         Width = 650
-        ActivePage = tsStatus
+        ActivePage = tsNotes
         Anchors = [akLeft, akRight, akBottom]
         Images = ilIcons
-        TabIndex = 0
+        TabIndex = 2
         TabOrder = 0
         object tsStatus: TTabSheet
           Caption = 'Status-Informationen'
-          ClientHeight = 308
+          ClientHeight = 309
           ClientWidth = 646
           ImageIndex = 16
           object rgTyp: TDBRadioGroup
@@ -186,7 +358,15 @@ object frmMain: TfrmMain
             Height = 129
             Top = 8
             Width = 320
+            AutoFill = True
             Caption = 'Art der Bewerbung'
+            ChildSizing.LeftRightSpacing = 6
+            ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+            ChildSizing.EnlargeVertical = crsHomogenousChildResize
+            ChildSizing.ShrinkHorizontal = crsScaleChilds
+            ChildSizing.ShrinkVertical = crsScaleChilds
+            ChildSizing.Layout = cclLeftToRightThenTopToBottom
+            ChildSizing.ControlsPerLine = 2
             Columns = 2
             DataField = 'TYP'
             DataSource = dmBewerbungen.dsData
@@ -207,7 +387,15 @@ object frmMain: TfrmMain
             Height = 65
             Top = 144
             Width = 320
+            AutoFill = True
             Caption = 'Rückmeldung'
+            ChildSizing.LeftRightSpacing = 6
+            ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+            ChildSizing.EnlargeVertical = crsHomogenousChildResize
+            ChildSizing.ShrinkHorizontal = crsScaleChilds
+            ChildSizing.ShrinkVertical = crsScaleChilds
+            ChildSizing.Layout = cclLeftToRightThenTopToBottom
+            ChildSizing.ControlsPerLine = 2
             Columns = 2
             DataField = 'FEEDBACK'
             DataSource = dmBewerbungen.dsData
@@ -226,7 +414,15 @@ object frmMain: TfrmMain
             Height = 128
             Top = 144
             Width = 260
+            AutoFill = True
             Caption = 'Medium'
+            ChildSizing.LeftRightSpacing = 6
+            ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+            ChildSizing.EnlargeVertical = crsHomogenousChildResize
+            ChildSizing.ShrinkHorizontal = crsScaleChilds
+            ChildSizing.ShrinkVertical = crsScaleChilds
+            ChildSizing.Layout = cclLeftToRightThenTopToBottom
+            ChildSizing.ControlsPerLine = 2
             Columns = 2
             DataField = 'MEDIUM'
             DataSource = dmBewerbungen.dsData
@@ -250,7 +446,15 @@ object frmMain: TfrmMain
             Height = 129
             Top = 8
             Width = 260
+            AutoFill = True
             Caption = 'Ergebnis'
+            ChildSizing.LeftRightSpacing = 6
+            ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+            ChildSizing.EnlargeVertical = crsHomogenousChildResize
+            ChildSizing.ShrinkHorizontal = crsScaleChilds
+            ChildSizing.ShrinkVertical = crsScaleChilds
+            ChildSizing.Layout = cclLeftToRightThenTopToBottom
+            ChildSizing.ControlsPerLine = 2
             Columns = 2
             DataField = 'RESULT'
             DataSource = dmBewerbungen.dsData
@@ -323,14 +527,14 @@ object frmMain: TfrmMain
         end
         object tsDokumente: TTabSheet
           Caption = 'Dokumente'
-          ClientHeight = 308
+          ClientHeight = 309
           ClientWidth = 646
           ImageIndex = 2
           object navDocs: TDBNavigator
             Left = 0
             Height = 25
             Top = 0
-            Width = 644
+            Width = 648
             Align = alTop
             BevelOuter = bvNone
             ChildSizing.EnlargeHorizontal = crsScaleChilds
@@ -340,7 +544,7 @@ object frmMain: TfrmMain
             ChildSizing.Layout = cclLeftToRightThenTopToBottom
             ChildSizing.ControlsPerLine = 100
             ClientHeight = 21
-            ClientWidth = 640
+            ClientWidth = 644
             DataSource = dmBewerbungen.dsDocs
             Flat = True
             Options = []
@@ -349,16 +553,16 @@ object frmMain: TfrmMain
           object pnlDokBottom: TPanel
             Left = 0
             Height = 88
-            Top = 182
-            Width = 644
+            Top = 192
+            Width = 648
             Align = alBottom
             BevelOuter = bvNone
             ClientHeight = 84
-            ClientWidth = 640
+            ClientWidth = 644
             TabOrder = 1
             object edtFile: TDBEdit
               Left = 117
-              Height = 36
+              Height = 28
               Top = 48
               Width = 328
               DataField = 'FILENAME'
@@ -369,18 +573,19 @@ object frmMain: TfrmMain
             end
             object lblDokDescr: TLabel
               Left = 13
-              Height = 20
+              Height = 18
               Top = 19
-              Width = 82
+              Width = 77
               Caption = 'Bezeichnung'
               ParentColor = False
             end
             object cbFileType: TDBComboBox
               Left = 117
-              Height = 38
+              Height = 28
               Top = 8
               Width = 328
               AutoComplete = True
+              AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
               DataField = 'TYPE'
               DataSource = dmBewerbungen.dsDocs
               ItemHeight = 0
@@ -395,9 +600,9 @@ object frmMain: TfrmMain
             end
             object lblDokFilename: TLabel
               Left = 13
-              Height = 20
+              Height = 18
               Top = 57
-              Width = 68
+              Width = 65
               Caption = 'Dateiname'
               ParentColor = False
             end
@@ -496,9 +701,9 @@ object frmMain: TfrmMain
           end
           object DBGrid1: TDBGrid
             Left = 0
-            Height = 157
+            Height = 167
             Top = 25
-            Width = 644
+            Width = 648
             Align = alClient
             Color = clWindow
             Columns = <            
@@ -523,12 +728,12 @@ object frmMain: TfrmMain
         end
         object tsNotes: TTabSheet
           Caption = 'Bemerkungen'
-          ClientHeight = 308
+          ClientHeight = 309
           ClientWidth = 646
           ImageIndex = 0
           object mmoNotes: TDBMemo
             Left = 0
-            Height = 270
+            Height = 277
             Top = 0
             Width = 644
             Align = alClient
@@ -540,7 +745,7 @@ object frmMain: TfrmMain
         end
         object tsActivities: TTabSheet
           Caption = 'Aktivitäten'
-          ClientHeight = 308
+          ClientHeight = 309
           ClientWidth = 646
           ImageIndex = 6
           object navActions: TDBNavigator
@@ -579,8 +784,6 @@ object frmMain: TfrmMain
               Top = 8
               Width = 168
               CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
-              OKCaption = 'OK'
-              CancelCaption = 'Cancel'
               DefaultToday = True
               DateOrder = doDMY
               ButtonWidth = 23
@@ -668,70 +871,68 @@ object frmMain: TfrmMain
       end
       object pnlBewerbungInfo: TPanel
         Left = 0
-        Height = 176
-        Top = 0
+        Height = 167
+        Top = 25
         Width = 654
         Anchors = [akTop, akLeft, akRight]
         BevelOuter = bvNone
-        ClientHeight = 176
+        ClientHeight = 167
         ClientWidth = 654
         TabOrder = 1
         object lblDatum: TLabel
           Left = 9
-          Height = 20
+          Height = 18
           Top = 16
-          Width = 42
+          Width = 41
           Caption = 'Datum'
           ParentColor = False
         end
         object lblWo: TLabel
           Left = 9
-          Height = 20
+          Height = 18
           Top = 49
-          Width = 69
+          Width = 66
           Caption = 'Empfänger'
           ParentColor = False
         end
         object lblWVL: TLabel
           Left = 329
-          Height = 20
+          Height = 18
           Top = 16
-          Width = 93
+          Width = 87
           Caption = 'Wiedervorlage'
           ParentColor = False
         end
         object lblEmpfMail: TLabel
           Left = 329
-          Height = 20
+          Height = 18
           Top = 49
-          Width = 84
+          Width = 76
           Caption = 'Mail-Adresse'
           ParentColor = False
         end
         object lblJobTitel: TLabel
           Left = 329
-          Height = 20
+          Height = 18
           Top = 81
-          Width = 56
+          Width = 49
           Caption = 'Job-Titel'
           ParentColor = False
         end
         object lblRefNr: TLabel
           Left = 9
-          Height = 20
+          Height = 18
           Top = 113
-          Width = 48
+          Width = 41
           Caption = 'Ref.-Nr'
           ParentColor = False
         end
         object edtDatum: TDateEdit
           Left = 108
-          Height = 37
+          Height = 28
           Top = 8
           Width = 204
           CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
-          OKCaption = 'OK'
-          CancelCaption = 'Cancel'
           DefaultToday = True
           DateOrder = doDMY
           ButtonWidth = 23
@@ -744,12 +945,10 @@ object frmMain: TfrmMain
         end
         object edtWVL: TDateEdit
           Left = 432
-          Height = 37
+          Height = 28
           Top = 8
           Width = 209
           CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
-          OKCaption = 'OK'
-          CancelCaption = 'Cancel'
           DateOrder = doDMY
           ButtonWidth = 23
           NumGlyphs = 1
@@ -760,7 +959,7 @@ object frmMain: TfrmMain
         end
         object edtRefNr: TDBEdit
           Left = 108
-          Height = 37
+          Height = 28
           Top = 104
           Width = 200
           DataField = 'REFNR'
@@ -771,10 +970,11 @@ object frmMain: TfrmMain
         end
         object cbbEmpfMail: TDBComboBox
           Left = 432
-          Height = 37
+          Height = 28
           Top = 40
           Width = 209
           AutoComplete = True
+          AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
           DataField = 'MAIL'
           DataSource = dmBewerbungen.dsData
           ItemHeight = 0
@@ -784,18 +984,19 @@ object frmMain: TfrmMain
         end
         object Label1: TLabel
           Left = 9
-          Height = 20
+          Height = 18
           Top = 81
-          Width = 87
+          Width = 83
           Caption = 'Anspr.partner'
           ParentColor = False
         end
         object cbbAnspr: TDBComboBox
           Left = 108
-          Height = 37
+          Height = 28
           Top = 72
           Width = 200
           AutoComplete = True
+          AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
           DataField = 'ANSPRECHPARTNER'
           DataSource = dmBewerbungen.dsData
           ItemHeight = 0
@@ -805,12 +1006,10 @@ object frmMain: TfrmMain
         end
         object edtEnde: TDateEdit
           Left = 432
-          Height = 37
+          Height = 28
           Top = 104
           Width = 209
           CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
-          OKCaption = 'OK'
-          CancelCaption = 'Cancel'
           DateOrder = doDMY
           ButtonWidth = 23
           NumGlyphs = 1
@@ -822,16 +1021,16 @@ object frmMain: TfrmMain
         end
         object lblFristEnde: TLabel
           Left = 329
-          Height = 20
+          Height = 18
           Top = 113
-          Width = 95
+          Width = 89
           Caption = 'Bewerbung bis'
           ParentColor = False
         end
         object chkBefristet: TDBCheckBox
           Left = 312
           Height = 23
-          Top = 144
+          Top = 136
           Width = 128
           Caption = 'befristet'
           DataField = 'BEFRISTET'
@@ -846,7 +1045,7 @@ object frmMain: TfrmMain
         object chkVermittler: TDBCheckBox
           Left = 9
           Height = 23
-          Top = 144
+          Top = 136
           Width = 152
           Caption = 'Personalvermittler'
           DataField = 'VERMITTLER'
@@ -859,7 +1058,7 @@ object frmMain: TfrmMain
         end
         object cbbEmpfName: TDBLookupComboBox
           Left = 108
-          Height = 37
+          Height = 28
           Top = 40
           Width = 200
           DataField = 'COMPANY'
@@ -876,7 +1075,7 @@ object frmMain: TfrmMain
         end
         object cbbJobTitel: TDBLookupComboBox
           Left = 432
-          Height = 37
+          Height = 28
           Top = 72
           Width = 209
           DataField = 'JOB'
@@ -892,25 +1091,25 @@ object frmMain: TfrmMain
         end
         object DBText1: TDBText
           Left = 560
-          Height = 20
-          Top = 144
-          Width = 55
+          Height = 18
+          Top = 136
+          Width = 50
           DataField = 'WVLSTUFE'
           DataSource = dmBewerbungen.dsData
           ParentColor = False
         end
         object Label5: TLabel
           Left = 457
-          Height = 20
-          Top = 144
-          Width = 75
+          Height = 18
+          Top = 136
+          Width = 65
           Caption = 'WVL-Stufe:'
           ParentColor = False
         end
         object chkZeitarbeit: TDBCheckBox
           Left = 184
           Height = 23
-          Top = 144
+          Top = 136
           Width = 104
           Caption = 'Zeitarbeit'
           DataField = 'ZEITARBEIT'
@@ -922,11 +1121,33 @@ object frmMain: TfrmMain
           ValueUnchecked = 'False'
         end
       end
+      object navData2: TDBNavigator
+        Left = 0
+        Height = 25
+        Top = 0
+        Width = 653
+        Align = alTop
+        BevelOuter = bvNone
+        ChildSizing.EnlargeHorizontal = crsScaleChilds
+        ChildSizing.EnlargeVertical = crsScaleChilds
+        ChildSizing.ShrinkHorizontal = crsScaleChilds
+        ChildSizing.ShrinkVertical = crsScaleChilds
+        ChildSizing.Layout = cclLeftToRightThenTopToBottom
+        ChildSizing.ControlsPerLine = 100
+        ClientHeight = 25
+        ClientWidth = 653
+        DataSource = dmBewerbungen.dsData
+        Flat = True
+        OnClick = navDataClick
+        Options = []
+        TabOrder = 2
+        VisibleButtons = [nbEdit, nbPost, nbCancel]
+      end
     end
     object tsFirmen: TTabSheet
       Caption = 'Firmen'
-      ClientHeight = 476
-      ClientWidth = 653
+      ClientHeight = 507
+      ClientWidth = 649
       ImageIndex = 13
       object navFirmen: TDBNavigator
         Left = 0
@@ -1066,8 +1287,8 @@ object frmMain: TfrmMain
     end
     object tsJobs: TTabSheet
       Caption = 'Jobs'
-      ClientHeight = 476
-      ClientWidth = 653
+      ClientHeight = 507
+      ClientWidth = 649
       ImageIndex = 15
       object navJobs: TDBNavigator
         Left = 0
@@ -1140,31 +1361,10 @@ object frmMain: TfrmMain
       end
     end
   end
-  object navData: TDBNavigator
-    Left = 0
-    Height = 25
-    Top = 0
-    Width = 659
-    Align = alTop
-    BevelOuter = bvNone
-    ChildSizing.EnlargeHorizontal = crsScaleChilds
-    ChildSizing.EnlargeVertical = crsScaleChilds
-    ChildSizing.ShrinkHorizontal = crsScaleChilds
-    ChildSizing.ShrinkVertical = crsScaleChilds
-    ChildSizing.Layout = cclLeftToRightThenTopToBottom
-    ChildSizing.ControlsPerLine = 100
-    ClientHeight = 25
-    ClientWidth = 659
-    DataSource = dmBewerbungen.dsData
-    Flat = True
-    OnClick = navDataClick
-    Options = []
-    TabOrder = 0
-  end
   object sbInfo: TStatusBar
     Left = 0
-    Height = 22
-    Top = 537
+    Height = 20
+    Top = 539
     Width = 659
     Panels = <    
       item
@@ -1940,42 +2140,6 @@ object frmMain: TfrmMain
     top = 448
     object miFeedback: TMenuItem
       Caption = '&Feedback'
-      Bitmap.Data = {
-        36040000424D3604000000000000360000002800000010000000100000000100
-        2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
-        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00007D21EB037B1EFF00791504FFFFFF00FFFFFF00FFFFFF00FFFFFF0069A8
-        DF0D847A7E13B3502098A0401FE3AA4522F5AC4622FAAB4422FAA74121F69F3D
-        1FEA0B802BFA43A15FFF027C22CF00791906FFFFFF00FFFFFF006DA2D3792579
-        CDFB866161FBBF6035FFFEB961FFFEB962FF239751FF1D9149FF178F43FF118B
-        3BFF3A9F5EFF80C196FF46A362FF0B8131E900791907FFFFFF00297DD1FE82BA
-        EEFF9F6658FFF5BB84FFFFAC5BFFFEA85AFF299B5BFF90CAA9FF8DC8A5FF8AC6
-        A1FF88C59EFF6AB685FF82C297FF48A566FF007D21D700791B09287CCEFC78B3
-        EAFFB39E94FFFFB760FFFFB663FFFEB261FF319F63FF94CDADFF6FBA8EFF6BB8
-        89FF66B685FF61B380FF67B582FF83C298FF3CA05CFF007F25F99E532B508A54
-        44FFFCC8ABFFFFD198FFFEC76DFFFEBF68FF37A36BFF96CEB0FF94CDADFF91CB
-        AAFF90CBA8FF74BC90FF8AC7A1FF46A568FF078735FB01832D01A9491301A946
-        0D60C44C1FFFF6E4D6FFFFE4A4FFFFD472FF3DA56FFF3AA36DFF36A167FF329E
-        61FF55AF7CFF91CBAAFF4FAB74FF178F45FB118B3D01FFFFFF00FFFFFF00A74A
-        1507A4481369BC481CFFF4E2D4FF4E7BA9FF4D7BA8FF4D7BA8FF4E7BA9FFF3D6
-        C3FF3C985DFF5AB381FF289857FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00A54B17056A3C25A2346DA7FF9CCCF8FFAFD4F7FFAFD4F7FFA5CFF6FF3474
-        AEFF3A9D68F9319F65FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF002A5B92C4A6CAEEFFABCCEAFFA7D0F6FFA8D0F6FFABCCEAFFA7CD
-        EEFF2D629ACCFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF001F5E9BEDD9E8F7FF97C5F1FF8EBBE5FF7FA9D1FF89B5DFFFCDDF
-        EEFF2368A7F16AA0D206FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF000C3E87FF7C97B8FF8AB7E4FF719CC8FF15406EFF194472FF2245
-        6BFF113B66FA4D78A207FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF000F4B97FF12589FFF0F4A8AFF0F4B87FF114B87FF154C85FF1241
-        75FF0F335CF1FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF0012336777114E96FE12589BFF125899FF115393FF0F4A87FF0E3E
-        71FE132E4B81FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF00FFFFFF0014356A7D12488DF4104B90FF0F488AFF11427DF51533
-        5B84FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
-      }
       ImageIndex = 4
       object miNoFeedback: TMenuItem
         Tag = 1
@@ -1992,42 +2156,6 @@ object frmMain: TfrmMain
     end
     object miResult: TMenuItem
       Caption = '&Ergebnis'
-      Bitmap.Data = {
-        36040000424D3604000000000000360000002800000010000000100000000100
-        2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
-        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF007A7A7AD3848383F5878686FF878787FF888887FF898988FF898888FF8888
-        88FF888887FF878686FF848382F87A7A7AC7FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00868686FBC2C2C1FEBCBCBCFFBCBCBCFFBCBCBBFFBCBCBBFFBCBCBBFFBCBC
-        BBFFBCBCBBFFBCBCBBFFC2C2C1FE878786F6FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF008C8C8BFFFFFFFFFFEBEBEBFFEBEBEBFFE9E9E9FFE8E8E8FFE7E7E7FFE7E7
-        E7FFE6E6E6FFE6E6E6FFFFFFFFFF8E8D8CFFFFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00929191FFFFFFFFFFB4B4B4FF949494FFE7E7E7FFB2B2B2FF939393FFE3E3
-        E3FFB0B0B0FF919191FFFBFBFBFF929291FFFFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00959595FFFFFFFFFFE8E8E8FFE7E7E7FFE5E5E5FFE3E3E3FFE2E2E2FFE0E0
-        E0FFDFDFDFFFDCDCDCFFFFFFFFFF959595FFFFFFFF00FFFFFF00FFFFFF00FFFF
-        FF009A9A99FFFFFFFFFFB1B1B1FF919191FFE2E2E2FFADADADFF8F8F8FFFDCDC
-        DCFFA9A9A9FF8D8D8DFFFBFBFBFF9A9999FFFFFFFF00FFFFFF00FFFFFF00FFFF
-        FF009E9D9DFFFFFFFFFFE3E3E3FFE1E1E1FFDCDCDCFFDBDBDBFFD7D7D7FFD3D3
-        D3FFD3D3D3FFD1D1D1FFFFFFFFFF9E9D9CFFFFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00A0A0A0FFFFFFFFFFADADADFF8E8E8EFFD8D8D8FFA5A5A5FF8A8A8AFFCECE
-        CEFF7374E8FF5258DBFFFBFBFBFF9E9E9EFFFFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00A3A3A3FFFCFCFCFFDADADAFFD7D7D7FFD2D2D2FFCECECEFFC9C9C9FFC5C5
-        C5FFC2C2C2FFBFBFBFFFFFFFFFFFA0A0A0FFFFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00A3A3A3FFFFFFFFFFB07B56FFC38D67FFC58F68FFC69069FFC8926BFFCA94
-        6CFFCA956EFFB07B56FFFFFFFFFFA1A09FFFFFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00A4A4A4FFFFFFFFFFB07B56FFC18B64FFC38D66FFC58F67FFC69069FFC892
-        6BFFCA946CFFB07B56FFFFFFFFFFA0A0A0FFFFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00A2A2A2FBFFFFFFFEA7724DFFA7724DFFA7724DFFA7724DFFA7724DFFA772
-        4DFFA7724DFFA7724DFFFFFFFFFF9E9E9EFFFFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00979797D1FFFFFFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFF9999999E6FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF007272728A9E9E9EE3A8A8A8FFABABABFFACACACFFADADADFFACACACFFABAB
-        ABFFA8A8A8FFA4A4A4FF9B9B9BEB7E7E7E92FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
-      }
       ImageIndex = 5
       object miNoResult: TMenuItem
         Tag = 4
@@ -2052,42 +2180,6 @@ object frmMain: TfrmMain
     end
     object miTyp: TMenuItem
       Caption = '&Typ'
-      Bitmap.Data = {
-        36040000424D3604000000000000360000002800000010000000100000000100
-        2000000000000004000064000000640000000000000000000000FFFFFF009461
-        3E9C94603DFF93603CFF153E54FF2A5F86FF4A87BBFF55819CFF836048FF8F5B
-        37FF8F5A36FF8E5A35FF8E5935B1FFFFFF00FFFFFF00FFFFFF00FFFFFF009562
-        3FE1CCAB85FFD1AF89FF2E6683FF94C7F9FF91C9F9FF4185C9FF2467A8FFB09A
-        86FFCB9F77FFC79971FF93613EFF4E3421A1FFFFFF00FFFFFF00FFFFFF009663
-        40E1CAA985FFA37854FF4389AAFFE0F2FFFF549AD8FF1A7ABEFF4998C5FF4283
-        B6FFA8886BFFC99D75FF93623FFF553C28E1FFFFFF00FFFFFF00FFFFFF009664
-        41E1CBAC88FFA67E57FF868A80FF7AB6D5FF90B7D1FF55C9E4FF5BDFF5FF78D0
-        EDFF4C93CFFFB79E85FF946240FF573E2AFFFFFFFF00FFFFFF00FFFFFF009765
-        43E1CEB08EFFAA855BFFCBA475FF909887FF75B7D3FFC2F6FDFF63DFF7FF5DE2
-        F8FF79D3F0FF4896D8FF886854FF573E2AFFFFFFFF00FFFFFF00FFFFFF009866
-        44E1D0B492FFAF8B60FFCEA97CFFCCA677FF8F998BFF77CBE7FFC7F7FDFF5EDC
-        F5FF5AE1F7FF7BD4F1FF4693D4FF504E4EFFFFFFFF00FFFFFF00FFFFFF009967
-        45E1D2B796FFB49265FFD1AE83FFCFAB7FFFCDA87AFF9AA893FF79D3EEFFC7F7
-        FDFF5FDCF5FF5BE2F7FF7AD6F2FF4291CFFF448DCD30FFFFFF00FFFFFF009968
-        46E1D5BB9BFFB89A69FFD4B38AFFD2AF87FFD0AD82FFCFAA7DFF9DAB96FF7DD4
-        EDFFC4F6FDFF6CDDF6FF6DCAEDFF63A3D7FF5D9BD2EC5192CA26FFFFFF009A69
-        47E1D7BF9FFFBD9F6FFFD4B590FFCBAD88FFC7A881FFC6A57DFFC4A17AFF8FA8
-        9AFF80D4EBFFB2E3F9FF8BC0E7FFAED3F6FFC4E0FCFF669FD3F7FFFFFF009B6A
-        48E1D9C2A4FFC1A472FFD2B894FFF5EDE4FFF4ECE2FFF4ECE1FFF4EBE0FFF3EA
-        DFFF8FAEA2FF77BEE7FFB4D2F0FFE5F3FFFFACD2EFFF488CC7E8FFFFFF009B6A
-        49E1DBC5A6FFC6A776FFD9BF9BFFD1B793FFCBB08EFFCAAE8AFFC8AB87FFCBAB
-        83FFD1B087FFA2B7B1FF58A5D8FF85B1DBFF469DD0FF2B95D15EFFFFFF009C6B
-        4AE1DDC8A9FFD4BD95FFE6D4B9FFE6D1B6FFE4D0B5FFE3CEB3FFE2CBB0FFE0C9
-        ADFFDFC7A9FFDABFA0FF9A6B4AFF573E2AFFFFFFFF00FFFFFF00FFFFFF009C6C
-        4BE0D9C2A5FFB59170FFAB805FFFA97E5EFFA97E5EFFA87D5CFFA87C5BFFA77B
-        5AFFA67959FF9C6B49FF966441FF573E2AFFFFFFFF00FFFFFF00FFFFFF009D6D
-        4BCFBA9778FFD8C5B9FFE8DED7FFE7DDD6FFE6DCD6FFE4DBD4FFE3DAD3FFE2D8
-        D1FFE1D7D0FFEBE7E5FFEFEFEFFF573E2AFFFFFFFF00FFFFFF00FFFFFF009D6D
-        4C919D6D4BFEBB9778FFAC8262FFAC8161FFAB8060FFAB7F5FFFAA7F5EFFA87E
-        5DFFA87C5CFF9D6D4CFF976643FF885C3CFFFFFFFF00FFFFFF00FFFFFF009E6E
-        4D2B9D6D4CD69D6D4BC59D6C4BFF9C6C4AFF9C6B49FF9B6A49FF9B6A48FF9A69
-        47FF996846FF986745FF936443FF845D3EDEFFFFFF00FFFFFF00
-      }
       ImageIndex = 6
       object MenuItem2: TMenuItem
         Tag = 9
@@ -2104,42 +2196,6 @@ object frmMain: TfrmMain
     end
     object miMedium: TMenuItem
       Caption = '&Medium'
-      Bitmap.Data = {
-        36040000424D3604000000000000360000002800000010000000100000000100
-        2000000000000004000064000000640000000000000000000000905B3114905B
-        3184905B31A3905B31B6905B31C9905B31DA905B31EB905B31FA956139FF9A69
-        41FFA3744FFFAD825FFF905B31D9905B3134FFFFFF00FFFFFF00945F3368B890
-        6DFFD6BAA3FFDFC6B3FFE7D4C3FFEEDFD3FFF5EAE2FFFBF4EFFFFDFAF6FFFFFE
-        FDFFFBEBDFFFFBEFE6FFC19D80FF945F336FFFFFFF00FFFFFF0099643689C7A4
-        85FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFCFFFEFBF7FFFEF7F1FFFEF6
-        F1FFE4AE86FFFAE8DBFFCEAF95FF9964368BFFFFFF00FFFFFF009E6939579E69
-        39F6B48559FFD9A57BFFD89E6FFFD79B6AFFD89663FFD6925DFFD48F59FFD38E
-        57FFE29D69FFFAE3D1FFD8BBA2FF9E69399EFFFFFF00FFFFFF00A46F3C14A46F
-        3CABD5AE8CFFFDF0E5FFF7C7A2FFF7CFADFFF9D5B5FFF8DABDFFF8DEC2FFFAE1
-        C6FFFAE4CCFFFDF5ECFFE2CEBAFFA46F3CB3FFFFFF00FFFFFF00FFFFFF00AA75
-        4028B78656FFFEFEFDFFFADEC2FFFADCBFFFF9DBC0FFF9DBC0FFF9DDC1FFFADB
-        C0FFFADCC3FFFDEBDEFFECDCCDFFAA7540CAFFFFFF00FFFFFF00FFFFFF00B17B
-        431EB98652FFFEFCF9FFF9DCBFFFF8DBBFFFF8DCC0FFF9DBC2FFF9DCC1FFF9DD
-        C2FFFADDC3FFFBE7D4FFF5EDE2FFB17B43E4FFFFFF00FFFFFF00FFFFFF00B782
-        4709B9854BFFFEFBF7FFF9DCC1FFF8DCBFFFF8DCBFFFF8DBC0FFF9DDC0FFF9DD
-        C0FFF9DDC3FFFBE2CBFFFCF9F5FFB78247FBB7824701FFFFFF00FFFFFF00FFFF
-        FF00BD884BF9FCF6F0FFF9DFC7FFF9DCBDFFFADCBFFFFADBC1FFFADDC3FFFADD
-        C2FFF9DDC4FFFBE0C9FFFFFCFAFFC18D53FFBD884B0FFFFFFF00FFFFFF00FFFF
-        FF00C48E4EDAF5E7D8FFFAE5D2FFF9DABCFFF9DBBCFFFADBBFFFFADDC1FFFADD
-        C1FFF9DDC4FFFBE1C8FFFFFDFBFFC89457FFC48E4E12FFFFFF00FFFFFF00FFFF
-        FF00CA9452BBF0D9C1FFFBEDE1FFF9DAC0FFF9DCC2FFF9DEC5FFFAE0C7FFFAE2
-        CAFFFAE2CDFFFAE5D0FFFFFEFDFFCB8F5AFFCA9452F1CA945245FFFFFF00FFFF
-        FF00D09A55A4EDD0B2FFFFF6F0FFFAE1CAFFFBE3CCFFFBE3D0FFFBE6D3FFFBE9
-        D5FFFCE9D8FFFCEADBFFFFFFFDFFD29D71FFEED9C1FFD09A55E5FFFFFF00FFFF
-        FF00D59F5892EBCAA5FFFFFDFBFFFDE9D5FFFDEBD8FFFDEADBFFFDEDDFFFFDF0
-        E2FFFDF1E4FFFCF0E4FFFFFFFFFFE0A070FFFFFBF9FFDFB887FFFFFFFF00FFFF
-        FF00DAA45B84EBC69AFFFFFFFFFFFCEFE2FFFDF0E7FFFDF1EBFFFDF5EEFFFDF8
-        F1FFFDFAF7FFFFFCFAFFFFFFFFFFFEFBF7FFF4DAC0FFDAA45BEAFFFFFF00FFFF
-        FF00DEA85D6DEAC08CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDF9F4FFFBF3
-        EAFFF8EBD9FFF8E6D3FFF5DFC6FFE9CBA6FFDEA85DEDDEA85D5DFFFFFF00FFFF
-        FF00E2AC5F36E2AC5FC6EABC81FFE8B777FFE6B26DFFE4B068FFE2AC5FF0E2AC
-        5FE3E2AC5FCFE2AC5FCCE2AC5FBBE2AC5FA8E2AC5F4BE2AC5F05
-      }
       ImageIndex = 8
       object miMail: TMenuItem
         Tag = 12
@@ -2198,122 +2254,14 @@ object frmMain: TfrmMain
     object miSuche: TMenuItem
       Tag = 101
       Action = actFind
-      Bitmap.Data = {
-        36040000424D3604000000000000360000002800000010000000100000000100
-        2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
-        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF003E39
-        34FF393430FF332F2BFF2C2925FF272421FF201D1BFF1716141A110F0EDB0B0A
-        09FF070706FF040403FF000000FF000000FFFFFFFF00FFFFFF00FFFFFF004641
-        3BFF857A70FFC3B8AEFF7C7268FF7F756BFF36322DFF1E1C190F282522D49589
-        7DFFBAAEA2FF7C7268FF7F756BFF010101FFFFFFFF00FFFFFF00FFFFFF004D47
-        41FF83786FFFCCC3BAFF786F65FF7B7167FF2F2B28F9272421011D1B18EE9589
-        7DFFC2B8ADFF786F65FF7C7268FF060505FFFFFFFF00FFFFFF00FFFFFF00534C
-        46FC83786FFFCCC3BAFF797066FF71685FFF37332ED5FFFFFF00252220D5857A
-        70FFC2B8ADFF786F65FF7B7167FF0A0908FCFFFFFF00FFFFFF00FFFFFF005A52
-        4CC39F9286FFCCC3BAFFC0B4AAFFA6988BFF3E3934A8FFFFFF002C2925A89084
-        79FFC2B8ADFFC0B4AAFFA89B8EFF110F0EC3FFFFFF00FFFFFF00797066055C55
-        4EF9423D38FF58514AFF3D3833FF332F2BFF23201DE5171614301E1C19B51A18
-        16FF252220FF191715FF0F0E0DFF010101EE00000002FFFFFF009F9286059D91
-        85FFB1A396FF7F756BFF7C7268FF776D64FF6C635BFF2E2A26FF564F48FF8076
-        6CFF7C7268FF776D64FF70675EFF000000FE00000005FFFFFF00AB9D9004AFA1
-        94E1BAAEA2FF82776DFF82776DFFAA917BFFBAA794FFB7A48EFAB09781FF9F8D
-        7DFF836D5BFF716357FF95897DFF040403E000000003FFFFFF00B9ACA008877D
-        72489B8E82FF9D9185FF867B71FF564F48FF504A44FF80766CFF6E665DFF826C
-        58FFA6917DFF948474FF564F48FF0C0B0B7A07070601FFFFFF00FFFFFF00FFFF
-        FF00746B62FFA4978AFF95897DFF9F9286FF3E3934FFFFFFFF004C4640FF7E74
-        6AFF857A70FF3E3934FF453F3AA72522200C15131102FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF00FFFFFF008E8378E2C3B8AEFF655D55FFFFFFFF007C7268FFA89B
-        8EFF9C8F83E4FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF00FFFFFF009C8F83E2BCB0A4FF9D9185FFFFFFFF00AEA093FF9D91
-        85FF655D55DAFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
-      }
     end
     object miWriteMail: TMenuItem
       Tag = 104
       Action = actWriteMail
-      Bitmap.Data = {
-        36040000424D3604000000000000360000002800000010000000100000000100
-        2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
-        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00007D21EB037B1EFF00791504FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF0001832BEB43A15FFF007B1FCC00791906FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00219751FD1B9149FD158F43FD0F8B
-        3BFD3A9F5EFF80C196FF46A362FF007D1FD100791907FFFFFF008E512BBFB063
-        31EFBB7038FABE773CFBC17B40FBC27E42FB299B5BFF90CAA9FF8DC8A5FF8AC6
-        A1FF88C59EFF6AB685FF82C297FF48A566FF187C25FA87532AC1A35D31DEF8F3
-        EEFDF5ECE4FEFBF5F0FFFBF7F1FFFBF7F3FF319F63FF94CDADFF6FBA8EFF6BB8
-        89FF66B685FF61B380FF67B582FF83C298FF3CA05CFF037F26FEBE6F3CFEFCF9
-        F5FFECD0BCFFF9E4D6FFFEECDFFFFEEBDFFF37A36BFF96CEB0FF94CDADFF91CB
-        AAFF90CBA8FF74BC90FF8AC7A1FF46A568FF0B8938FFC68B50FEC27646FFFDFB
-        F8FFF9E3D2FFECCFB9FFF8E1D0FFFDE7D6FF3DA56FFF3AA36EFF36A168FF329E
-        62FF55AF7CFF91CBAAFF4FAB74FF1B9047FFF7F2EBFFC98C50FFC57D50FFFDFB
-        F9FFFDE9D8FFF9E1D0FFEBCAB3FFECC5A7FFE3B698FFF7E7DDFFF7E8DEFFE3B6
-        97FF40A268FF5AB381FF289857FFFCDFC6FFF8F3EDFFC88D50FFC9865BFFFDFB
-        F9FFFDE8D7FFFDE6D4FFEDC6ABFFDCAA89FFF9ECE3FFFFFBF9FFFFFCFAFFF9EE
-        E6FF44A36DFF319F65FFFCDBC0FFFCDBC0FFF8F3EDFFC88C50FFCC8E66FFFDFB
-        F9FFFDE5D3FFF1CCB2FFE3B596FFF9EAE0FFFFF9F5FFFEF3EAFFFEF4EDFFFFFB
-        F9FFF9EDE5FFE3B08DFFF0C19EFFFCD7B7FFF8F3EDFFC88C50FFD09670FFFDFB
-        F9FFF1CDB1FFE3B596FFF9E9DEFFFEF7F1FFFDEDE1FFFEEFE4FFFEF1E7FFFEF3
-        EAFFFFFAF7FFF9ECE3FFE2AE8AFFF0BC95FFF8F4ECFFC88C50FFD39D7BFEFBF6
-        F2FFE3B496FFF9E8DCFFFEF5EEFFFDE9DAFFFDEADCFFFDECDEFFFDEDE1FFFEEF
-        E4FFFEF1E7FFFFFAF6FFF9EAE0FFE2AA85FFF1E4D9FFC88C50FED7AB91DCFDFA
-        F8FEFCF5F1FFFFFCF9FFFFFCF9FFFFFCF9FFFFFCF9FFFFFCFAFFFFFCFAFFFFFC
-        FAFFFFFCFBFFFFFDFBFFFFFDFCFFFBF6F3FFF8EFEAFDAB7743DBC89A7CBFD5A4
-        84F0D09770FBCC8F64FDCC8E62FDCB8E60FDCA8C5DFDC98B5BFDC88A58FDC788
-        56FDC68653FDC58450FDC4824DFCC1834DF7B27948E38E512BBFFFFFFF00FFFF
-        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
-      }
     end
     object miExport: TMenuItem
       Tag = 100
       Action = actExport
-      Bitmap.Data = {
-        36040000424D3604000000000000360000002800000010000000100000000100
-        2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
-        FF0089898903838383CC7E7E7EFF797979FF747474FF707070FF6B6B6BCAFFFF
-        FF00007D21F5037B1EFF00791521FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF008F8F8F15929292FFD5D3D3FFE2E0DFFFDFDCDBFFE1DFDFFF707070F4FFFF
-        FF0001832BF543A15FFF007B1FE400791927FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF009090906F8B8B8BBDC4C2C1FF229751FF1B9149FF158F43FF0F8B
-        3BFF3A9F5EFF80C196FF46A362FF0A7B26FF536757FF606060D7A7A7A78DA2A2
-        A2CC9C9C9CCC979797CC919191DE9E9E9EFF299B5BFF90CAA9FF8DC8A5FF8AC6
-        A1FF88C59EFF6AB685FF82C297FF48A566FF138631FF516856FFAEAEAEFFE4E2
-        E2FFD7D5D5FFD5D3D2FFD1CECDFFCAC4C3FF319F63FF94CDADFF6FBA8EFF6BB8
-        89FF66B685FF61B380FF67B582FF83C298FF3CA05CFF017F26FFB4B4B4FFE0DD
-        DDFFA7724DFFA7724DFFA7724DFFA7724DFF37A36BFF96CEB0FF94CDADFF91CB
-        AAFF90CBA8FF74BC90FF8AC7A1FF46A568FF098836FF676E69FFBABABAFFDEDB
-        DBFFB5805AFFCE9870FFD8AE91FFD9AF91FF3DA56FFF38A36DFF34A167FF309D
-        61FF55AF7CFF91CBAAFF4FAB74FF188F46FFCBCDC8FF737373FFC0C0C0FFDFDC
-        DCFFB47F59FFCB956EFFCD976FFFCF9971FFD19B72FFD29C74FFD49E75FFA772
-        4DFF38A167FF5AB381FF289857FF369438FFD6D1D0FF787878FFC5C5C5FFE1DE
-        DCFFB37D58FFC7916BFFC9936DFFCB956EFFCD9770FFCF9971FFD19B73FFA772
-        4DFF3DA56FFF319F65FF9CC6A2FF50A956FFD7D3D1FF7E7E7EFFCACACAFFE1DF
-        DEFFB17C57FFC48E68FFC6906AFFC8926BFFCA946DFFCC966FFFCE9870FFA772
-        4DFFDBD6D6FF919191FFC1BBB9FFC0B9B8FFD7D3D3FF848484FFCECECEFFE2DF
-        DFFFB07B56FFB17B56FFB17C57FFB27D58FFB37E58FFB47F59FFB5805AFFA772
-        4DFFDCD8D7FF989898FF8D8D8DFF8A8A8AFFD9D5D4FF8B8B8BFFD3D3D3FFF1EF
-        EFFFE2DFDFFFE2DFDFFFE1DFDEFFE1DEDDFFE0DDDCFFDFDCDBFFDEDBDBFFDEDB
-        D9FFEDECEBFF9E9E9EFFC5BFBEFFC3BDBBFFDAD6D5FF919191FFD6D6D6F9D3D3
-        D3FFD0D0D0FFCCCCCCFFC8C8C8FFC3C3C3FFBFBFBFFFBABABAFFB5B5B5FFB0B0
-        B0FFAAAAAAFFA5A5A5FF949393FF929191FFDBD7D6FF989898FFFFFFFF00FFFF
-        FF00FFFFFF00FFFFFF00FFFFFF00CFCFCF48CBCBCBE4DFDFDFFFEAEAEAFFCFCA
-        C9FFCBC6C5FFCAC4C3FFC8C3C1FFC7C1C1FFDCD9D8FF9E9E9EFFFFFFFF00FFFF
-        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00D0D0D00FCCCCCCABDCDCDCFFE6E3
-        E3FFE1DEDCFFDFDCDCFFDFDCDBFFDEDBDBFFEEECECFFA5A5A5FFFFFFFF00FFFF
-        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00CDCDCD9FC9C9
-        C9FBC4C4C4FFC0C0C0FFBBBBBBFFB6B6B6FFB0B0B0FFABABABA7
-      }
     end
     object MenuItem8: TMenuItem
       Caption = '-'
@@ -2324,82 +2272,10 @@ object frmMain: TfrmMain
     end
     object miErledigt: TMenuItem
       Action = actErl
-      Bitmap.Data = {
-        36040000424D3604000000000000360000002800000010000000100000000100
-        2000000000000004000064000000640000000000000000000000FFFFFF00369D
-        D9FF3199D8FF2C94D7FF2890D6FF238CD5FF1E88D4FF1A84D3FF1580D2FF117C
-        D1FF0E79D1FF0A76D0FF0773CFFF0470CFFF016ECEFFFFFFFF00FFFFFF003DA3
-        DAFFBCEBFAFFBCEBFCFFBFEEFEFFC6F4FFFFCEF8FFFFD3FAFFFFD0F8FFFFC7F2
-        FFFFBAE9FCFFB3E4F9FFB0E2F8FFB0E2F8FF0571CFFFFFFFFF00FFFFFF0043A8
-        DBFFBFECFBFF59CFF5FF41B0ECFF4EBAEFFF5AC2EFFF60C6EFFF5CC4EFFF4CB6
-        EFFF37A5E6FF2A9AE1FF38B8EEFFB1E3F8FF0975D0FFFFFFFF00FFFFFF0049AD
-        DCFFC1EEFBFF5FD3F7FF6CDBFCFF7FE5FFFF8FEDFFFF97F2FFFF93EDFFFF7CDF
-        FFFF5BCCF8FF46BEEFFF3CBAEEFFB3E3F9FF0E79D1FFFFFFFF00FFFFFF004EB2
-        DDFFC3EFFBFF65D6F8FF4CB6ECFF5ABDEFFF95EBFFFF3097DDFF4D82ABFF84E1
-        FFFF41A9E9FF329FE1FF42BEEFFFB4E5F9FF137ED2FFFFFFFF00FFFFFF0053B7
-        DEFFC6F0FCFF6AD9F8FF7CE2FDFF90E8FFFF99E9FFFF329FDFFF548BB2FF8AE2
-        FFFF6AD0F9FF50C5F1FF46C1F0FFB6E7F9FF1883D3FFFFFFFF00FFFFFF0058BB
-        DFFFC7F1FCFF6FDCF9FF56BBEDFF61BDEFFF9BE7FFFF35A6E2FF4BA4E1FF90E2
-        FFFF49ADE9FF38A4E3FF49C4F0FFB8E8F9FF1E88D4FFFFFFFF00FFFFFF005CBF
-        E0FFC8F3FCFF75DFF9FF89E6FDFF95E7FFFF9AE5FFFFAAEEFFFFA8EDFFFF99E3
-        FFFF74D5F9FF59CCF3FF4FC8F1FFBBE9FAFF248DD5FFFFFFFF00FFFFFF0060C2
-        E1FFC9F3FCFFCBF3FDFFD4F6FEFFD7F6FFFFD8F4FFFFE0F8FFFFDFF8FFFFDAF5
-        FFFFCDF1FCFFC2EDFAFFBDEBFAFFBDEBFAFF2B93D6FFFFFFFF00FFFFFF0061C3
-        E1FF88A0A8FF919191FF8E8E8EFF5AB9DCFF55B8DFFF51B5DEFF4DB1DDFF49AD
-        DCFF46A8D7FF787878FF767676FF657E8DFF3199D8FFFFFFFF00FFFFFF00FFFF
-        FF00999999C3C6C6C6FF949494FF8F8F8F08FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF007E7E7E087D7D7DFFABABABFF767676C3FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF009D9D9DAEC4C4C4FFA1A1A1FF93939329FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF0082828229898989FFA9A9A9FF797979AEFFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00A1A1A175BABABAFFBFBFBFFF989898DD9494941F919191058E8E8E058A8A
-        8A1F878787E5A8A8A8FF9E9E9EFF7D7D7D75FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00A4A4A40CA1A1A1DBC4C4C4FFBEBEBEFFA1A1A1FF969696FF939393FF9797
-        97FFAEAEAEFFAEAEAEFF848484DB81818109FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF00A4A4A430A2A2A2DEBCBCBCFFCACACAFFCCCCCCFFCACACAFFC2C2
-        C2FFADADADFF8C8C8CDE89898930FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF00FFFFFF00A5A5A50CA3A3A381A0A0A0BA9D9D9DCC9A9A9ACC9797
-        97BA949494819090900CFFFFFF00FFFFFF00FFFFFF00FFFFFF00
-      }
     end
     object miIgnorieren: TMenuItem
       Tag = 105
       Action = actIgnore
-      Bitmap.Data = {
-        36040000424D3604000000000000360000002800000010000000100000000100
-        2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
-        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF00FFFFFF003F54C3233A50C27D3853BEDB3551BDF3304BBCF32E4E
-        B8DB2B4CB77D2748B523FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF004658C8534255C6E63C52CCFF757AE8FF8F92EEFF8F92EEFF7178
-        E4FF334DC1FF2B4AB7E6294BB553FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF004D5ACD534959CBF45C65E0FFA1A6F5FF7E86EFFF5B63E9FF595DE7FF7D84
-        EEFF9EA0F4FF515DD7FF2B4AB7F4294BB553FFFFFF00FFFFFF00FFFFFF00545F
-        D2225361CFE5616BE3FFA1ACF5FF545FECFF505CEAFF4D59E9FF4E59E6FF4C56
-        E6FF5056E6FF9EA2F4FF5460D6FF2A4AB8E5294BB522FFFFFF00FFFFFF005860
-        D47E4B56DBFFA2ABF6FF5664F0FF5266EEFF4D59E9FF4D59E9FF4D59E9FF4D59
-        E9FF4C58E6FF525AE6FF9FA3F5FF3450C4FF2A4AB87EFFFFFF00FFFFFF005C62
-        D7DB818CEEFF7E91F7FF5D73F3FF4D59E9FF4D59E9FF4D59E9FF4D59E9FF4D59
-        E9FF4D59E9FF4F5BE9FF7B83F0FF757BE2FF2E4BBADBFFFFFF00FFFFFF005F63
-        DAF6A1ABF7FF7086F8FF6882F6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFF4D59E9FF5C66EAFF969CF1FF3250BCF6FFFFFF00FFFFFF006469
-        DBF6AFB9F9FF7F93FAFF7085F0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFF4D59E9FF5E6AEEFF969DF1FF364FBEF6FFFFFF00FFFFFF00676A
-        DEDBA5AFF5FF9DABFAFF778CF0FF545FECFF545FECFF545FECFF545FECFF545F
-        ECFF545FECFF6377F2FF818EF4FF787FE9FF3A53C0DBFFFFFF00FFFFFF006A69
-        E07E7D83EAFFCDD4FCFF8B9DFAFF7E93F7FF758AEEFF6C84F6FF6C84F6FF6C84
-        F6FF6C84F6FF6379F3FFA4AFF8FF3E4FD0FF3E54C27EFFFFFF00FFFFFF006C6C
-        E1226A69E0E5A3A7F3FFD4DBFDFF879AFAFF7F91F0FF7A8EF1FF7F94F8FF7E92
-        F9FF768CF8FFA8B6F8FF636EE3FF4557C7E54156C522FFFFFF00FFFFFF00FFFF
-        FF006D6CE3536A69E0F4AAADF2FFD8DCFDFFAEBAFAFF91A3FAFF8B9DFAFF9CA9
-        FBFFBAC7FCFF707BE9FF4C5BCCF44858CA53FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF006D6CE3536A6ADFE68E93EDFFBEC3F8FFCCD3F9FFC4CBF9FFAAB4
-        F4FF6670E2FF535ED1E6505DCE53FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF00FFFFFF006D6DE2236B6AE17D686ADDDB6364DCF36164DAF35D63
-        D9DB5B63D67D5862D423FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
-      }
     end
     object MenuItem9: TMenuItem
       Caption = '-'
@@ -2407,42 +2283,6 @@ object frmMain: TfrmMain
     object miSettings: TMenuItem
       Tag = 102
       Action = actSettings
-      Bitmap.Data = {
-        36040000424D3604000000000000360000002800000010000000100000000100
-        2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
-        FF00FFFFFF00FFFFFF00113D55F7285F87FB4988BCFD4683A9EF4B5762C85252
-        5263FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF006F6F6F292B6583FB94C7F9FF91C9F9FF4185C9FF2368AAFF5261
-        6DEE5A5A5A025C5C5C0E4E4E4E29FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF008181819B6F6F6FFD4389AAFFE0F2FFFF549AD8FF1A7ABEFF4998C5FF387F
-        B8FD4279AB41585858E74E4E4EFD4949499BFFFFFF00FFFFFF00FFFFFF00A4A4
-        A47BBCBCBCFFDEDEDEFF718EA2FF7AB6D5FF90B7D1FF55C9E4FF5BDFF5FF78D0
-        EDFF4591D1FE97A3ADFFD2D2D2FF808080FF5252527BFFFFFF00FFFFFF00ABAB
-        AB7DA6A6A6FED5D5D5FFC5C5C5FF91B4C4FF75B9D6FFC2F6FDFF63DFF7FF5DE2
-        F8FF79D3F0FF4796DAFFB9C3CDFF6E6E6EFE6767677DFFFFFF00FFFFFF00FFFF
-        FF00ACACAC85C5C5C5FFC1C1C1FFC5C5C5FF8CB0C2FF77CBE7FFC7F7FDFF5EDC
-        F5FF5AE1F7FF7BD4F1FF4796D9FF58758E9EFFFFFF00FFFFFF00A3A3A3CD8F8F
-        8FE3A0A0A0EECFCFCFFFC6C6C6FFCCCCCCFF9E9E9EC651A6C17A79D3EEFFC7F7
-        FDFF5FDCF5FF5BE2F7FF7AD6F2FF4395D5FD546370E8535353CDBFBFBFFDE2E2
-        E2FFD2D2D2FFC6C6C6FFCDCDCDFFB1B1B1FF93939344FFFFFF0024B7E4487CD4
-        EEFEC4F6FDFF6CDDF6FF6DCAEDFF63A3D7FF669FD2FF5F6871FDC4C4C4FDE9E9
-        E9FFD6D6D6FFC9C9C9FFCECECEFFA5A5A5FF84848444FFFFFF00FFFFFF004BAC
-        C9827FD4ECFFB2E3F9FF8BC0E7FFAED3F6FFC4E0FCFF669DD0FFC8C8C8CDC4C4
-        C4E3C0C0C0EED8D8D8FFCDCDCDFFBCBCBCFF828282C6777777447E7E7E448F8F
-        8FC68ABFCEFF77BEE7FFB4D2F0FFE5F3FFFFACD2EFFF4C8BC2FAFFFFFF00FFFF
-        FF00C5C5C585D4D4D4FFCCCCCCFFC9C9C9FFBABABAFF9C9C9CFFA1A1A1FFC2C2
-        C2FFC6C6C6FF92BBCAFF58A5D8FF85B1DBFF469DD0FF2B95D15EFFFFFF00CACA
-        CA7DC4C4C4FEDCDCDCFFD4D4D4FFD9D9D9FFDBDBDBFFD6D6D6FFD4D4D4FFD9D9
-        D9FFD2D2D2FFCBCBCBFFC8C8C8FF797979FE7171717DFFFFFF00FFFFFF00D0D0
-        D07BDCDCDCFFEDEDEDFFDBDBDBFFC2C2C2F4BEBEBEFED6D6D6FFD4D4D4FFB0B0
-        B0FEACACACF4CBCBCBFFE7E7E7FFB7B7B7FF8B8B8B7BFFFFFF00FFFFFF00FFFF
-        FF00D1D1D19BCECECEFDCACACAE7C6C6C619C2C2C2E7DEDEDEFFDDDDDDFFB2B2
-        B2E7B1B1B119ACACACE7A7A7A7FDA3A3A39BFFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF00D1D1D129CECECE0ECBCBCB02C7C7C7EAE5E5E5FFE4E4E4FFACAC
-        ACEAB6B6B602B2B2B20EADADAD29FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00CBCBCB63C7C7C7BFC4C4C4BFBFBF
-        BF63FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
-      }
     end
   end
   object dlgExport: TSaveDialog

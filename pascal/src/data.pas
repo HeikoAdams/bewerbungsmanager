@@ -75,6 +75,19 @@ type
     qryCompaniesNOTES: TStringField;
     qryCompaniesVERMITTLER: TBooleanField;
     qryCompaniesZEITARBEIT: TBooleanField;
+    qryCSVExportABSAGE: TLargeintField;
+    qryCSVExportANMERKUNGEN: TLargeintField;
+    qryCSVExportBISDATUM: TDateTimeField;
+    qryCSVExportDATUM: TDateTimeField;
+    qryCSVExportJOBTITEL: TStringField;
+    qryCSVExportKEINEANTWORT: TBooleanField;
+    qryCSVExportMAIL: TStringField;
+    qryCSVExportNAME: TStringField;
+    qryCSVExportREAGIERTNICHT: TBooleanField;
+    qryCSVExportREFNR: TStringField;
+    qryCSVExportSTUFE: TLongintField;
+    qryCSVExportWVL: TDateTimeField;
+    qryCSVExportZUSAGE: TLargeintField;
     qryJobs: TSQLQuery;
     qryCSVExport: TSQLQuery;
     qryLog: TSQLQuery;
@@ -364,14 +377,14 @@ begin
         Add('SELECT DATUM, NAME, JOBTITEL, ');
         Add('REFNR, CAST(ZUSAGE AS BOOLEAN) AS ZUSAGE, ');
         Add('CAST(ABSAGE AS BOOLEAN) AS ABSAGE, ');
-        Add('KEINEANTWORT ');
+        Add('KEINEANTWORT, ANMERKUNGEN ');
       end
       else
       begin
         Add('SELECT DATUM, WVL, STUFE, BISDATUM, NAME, MAIL, ');
         Add('JOBTITEL, REFNR, CAST(ZUSAGE AS BOOLEAN) AS ZUSAGE, ');
         Add('CAST(ABSAGE AS BOOLEAN) AS ABSAGE, ');
-        Add('KEINEANTWORT, REAGIERTNICHT ');
+        Add('KEINEANTWORT, REAGIERTNICHT, ANMERKUNGEN ');
       end;
       Add('FROM V_EXPORT');
 

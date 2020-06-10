@@ -75,6 +75,10 @@ msgstr ""
 msgid "Es befinden sich aktuell %d Bewerbung(en) in der Wiedervorlage: %s"
 msgstr ""
 
+#: bewerbung_strings.rsesbefindensinr
+msgid "Es befinden sich aktuell %d Bewerbung(en) in der Wiedervorlage!"
+msgstr ""
+
 #: bewerbung_strings.rsexportbeende
 msgctxt "bewerbung_strings.rsexportbeende"
 msgid "Export beendet. Es wurden %d Datensätze exportiert"
@@ -257,173 +261,6 @@ msgstr ""
 
 #: bewerbung_strings.rszeitarbeit
 msgid "Zeitarbeit!"
-msgstr ""
-
-#: dunkelblau 
-msgid " Eingang bestätigt"
-msgstr ""
-
-#: dunkelrot 
-msgid " Wiedervorlagedatum ohne Reaktion überschritten"
-msgstr ""
-
-#: durchgestrichen 
-msgid " Absage oder Bewerbung zurückgezogen"
-msgstr ""
-
-#: fett 
-msgid " Wiedervorlage ist fällig"
-msgstr ""
-
-#: fett+kursiv 
-msgid " Bewerbung ist älter als 6 Wochen und noch offen"
-msgstr ""
-
-#: grau 
-msgid " Bewerbung zurückgezogen"
-msgstr ""
-
-#: grün 
-msgid " Zusage erhalten"
-msgstr ""
-
-#: hellblau 
-msgid " manuell erledigt"
-msgstr ""
-
-#: kursiv 
-msgid " ignorierte Bewerbung"
-msgstr ""
-
-#: mainwin.rscsvexport
-msgctxt "mainwin.rscsvexport"
-msgid "CSV-Export"
-msgstr ""
-
-#: mainwin.rsdateformat
-msgctxt "mainwin.rsdateformat"
-msgid "dd.mm.yyyy"
-msgstr ""
-
-#: mainwin.rsdatenbanksko
-msgctxt "mainwin.rsdatenbanksko"
-msgid "Datenbank (%s) konnte nicht gefunden werden!"
-msgstr ""
-
-#: mainwin.rsddatenstze
-msgctxt "mainwin.rsddatenstze"
-msgid "%d Datensätze"
-msgstr ""
-
-#: mainwin.rsexportbeende
-msgctxt "mainwin.rsexportbeende"
-msgid "Export beendet"
-msgstr ""
-
-#: mainwin.rsfehler
-msgctxt "mainwin.rsfehler"
-msgid "Fehler"
-msgstr ""
-
-#: rot 
-msgid " Absage erhalten"
-msgstr ""
-
-#: schwarz 
-msgid " noch keine Reaktion und erste Wiedervorlage ist noch nicht fällig"
-msgstr ""
-
-#: tfrmdatefilter.button1.caption
-msgctxt "TFRMDATEFILTER.BUTTON1.CAPTION"
-msgid "&OK"
-msgstr ""
-
-#: tfrmdatefilter.button2.caption
-msgctxt "TFRMDATEFILTER.BUTTON2.CAPTION"
-msgid "&Abbruch"
-msgstr ""
-
-#: tfrmdatefilter.caption
-msgctxt "TFRMDATEFILTER.CAPTION"
-msgid "Filter"
-msgstr ""
-
-#: tfrmdatefilter.edtdatedue.cancelcaption
-msgctxt "TFRMDATEFILTER.EDTDATEDUE.CANCELCAPTION"
-msgid "Cancel"
-msgstr ""
-
-#: tfrmdatefilter.edtdatedue.okcaption
-msgctxt "TFRMDATEFILTER.EDTDATEDUE.OKCAPTION"
-msgid "OK"
-msgstr ""
-
-#: tfrmdatefilter.edtdatedue.text
-msgctxt "TFRMDATEFILTER.EDTDATEDUE.TEXT"
-msgid "  .  .    "
-msgstr ""
-
-#: tfrmdatefilter.edtdatefrom.cancelcaption
-msgctxt "TFRMDATEFILTER.EDTDATEFROM.CANCELCAPTION"
-msgid "Cancel"
-msgstr ""
-
-#: tfrmdatefilter.edtdatefrom.okcaption
-msgctxt "TFRMDATEFILTER.EDTDATEFROM.OKCAPTION"
-msgid "OK"
-msgstr ""
-
-#: tfrmdatefilter.edtdatefrom.text
-msgctxt "TFRMDATEFILTER.EDTDATEFROM.TEXT"
-msgid "  .  .    "
-msgstr ""
-
-#: tfrmdatefilter.label1.caption
-msgctxt "TFRMDATEFILTER.LABEL1.CAPTION"
-msgid "Datum von"
-msgstr ""
-
-#: tfrmdatefilter.label2.caption
-msgctxt "TFRMDATEFILTER.LABEL2.CAPTION"
-msgid "Datum bis"
-msgstr ""
-
-#: tfrmexportdate.caption
-msgctxt "TFRMEXPORTDATE.CAPTION"
-msgid "Export-Zeitraum"
-msgstr ""
-
-#: tfrmexportdate.cbxnachweis.caption
-msgid "Nachweis für Arbeits-"
-msgstr ""
-
-#: tfrmfilterdate.frmfilterdate.caption
-msgctxt "TFRMFILTERDATE.FRMFILTERDATE.CAPTION"
-msgid "Filter"
-msgstr ""
-
-#: tfrmlogin.btnlogin.caption
-msgctxt "TFRMLOGIN.BTNLOGIN.CAPTION"
-msgid "Login"
-msgstr ""
-
-#: tfrmlogin.caption
-msgctxt "tfrmlogin.caption"
-msgid "Login"
-msgstr ""
-
-#: tfrmlogin.label1.caption
-msgctxt "TFRMLOGIN.LABEL1.CAPTION"
-msgid "Benutzername"
-msgstr ""
-
-#: tfrmlogin.lepassword.editlabel.caption
-msgctxt "tfrmlogin.lepassword.editlabel.caption"
-msgid "Kennwort"
-msgstr ""
-
-#: tfrmlogin.speedbutton1.hint
-msgid "Einen neuen Benutzer anlegen"
 msgstr ""
 
 #: tfrmmain.actabsage.caption
@@ -619,6 +456,20 @@ msgstr ""
 msgid "keine Antwort"
 msgstr ""
 
+#: tfrmmain.dbgrid1.columns[0].title.caption
+msgctxt "tfrmmain.dbgrid1.columns[0].title.caption"
+msgid "Art"
+msgstr ""
+
+#: tfrmmain.dbgrid1.columns[1].title.caption
+msgid "Datei"
+msgstr ""
+
+#: tfrmmain.dbgrid3.columns[0].title.caption
+msgctxt "tfrmmain.dbgrid3.columns[0].title.caption"
+msgid "Job-Titel"
+msgstr ""
+
 #: tfrmmain.dlgfindapplication.title
 msgctxt "TFRMMAIN.DLGFINDAPPLICATION.TITLE"
 msgid "Bewerbung suchen"
@@ -629,29 +480,9 @@ msgctxt "TFRMMAIN.DLGFINDCOMPANY.TITLE"
 msgid "Empfänger suchen"
 msgstr ""
 
-#: tfrmmain.edtdatum.cancelcaption
-msgctxt "TFRMMAIN.EDTDATUM.CANCELCAPTION"
-msgid "Cancel"
-msgstr ""
-
-#: tfrmmain.edtdatum.okcaption
-msgctxt "TFRMMAIN.EDTDATUM.OKCAPTION"
-msgid "OK"
-msgstr ""
-
 #: tfrmmain.edtdatum.text
 msgctxt "tfrmmain.edtdatum.text"
 msgid "20.05.2015"
-msgstr ""
-
-#: tfrmmain.edtende.cancelcaption
-msgctxt "TFRMMAIN.EDTENDE.CANCELCAPTION"
-msgid "Cancel"
-msgstr ""
-
-#: tfrmmain.edtende.okcaption
-msgctxt "TFRMMAIN.EDTENDE.OKCAPTION"
-msgid "OK"
 msgstr ""
 
 #: tfrmmain.edtende.text
@@ -659,29 +490,9 @@ msgctxt "TFRMMAIN.EDTENDE.TEXT"
 msgid "  .  .    "
 msgstr ""
 
-#: tfrmmain.edtlogdatum.cancelcaption
-msgctxt "TFRMMAIN.EDTLOGDATUM.CANCELCAPTION"
-msgid "Cancel"
-msgstr ""
-
-#: tfrmmain.edtlogdatum.okcaption
-msgctxt "TFRMMAIN.EDTLOGDATUM.OKCAPTION"
-msgid "OK"
-msgstr ""
-
 #: tfrmmain.edtlogdatum.text
 msgctxt "TFRMMAIN.EDTLOGDATUM.TEXT"
 msgid "20.05.2015"
-msgstr ""
-
-#: tfrmmain.edtwvl.cancelcaption
-msgctxt "TFRMMAIN.EDTWVL.CANCELCAPTION"
-msgid "Cancel"
-msgstr ""
-
-#: tfrmmain.edtwvl.okcaption
-msgctxt "TFRMMAIN.EDTWVL.OKCAPTION"
-msgid "OK"
 msgstr ""
 
 #: tfrmmain.edtwvl.text
@@ -689,8 +500,67 @@ msgctxt "tfrmmain.edtwvl.text"
 msgid "  .  .    "
 msgstr ""
 
+#: tfrmmain.grdbewerbungen.columns[0].title.caption
+msgctxt "tfrmmain.grdbewerbungen.columns[0].title.caption"
+msgid "Datum"
+msgstr ""
+
+#: tfrmmain.grdbewerbungen.columns[1].title.caption
+msgid "WVL am"
+msgstr ""
+
+#: tfrmmain.grdbewerbungen.columns[2].title.caption
+msgid "Stufe"
+msgstr ""
+
+#: tfrmmain.grdbewerbungen.columns[3].title.caption
+msgctxt "tfrmmain.grdbewerbungen.columns[3].title.caption"
+msgid "Empfänger"
+msgstr ""
+
+#: tfrmmain.grdbewerbungen.columns[4].title.caption
+msgctxt "tfrmmain.grdbewerbungen.columns[4].title.caption"
+msgid "Job-Titel"
+msgstr ""
+
+#: tfrmmain.grdbewerbungen.columns[5].title.caption
+msgid "Bewerb. bis"
+msgstr ""
+
+#: tfrmmain.grdbewerbungen.columns[6].title.caption
+msgid "Ref.Nr"
+msgstr ""
+
 #: tfrmmain.grdbewerbungen.hint
-msgid "dunkelblau = Eingang bestätigt"
+msgid ""
+"dunkelblau = Eingang bestätigt\n"
+"dunkelrot = Wiedervorlagedatum ohne Reaktion überschritten\n"
+"türkis = keine Antwort auf Rückfragen \n"
+"grün = Zusage erhalten\n"
+"rot = Absage erhalten\n"
+"schwarz = noch keine Reaktion und erste Wiedervorlage ist noch nicht fällig\n"
+"violet = Einladung liegt vor\n"
+"grau = Bewerbung zurückgezogen\n"
+"hellblau = manuell erledigt\n"
+"\n"
+"fett = Wiedervorlage ist fällig\n"
+"kursiv = ignorierte Bewerbung\n"
+"unterstrichen = Bewerbung ist älter als 6 Wochen und ohne Ergebnis\n"
+msgstr ""
+
+#: tfrmmain.grdcompanies.columns[0].title.caption
+msgctxt "tfrmmain.grdcompanies.columns[0].title.caption"
+msgid "Name"
+msgstr ""
+
+#: tfrmmain.grdlog.columns[0].title.caption
+msgctxt "tfrmmain.grdlog.columns[0].title.caption"
+msgid "Datum"
+msgstr ""
+
+#: tfrmmain.grdlog.columns[1].title.caption
+msgctxt "tfrmmain.grdlog.columns[1].title.caption"
+msgid "Art"
 msgstr ""
 
 #: tfrmmain.label1.caption
@@ -769,23 +639,8 @@ msgctxt "TFRMMAIN.LBLWVL.CAPTION"
 msgid "Wiedervorlage"
 msgstr ""
 
-#: tfrmmain.menuitem1.caption
-msgctxt "TFRMMAIN.MENUITEM1.CAPTION"
-msgid "-"
-msgstr ""
-
 #: tfrmmain.menuitem3.caption
 msgid "&Ansicht"
-msgstr ""
-
-#: tfrmmain.menuitem8.caption
-msgctxt "TFRMMAIN.MENUITEM8.CAPTION"
-msgid "-"
-msgstr ""
-
-#: tfrmmain.menuitem9.caption
-msgctxt "TFRMMAIN.MENUITEM9.CAPTION"
-msgid "-"
 msgstr ""
 
 #: tfrmmain.mifeedback.caption
@@ -859,99 +714,5 @@ msgstr ""
 #: tfrmmain.tsstatus.caption
 msgctxt "TFRMMAIN.TSSTATUS.CAPTION"
 msgid "Status-Informationen"
-msgstr ""
-
-#: tfrmnewuser.caption
-msgid "neuen Benutzer anlegen"
-msgstr ""
-
-#: tfrmnewuser.lepassword.editlabel.caption
-msgctxt "TFRMNEWUSER.LEPASSWORD.EDITLABEL.CAPTION"
-msgid "Kennwort"
-msgstr ""
-
-#: tfrmnewuser.lepassword2.editlabel.caption
-msgctxt "TFRMNEWUSER.LEPASSWORD2.EDITLABEL.CAPTION"
-msgid "Kennwort Wdh."
-msgstr ""
-
-#: tfrmnewuser.leusername.editlabel.caption
-msgctxt "TFRMNEWUSER.LEUSERNAME.EDITLABEL.CAPTION"
-msgid "Benutzername"
-msgstr ""
-
-#: tfrmsettings.bitbtn1.caption
-msgid "&Ok"
-msgstr ""
-
-#: tfrmsettings.bitbtn2.caption
-msgid "Abbrechen"
-msgstr ""
-
-#: tfrmsettings.caption
-msgctxt "TFRMSETTINGS.CAPTION"
-msgid "Einstellungen"
-msgstr ""
-
-#: tfrmsettings.chkignorepv.caption
-msgid "Personalvermittler und befristete Stellen ignorieren"
-msgstr ""
-
-#: tfrmsettings.chknewwvl.caption
-msgid "Beim Setzen einer neuen Wiedervorlage das Ergebnis der "
-msgstr ""
-
-#: tfrmsettings.chknotifywvl.caption
-msgid "Info bei überfälligen Wiedervorlangen"
-msgstr ""
-
-#: tfrmsettings.chknotifywvl.hint
-msgid "Wenn aktiviert, informiert das Programm beim Start über überfällige Wiedervorlagen von Bewerbungen"
-msgstr ""
-
-#: tfrmsettings.chkoldapplications.caption
-msgid "offene Bewerbungen nach 6 Wochen hervorheben"
-msgstr ""
-
-#: tfrmsettings.chkpurgedata.caption
-msgid "erfolglose Bewerbungen nach 12 Monaten "
-msgstr ""
-
-#: tfrmsettings.groupbox1.caption
-msgid "Standardwerte"
-msgstr ""
-
-#: tfrmsettings.label1.caption
-msgid "Tage bis zur Wiedervorlage"
-msgstr ""
-
-#: tfrmsettings.label2.caption
-msgid "Dokumente:"
-msgstr ""
-
-#: tfrmsettings.rgmedium.caption
-msgctxt "TFRMSETTINGS.RGMEDIUM.CAPTION"
-msgid "Medium"
-msgstr ""
-
-#: tfrmsettings.rgtyp.caption
-msgctxt "TFRMSETTINGS.RGTYP.CAPTION"
-msgid "Bewerbungstyp"
-msgstr ""
-
-#: tfrmviewfilter.frmviewfilter.caption
-msgid "Anzeige-Zeitraum"
-msgstr ""
-
-#: türkis 
-msgid " keine Antwort auf Rückfragen "
-msgstr ""
-
-#: unterstrichen 
-msgid " Bewerbung ist älter als 6 Wochen und ohne Ergebnis"
-msgstr ""
-
-#: violet 
-msgid " Einladung liegt vor"
 msgstr ""
 

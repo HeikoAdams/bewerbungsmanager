@@ -40,6 +40,7 @@ object dmBewerbungen: TdmBewerbungen
     top = 80
   end
   object qryBewerbungen: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'ID'
@@ -164,6 +165,12 @@ object dmBewerbungen: TdmBewerbungen
         Name = 'NoResponse'
         DataType = ftBoolean
         Precision = -1
+      end    
+      item
+        Name = 'NAME'
+        DataType = ftString
+        Precision = -1
+        Size = 255
       end>
     AfterDelete = qryBewerbungenAfterPost
     AfterOpen = qryBewerbungenAfterOpen
@@ -190,7 +197,7 @@ object dmBewerbungen: TdmBewerbungen
         Name = 'pUserID'
         ParamType = ptInput
       end>
-    left = 16
+    left = 24
     top = 144
     object qryBewerbungenID: TLongintField
       DisplayWidth = 10
@@ -591,6 +598,11 @@ object dmBewerbungen: TdmBewerbungen
         Name = 'REAGIERTNICHT'
         DataType = ftBoolean
         Precision = -1
+      end    
+      item
+        Name = 'ANMERKUNGEN'
+        DataType = ftLargeint
+        Precision = -1
       end>
     Database = conData
     Transaction = traData
@@ -599,13 +611,136 @@ object dmBewerbungen: TdmBewerbungen
       'SELECT DATUM, WVL, STUFE, BISDATUM, NAME, MAIL,'
       'JOBTITEL, REFNR, CAST(ZUSAGE AS BOOLEAN) AS ZUSAGE,'
       'CAST(ABSAGE AS BOOLEAN) AS ABSAGE,'
-      'KEINEANTWORT, REAGIERTNICHT'
+      'KEINEANTWORT, REAGIERTNICHT, ANMERKUNGEN'
       'FROM V_EXPORT'
     )
     Options = []
     Params = <>
     left = 152
     top = 144
+    object qryCSVExportDATUM: TDateTimeField
+      FieldKind = fkData
+      FieldName = 'DATUM'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryCSVExportWVL: TDateTimeField
+      FieldKind = fkData
+      FieldName = 'WVL'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryCSVExportSTUFE: TLongintField
+      FieldKind = fkData
+      FieldName = 'STUFE'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryCSVExportBISDATUM: TDateTimeField
+      FieldKind = fkData
+      FieldName = 'BISDATUM'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryCSVExportNAME: TStringField
+      FieldKind = fkData
+      FieldName = 'NAME'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 255
+    end
+    object qryCSVExportMAIL: TStringField
+      FieldKind = fkData
+      FieldName = 'MAIL'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 255
+    end
+    object qryCSVExportJOBTITEL: TStringField
+      FieldKind = fkData
+      FieldName = 'JOBTITEL'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 255
+    end
+    object qryCSVExportREFNR: TStringField
+      FieldKind = fkData
+      FieldName = 'REFNR'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 255
+    end
+    object qryCSVExportZUSAGE: TLargeintField
+      FieldKind = fkData
+      FieldName = 'ZUSAGE'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryCSVExportABSAGE: TLargeintField
+      FieldKind = fkData
+      FieldName = 'ABSAGE'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryCSVExportKEINEANTWORT: TBooleanField
+      FieldKind = fkData
+      FieldName = 'KEINEANTWORT'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayValues = 'True;False'
+    end
+    object qryCSVExportREAGIERTNICHT: TBooleanField
+      FieldKind = fkData
+      FieldName = 'REAGIERTNICHT'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayValues = 'True;False'
+    end
+    object qryCSVExportANMERKUNGEN: TLargeintField
+      FieldKind = fkData
+      FieldName = 'ANMERKUNGEN'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
   end
   object qryDocuments: TSQLQuery
     FieldDefs = <    
@@ -712,6 +847,7 @@ object dmBewerbungen: TdmBewerbungen
     top = 16
   end
   object qryCompanies: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'ID'
@@ -837,10 +973,11 @@ object dmBewerbungen: TdmBewerbungen
     end
   end
   object qryJobs: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'ID'
-        DataType = ftInteger
+        DataType = ftAutoInc
         Precision = -1
       end    
       item

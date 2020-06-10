@@ -33,6 +33,7 @@ uses
 {$R *.res}
 
 begin
+  Application.Scaled:=True;
   Application.Title:='Bewerbungsmanager';
   Application.Initialize;
   Application.CreateForm(TdmBewerbungen, dmBewerbungen);

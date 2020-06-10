@@ -51,6 +51,8 @@ resourcestring
   rsEinstellunge = 'Einstellungen';
   rsEsBefindenSi = 'Es befinden sich aktuell %d Bewerbung(en) in der '
     +'Wiedervorlage: %s';
+  rsEsBefindenSiNr = 'Es befinden sich aktuell %d Bewerbung(en) in der '
+    +'Wiedervorlage!';
   rsExportBeende = 'Export beendet. Es wurden %d Datensätze exportiert';
   rsNoExportData = 'In dem angegebenen Zeitraum existieren keine Daten, '+
     'die exportiert werden können';

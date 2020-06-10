@@ -162,6 +162,8 @@ type
     mmoText: TDBMemo;
     navActions: TDBNavigator;
     dlgDocuments: TOpenDialog;
+    navData1: TDBNavigator;
+    navData2: TDBNavigator;
     navDocs: TDBNavigator;
     navFirmen: TDBNavigator;
     navJobs: TDBNavigator;
@@ -178,7 +180,6 @@ type
     miAngebot: TMenuItem;
     miTyp: TMenuItem;
     miExport: TMenuItem;
-    navData: TDBNavigator;
     ilIcons: TImageList;
     miAbsage: TMenuItem;
     miZusage: TMenuItem;
@@ -240,7 +241,7 @@ type
     procedure chkBefristetChange(Sender: TObject);
     procedure DBGrid1PrepareCanvas(Sender: TObject; DataCol: integer;
       Column: TColumn; AState: TGridDrawState);
-    procedure grdCompaniesPrepareCanvas(sender: TObject; DataCol: Integer;
+    procedure grdCompaniesPrepareCanvas(Sender: TObject; DataCol: integer;
       Column: TColumn; AState: TGridDrawState);
     procedure dlgFindApplicationFind(Sender: TObject);
     procedure dlgFindCompanyFind(Sender: TObject);
@@ -276,7 +277,7 @@ type
   public
     { public declarations }
     property ConfigFile: TIniFile read FConfigFile;
-    property UserID: Integer read FUserID write FUserID;
+    property UserID: integer read FUserID write FUserID;
     property JobApplication: TJobApplication read FApplication write FApplication;
     procedure HandleError;
   end;
@@ -324,13 +325,13 @@ begin
       Add('AND (UID = :pUserID)');
     end;
 
-    Params.ParamByName('pUserID').AsInteger:= frmMain.UserID;
+    Params.ParamByName('pUserID').AsInteger := frmMain.UserID;
 
     Open;
     nCount := RecordCount;
 
     First;
-    sWVLs:=LineEnding + LineEnding;
+    sWVLs := LineEnding + LineEnding;
     while not EOF do
     begin
       sWVLs := sWVLs + FieldByName('NAME').AsString + LineEnding;
@@ -343,7 +344,10 @@ begin
 
   if (nCount > 0) then
   begin
-    sMessage := Format(rsEsBefindenSi, [nCount, sWVLs]);
+    if (nCount <= 3) then
+      sMessage := Format(rsEsBefindenSi, [nCount, sWVLs])
+    else
+      sMessage := Format(rsEsBefindenSiNr, [nCount]);
     Application.MessageBox(PChar(sMessage), 'Wiedervorlage', MB_ICONWARNING + MB_OK);
   end;
 end;
@@ -355,7 +359,8 @@ var
   HomeDir: string;
 begin
   HomeDir := IncludeTrailingPathDelimiter(GetUserDir);
-  DFName :=  Format('%s.local/share/applications/%s.desktop', [HomeDir, Application.Title]);
+  DFName := Format('%s.local/share/applications/%s.desktop',
+    [HomeDir, Application.Title]);
 
   if not FileExists(DFName) then
   begin
@@ -366,7 +371,8 @@ begin
       WriteString('Desktop Entry', 'Version', '1.0');
       WriteString('Desktop Entry', 'Type', 'Application');
       WriteString('Desktop Entry', 'Name', Application.Title);
-      WriteString('Desktop Entry', 'Comment', 'Software zur Verwaltung eigener Bewerbungen');
+      WriteString('Desktop Entry', 'Comment',
+        'Software zur Verwaltung eigener Bewerbungen');
       WriteString('Desktop Entry', 'Exec', Application.ExeName);
       WriteString('Desktop Entry', 'Icon', 'accessories-text-editor');
       WriteString('Desktop Entry', 'Path', ExtractFilePath(Application.ExeName));
@@ -378,7 +384,7 @@ begin
 
     if (FpChmod(DFName, S_IRWXU or S_IRWXG or S_IROTH or S_IXOTH) <> 0) then
       Application.MessageBox(PChar(SysErrorMessage(GetLastOSError)),
-        PChar(rsWarnung), MB_ICONWARNING + MB_OK)
+        PChar(rsWarnung), MB_ICONWARNING + MB_OK);
   end;
 end;
 
@@ -387,13 +393,14 @@ var
   sConfFileName: string;
   nCounter: integer;
 begin
-  {$IFDEF Windows}
+  {$ifdef win32}
   FConfigDir := ExtractFilePath(Application.ExeName);
   sConfFileName := StringReplace(GetAppConfigFile(False, True),
     GetAppConfigDir(False), FConfigDir, [rfIgnoreCase, rfReplaceAll]);
-  {$else}
-  FConfigDir := GetAppConfigDir(False);
-  sConfFileName := GetAppConfigFile(False, True);
+  {$endif}
+  {$ifdef Unix}
+  FConfigDir := GetAppConfigDir(false);
+  sConfFileName := GetAppConfigFile(false, true);
   {$endif}
 
   if not DirectoryExists(FConfigDir) then
@@ -615,62 +622,65 @@ begin
   sNote := EmptyStr;
 
   if (bewerbungen.State in dsWriteModes) then
-//    and ((Sender as TDBLookupComboBox).Field.OldValue <> (Sender as TDBLookupComboBox).Field.NewValue) then
+    //    and ((Sender as TDBLookupComboBox).Field.OldValue <> (Sender as TDBLookupComboBox).Field.NewValue) then
   begin
     if companies.Locate('ID', (Sender as TDBLookupComboBox).KeyValue, []) then
       if not companies.FieldByName('AKTIV').AsBoolean then
       begin
-        Application.MessageBox(PChar(rsInaktiveFirma), PChar(rsWarnung), MB_ICONWARNING + MB_OK);
+        Application.MessageBox(PChar(rsInaktiveFirma), PChar(rsWarnung),
+          MB_ICONWARNING + MB_OK);
         (Sender as TDBLookupComboBox).KeyValue := 0;
         Exit;
       end;
 
-      if companies.FieldByName('VERMITTLER').AsBoolean
-        or companies.FieldByName('ZEITARBEIT').AsBoolean then
+    if companies.FieldByName('VERMITTLER').AsBoolean or
+      companies.FieldByName('ZEITARBEIT').AsBoolean then
+    begin
+      if companies.FieldByName('VERMITTLER').AsBoolean then
       begin
-        if companies.FieldByName('VERMITTLER').AsBoolean then
-        begin
-          bewerbungen.FieldByName('VERMITTLER').AsInteger:= companies.FieldByName('VERMITTLER').AsInteger;
-          sNote := rsPersonalvermittler;
-        end;
-
-        if companies.FieldByName('ZEITARBEIT').AsBoolean then
-        begin
-          bewerbungen.FieldByName('ZEITARBEIT').AsInteger:= companies.FieldByName('ZEITARBEIT').AsInteger;
-          if (sNote <> EmptyStr) then
-            sNote := sNote + CRLF2;
-          sNote := sNote + rsZeitarbeit;
-        end;
-
-        if frmMain.ConfigFile.ReadBool('GENERAL', 'IGNOREPV', False) then
-          bewerbungen.FieldByName('IGNORIERT').AsInteger:=1;
-      end
-      else
-      begin
-        bewerbungen.FieldByName('VERMITTLER').AsInteger:= 0;
-        bewerbungen.FieldByName('ZEITARBEIT').AsInteger:= 0;
-        bewerbungen.FieldByName('IGNORIERT').AsInteger:=0;
+        bewerbungen.FieldByName('VERMITTLER').AsInteger :=
+          companies.FieldByName('VERMITTLER').AsInteger;
+        sNote := rsPersonalvermittler;
       end;
 
-      if companies.FieldByName('NOREACTION').AsBoolean then
+      if companies.FieldByName('ZEITARBEIT').AsBoolean then
       begin
+        bewerbungen.FieldByName('ZEITARBEIT').AsInteger :=
+          companies.FieldByName('ZEITARBEIT').AsInteger;
         if (sNote <> EmptyStr) then
           sNote := sNote + CRLF2;
-        sNote := sNote + rsNoReaction;
+        sNote := sNote + rsZeitarbeit;
       end;
 
-      if (companies.FieldByName('NOTES').AsString <> EmptyStr) then
-      begin
-        if (sNote <> EmptyStr) then
-          sNote := sNote + CRLF2;
+      if frmMain.ConfigFile.ReadBool('GENERAL', 'IGNOREPV', False) then
+        bewerbungen.FieldByName('IGNORIERT').AsInteger := 1;
+    end
+    else
+    begin
+      bewerbungen.FieldByName('VERMITTLER').AsInteger := 0;
+      bewerbungen.FieldByName('ZEITARBEIT').AsInteger := 0;
+      bewerbungen.FieldByName('IGNORIERT').AsInteger := 0;
+    end;
 
-        sNote := sNote + companies.FieldByName('NOTES').AsString;
-      end;
-
+    if companies.FieldByName('NOREACTION').AsBoolean then
+    begin
       if (sNote <> EmptyStr) then
-        Application.MessageBox(PChar(sNote), PChar(rsWarnung), MB_ICONWARNING + MB_OK);
+        sNote := sNote + CRLF2;
+      sNote := sNote + rsNoReaction;
+    end;
 
-      bewerbungen.FieldByName('NOTES').AsString := sNote;
+    if (companies.FieldByName('NOTES').AsString <> EmptyStr) then
+    begin
+      if (sNote <> EmptyStr) then
+        sNote := sNote + CRLF2;
+
+      sNote := sNote + companies.FieldByName('NOTES').AsString;
+    end;
+
+    if (sNote <> EmptyStr) then
+      Application.MessageBox(PChar(sNote), PChar(rsWarnung), MB_ICONWARNING + MB_OK);
+
+    bewerbungen.FieldByName('NOTES').AsString := sNote;
   end;
 end;
 
@@ -680,33 +690,34 @@ begin
   begin
     if frmMain.ConfigFile.ReadBool('GENERAL', 'IGNOREPV', False) then
       if dmBewerbungen.qryBewerbungen.FieldByName('BEFRISTET').AsBoolean then
-        dmBewerbungen.qryBewerbungen.FieldByName('IGNORIERT').AsInteger:=1;
+        dmBewerbungen.qryBewerbungen.FieldByName('IGNORIERT').AsInteger := 1;
   end;
 end;
 
 procedure TfrmMain.DBGrid1PrepareCanvas(Sender: TObject; DataCol: integer;
   Column: TColumn; AState: TGridDrawState);
 begin
-  with (Sender as TDBGrid) do
-  begin
-    btnFileOpen.Enabled := FileExists(DataSource.DataSet.FieldByName(
-      'FILENAME').AsString);
-
-    if not btnFileOpen.Enabled then
+  if ((Sender as TDBGrid).DataSource.DataSet.FieldByName('FILENAME').AsString > '') then
+    with (Sender as TDBGrid) do
     begin
-      Canvas.Font.Color := clMaroon;
-      Canvas.Font.Style := [fsBold];
+      btnFileOpen.Enabled := FileExists(DataSource.DataSet.FieldByName(
+        'FILENAME').AsString);
+
+      if not btnFileOpen.Enabled then
+      begin
+        Canvas.Font.Color := clMaroon;
+        Canvas.Font.Style := [fsBold];
+      end;
     end;
-  end;
 end;
 
-procedure TfrmMain.grdCompaniesPrepareCanvas(sender: TObject; DataCol: Integer;
-  Column: TColumn; AState: TGridDrawState);
+procedure TfrmMain.grdCompaniesPrepareCanvas(Sender: TObject;
+  DataCol: integer; Column: TColumn; AState: TGridDrawState);
 begin
   with (Sender as TDBGrid) do
   begin
-    if DataSource.DataSet.FieldByName('VERMITTLER').AsBoolean
-      or DataSource.DataSet.FieldByName('ZEITARBEIT').AsBoolean then
+    if DataSource.DataSet.FieldByName('VERMITTLER').AsBoolean or
+      DataSource.DataSet.FieldByName('ZEITARBEIT').AsBoolean then
       Canvas.Font.Color := clMaroon;
 
     if DataSource.DataSet.FieldByName('NOREACTION').AsBoolean then
@@ -736,13 +747,14 @@ begin
     VarArrayOf([dlgFindApplication.FindText]), [loCaseInsensitive, loPartialKey]) then
     if not dmBewerbungen.qryBewerbungen.Locate('REFNR',
       VarArrayOf([dlgFindApplication.FindText]), [loPartialKey]) then
-        Application.MessageBox(PChar(rsKeineBereins), PChar(rsSuche),
-          MB_OK + MB_ICONWARNING)
-  else
-  begin
-    dmBewerbungen.qryBewerbungen.Locate('COMPANY', dmBewerbungen.qryCompanies.FieldByName('ID').AsInteger,[]);
-    dlgFindApplication.CloseDialog;
-  end;
+      Application.MessageBox(PChar(rsKeineBereins), PChar(rsSuche),
+        MB_OK + MB_ICONWARNING)
+    else
+    begin
+      dmBewerbungen.qryBewerbungen.Locate('COMPANY',
+        dmBewerbungen.qryCompanies.FieldByName('ID').AsInteger, []);
+      dlgFindApplication.CloseDialog;
+    end;
 end;
 
 procedure TfrmMain.dlgFindCompanyFind(Sender: TObject);
@@ -757,23 +769,24 @@ end;
 
 procedure TfrmMain.edtDatumEditingDone(Sender: TObject);
 begin
-  if (dmBewerbungen.dsData.State in dsWriteModes)
-    and (edtWVL.Text <> rsEmptyDate)
-    and (edtDatum.Date <> JobApplication.Datum) then
-     if (Application.MessageBox(PChar(rsRecalcWVL), PChar(rsWVL), MB_YESNO or
-        MB_DEFBUTTON2 or MB_ICONQUESTION) = ID_YES) then
-        if (edtEnde.Text <> rsEmptyDate) then
-          edtWVL.Date := IncDay(edtEnde.Date, ConfigFile.ReadInteger('DEFAULTS', 'WVL', 14))
-        else
-          edtWVL.Date := IncDay(edtWVL.Date, ConfigFile.ReadInteger('DEFAULTS', 'WVL', 14));
+  if (dmBewerbungen.dsData.State in dsWriteModes) and
+    (edtWVL.Text <> rsEmptyDate) and (edtDatum.Date <> JobApplication.Datum) then
+    if (Application.MessageBox(PChar(rsRecalcWVL), PChar(rsWVL),
+      MB_YESNO or MB_DEFBUTTON2 or MB_ICONQUESTION) = ID_YES) then
+      if (edtEnde.Text <> rsEmptyDate) then
+        edtWVL.Date := IncDay(edtEnde.Date,
+          ConfigFile.ReadInteger('DEFAULTS', 'WVL', 14))
+      else
+        edtWVL.Date := IncDay(edtWVL.Date, ConfigFile.ReadInteger(
+          'DEFAULTS', 'WVL', 14));
   (Sender as TDateEdit).ValidateEdit;
 end;
 
 procedure TfrmMain.edtEndeEditingDone(Sender: TObject);
 begin
-  if (dmBewerbungen.dsData.State in [dsInsert, dsEdit]) and (edtEnde.Text <> '  .  .    ')
-    and (edtEnde.Date <> JobApplication.BisDatum) then
-      edtWVL.Date := IncDay(edtEnde.Date, ConfigFile.ReadInteger('DEFAULTS', 'WVL', 14));
+  if (dmBewerbungen.dsData.State in [dsInsert, dsEdit]) and
+    (edtEnde.Text <> '  .  .    ') and (edtEnde.Date <> JobApplication.BisDatum) then
+    edtWVL.Date := IncDay(edtEnde.Date, ConfigFile.ReadInteger('DEFAULTS', 'WVL', 14));
   (Sender as TDateEdit).ValidateEdit;
 end;
 
@@ -905,7 +918,7 @@ begin
     FreeAndNil(frmExportDate);
     AssignFile(ExportFile, sFileName);
     dmBewerbungen.FetchExportData('WHERE (UID = :pUserID) AND (strftime(''%s'', DATUM)' +
-      Format(' BETWEEN %s AND %s', [sDateFrom, sDateDue]) +')', isNachweis);
+      Format(' BETWEEN %s AND %s', [sDateFrom, sDateDue]) + ')', isNachweis);
     nRecordCount := dmBewerbungen.qryCSVExport.RecordCount;
 
     if (nRecordCount = 0) then
@@ -926,7 +939,7 @@ begin
       for nCount := 0 to Fields.Count - 1 do
         sLine := sLine + Fields[nCount].FieldName + ';';
 
-      WriteLn(ExportFile, UTF8ToSys(sLine));
+      WriteLn(ExportFile, sLine);
 
       while not EOF do
       begin
@@ -942,12 +955,13 @@ begin
               sLine := sLine + ';'
           else if (Fields[nCount].DataType = ftBoolean) then
             sLine := sLine + BoolToStr(Fields[nCount].Value, rsYes, rsNo) + ';'
-          else if ((Fields[nCount].DataType = ftLargeint) and (Fields[nCount].AsInteger <= 0)) then
+          else if ((Fields[nCount].DataType = ftLargeint) and
+            (Fields[nCount].AsInteger <= 0)) then
             sLine := sLine + BoolToStr((Fields[nCount].Value = -1), rsYes, rsNo) + ';'
           else
             sLine := sLine + Fields[nCount].DisplayText + ';';
 
-        WriteLn(ExportFile, UTF8ToSys(sLine));
+        WriteLn(ExportFile, sLine);
         Next;
       end;
 
@@ -990,10 +1004,10 @@ procedure TfrmMain.actFindExecute(Sender: TObject);
 begin
   case pcApplications.ActivePageIndex of
     0:
-      begin
-        actAlle.Execute;
-        dlgFindApplication.Execute;
-      end;
+    begin
+      actAlle.Execute;
+      dlgFindApplication.Execute;
+    end;
     2: dlgFindCompany.Execute;
   end;
 end;
@@ -1065,15 +1079,19 @@ begin
 
     // Ignorierte Bewerbungen
     if bIgnoriert then
-      Canvas.Font.Style := [fsItalic]
+    begin
+      Canvas.Font.Style := [fsItalic];
+      Exit;
+    end;
+
     // Kein Feedback und WVL-Termin überschritten
-    else if (CurrApp.FieldByName('FEEDBACK').AsInteger = 0) and
-      ((CurrApp.FieldByName('RESULT').AsInteger = 0) and bNoResp) and
-      (CurrApp.FieldByName('WVL').AsDateTime <= Date) and
-      not bManErl then
+    if (CurrApp.FieldByName('FEEDBACK').AsInteger = 0) and
+      ((CurrApp.FieldByName('RESULT').AsInteger = 0) or bNoResp) and
+      (CurrApp.FieldByName('WVL').AsDateTime <= Date) and not bManErl then
     begin
       Canvas.Font.Color := clMaroon;
       Canvas.Font.Style := [fsBold];
+      Exit;
     end;
 
     // Bewerbung liegt mehr als 6 Wochen zurück und noch kein Ergebnis
@@ -1082,17 +1100,22 @@ begin
       ((CurrApp.FieldByName('RESULT').AsInteger = 0) and bNoResp) and
       (CurrApp.FieldByName('DATUM').AsDateTime <= IncWeek(Date, -6)) and
       not bManErl then
-        Canvas.Font.Style := Canvas.Font.Style + [fsUnderline];
+    begin
+      Canvas.Font.Style := Canvas.Font.Style + [fsUnderline];
+      Exit;
+    end;
 
     case CurrApp.FieldByName('RESULT').AsInteger of
       0:
-       begin
-          if (CurrApp.FieldByName('EMPFANGBEST').AsBoolean = True) and
-            (CurrApp.FieldByName('WVL').AsDateTime >= Date) then
-            Canvas.Font.Color := clNavy    // Eingangsbestätigung liegt vor und WVL ist noch nicht überschritten
-          else if (CurrApp.FieldByName('FEEDBACK').AsInteger = 1) then
-            Canvas.Font.Color := clPurple; // Einladung liegt vor
-        end;
+      begin
+        // Eingangsbestätigung liegt vor und WVL ist noch nicht überschritten
+        if (CurrApp.FieldByName('EMPFANGBEST').AsBoolean = True) and
+          (CurrApp.FieldByName('WVL').AsDateTime >= Date) then
+          Canvas.Font.Color := clNavy;
+        // Einladung liegt vor
+        if (CurrApp.FieldByName('FEEDBACK').AsInteger = 1) then
+          Canvas.Font.Color := clPurple;
+      end;
       1: Canvas.Font.Color := clGreen; // Zusage erhalten
       2: Canvas.Font.Color := clRed;   // Absage erhalten
       3: Canvas.Font.Color := clGray;  // Bewerbung zurückgezogen
@@ -1100,11 +1123,14 @@ begin
 
     // keine Antwort auf Nachfragen
     if ((CurrApp.FieldByName('RESULT').AsInteger = 0) and bNoResp) then
+    begin
       Canvas.Font.Color := clTeal;
+      Exit;
+    end;
 
     // manuell erledigt
     if bManErl then
-      Canvas.Font.Color:= RGBToColor(55,101,148);
+      Canvas.Font.Color := RGBToColor(55, 101, 148);
   end;
 end;
 
